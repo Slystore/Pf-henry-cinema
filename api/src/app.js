@@ -1,12 +1,12 @@
 const express = require('express')
 const cookieParser = require('cookie-parser');
 const routes = require('./routes/index')
-const app = express()
+const server = express()
 
 //middlewars 
-app.use(cookieParser)
-app.use(express.json())
+server.use(cookieParser)
+server.use(express.json())
 
 //routes 
-app.use('/api', routes)
-module.exports = app
+server.use('/api', routes)
+module.exports = server
