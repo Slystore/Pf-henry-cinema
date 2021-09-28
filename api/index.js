@@ -1,6 +1,9 @@
-const server = require('./src/app')
+const server = require('./src/app');
+const {conn} = require('../api/src/db')
 
-function main (){
-    console.log('que esta funcando ')
-}
-main()
+conn.sync()
+.then(() => {
+    console.log('DB connected');
+    server.listen(3001, () => console.log(`Server listening in 3001`))
+})
+.catch((e)=> console.log(e))
