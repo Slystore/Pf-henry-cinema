@@ -1,7 +1,8 @@
-// const server = require('./src/app')
+const server = require('./src/app')
+const { conn } = require('./src/db.js');
 
-// function main (){
-    
-//     server.listen(3001, () => console.log('que esta funcando '))
-// }
-// main()
+conn.sync().then( () => { 
+  console.log('BD conectada')
+  server.listen(3001, () => console.log('hola1'))
+})
+.catch( (e) => console.log(e))
