@@ -8,7 +8,15 @@ const router = Router()
 router.get('/', async (req, res) => {
     let {data} = await axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=e8fbbb2d04ff9c9e7e6927e92de2b1d1')
     data = data.genres
-    const genresQuery = await genres.findAll()
+    const genresQuery = await genres.findAll({
+        include: {
+            model: movies,
+            attributes: ['name'],
+            through: {
+                attributes: []
+            }
+        }
+    })
     if(genresQuery.length > 0) {
         await genres.bulkCreate(data)
         console.log('La base de datos ha sido cargada de generos')
