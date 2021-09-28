@@ -5,4 +5,4 @@ const server = require('./src/app')
         console.log('%s listening at 3001')
     })
 }
-main()
+main() 
