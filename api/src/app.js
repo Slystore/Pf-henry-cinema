@@ -10,7 +10,7 @@ server.use(express.json())
 
 //routes 
 server.use('/api', routes)
-conn.sync().then( () => { 
+conn.sync({ force: true}).then( () => { 
     console.log('BD conectada')
     server.listen(3001, () => console.log('hola1'))
 })
