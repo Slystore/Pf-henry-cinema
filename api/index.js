@@ -1,6 +1,7 @@
-const server = require('./src/app')
+// const server = require('./src/app')
 
-function main (){
-    console.log('que esta funcando ')
-}
-main()
+// function main (){
+    
+//     server.listen(3001, () => console.log('que esta funcando '))
+// }
+// main()
