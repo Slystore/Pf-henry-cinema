@@ -1,23 +1,115 @@
-import logo from './logo.svg';
+import * as React from 'react';
+import { Route, NavLink } from 'react-router-dom';
+import Logo from './assets/Logo.png';
+import Shadow from './assets/shadow.png';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Container">
+
+      <div className="NavBar">
+        <div className="Logo">
+        <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
+        </div>
+      </div>
+
+      <div className="SliderPrincipal">
+
+      </div>
+
+      <div className="Title">ESTRENOS</div>
+      <div className="SliderSecondary">
+
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        
+      </div>
+
+      <div className="Title">PRÓXIMAMENTE</div>
+      <div className="SliderSecondary">
+
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        
+      </div>
+
+      <div className="Title">CINE EN CASA</div>
+      <div className="SliderSecondary">
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        <div className="Movie">
+          <div className="MovieTitle">Nombre de la película</div>
+          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+        </div>
+        
+      </div>
+      
+      <div className="Footer"></div>
+      
     </div>
   );
 }
