@@ -37,8 +37,13 @@ module.exports = (Sequelize) => {
             allowNull:true,
         },
         genre: {
-            type: DataTypes.ARRAY(DataTypes.TEXT),
+            type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull:true,
+        },
+        createdInDb:{
+          type:DataTypes.STRING,
+          allowNull:false, 
+          defaultValue:true,
         }
     },{})
 }

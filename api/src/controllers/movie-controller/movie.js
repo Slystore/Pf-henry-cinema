@@ -1,5 +1,5 @@
 
-const {movies,Genres} = require('../../db')
+const { movies, genres } = require("../../db");
 
 const moviePost = async (req, res) => {
   try {
@@ -14,29 +14,52 @@ const moviePost = async (req, res) => {
       runTime,
       genre,
     } = req.body;
+    console.log("estos son los generos", genre);
     let movieCreated = await movies.create({
-      name: name,
-      rating: rating,
-      users_rating: users_rating,
-      availability: availability,
-      price: price,
-      image: image,
-      summary: summary,
-      runTime: runTime,
-      genre: genre,
+      name,
+      rating,
+      users_rating,
+      availability,
+      price,
+      image,
+      summary,
+      runTime,
     });
-    let genres = await Genres.findAll({
+    let genresDb = await genres.findAll({
       where: {
         name: genre,
       },
     });
-    await movieCreated.addGenre(genres);
-    res.status(200).send(movieCreated)
-
+    console.log("estos son los generos", genresDb);
+    await movieCreated.addGenre(genresDb);
+    res.status(200).send(movieCreated);
   } catch (err) {
     console.log(err);
   }
 };
-module.exports ={
-    moviePost
+
+const movieDelete = async (req,res) =>{
+  try{
+    const {id} = req.params
+    const movieId = await movies.findByPk(id);
+    console.log('esta es la id',movieId)
+    if(movieId){
+      movieId.destroy();
+      res.json("Movie delete succesfully")
+    }else res.status(404).json("This movie doesn't exist")
+  }catch(err){
+    console.log(err)
+  }
 }
+const moviePut = async(req,res) =>{
+  try{
+    
+  }catch(err){
+    console.log(err)
+  }
+}
+
+module.exports = {
+  moviePost,
+  movieDelete
+};

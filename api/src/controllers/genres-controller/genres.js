@@ -15,7 +15,7 @@ const genrePost = async (req,res) => {
 
 };
 
-const genreDelete = async (req) => {
+const genreDelete = async (req,res) => {
   try {
     const { id } = req.params;
     const genreById = await genres.findByPk(id);
