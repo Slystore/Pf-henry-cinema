@@ -11,9 +11,10 @@ const moviePost = async (req, res) => {
       image,
       summary,
       runTime,
-      genre,
+      genre
     } = req.body;
     console.log("estos son los generos", genre);
+    console.log(req.body);
     let movieCreated = await movies.create({
       name,
       rating,
@@ -22,7 +23,8 @@ const moviePost = async (req, res) => {
       price,
       image,
       summary,
-      runTime,
+      runTime
+      
     });
     let genresDb = await genres.findAll({
       where: {
