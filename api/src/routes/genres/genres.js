@@ -3,7 +3,7 @@ const {
   genrePost,
   genreDelete,
 } = require("../../controllers/genres-controller/genres");
-const { genres } = require("../../db");
+
 
 const router = Router();
 

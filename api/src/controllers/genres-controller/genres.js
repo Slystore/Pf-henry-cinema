@@ -1,4 +1,5 @@
-const genrePost = async (req,next) => {
+const {genres} = require('../../db')
+const genrePost = async (req,res) => {
   try {
     const { name } = req.body;
     const [genreQuery, created] = await genres.findOrCreate({
@@ -11,10 +12,10 @@ const genrePost = async (req,next) => {
   } catch (error) {
     console.log(error);
   }
-  next();
+
 };
 
-const genreDelete = async (req,next) => {
+const genreDelete = async (req) => {
   try {
     const { id } = req.params;
     const genreById = await genres.findByPk(id);
@@ -26,7 +27,7 @@ const genreDelete = async (req,next) => {
   } catch (error) {
     console.log(error);
   }
-  next();
+
 };
 
 module.exports = {

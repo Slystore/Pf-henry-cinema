@@ -1,11 +1,11 @@
 
-const {Movies,Genres} = require('../../db')
+const {movies,Genres} = require('../../db')
 
 const moviePost = async (req, res) => {
   try {
     let {
       name,
-      raiting,
+      rating,
       users_rating,
       availability,
       price,
@@ -14,9 +14,9 @@ const moviePost = async (req, res) => {
       runTime,
       genre,
     } = req.body;
-    let movieCreated = await Movies.create({
+    let movieCreated = await movies.create({
       name: name,
-      raiting: raiting,
+      rating: rating,
       users_rating: users_rating,
       availability: availability,
       price: price,

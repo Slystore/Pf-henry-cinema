@@ -2,7 +2,7 @@ const server = require('./src/app')
 const { conn } = require('./src/db.js');
 
 conn.sync().then( () => { 
-  console.log('BD conectada')
-  server.listen(3001, () => console.log('hola1'))
+  console.log('conectada la db')
+  server.listen(3001, () => console.log('listen on port 3001'))
 })
-.catch( (e) => console.log(e))
+.catch( (e) => console.log('yo estoy rompiendo',e))
