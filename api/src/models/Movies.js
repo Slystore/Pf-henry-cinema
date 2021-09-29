@@ -39,6 +39,10 @@ module.exports = (Sequelize) => {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull:true,
         },
+        status:{
+            type:DataTypes.ENUM,
+            value:['cartelera',"proximamente"]
+        }
        
     },{})
 }

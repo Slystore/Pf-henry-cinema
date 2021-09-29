@@ -6,4 +6,4 @@ router.post('/createMovie',moviePost)
 router.delete('/deleteMovie/:id',movieDelete)
 router.put('/editMovie/:id', moviePut)
 
-module.exports = router
+module.exports = router 
