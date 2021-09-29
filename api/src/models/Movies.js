@@ -34,16 +34,11 @@ module.exports = (Sequelize) => {
         },
         runTime: {
             type: DataTypes.INTEGER,
-            allowNull:true,
         },
         genre: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull:true,
         },
-        createdInDb:{
-          type:DataTypes.STRING,
-          allowNull:false, 
-          defaultValue:true,
-        }
+       
     },{})
 }

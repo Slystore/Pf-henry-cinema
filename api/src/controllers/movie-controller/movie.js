@@ -14,7 +14,7 @@ const moviePost = async (req, res) => {
       genre,
     } = req.body;
     console.log("estos son los generos", genre);
-    let movieCreated = await movies.create({
+    let movieCreated = await movies.findOrCreate({
       name,
       rating,
       users_rating,
@@ -52,6 +52,7 @@ const movieDelete = async (req, res) => {
 };
 const moviePut = async (req, res) => {
   const infoMovie = req.body;
+  console.log('body info',infoMovie)
 
   try {
     const { id } = req.params;
