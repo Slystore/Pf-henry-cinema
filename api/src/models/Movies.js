@@ -36,13 +36,10 @@ module.exports = (Sequelize) => {
             type: DataTypes.INTEGER,
         },
         genre: {
-            type: DataTypes.ARRAY(DataTypes.STRING),
+            type:DataTypes.STRING,
             allowNull:true,
         },
-        status:{
-            type:DataTypes.ENUM,
-            value:['cartelera',"proximamente"]
-        }
+       
        
     },{})
 }

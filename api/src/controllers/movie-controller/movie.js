@@ -13,8 +13,8 @@ const moviePost = async (req, res) => {
       runTime,
       genre,
     } = req.body;
-    console.log("estos son los generos", genre);
-    let movieCreated = await movies.findOrCreate({
+    console.log("estos son los generos del body", genre);
+    let movieCreated = await movies.create({
       name,
       rating,
       users_rating,
@@ -29,8 +29,8 @@ const moviePost = async (req, res) => {
         name: genre,
       },
     });
-    console.log("estos son los generos", genresDb);
-    await movieCreated.addGenre(genresDb);
+    console.log("estos son los generos de genresDb", genresDb);
+    await movieCreated.addGenres(genresDb);
     res.status(200).send(movieCreated);
   } catch (err) {
     console.log(err);

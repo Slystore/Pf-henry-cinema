@@ -1,12 +1,7 @@
-const {DataTypes, UUIDV4 } = require('sequelize')
+const {DataTypes } = require('sequelize')
 
 module.exports = (Sequelize) => {
-    return Sequelize.define('genres',{
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: UUIDV4,
-            primaryKey: true,
-        },
+    return Sequelize.define('genres',{     
         name: {
             type: DataTypes.STRING,
             allowNull: false

@@ -23,7 +23,7 @@ purchaseModel(sequelize)
 
 
 const { genres, cinemas, movies, users, purchase } = sequelize.models;
-
+console.log(sequelize.models)
 
 genres.belongsToMany(movies, {through: 'moviesGenre'})
 movies.belongsToMany(genres, {through: 'moviesGenre'})
