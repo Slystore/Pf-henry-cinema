@@ -1,22 +1,21 @@
-const {DataTypes, UUIDV4 } = require('sequelize')
+const {DataTypes} = require('sequelize')
 
 module.exports = (Sequelize) => {
     return Sequelize.define('movies',{
         id: {
             type: DataTypes.UUID,
-            defaultValue: UUIDV4,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
-            allowNull: false
         },
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
         rating: {
-            type: DataTypes.FLOAT
+            type: DataTypes.INTEGER
         },
         users_rating:{
-            type: DataTypes.FLOAT
+            type: DataTypes.INTEGER
         },
         availability: {
             type: DataTypes.BOOLEAN,
@@ -26,16 +25,21 @@ module.exports = (Sequelize) => {
             type: DataTypes.INTEGER
         },
         image: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            allowNull:true,
         },
         summary: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            allowNull:true,
         },
         runTime: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
         },
         genre: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER)
-        }
+            type:DataTypes.STRING,
+            allowNull:true,
+        },
+       
+       
     },{})
 }
