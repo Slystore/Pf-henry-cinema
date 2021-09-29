@@ -1,4 +1,4 @@
-const genrePost = async (next) => {
+const genrePost = async (req,next) => {
   try {
     const { name } = req.body;
     const [genreQuery, created] = await genres.findOrCreate({
@@ -14,7 +14,7 @@ const genrePost = async (next) => {
   next();
 };
 
-const genreDelete = async (next) => {
+const genreDelete = async (req,next) => {
   try {
     const { id } = req.params;
     const genreById = await genres.findByPk(id);
