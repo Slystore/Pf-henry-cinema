@@ -1,4 +1,71 @@
 const { genres } = require("../../db");
+
+const genresData = 
+ [
+    {
+      name: "Action"
+    },
+    {
+      name: "Adventure"
+    },
+    {
+      name: "Animation"
+    },
+    {
+      name: "Comedy"
+    },
+    {
+      name: "Crime"
+    },
+    {
+      name: "Documentary"
+    },
+    {
+      name: "Drama"
+    },
+    {
+      name: "Family"
+    },
+    {
+      name: "Fantasy"
+    },
+    {
+      name: "History"
+    },
+    {
+      name: "Horror"
+    },
+    {
+      name: "Music"
+    },
+    {
+      name: "Mystery"
+    },
+    {
+      name: "Romance"
+    },
+    {
+      name: "Science Fiction"
+    },
+    {
+      name: "TV Movie"
+    },
+    {
+      name: "Thriller"
+    },
+    {
+      name: "War"
+    },
+    {
+      name: "Western"
+    }
+  ]
+
+const getGenres = async (req, res) => {
+  await genres.bulkCreate(genresData)
+  res.json('data traida')
+}
+
 const genrePost = async (req, res) => {
   try {
     const { name } = req.body;
@@ -53,4 +120,5 @@ module.exports = {
   genrePost,
   genreDelete,
   genrePut,
+  getGenres
 };

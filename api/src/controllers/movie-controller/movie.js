@@ -1,5 +1,20 @@
 const { movies, genres } = require("../../db");
 
+
+const getMovies = async (req, res) => {
+  console.log('hola')
+  const moviesData = await movies.findAll({
+      include: {
+          model: genres,
+          attributes: ['name'],
+          through: {
+            attributes: []
+          }
+      }
+  })
+  res.json(moviesData)
+}
+
 const moviePost = async (req, res) => {
   try {
     let {
@@ -13,7 +28,7 @@ const moviePost = async (req, res) => {
       runTime,
       genre,
     } = req.body;
-    console.log("estos son los generos del body", genre);
+    console.log(req.body);
     let movieCreated = await movies.create({
       name,
       rating,
@@ -28,8 +43,11 @@ const moviePost = async (req, res) => {
       where: {
         name: genre,
       },
+      attributes: ['id']
+      
     });
-    console.log("estos son los generos de genresDb", genresDb);
+    console.log(movieCreated);
+    console.log(genresDb);
     await movieCreated.addGenres(genresDb);
     res.status(200).send(movieCreated);
   } catch (err) {
@@ -73,4 +91,5 @@ module.exports = {
   moviePost,
   movieDelete,
   moviePut,
+  getMovies
 };
