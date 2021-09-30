@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+// import Form from './components/Forms/Form';
 import SearchBar from './components/SearchBar/SearchBar';
 import Home from './components/Home/Home';
 import Slider from './components/Slider/Slider';
@@ -15,6 +15,7 @@ import { getMovies } from './actions';
 import { ThemeProvider } from '@material-ui/core';
 import Logo from './assets/Logo.png';
 import './App.css';
+import formGenre from './components/Forms/FormGenre';
 
 
 const posts = [
@@ -100,8 +101,9 @@ function App() {
        <Switch>
        {/* <Route exact path="/" component={LandingPage} />  */}
        <Route exact path="/" component={Home} />
-       <Route path="/:id" component={MovieDetail} />
-      
+       <Route exact path="/:id" component={MovieDetail} />
+      {/* <Route path= "/admin/createMovie" component={Form} />  prueba juan */}
+      <Route path= "/admin/createGenre" component={formGenre} />
        </Switch>
     
      </div>
