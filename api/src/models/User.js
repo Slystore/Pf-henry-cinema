@@ -2,17 +2,12 @@ const {DataTypes, UUIDV4 } = require('sequelize')
 
 module.exports = (Sequelize) => {
     return Sequelize.define('users',{
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: UUIDV4,
-            primaryKey: true,
-            allowNull: false
-        },
+        
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        Surname: {
+        surname: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -20,7 +15,7 @@ module.exports = (Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isemail: true,
+                isEmail: true,
             }
         },
         dni: {
