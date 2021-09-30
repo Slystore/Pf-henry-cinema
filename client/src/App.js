@@ -1,17 +1,28 @@
 import * as React from 'react';
+import {useEffect}from 'react';
 import { useState } from 'react';
-import { Route, NavLink } from 'react-router-dom';
-
+import {useDispatch} from 'react-redux';
+import { Route, NavLink, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Logo from './assets/Logo.png';
-import Shadow from './assets/shadow.png';
 
+import SearchBar from './components/SearchBar/SearchBar';
+import Home from './components/Home/Home';
+import Slider from './components/Slider/Slider';
+import MovieDetail from './components/MovieDetail/MovieDetail';
+
+import { getMovies } from './actions';
+
+import { ThemeProvider } from '@material-ui/core';
+import Logo from './assets/Logo.png';
 import './App.css';
-import SearchBar from './components/SearchBar';
-// import Announcer from './components/SearchBar';
+
 
 const posts = [
-  { id: '1', name: 'After Almas Perdidas' },
+  { id: '1', 
+    name: 'After Almas Perdidas',
+    sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+    img: './assets/moviesPosters/after_almas_perdidas.jpg'
+   },
   { id: '2', name: 'Cry Macho' },
   { id: '3', name: 'Amenaza bajo el agua' },
   { id: '4', name: 'Sin tiempo para morir' },
@@ -35,6 +46,10 @@ function filterPosts(posts, query){
 
 
 function App() {
+//   const dispatch = useDispatch();
+//   useEffect(() => {
+//     dispatch(getMovies())
+// }, [dispatch])
 
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
@@ -44,51 +59,57 @@ function App() {
   function fillInput(e){
 
   }
-  // className={
-//     c === currentPage
-//       ? "current-paginate-button"
-//       : "paginate-button"
-//   }
+ 
 
   return (
     <div className="Container">
 
       <div className="NavBar">
+
         <div className="Logo">
-        <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
+          <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
         </div>
+
         <div className="SearchBar">
-          {/* <Announcer
-            message={`${filteredPosts.length} posts`}
-          /> */}
-          <SearchBar
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          />
+
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
           <ul className={searchQuery === '' ? 'listInvisible' : 'listVisible'}>
             {filteredPosts.map((post) => (
                 <li key={post.id} className="" onClick={(e) =>fillInput(e)}> {post.name} </li>
             ))}
           </ul>
+          
         </div>
+
       </div>
 
       <div className="SliderPrincipal">
-
+          <Slider />
       </div>
 
-      <div className="Title">ESTRENOS</div>
+      <div className="Title">TODAS LAS PELICULAS</div>
       <div className="SliderSecondary">
+
+        {/* <Route exact path="/">
+          <Home />  
+        </Route> */}
+        <ThemeProvider > 
+     {/* //tematization material ui */}
+     <div className="">
         
-        <div className="Movie">
-          <div className="MovieTitle">Nombre de la película</div>
-          <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
-        </div>
+       <Switch>
+       {/* <Route exact path="/" component={LandingPage} />  */}
+       <Route exact path="/" component={Home} />
+       <Route path="/:id" component={MovieDetail} />
+      
+       </Switch>
+    
+     </div>
+     </ThemeProvider>
        
-        
       </div>
 
-      <div className="Title">PRÓXIMAMENTE</div>
+      {/* <div className="Title">PRÓXIMAMENTE</div>
       <div className="SliderSecondary">
 
         <div className="Movie">
@@ -145,7 +166,7 @@ function App() {
           <div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
         </div>
         
-      </div>
+      </div> */}
       
       <div className="Footer"></div>
       
@@ -154,3 +175,24 @@ function App() {
 }
 
 export default App;
+
+
+
+
+// export default function App() {
+//   
+//   return (
+//     <ThemeProvider theme={theme}> 
+//     {/* //tematization material ui */}
+//     <div className={styles.app}>
+//         <NavBar/>
+//       <Switch>
+//       {/* <Route exact path="/" component={LandingPage} />  */}
+//       <Route exact path="/home" component={Home} />
+//       <Route path="/home/:id" component={MovieDetail} />
+//       </Switch>
+    
+//     </div>
+//     </ThemeProvider>
+//   );
+// }

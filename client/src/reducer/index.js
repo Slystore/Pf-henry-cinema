@@ -2,7 +2,8 @@ import {
     GET_MOVIES,
     GET_MOVIE_DETAILS, 
     ADD_MOVIE,
-    GET_MOVIES_SORTED
+    GET_MOVIES_SORTED,
+    CLEAN_DETAIL
  } from '../actions/index.js';
 
 
@@ -40,6 +41,13 @@ function rootReducer(state = initialState, action) {
             return{
                 ...state,
                 moviesSorted: action.payload
+            }
+        }
+
+        case CLEAN_DETAIL:{
+            return{
+                ...state,
+                moviesDetails: []
             }
         }
        

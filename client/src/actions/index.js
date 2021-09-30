@@ -3,6 +3,7 @@ export const GET_MOVIES = 'GET_MOVIES'
 export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS'
 export const ADD_MOVIE = 'ADD_MOVIE'
 export const GET_MOVIES_SORTED = 'GET_MOVIES_SORTED'
+export const CLEAN_DETAIL= 'CLEAN_DETAIL'
 
 
 export function getMovies() {
@@ -48,4 +49,11 @@ export function getMoviesSorted(type) {
             })
         })
     }
+}
+
+export function cleanDetail(payload) {
+    return {
+                type: CLEAN_DETAIL, 
+                payload
+            }
 }
