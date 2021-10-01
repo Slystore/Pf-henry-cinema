@@ -4,7 +4,7 @@ import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { Route, NavLink, Switch } from 'react-router-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import Form from './components/Forms/Form';
+import FormMovie from './components/Forms/FormMovie';
 import SearchBar from './components/SearchBar/SearchBar';
 import Home from './components/Home/Home';
 import Slider from './components/Slider/Slider';
@@ -70,7 +70,10 @@ function App() {
         <div className="Logo">
           <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
         </div>
-
+        <div> <NavLink to='/admin/createMovie' >
+        Prueba Admin crear Movie</NavLink>
+        <NavLink to="/admin/createGenre" >
+            Prueba Admin crear Genre</NavLink></div>
         <div className="SearchBar">
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
@@ -102,7 +105,7 @@ function App() {
        {/* <Route exact path="/" component={LandingPage} />  */}
        <Route exact path="/" component={Home} />
        <Route exact path="/:id" component={MovieDetail} />
-      {/* <Route path= "/admin/createMovie" component={Form} />  prueba juan */}
+      <Route path= "/admin/createMovie" component={FormMovie} /> 
       <Route path= "/admin/createGenre" component={formGenre} />
        </Switch>
     
