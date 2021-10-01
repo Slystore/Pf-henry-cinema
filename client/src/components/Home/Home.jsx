@@ -97,7 +97,7 @@ export default function Home() {
                     // let URL = movie.img
                     // console.log(URL)
                     return ( 
-                    <Link to={'/' + movie.id}>
+                    <Link to={'/movie/' + movie.id}>
                         <div className="Movie" >
                         <Movie key={movie.id} image={movie.image} name={movie.name}
                                     availability={movie.availability}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useEffect}from 'react';
+import {useEffect, useSelector}from 'react';
 import { useState } from 'react';
 import {useDispatch} from 'react-redux';
 import { Route, NavLink, Switch } from 'react-router-dom';
@@ -17,6 +17,8 @@ import { ThemeProvider } from '@material-ui/core';
 import Logo from './assets/Logo.png';
 import './App.css';
 import formGenre from './components/Forms/FormGenre';
+import theme from './Utils/theme';
+import ControlPanel from './components/Admin/controlPanel';
 
 
 const posts = [
@@ -51,8 +53,8 @@ function App() {
 //   const dispatch = useDispatch();
 //   useEffect(() => {
 //     dispatch(getMovies())
-// }, [dispatch])
-
+// // }, [dispatch])
+// const user = useSelector(state => state.user);para ruta admin estado user
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');
   const [searchQuery, setSearchQuery] = useState(query || '');
@@ -71,10 +73,12 @@ function App() {
         <div className="Logo">
           <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
         </div>
-        <div> <NavLink to='/admin/createMovie' >
+        <div><NavLink to="/admin" >
+          Administrador</NavLink></div>
+        {/* <div> <NavLink to='/admin/createMovie' >
         Prueba Admin crear Movie</NavLink>
         <NavLink to="/admin/createGenre" >
-            Prueba Admin crear Genre</NavLink></div>
+            Prueba Admin crear Genre</NavLink></div> */}
         <div className="SearchBar">
 
           <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
@@ -95,18 +99,21 @@ function App() {
       <div className="Title">TODAS LAS PELICULAS</div>
       <div className="SliderSecondary">
 
-      <ThemeProvider > 
+      <ThemeProvider theme={theme} > 
         <div className="">
         <Switch>
      
      <Route exact path="/" component={Home} />
-     <Route exact path="/:id" component={MovieDetail} />
-    <Route path= "/admin/createMovie" component={FormMovie} /> 
+     <Route exact path="/movie/:id" component={MovieDetail} />
+    <Route path= "/admin/createMovie" component={FormMovie}/> 
+    		{/* // component={user.rol === 'Admin' ? FormMovie : NotFound}  */}
     <Route path= "/admin/createGenre" component={formGenre} />
-     </Switch> 
-        
- 
-        </div>
+    {/* component={user.rol === 'Admin' ? FormGenre : NotFound} */}
+   	<Route exact path="/admin" 	component={ControlPanel}	/>
+    {/* // component={user.rol === 'Admin' ? AdminControlPanel : NotFound} */}
+    {/* <NotFound />	componente error 404	 */}
+						 </Switch> 
+         </div>
       </ThemeProvider>
      
     
