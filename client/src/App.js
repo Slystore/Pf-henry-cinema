@@ -9,6 +9,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Home from './components/Home/Home';
 import Slider from './components/Slider/Slider';
 import MovieDetail from './components/MovieDetail/MovieDetail';
+import Footer from './components/Footer/Footer';
 
 import { getMovies } from './actions';
 
@@ -94,15 +95,21 @@ function App() {
       <div className="Title">TODAS LAS PELICULAS</div>
       <div className="SliderSecondary">
 
-        {/* <Route exact path="/">
-          <Home />  
-        </Route> */}
-        <ThemeProvider > 
-     {/* //tematization material ui */}
-     <div className="">
+      <ThemeProvider > 
+        <div className="">
+            
+          <Switch>
+
+            <Route exact path="/" component={Home} />
+            <Route path="/:id" component={MovieDetail} />
+          
+          </Switch>
         
+ 
+        </div>
+      </ThemeProvider>
        <Switch>
-       {/* <Route exact path="/" component={LandingPage} />  */}
+     
        <Route exact path="/" component={Home} />
        <Route exact path="/:id" component={MovieDetail} />
       <Route path= "/admin/createMovie" component={FormMovie} /> 
@@ -111,6 +118,7 @@ function App() {
     
      </div>
      </ThemeProvider>
+
        
       </div>
 
@@ -173,31 +181,14 @@ function App() {
         
       </div> */}
       
-      <div className="Footer"></div>
+      <div className="Footer">
+
+        <Footer />
+
+      </div>
       
     </div>
   );
 }
 
 export default App;
-
-
-
-
-// export default function App() {
-//   
-//   return (
-//     <ThemeProvider theme={theme}> 
-//     {/* //tematization material ui */}
-//     <div className={styles.app}>
-//         <NavBar/>
-//       <Switch>
-//       {/* <Route exact path="/" component={LandingPage} />  */}
-//       <Route exact path="/home" component={Home} />
-//       <Route path="/home/:id" component={MovieDetail} />
-//       </Switch>
-    
-//     </div>
-//     </ThemeProvider>
-//   );
-// }
