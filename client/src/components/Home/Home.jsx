@@ -79,7 +79,7 @@ const posts = [
 export default function Home() {
     return (
         <div className="MoviesContainer">
-            {
+          {
                 posts.map((movie) => {
                     // let URL = movie.img
                     // console.log(URL)
@@ -99,6 +99,7 @@ export default function Home() {
                     )
                 })
             }
+
         </div>
     )
 }
