@@ -97,28 +97,20 @@ function App() {
 
       <ThemeProvider > 
         <div className="">
-            
-          <Switch>
-
-            <Route exact path="/" component={Home} />
-            <Route path="/:id" component={MovieDetail} />
-          
-          </Switch>
+        <Switch>
+     
+     <Route exact path="/" component={Home} />
+     <Route exact path="/:id" component={MovieDetail} />
+    <Route path= "/admin/createMovie" component={FormMovie} /> 
+    <Route path= "/admin/createGenre" component={formGenre} />
+     </Switch> 
         
  
         </div>
       </ThemeProvider>
-       <Switch>
      
-       <Route exact path="/" component={Home} />
-       <Route exact path="/:id" component={MovieDetail} />
-      <Route path= "/admin/createMovie" component={FormMovie} /> 
-      <Route path= "/admin/createGenre" component={formGenre} />
-       </Switch>
     
-     </div>
-     </ThemeProvider>
-
+    
        
       </div>
 
