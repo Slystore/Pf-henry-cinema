@@ -1,10 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import Movie from '../Movie/Movie'
 
 // import { moviesMockUp } from '../../../../api/src/utils/mockups/movies';
-import Shadow from '../../assets/shadow.png';
 
 
 import './Home.css'
@@ -17,37 +15,52 @@ const posts = [
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
         rating: 5,
         availability: true,
+        genre: 'Drama',
         image: '../../assets/moviesPosters/after_almas_perdidas.jpg'
      },
     { 
         id: '2', 
         name: 'Cry Macho',
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+        rating: 3,
+        availability: true,
+        genre: 'Acción',
         image: '../../assets/moviesPosters/cry_macho.jpg'
      },
     { 
         id: '3', 
         name: 'Amenaza bajo el agua',
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+        rating: 4,
+        availability: true,
+        genre: 'Suspenso',
         image: '../../assets/moviesPosters/amenaza_bajo_el_agua.jpg' 
-        
     },
     { 
         id: '4', 
         name: 'Sin tiempo para morir',
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+        rating: 5,
+        availability: true,
+        genre: 'Acción',
         image: '../../assets/moviesPosters/sin_tiempo_para_morir.jpg'
      },
     { 
         id: '5', 
         name: 'El imperio de los sentidos',
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+        rating: 2,
+        availability: true,
+        genre: 'Drama',
         image: '../../assets/moviesPosters/el_imperio_de_los_sentidos.jpg'
      },
     { 
         id: '6', 
         name: 'La casa oscura',
         sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
+        rating: 4,
+        availability: true,
+        genre:['Suspenso', ' Accion'] ,
         image: '../../assets/moviesPosters/la_casa_oscura.jpg'
      },
     // { 
@@ -88,6 +101,7 @@ export default function Home() {
                         <div className="Movie" >
                         <Movie key={movie.id} image={movie.image} name={movie.name}
                                     availability={movie.availability}
+                                    genre={movie.genre}
                                     rating={movie.rating}
 
                                     // genre={movie.genre.map(el => {
@@ -113,6 +127,6 @@ export default function Home() {
     <div className="MovieTitle">{movie.title}</div>
    
 </div>
-<div className="Shadow"><img src={Shadow} alt="Sombra del Poster" /></div>
+
 </div> */}
 
