@@ -1,16 +1,15 @@
 const { Router } = require("express");
-const {
-  genrePost,
-  genreDelete,
-  genrePut,
-  getGenres
-} = require("../../controllers/genres-controller/genres");
+const getGenres = require("../../controllers/genres-controller/getGenres");
+const PostGenres = require("../../controllers/genres-controller/postGenres");
+const putGenres = require("../../controllers/genres-controller/putGenres");
+const deleteGenres = require("../../controllers/genres-controller/deleteGenres");
 
 
 const router = Router();
 
+router.get("/:id", getGenres);
 router.get("/", getGenres);
-router.post("/create", genrePost);
-router.put('/update/:id',genrePut)
-router.delete("/delete/:id", genreDelete);
+router.post("/create", PostGenres);
+router.put('/update/:id', putGenres)
+router.delete("/delete/:id", deleteGenres);
 module.exports = router;

@@ -2,36 +2,68 @@ const {DataTypes} = require('sequelize')
 
 module.exports = (Sequelize) => {
     return Sequelize.define('movies',{
-       
-        name: {
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+        },
+        title: {
             type: DataTypes.STRING,
             allowNull: false
         },
         rating: {
-            type: DataTypes.INTEGER
+            type: DataTypes.FLOAT
         },
-        users_rating:{
-            type: DataTypes.INTEGER
+        description: {
+            type: DataTypes.TEXT
+        },
+        usersRating: {
+            type: DataTypes.FLOAT
         },
         availability: {
             type: DataTypes.BOOLEAN,
             defaultValue: 'True'
         },
         price: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING
         },
         image: {
-            type: DataTypes.TEXT,
-            allowNull:true,
-        },
-        summary: {
-            type: DataTypes.TEXT,
-            allowNull:true,
+            type: DataTypes.TEXT
         },
         runTime: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING
         }
-       
-       
-    },{})
+    }, { timestamps: false })
 }
+//         title: {
+//             type: DataTypes.STRING,
+//             allowNull: false
+//         },
+//         rating: {
+//             type: DataTypes.INTEGER
+//         },
+//         users_rating:{
+//             type: DataTypes.INTEGER
+//         },
+//         availability: {
+//             type: DataTypes.BOOLEAN,
+//             defaultValue: 'True'
+//         },
+//         price: {
+//             type: DataTypes.INTEGER
+//         },
+//         image: {
+//             type: DataTypes.TEXT,
+//             allowNull:true,
+//         },
+//         summary: {
+//             type: DataTypes.TEXT,
+//             allowNull:true,
+//         },
+//         runTime: {
+//             type: DataTypes.INTEGER,
+//         }
+       
+       
+    // },{})
+// }
