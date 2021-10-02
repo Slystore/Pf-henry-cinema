@@ -22,7 +22,7 @@ module.exports = (Sequelize) => {
           }
         }
       },
-      Surname: {
+      surname: {
         type: DataTypes.STRING,
         allowNull: false,
       },
