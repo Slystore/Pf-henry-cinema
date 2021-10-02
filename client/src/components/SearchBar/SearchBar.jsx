@@ -8,9 +8,14 @@ function SearchBar({ searchQuery, setSearchQuery }) {
     
     const history = useHistory();
 
+
+    // const handleChange(e) => {
+
+    // }
+
     function onSubmit(e){
-        history.push(`?s=${searchQuery}`);
         e.preventDefault();
+        history.push(`?s=${searchQuery}`);
     };
 
     return (
@@ -21,7 +26,7 @@ function SearchBar({ searchQuery, setSearchQuery }) {
                 <input
                     className="InputSearch"
                     value={searchQuery}
-                    onInput={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     type="text"
                     id="header-search"
                     placeholder={searchQuery === '' ? '' : 'Buscar Película'}
