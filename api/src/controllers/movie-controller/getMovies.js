@@ -37,10 +37,6 @@ const getMovies = async(req, res, next) => {
         });
         return res.status(200).json(allMovies);
     } catch (err) {
-        // console.log({
-        //     error: "Can't Fetch Genres",
-        //     originalError: err,
-        // });
         next(err)
     }
 };

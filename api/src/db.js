@@ -13,7 +13,6 @@ const {
 } = process.env;
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-    // http://18.216.130.223:3001/ 
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
@@ -26,7 +25,6 @@ purchaseModel(sequelize)
 
 
 const { genres, cinemas, movies, users, purchase } = sequelize.models;
-console.log(sequelize.models)
 
 genres.belongsToMany(movies, { through: 'moviesGenre' })
 movies.belongsToMany(genres, { through: 'moviesGenre' })

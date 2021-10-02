@@ -31,7 +31,6 @@ export default function FormGenre() {
       ...input,
       [e.target.name]: e.target.value
     })
-    // console.log(objErrors)
     setErrors(objErrors);
     setInput({
       ...input,

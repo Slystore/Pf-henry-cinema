@@ -1,6 +1,6 @@
 const { genres } = require('../../db.js');
 
-const genresMockUp = async () => {
+const genresMockUp = async() => {
     try {
         //1
         await genres.create({
@@ -78,7 +78,6 @@ const genresMockUp = async () => {
         await genres.create({
             name: "Wester",
         });
-        console.log('fill de DB con genres')
     } catch (err) {
         console.log({
             error: "Can't Fetch Genres",
