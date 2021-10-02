@@ -3,7 +3,11 @@ import {
     GET_MOVIE_DETAILS, 
     ADD_MOVIE,
     GET_MOVIES_SORTED,
-    CLEAN_DETAIL
+    CLEAN_DETAIL,
+    ADD_GENRE,
+    GET_GENRES,
+    DELETE_GENRE,
+    GET_GENRE_ID
  } from '../actions/index.js';
 
 
@@ -11,6 +15,8 @@ const initialState = {
     movies: [],
     moviesDetails: [],
     moviesSorted: [],
+    genres:[],
+    genreId:[]
   };
 
 function rootReducer(state = initialState, action) {    
@@ -50,7 +56,30 @@ function rootReducer(state = initialState, action) {
                 moviesDetails: []
             }
         }
-       
+        //cases genres
+        case GET_GENRES:{
+            return{
+                ...state,
+                genres: action.payload
+            }
+        }
+        case ADD_GENRE:{
+            return{
+                ...state,
+                genres: action.payload
+            }
+        }
+        case GET_GENRE_ID:
+            return {
+                ...state,
+                genreId: action.payload
+            }
+        case DELETE_GENRE:{
+             return{
+                ...state,
+                genres: state.genres.filter(el => action.payload !== el.id)
+             }
+        }
         default:
             return state
             
