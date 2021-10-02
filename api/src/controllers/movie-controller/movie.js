@@ -1,6 +1,7 @@
 const { movies, genres } = require("../../db");
 
 const moviePost = async (req, res) => {
+  console.log('estoy entrando')
   try {
     let {
       name,
@@ -29,7 +30,7 @@ const moviePost = async (req, res) => {
         name: genre,
       },
     });
-    console.log("estos son los generos de genresDb", genresDb);
+
     await movieCreated.addGenres(genresDb);
     res.status(200).send(movieCreated);
   } catch (err) {
@@ -52,18 +53,18 @@ const movieDelete = async (req, res) => {
 };
 const moviePut = async (req, res) => {
   const infoMovie = req.body;
-  console.log('body info',infoMovie)
+  console.log("body info", infoMovie);
 
   try {
     const { id } = req.params;
 
     const updateMovie = await movies.update(infoMovie, {
       where: {
-        id:id,
+        id: id,
       },
     });
-    if(updateMovie.length !== 0) return res.status(200).send(updateMovie)
-    else res.status(404).json('Movie Not found')
+    if (updateMovie.length !== 0) return res.status(200).send(updateMovie);
+    else res.status(404).json("Movie Not found");
   } catch (err) {
     console.log(err);
   }
