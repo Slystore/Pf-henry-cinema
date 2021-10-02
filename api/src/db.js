@@ -23,7 +23,6 @@ purchaseModel(sequelize)
 
 
 const { genres, cinemas, movies, users, purchase } = sequelize.models;
-
 console.log(sequelize.models)
 
 genres.belongsToMany(movies, {through: 'moviesGenre'})
@@ -36,7 +35,7 @@ movies.belongsToMany(purchase, {through: 'moviesPurchase'})
 purchase.belongsToMany(movies, {through: 'moviesPurchase'})
 
 users.hasOne(purchase, {through: 'userPurchase'})
-purchase.belongsToMany(users, {through: 'moviesPurchase'})
+purchase.belongsToMany(users, {through: 'userPurchase'})
 
 module.exports = {
     ...sequelize.models,
