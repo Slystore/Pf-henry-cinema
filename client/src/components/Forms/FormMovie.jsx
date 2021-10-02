@@ -137,7 +137,7 @@ const FormMovie = () => {
                     )})
                 }
             </div> */}
-            <Link to="/" ><button >Volver</button></Link>
+            <Link to="/admin" ><button >Volver</button></Link>
         </div>
     )
 }
