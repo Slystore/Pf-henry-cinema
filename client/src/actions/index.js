@@ -11,7 +11,7 @@ export const GET_GENRE_ID = 'GET_GENRE_ID'
 
 export function getMovies() {
     return function(dispatch) {
-      return axios.get("http://18.216.130.223:3001/")
+      return axios.get("http://18.216.130.223:3001/api/movies") 
         .then(movies => {
             dispatch({ 
                 type: GET_MOVIES, 
@@ -24,7 +24,7 @@ export function getMovies() {
 export function getMovieDetails(id) {
     return async function(dispatch) {
         try{
-            var json = await axios.get("http://18.216.130.223:3001/?id=" + id)
+            var json = await axios.get("http://18.216.130.223:3001/api/movies?id=" + id)
             return dispatch({ 
                 type: GET_MOVIE_DETAILS,
                 payload: json.data
@@ -63,7 +63,7 @@ export function cleanDetail(payload) {
 //Actions Genres
 export function getGenres() {
     return function(dispatch) {
-     return axios.get("http://18.216.130.223:3001/genres")
+     return axios.get("http://18.216.130.223:3001/api/genres")
         .then(movies => {
             dispatch({ 
                 type: GET_GENRES, 

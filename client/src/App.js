@@ -50,10 +50,10 @@ function filterPosts(posts, query){
 
 
 function App() {
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch(getMovies())
-// // }, [dispatch])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMovies())
+}, [dispatch])
 // const user = useSelector(state => state.user);para ruta admin estado user
   const { search } = window.location;
   const query = new URLSearchParams(search).get('s');

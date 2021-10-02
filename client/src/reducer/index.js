@@ -16,7 +16,7 @@ const initialState = {
     moviesDetails: [],
     moviesSorted: [],
     genres:[],
-    genreId:[]
+    genreSelect:[]
   };
 
 function rootReducer(state = initialState, action) {    
@@ -72,7 +72,7 @@ function rootReducer(state = initialState, action) {
         case GET_GENRE_ID:
             return {
                 ...state,
-                genreId: action.payload
+                genreSelect: action.payload
             }
         case DELETE_GENRE:{
              return{
