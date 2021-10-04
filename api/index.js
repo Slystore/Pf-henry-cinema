@@ -7,17 +7,17 @@ const { PORT } = process.env;
 
 
 
-conn.sync({force:true})
-.then( async () => { 
-  const usersList = await users.findAll()
- 
-  console.log('DB connected');
-  server.listen(3001, () => console.log(`Server listening in 3001`));
-  await genresMockUp();
-  await moviesMocks();
-  if(usersList.length === 0) {
-    await users.bulkCreate(mockUps);
-    console.log('fill de DB con users')
-  }
-})
-.catch( (e) => console.log('yo estoy rompiendo',e))
+conn.sync({ force: true })
+    .then(async() => {
+        const usersList = await users.findAll()
+
+        console.log('DB connected!');
+        server.listen(PORT, () => console.log(`Server listening`));
+        await genresMockUp();
+        await moviesMocks();
+        if (usersList.length === 0) {
+            await users.bulkCreate(mockUps);
+
+        }
+    })
+    .catch((e) => console.log('Connection Failed!', e))

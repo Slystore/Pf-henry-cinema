@@ -36,7 +36,7 @@ const singIn = async (req, res) => {
 
 //Registro
 const singUp = async (req, res) => {
-  let { name, Surname, mail } = req.body;
+  let { name, surname, mail } = req.body;
   const userValidate = users.findOne({
     where:{
       mail:mail
@@ -55,7 +55,7 @@ const singUp = async (req, res) => {
     await users
       .create({
         name,
-        Surname,
+        surname,
         mail,
         password: passwordCrypt,
       })

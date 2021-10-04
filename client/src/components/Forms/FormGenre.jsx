@@ -31,7 +31,6 @@ export default function FormGenre() {
       ...input,
       [e.target.name]: e.target.value
     })
-    // console.log(objErrors)
     setErrors(objErrors);
     setInput({
       ...input,
@@ -78,7 +77,7 @@ export default function FormGenre() {
         <button type='submit' disabled={input.disabled}  >
           Crear Género</button>
       </form >
-      <Link to="/home" ><button >Volver</button></Link>
+      <Link to="/admin" ><button >Volver</button></Link>
     </div >
 
   )

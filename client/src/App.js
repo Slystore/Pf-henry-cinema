@@ -32,7 +32,3 @@ function App() {
 }
 
 export default App;
-
-
-// <div className="Title">TODAS LAS PELICULAS</div>
-//       <div className="SliderSecondary"> </div>

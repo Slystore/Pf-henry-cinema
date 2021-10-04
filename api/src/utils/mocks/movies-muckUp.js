@@ -386,7 +386,6 @@ const moviesMocks = async() => {
         attributes: ['id']
     })
     dontBreatheTwo.addGenres(getDontBreatheTwo)
-    console.log('fill de DB con movies')
 };
 
 
