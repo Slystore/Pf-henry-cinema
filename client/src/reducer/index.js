@@ -1,5 +1,8 @@
 import { 
+    GET_ALL,
     GET_MOVIES,
+    GET_USERS,
+    GET_GENRES,
     GET_MOVIE_DETAILS, 
     ADD_MOVIE,
     GET_MOVIES_SORTED,
@@ -9,6 +12,8 @@ import {
 
 const initialState = {
     movies: [],
+    genres: [],
+    users: [],
     moviesDetails: [],
     moviesSorted: [],
   };
@@ -16,10 +21,32 @@ const initialState = {
 function rootReducer(state = initialState, action) {    
     switch (action.type) {
 
+        case GET_ALL:{
+            return{
+                ...state,
+                movies: action.movies,
+                genres: action.genres,
+                users: action.users
+            }
+        }
         case GET_MOVIES:{
             return{
                 ...state,
                 movies: action.payload
+            }
+        }
+
+        case GET_GENRES:{
+            return{
+                ...state,
+                genres: action.payload
+            }
+        }
+
+        case GET_USERS:{
+            return{
+                ...state,
+                users: action.payload
             }
         }
 

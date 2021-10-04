@@ -1,27 +1,67 @@
 import axios from 'axios';
+export const GET_ALL = 'GET_ALL'
 export const GET_MOVIES = 'GET_MOVIES'
+export const GET_GENRES = 'GET_GENRES'
+export const GET_USERS = 'GET_USERS'
 export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS'
 export const ADD_MOVIE = 'ADD_MOVIE'
 export const GET_MOVIES_SORTED = 'GET_MOVIES_SORTED'
 export const CLEAN_DETAIL= 'CLEAN_DETAIL'
 
 
-export function getMovies() {
-    return function(dispatch) {
-      return axios.get("http://18.216.130.223:3001/")
-        .then(movies => {
-            dispatch({ 
-                type: GET_MOVIES, 
-                payload: movies.data
+export function getAll() {
+    return async (dispatch) => {
+    //   return axios.get("http://18.216.130.223:3001/")
+      const movies = await axios.get("http://18.216.130.223:3001/api/movies")
+      const genres = await axios.get("http://18.216.130.223:3001/api/genres")
+      const users = await axios.get("http://18.216.130.223:3001/api/users")
+        return await dispatch({ 
+                type: GET_ALL, 
+                movies: movies.data,
+                genres: genres.data,
+                users: users.data,
             })
-        })
+        }
     }
-  }
+
+export function getMovies() {
+    return async (dispatch) => {
+    //   return axios.get("http://18.216.130.223:3001/")
+      const {data} = await axios.get("http://18.216.130.223:3001/api/movies")
+        return await dispatch({ 
+                type: GET_MOVIES, 
+                payload: data
+            })
+        }
+    }
   
+export function getGenres() {
+    return async (dispatch) => {
+    //   return axios.get("http://18.216.130.223:3001/")
+        const {data} = await axios.get("http://18.216.130.223:3001/api/genres")
+        return await dispatch({ 
+                type: GET_GENRES, 
+                payload: data
+            })
+        }
+    }
+
+export function getUsers() {
+    return async (dispatch) => {
+    //   return axios.get("http://18.216.130.223:3001/")
+        const {data} = await axios.get("http://18.216.130.223:3001/api/movies")
+        return await dispatch({ 
+                type: GET_USERS, 
+                payload: data
+            })
+        }
+    }
+
 export function getMovieDetails(id) {
-    return async function(dispatch) {
+    return async (dispatch) => {
         try{
-            var json = await axios.get("http://18.216.130.223:3001/?id=" + id)
+            const json = await axios.get(`http://18.216.130.223:3001/api/movies/${id}`)
+            // console.log('esto es lo que trae la accion de details', json.data)
             return dispatch({ 
                 type: GET_MOVIE_DETAILS,
                 payload: json.data
