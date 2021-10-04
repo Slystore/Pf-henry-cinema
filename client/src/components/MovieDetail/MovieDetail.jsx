@@ -27,7 +27,8 @@ export default function MovieDetail(props) {
 
   const pelis = useSelector(state => state.moviesDetails);
 
-  // console.log('esto es lo que carga el reducer en DETAILS', moviesDetails)
+  console.log('esto es lo que carga el reducer en DETAILS', pelis)
+  console.log(Array.isArray( pelis))
 
   // linea 45 no me funca el toUpperCase()
 
