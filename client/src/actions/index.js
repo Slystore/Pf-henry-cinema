@@ -8,6 +8,9 @@ export const ADD_GENRE = 'ADD_GENRE'
 export const DELETE_GENRE = 'DELETE_GENRE'
 export const GET_GENRES = 'GET_GENRES'
 export const GET_GENRE_ID = 'GET_GENRE_ID'
+export const GET_MOVIE_NAME = 'GET_MOVIE_NAME'
+export const MOVIE_AVAILABILITY = 'MOVIE_AVAILABILITY'
+export const  FILTER_BY_GENRE = ' FILTER_BY_GENRE'
 
 export function getMovies() {
     return function(dispatch) {
@@ -20,11 +23,20 @@ export function getMovies() {
         })
     }
   }
-  
+  export function getMovieName (payload){
+    return async function (dispatch){
+  try{  let response = await axios.get('http://18.216.130.223:3001/api/movies?title=' + payload);
+    return dispatch ({
+        type:  GET_MOVIE_NAME,  
+        payload: response.data
+    })
+}catch(error){alert('Película no encontrada')}
+}
+}
 export function getMovieDetails(id) {
     return async function(dispatch) {
         try{
-            var json = await axios.get("http://18.216.130.223:3001/api/movies?id=" + id)
+            var json = await axios.get("http://18.216.130.223:3001/api/movies/" + id)
             return dispatch({ 
                 type: GET_MOVIE_DETAILS,
                 payload: json.data
@@ -60,6 +72,12 @@ export function cleanDetail(payload) {
                 payload
             }
         }
+  export function movieAvailability (payload){
+                  return {
+                type: MOVIE_AVAILABILITY,
+                payload
+            }
+        }
 //Actions Genres
 export function getGenres() {
     return function(dispatch) {
@@ -74,7 +92,7 @@ export function getGenres() {
   }
 export function postGenre (payload){
     return async function(dispatch){
-        const response = await axios.post("http://18.216.130.223:3001/genres",payload)
+        const response = await axios.post("http://18.216.130.223:3001/api/genres/create",payload)
         return response
     }
 }
@@ -97,4 +115,10 @@ export function getGenreId(payload) {
             console.log(err)
         }
     }
+}
+export function filterGenre (payload){
+    return {
+  type: FILTER_BY_GENRE,
+  payload
+}
 }

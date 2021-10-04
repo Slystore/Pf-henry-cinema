@@ -7,12 +7,16 @@ import {
     ADD_GENRE,
     GET_GENRES,
     DELETE_GENRE,
-    GET_GENRE_ID
+    GET_GENRE_ID,
+    GET_MOVIE_NAME,
+    MOVIE_AVAILABILITY,
+    FILTER_BY_GENRE
  } from '../actions/index.js';
 
 
 const initialState = {
     movies: [],
+    filtrados: [],
     moviesDetails: [],
     moviesSorted: [],
     genres:[],
@@ -25,9 +29,15 @@ function rootReducer(state = initialState, action) {
         case GET_MOVIES:{
             return{
                 ...state,
-                movies: action.payload
+                movies: action.payload,
+                filtrados: action.payload
             }
         }
+        case GET_MOVIE_NAME:
+            return{
+                ...state,
+                movies: action.payload
+            }
 
         case GET_MOVIE_DETAILS:{
             return{
@@ -56,6 +66,22 @@ function rootReducer(state = initialState, action) {
                 moviesDetails: []
             }
         }
+        case MOVIE_AVAILABILITY:{
+            let moviesAll = state.filtrados;
+            return{
+                ...state,
+                movies: action.payload === 'true' ? moviesAll.filter(el => el.availability) : moviesAll.filter(el => !el.availability)
+            }
+        }
+        case FILTER_BY_GENRE:
+            let moviesAll = state.filtrados;
+
+            let filterGenre = action.payload === 'All' ? moviesAll : moviesAll.filter(el =>  el.genres.map(el => el.name).includes(action.payload))
+
+            return {
+                ...state,
+                movies: filterGenre
+            }
         //cases genres
         case GET_GENRES:{
             return{

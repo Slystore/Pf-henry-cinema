@@ -23,15 +23,14 @@ export default function FormGenre() {
     }
     return errors;
   };
-  useEffect(() => {
-    dispatch(getGenres())
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getGenres())
+  // }, [dispatch]);
   function onInputChange(e) {
     var objErrors = validate({
       ...input,
       [e.target.name]: e.target.value
     })
-    // console.log(objErrors)
     setErrors(objErrors);
     setInput({
       ...input,

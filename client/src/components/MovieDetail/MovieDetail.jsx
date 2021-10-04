@@ -18,7 +18,7 @@ export default function MovieDetail(props) {
   return (
     <div className="">
       <h1>Detalle</h1>
-      {movieDetail.length ? (
+      { movieDetail.length ? (
         <div>
           <img
             src={movieDetail[0].image}
