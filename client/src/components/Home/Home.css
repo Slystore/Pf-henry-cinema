@@ -1,0 +1,9 @@
+.MoviesContainer{
+    width: 1250px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    /* border: thin dotted #f00; */
+}
