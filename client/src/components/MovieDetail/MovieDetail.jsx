@@ -6,7 +6,7 @@ import { getMovieDetails, cleanDetail } from "../../actions/index";
 import { NavLink } from "react-router-dom";
 // import loading from "../assets/Loading.jpeg";
 import './MovieDetail.css'
-import axios from "axios";
+// import axios from "axios";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 
 export default function MovieDetail(props) {
@@ -14,9 +14,6 @@ export default function MovieDetail(props) {
   const defIm = 'https://es.web.img3.acsta.net/c_310_420/pictures/21/06/14/11/47/2960546.jpg'
 
   const { id } = props.match.params;
-  console.log(typeof id, '*****este es el id que viene por params', id)
-  // console.log()
-  // axios.get(`http://18.216.130.223:3001/api/movies/${id}`).then(data => console.log(data))
   const dispatch = useDispatch();
 
 
@@ -27,10 +24,6 @@ export default function MovieDetail(props) {
 
   const pelis = useSelector(state => state.moviesDetails);
 
-  console.log('esto es lo que carga el reducer en DETAILS', pelis)
-  console.log(Array.isArray( pelis))
-
-  // linea 45 no me funca el toUpperCase()
 
   return (
     <div className="">
@@ -44,14 +37,6 @@ export default function MovieDetail(props) {
             height="250px"
           />
           <h1 className=""> { pelis.title } </h1> 
-
-          {/* <h2 className="">
-            {" "}
-            Género:{" "}
-            {movieDetail[0].genre.map((el) => {
-              return <div>{el}</div>;
-            })}
-          </h2> */}
           <h3>Sinopsis: {pelis.description}</h3>
           <h4>Duración: {pelis.runTime}</h4>
         </div>
@@ -67,12 +52,3 @@ export default function MovieDetail(props) {
     </div>
   );
 }
-
-// const movieDetail= [ { 
-//   id: '1', 
-//   name: 'After Almas Perdidas',
-//   sinopsis: 'Cuando Tessa toma la decisión más importante de su vida, todo cambia. Los secretos que salen a la luz sobre su familia, y también sobre la de Hardin, ponen en peligro su relación y su futuro juntos. La vida de Tessa empieza a desmoronarse, nada es como ella creía que sería. Nunca ha sentido algo así por nadie, pero empieza a cuestionarse si vale la pena. Antes el amor bastaba para mantenerlos juntos, pero ahora ya no está claro lo que dictan sus corazones... Con más de mil millones de impactos, After se ha convertido en el mayor fenómeno de la historia de la plataforma Wattpad.',
-//   rating: 5,
-//   availability: true,
-//   image: '../../assets/moviesPosters/after_almas_perdidas.jpg'
-// }]

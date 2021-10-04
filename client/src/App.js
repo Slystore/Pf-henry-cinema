@@ -7,6 +7,7 @@ import MovieDetail from './components/MovieDetail/MovieDetail';
 import GenreForm from './views/GenreForm';
 import MovieForm from './views/MovieForm';
 import HomeView from './views/HomeView';
+import ControlPanel from "./components/Admin/controlPanel";
 
 import { getAll } from './actions';
 
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/:id" component={MovieDetail} />
           <Route path= "/admin/createMovie" component={MovieForm} /> 
           <Route path= "/admin/createGenre" component={GenreForm} />
+          <Route exact path="/admin" component={ControlPanel} />
         </Switch> 
       </Router>
     </div>

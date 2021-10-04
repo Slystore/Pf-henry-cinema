@@ -1,14 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-// import { getGenres, createGenre } from '../actions';
+import { getGenres, postGenre } from '../../actions/index';
 
 export default function FormGenre() {
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
-//   const Genres = useSelector((state) => state.genres)
+  // const Genres = useSelector((state) => state.genres)
 
   const [input, setInput] = useState({
     name: "",
@@ -23,9 +23,9 @@ export default function FormGenre() {
     }
     return errors;
   };
-//   useEffect(() => {
-//     dispatch(getGenres())
-//   }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getGenres())
+  // }, [dispatch]);
   function onInputChange(e) {
     var objErrors = validate({
       ...input,
@@ -45,7 +45,7 @@ export default function FormGenre() {
     if (Object.values(errors).length > 0) {
       alert("Faltan datos a completar")
     } else {
-    //   dispatch(createGenre(input))
+     dispatch(postGenre(input))
       alert("Género creado correctamente");
       setInput({
         name: "",

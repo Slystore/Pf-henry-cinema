@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/styles';
 
+const useStyles = makeStyles({
+    input: {
+        backgroundColor: 'red',
+        color: (props) => props.color,
+
+    }
+})
 
 const FormMovie = () => {
-
+    const clasess = useStyles()
     const history = useHistory()
 
     const [errors, setErrors] = useState({})
@@ -112,7 +120,7 @@ const FormMovie = () => {
                     <option value='true'> True</option>
                     <option value='false'> False </option>
                 </select>
-                <label> Precio <input type='number' name='Precio' onChange={handleChange}/></label>
+                <label> Precio <input type='number' name='Precio' onChange={handleChange} className={clasess.input}/></label>
                 {errors.precio && (<p>{errors.precio}</p>)}
                 <label> Imagen <input type='text' name='Imagen' onChange={handleChange}/></label>
                 {errors.imagen && (<p>{errors.imagen}</p>)}

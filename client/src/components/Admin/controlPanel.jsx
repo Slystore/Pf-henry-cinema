@@ -46,6 +46,11 @@ function ControlPanel() {
               Agregar Género
               </Button>
             </Link>
+            <Link to="/">
+              <Button className="" variant="body2" color="secondary">
+              Home
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </Grid>
