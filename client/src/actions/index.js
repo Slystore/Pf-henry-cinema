@@ -7,7 +7,8 @@ export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS'
 export const ADD_MOVIE = 'ADD_MOVIE'
 export const GET_MOVIES_SORTED = 'GET_MOVIES_SORTED'
 export const CLEAN_DETAIL= 'CLEAN_DETAIL'
-
+export const MOVIE_AVAILABILITY = 'MOVIE_AVAILABILITY'
+export const  FILTER_BY_GENRE = ' FILTER_BY_GENRE'
 
 export function getAll() {
     return async (dispatch) => {
@@ -96,4 +97,16 @@ export function cleanDetail(payload) {
                 type: CLEAN_DETAIL, 
                 payload
             }
+}
+export function movieAvailability (payload){
+    return {
+  type: MOVIE_AVAILABILITY,
+  payload
+}
+}
+export function filterGenre (payload){
+    return {
+  type: FILTER_BY_GENRE,
+  payload
+}
 }
