@@ -9,7 +9,6 @@ export const GET_MOVIES_SORTED = 'GET_MOVIES_SORTED'
 export const CLEAN_DETAIL = 'CLEAN_DETAIL'
 export const ADD_GENRE = 'ADD_GENRE'
 export const DELETE_GENRE = 'DELETE_GENRE'
-export const GET_GENRES = 'GET_GENRES'
 export const GET_GENRE_ID = 'GET_GENRE_ID'
 export const GET_MOVIE_NAME = 'GET_MOVIE_NAME'
 export const MOVIE_AVAILABILITY = 'MOVIE_AVAILABILITY'
@@ -41,16 +40,6 @@ export function getMovies() {
     }
 }
 
-export function getGenres() {
-    return async(dispatch) => {
-        //   return axios.get("http://18.216.130.223:3001/")
-        const { data } = await axios.get("http://18.216.130.223:3001/api/genres")
-        return await dispatch({
-            type: GET_GENRES,
-            payload: data
-        })
-    }
-}
 
 export function getUsers() {
     return async(dispatch) => {

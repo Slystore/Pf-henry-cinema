@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Movie from "../Movie/Movie";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,7 +7,7 @@ import { filterGenre, getGenres, movieAvailability } from "../../actions";
 import "./Home.css";
 
 import { useEffect } from "react";
-import Footer from "../Footer/Footer";
+// import Footer from "../Footer/Footer";
 
 export default function Home() {
   const defIm =
