@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import Logo from '../assets/Logo.png';
 
 import SearchBar from './SearchBar/SearchBar';
-import filterPosts from "../utils/filterPosts";
-import fillInput from "../utils/fillInput";
+import filterPosts from "../Utils/filterPosts";
+import fillInput from "../Utils/fillInput";
 
 
 const { search } = window.location;
@@ -24,10 +24,8 @@ const NavBar = () => {
             <NavLink to='/' exact ><img src={Logo} alt="Logo App"/></NavLink>
             </div>
             
-            <div> 
-            <NavLink to='/admin/createMovie'> Prueba Admin crear Movie </NavLink>
-            <NavLink to="/admin/createGenre" > Prueba Admin crear Genre</NavLink>
-            </div>
+            <div><NavLink to="/admin" >
+          Administrador</NavLink></div>
             
             <div className="SearchBar">
             <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
