@@ -352,7 +352,7 @@ const moviesMocks = async() => {
     const theTomorrowWar = await movies.create({
         title: "The Tomorrow War",
         released: "2021-07-02",
-        image: "https://postimg.cc/SYMBs47C",
+        image: "https://i.postimg.cc/XqH4s7rH/the-tomorrow-war.jpg",
         description: "A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past. A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past.",
         rating: 8.1,
         votes: 4217,
