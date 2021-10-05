@@ -6,7 +6,7 @@ const moviesMocks = async() => {
     const freeGuy = await movies.create({
         title: "Free Guy",
         released: "2021-08-11",
-        image: "https://i.postimg.cc/rc8ylhhr/free-guy.jpg",
+        image: "https://i.postimg.cc/RC8YLHhr/free-guy.jpg",
         description: "A bank teller called Guy realizes he is a background character in an open world video game called Free City that will soon go offline.",
         rating: 7.9,
         votes: 1312,
