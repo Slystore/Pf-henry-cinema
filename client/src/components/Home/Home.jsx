@@ -15,7 +15,7 @@ export default function Home() {
     const dispatch = useDispatch();
     const { movies } = useSelector(state => state)
     const {genres} = useSelector(state => state)
-    const defIm = 'https://es.web.img3.acsta.net/c_310_420/pictures/21/06/14/11/47/2960546.jpg'
+    const defIm = 'https://i.postimg.cc/pr96t201/bac-nord.jpg'
     // console.log(movies[0])
     function handleAvailability(e) {
         e.preventDefault()
