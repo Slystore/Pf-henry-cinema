@@ -3,7 +3,7 @@ import { ThemeProvider } from '@material-ui/core';
 
 import React from "react";
 import { Link } from "react-router-dom";
-import theme from "../../Utils/theme";
+import theme from "../../utils/theme.js";
 
 // const useStyles = makeStyles((theme)=>({
 //     title: {

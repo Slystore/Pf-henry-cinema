@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom";
 import Logo from '../assets/Logo.png';
 
 import SearchBar from './SearchBar/SearchBar';
-import filterPosts from "../Utils/filterPosts";
-import fillInput from "../Utils/fillInput";
+import filterPosts from "../utils/filterPosts";
+import fillInput from "../utils/fillInput";
 
 
 const { search } = window.location;
