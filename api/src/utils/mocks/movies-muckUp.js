@@ -6,7 +6,7 @@ const moviesMocks = async() => {
     const freeGuy = await movies.create({
         title: "Free Guy",
         released: "2021-08-11",
-        image: "https://es.web.img3.acsta.net/c_310_420/pictures/21/06/14/11/47/2960546.jpg",
+        image: "https://i.postimg.cc/rc8ylhhr/free-guy.jpg",
         description: "A bank teller called Guy realizes he is a background character in an open world video game called Free City that will soon go offline.",
         rating: 7.9,
         votes: 1312,
@@ -25,7 +25,7 @@ const moviesMocks = async() => {
     const snakeEyes = await movies.create({
         title: "Snake Eyes: G.I. Joe Origins",
         released: "2021-07-22",
-        image: "",
+        image: "https://i.postimg.cc/hGLnH0J7/snake-eye-gi-joe-origins.jpg",
         description: "After saving the life of their heir apparent, tenacious loner Snake Eyes is welcomed into an ancient Japanese clan called the Arashikage where he is taught the ways of the ninja warrior. But, when secrets from his past are revealed, Snake Eyes' honor and allegiance will be tested – even if that means losing the trust of those closest to him.",
         rating: 7.9,
         votes: 1312,
@@ -45,7 +45,7 @@ const moviesMocks = async() => {
     const old = await movies.create({
         title: "Old",
         released: "2021-07-21",
-        image: "",
+        image: "https://i.postimg.cc/9FDhW2R2/old.jpg",
         description: "A group of families on a tropical holiday discover that the secluded beach where they are staying is somehow causing them to age rapidly – reducing their entire lives into a single day.",
         rating: 6.7,
         votes: 964,
@@ -65,7 +65,7 @@ const moviesMocks = async() => {
     const shangChi = await movies.create({
         title: "Shang-Chi and the Legend of the Ten Rings",
         released: "2021-09-01",
-        image: "",
+        image: "https://i.postimg.cc/d0PvHf0Y/shang-chi.jpg",
         description: "Shang-Chi must confront the past he thought he left behind when he is drawn into the web of the mysterious Ten Rings organization.",
         rating: 7.8,
         votes: 1092,
@@ -84,7 +84,7 @@ const moviesMocks = async() => {
     const theSuicideSquad = await movies.create({
         title: "The Suicide Squad",
         released: "2021-07-28",
-        image: "",
+        image: "https://i.postimg.cc/m2KGknCH/the-suicide-squad.jpg",
         description: "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
         rating: 7.9,
         votes: 4138,
@@ -103,7 +103,7 @@ const moviesMocks = async() => {
     const catchTheBullet = await movies.create({
         title: "Catch the Bullet",
         released: "2021-09-10",
-        image: "",
+        image: "https://i.postimg.cc/GtZSLZV3/cath-the-bullet.jpg",
         description: "U.S. marshal Britt MacMasters returns from a mission to find his father wounded and his son kidnapped by the outlaw Jed Blake. Hot on their trail, Britt forms a posse with a gunslinging deputy and a stoic Pawnee tracker. But Jed and Britt tread dangerously close to the Red Desert’s Sioux territory.",
         rating: 5.9,
         votes: 21,
@@ -122,7 +122,7 @@ const moviesMocks = async() => {
     const bacNord = await movies.create({
         title: "BAC Nord",
         released: "2021-08-18",
-        image: "",
+        image: "https://i.postimg.cc/pr96t201/bac-nord.jpg",
         description: "A police brigade working in the dangerous northern neighborhoods of Marseille, where the level of crime is higher than anywhere else in France.",
         rating: 7.9,
         votes: 317,
@@ -141,7 +141,7 @@ const moviesMocks = async() => {
     const kate = await movies.create({
         title: "Kate",
         released: "2021-09-10",
-        image: "",
+        image: "https://i.postimg.cc/nLk54SjT/kate.jpg",
         description: "After she's irreversibly poisoned, a ruthless criminal operative has less than 24 hours to exact revenge on her enemies and in the process forms an unexpected bond with the daughter of one of her past victims.",
         rating: 6.8,
         votes: 518,
@@ -160,7 +160,7 @@ const moviesMocks = async() => {
     const sasRedNotice = await movies.create({
         title: "SAS: Red Notice",
         released: "2021-08-11",
-        image: "",
+        image: "https://i.postimg.cc/0yJPCvPn/sas-red-notice.jpg",
         description: "An off-duty SAS soldier, Tom Buckingham, must thwart a terror attack on a train running through the Channel Tunnel. As the action escalates on the train, events transpire in the corridors of power that may make the difference as to whether Buckingham and the civilian passengers make it out of the tunnel alive.",
         rating: 6,
         votes: 194,
@@ -179,7 +179,7 @@ const moviesMocks = async() => {
     const jungleCruise = await movies.create({
         title: "Jungle Cruise",
         released: "2021-07-28",
-        image: "",
+        image: "https://i.postimg.cc/HxvhKJty/jungle-cruise.jpg",
         description: "Dr. Lily Houghton enlists the aid of wisecracking skipper Frank Wolff to take her down the Amazon in his dilapidated boat. Together, they search for an ancient tree that holds the power to heal – a discovery that will change the future of medicine.",
         rating: 7.8,
         votes: 2749,
@@ -198,7 +198,7 @@ const moviesMocks = async() => {
     const jurassicHunt = await movies.create({
         title: "Jurassic Hunt",
         released: "2021-09-01",
-        image: "",
+        image: "https://i.postimg.cc/Fsd2Mx8s/jurassic-hunt.jpg",
         description: "Female adventurer Parker joins a crew of male trophy hunters in a remote wilderness park. Their goal: slaughter genetically recreated dinosaurs for sport using rifles, arrows, and grenades. After their guide is killed by raptors, the team tries to escape the park – but the hunters quickly become the hunted. Even worse, the park’s manager suspects Parker of being a spy and sends a hit squad after her. This battle’s about to become primitive!",
         rating: 5,
         votes: 134,
@@ -215,9 +215,9 @@ const moviesMocks = async() => {
 
     /*-----------------------------------------------------------------------------------------------*/
     const f9 = await movies.create({
-        title: "F9",
+        title: "Fast & Forious 9",
         released: "2021-05-19",
-        image: "",
+        image: "https://i.postimg.cc/j2FYzg1B/rapidos-y-furiosos-9.jpg",
         description: "Dominic Toretto and his crew battle the most skilled assassin and high-performance driver they've ever encountered: his forsaken brother.",
         rating: 7.5,
         votes: 3828,
@@ -236,7 +236,7 @@ const moviesMocks = async() => {
     const pawPatrol = await movies.create({
         title: "PAW Patrol: The Movie",
         released: "2021-08-09",
-        image: "",
+        image: "https://i.postimg.cc/yd1M2C4w/paw-patrol.jpg",
         description: "Ryder and the pups are called to Adventure City to stop Mayor Humdinger from turning the bustling metropolis into a state of chaos.",
         rating: 7.9,
         votes: 494,
@@ -255,7 +255,7 @@ const moviesMocks = async() => {
     const escapeRoom = await movies.create({
         title: "Escape Room: Tournament of Champions",
         released: "2021-07-01",
-        image: "",
+        image: "https://i.postimg.cc/JnzFP3j8/escape-romm-2.jpg",
         description: "Six people unwittingly find themselves locked in another series of escape rooms, slowly uncovering what they have in common to survive as they discover all the games that they've played before.",
         rating: 7.1,
         votes: 452,
@@ -274,7 +274,7 @@ const moviesMocks = async() => {
     const luca = await movies.create({
         title: "Luca",
         released: "2021-06-17",
-        image: "",
+        image: "https://i.postimg.cc/K8tCz8m6/luca.jpg",
         description: "Luca and his best friend Alberto experience an unforgettable summer on the Italian Riviera. But all the fun is threatened by a deeply-held secret: they are sea monsters from another world just below the water’s surface.",
         rating: 8,
         votes: 4637,
@@ -293,7 +293,7 @@ const moviesMocks = async() => {
     const theBossBaby = await movies.create({
         title: "The Boss Baby: Family Business",
         released: "2021-07-01",
-        image: "",
+        image: "https://i.postimg.cc/1RJmmMvG/the-boss-baby-family-business.jpg",
         description: "The Templeton brothers — Tim and his Boss Baby little bro Ted — have become adults and drifted away from each other. But a new boss baby with a cutting-edge approach and a can-do attitude is about to bring them together again … and inspire a new family business.",
         rating: 7.8,
         votes: 1431,
@@ -313,7 +313,7 @@ const moviesMocks = async() => {
     const spaceJam = await movies.create({
         title: "Space Jam: A New Legacy",
         released: "2021-07-08",
-        image: "",
+        image: "https://i.postimg.cc/Dy028sNt/space-jam.jpg",
         description: "When LeBron and his young son Dom are trapped in a digital space by a rogue A.I., LeBron must get them home safe by leading Bugs, Lola Bunny and the whole gang of notoriously undisciplined Looney Tunes to victory over the A.I.'s digitized champions on the court. It's Tunes versus Goons in the highest-stakes challenge of his life.",
         rating: 7.4,
         votes: 2281,
@@ -332,7 +332,7 @@ const moviesMocks = async() => {
     const malignant = await movies.create({
         title: "Malignant",
         released: "2021-09-01",
-        image: "",
+        image: "https://i.postimg.cc/g2RbZKHB/maligno.jpg",
         description: "Madison is paralyzed by shocking visions of grisly murders, and her torment worsens as she discovers that these waking dreams are in fact terrifying realities with a mysterious tie to her past.",
         rating: 7.1,
         votes: 626,
@@ -352,7 +352,7 @@ const moviesMocks = async() => {
     const theTomorrowWar = await movies.create({
         title: "The Tomorrow War",
         released: "2021-07-02",
-        image: "",
+        image: "https://i.postimg.cc/XqH4s7rH/the-tomorrow-war.jpg",
         description: "A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past. A family man is drafted to fight in a future war where the fate of humanity relies on his ability to confront the past.",
         rating: 8.1,
         votes: 4217,
@@ -372,7 +372,7 @@ const moviesMocks = async() => {
     const dontBreatheTwo = await movies.create({
         title: "Don't Breathe 2",
         released: "2021-08-12",
-        image: "https://upload.wikimedia.org/wikipedia/en/4/41/Don%27t_Breathe_%282016_film%29.png",
+        image: "https://i.postimg.cc/VNWy7LTq/no-respires-2.jpg",
         description: "The film stars Jane Levy, Dylan Minnette, Daniel Zovatto, and Stephen Lang, and focuses on three friends who get trapped inside a blind man's house while breaking into it. ... Don't Breathe premiered at South by Southwest on March 12, 2016, and was theatrically released on August 26, 2016, by Screen Gems and Stage 6 Films.",
         rating: 7.7,
         votes: 784,
