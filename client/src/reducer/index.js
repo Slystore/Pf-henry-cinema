@@ -8,7 +8,9 @@ import {
     GET_MOVIES_SORTED,
     CLEAN_DETAIL,
     MOVIE_AVAILABILITY,
-    FILTER_BY_GENRE
+    FILTER_BY_GENRE,
+    GET_MOVIE_NAME,
+    ADD_GENRE
  } from '../actions/index.js';
 
 
@@ -53,6 +55,11 @@ function rootReducer(state = initialState, action) {
                 users: action.payload
             }
         }
+        case GET_MOVIE_NAME:
+            return{
+                ...state,
+                movies: action.payload
+            }
 
         case GET_MOVIE_DETAILS:{
             return{
@@ -95,6 +102,12 @@ function rootReducer(state = initialState, action) {
                 return {
                     ...state,
                     movies: filterGenre
+                }
+            case ADD_GENRE:{
+                    return{
+                        ...state,
+                        genres: [...state.genres, action.payload]
+                    }
                 }
        
         default:

@@ -2,7 +2,7 @@ import Footer from '../components/Footer/Footer';
 import Home from '../components/Home/Home';
 import Slider from '../components/Slider/Slider';
 import NavBar from './../components/NavBar';
-
+import NavBarBis from '../components/NavBar/NavBarBis';
 import { ThemeProvider } from '@material-ui/core';
 
 
