@@ -16,7 +16,7 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
-
+rolesModel(sequelize)
 genresModel(sequelize)
 cinemasModel(sequelize)
 moviesModel(sequelize)
@@ -24,7 +24,10 @@ usersModel(sequelize)
 purchaseModel(sequelize)
 
 
-const { genres, cinemas, movies, users, purchase } = sequelize.models;
+const { genres, cinemas, movies, users, purchase,role } = sequelize.models;
+
+users.belongsToMany(role,{through:'rolesDepend'})
+role.belongsToMany(users,{through:'rolesDepend'})
 
 genres.belongsToMany(movies, { through: 'moviesGenre' })
 movies.belongsToMany(genres, { through: 'moviesGenre' })
