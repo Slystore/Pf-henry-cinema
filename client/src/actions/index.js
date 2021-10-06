@@ -9,6 +9,8 @@ export const GET_MOVIES_SORTED = 'GET_MOVIES_SORTED'
 export const CLEAN_DETAIL= 'CLEAN_DETAIL'
 export const MOVIE_AVAILABILITY = 'MOVIE_AVAILABILITY'
 export const  FILTER_BY_GENRE = ' FILTER_BY_GENRE'
+export const GET_MOVIE_NAME = 'GET_MOVIE_NAME'
+export const ADD_GENRE = 'ADD_GENRE'
 
 export function getAll() {
     return async (dispatch) => {
@@ -34,6 +36,16 @@ export function getMovies() {
                 payload: data
             })
         }
+    }
+    export function getMovieName (payload){
+        return async function (dispatch){
+      try{  let response = await axios.get('http://18.216.130.223:3001/api/movies?title=' + payload);
+        return dispatch ({
+            type:  GET_MOVIE_NAME,  
+            payload: response.data
+        })
+    }catch(err){alert('Película no encontrada')}
+    }
     }
   
 export function getGenres() {
@@ -109,4 +121,13 @@ export function filterGenre (payload){
   type: FILTER_BY_GENRE,
   payload
 }
+}
+export function postGenre (payload){
+    return async function(dispatch){
+        const response = await axios.post("http://18.216.130.223:3001/api/genres/create",payload)
+        dispatch ({
+            type:  ADD_GENRE,  
+            payload: response.data
+        })
+    }
 }

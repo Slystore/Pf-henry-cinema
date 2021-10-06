@@ -2,20 +2,20 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Logo from '../assets/Logo.png';
-
+import SearchBar2 from './SearchBar/SearchBar2'
 import SearchBar from './SearchBar/SearchBar';
 import filterPosts from "../utils/filterPosts";
 import fillInput from "../utils/fillInput";
 
 
-const { search } = window.location;
-const query = new URLSearchParams(search).get('s');
+// const { search } = window.location;
+// const query = new URLSearchParams(search).get('s');
 
 const NavBar = () => {
     
-    const {movies} = useSelector(state => state)
-    const [searchQuery, setSearchQuery] = useState(query || '');
-    const filteredPosts = filterPosts(movies, searchQuery);
+  
+    // const [searchQuery, setSearchQuery] = useState(query || '');
+    // const filteredPosts = filterPosts(movies, searchQuery);
 
     return(
         <div className="NavBar">
@@ -28,12 +28,13 @@ const NavBar = () => {
           Administrador</NavLink></div>
             
             <div className="SearchBar">
-            <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+                <SearchBar2 />
+            {/* <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <ul className={searchQuery === '' ? 'listInvisible' : 'listVisible'}>
                 {filteredPosts.map((post) => (
                     <li key={post.id} className="" onClick={(e) =>fillInput(e)}> {post.name} </li>
                 ))}
-            </ul>
+            </ul> */}
             </div>
 
       </div>
