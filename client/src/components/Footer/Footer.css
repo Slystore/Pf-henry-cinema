@@ -1,4 +1,4 @@
-.ContainerFooter{
+/* .ContainerFooter{
     width: 800px;
     height: 200px;
     margin: 0 auto;
@@ -6,7 +6,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    /* border: thin dotted #f00; */
+    
 }
 
 .Section{
@@ -16,19 +16,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    /* border: thin dotted #f00; */
+    
 }
 
 .ContainerLinks{
     width: 220px;
     height: 50%;
-    /* border: thin dotted #f00; */
+    
 }
 
 .LogoWhite{
     height: 70px;
     opacity: 0.2;
-}
+} */
+
 .Link{ 
     width: 150px;
     text-decoration: none;

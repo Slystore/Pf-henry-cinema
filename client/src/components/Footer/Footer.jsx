@@ -1,42 +1,75 @@
-import React from 'react';
+import React from 'react'
+import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 import LogoWhite from '../../assets/Logo_White.png';
-import './Footer.css';
 
-export default function Footer() {
+import './Footer.css'
+
+function Footer() {
     return (
         <div class="ContainerFooter">
 
-            <div class="Section">
-                
-                <img class="LogoWhite" src={LogoWhite} />
+            <Box sx={{ height: 200, bgcolor: 'black', display: 'flex', justifyContent: 'center' }} >
 
-            </div>
+                <Box sx={{ width:250, height: 100, marginTop: 7 }}>
 
-            <div class="Section">
+                    <Typography variant="h5" align="center" sx={{color: 'white', marginTop: 4}}>
+                        CinemAPP
+                    </Typography>
 
-                <div class="ContainerLinks">
+                </Box>
+
+                <Box sx={{ width:250, height: 100, marginTop: 7 }}>
 
                     <div><Link class="Link" to="/" > Cines </Link></div>
                     <div><Link class="Link" to="/" > Estrenos </Link></div>
                     <div><Link class="Link" to="/" > Todas las películas </Link></div>
                     <div><Link class="Link" to="/" > Cine en casa </Link></div>
 
-                </div>
+                </Box>
 
-            </div>
+                <Box sx={{ width:250, height: 100, marginTop: 7 }}>
 
-            <div class="Section">
-                <div class="ContainerLinks">    
+                    <div><Link class="Link" to="/" > Login </Link></div>
+                    <div><Link class="Link" to="/" > Contacto </Link></div>
+                    <div><Link class="Link" to="/" > Términos y Condiciones </Link></div>
+                    <div><Link class="Link" to="/" > Buzón de Quejas y Sugerencias</Link></div>
 
-                <div><Link class="Link" to="/" > Login </Link></div>
-                <div><Link class="Link" to="/" > Contacto </Link></div>
-                <div><Link class="Link" to="/" > Términos y Condiciones </Link></div>
-                <div><Link class="Link" to="/" > Buzón de Quejas y Sugerencias</Link></div>
+                </Box>
 
-                </div>
-            </div>
+            </Box>
+
             
         </div>
     )
 }
+
+export default Footer
+
+
+
+
+
+
+
+
+{/* <div class="Section">
+    
+    <img className="LogoWhite" src={LogoWhite} alt="" height="120"/> 
+
+</div>
+
+<div class="Section">
+
+    <div class="ContainerLinks">
+
+    </div>
+
+</div>
+
+<div class="Section">
+    <div class="ContainerLinks">    
+
+    </div>
+</div> */}

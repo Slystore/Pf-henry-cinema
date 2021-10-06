@@ -1,22 +1,25 @@
 {
-  "name": "client",
+  "name": "new",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^5.0.0-beta.5",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.2",
+    "@mui/styled-engine-sc": "^5.0.0",
+    "@mui/styles": "^5.0.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.4",
+    "axios": "^0.22.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^1.1.5",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -42,9 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "file-loader": "^6.2.0",
-    "url-loader": "^4.1.1"
   }
 }

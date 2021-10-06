@@ -3,8 +3,7 @@ import BtnSlider from './BtnSlider'
 import dataSlider from './dataSlider'
 import './Slider.css'
 
-function Slider(){
-
+function Slider() {
     const [slideIndex, setSlideIndex] = useState(1)
 
     const nextSlide = () => {
@@ -60,9 +59,4 @@ function Slider(){
     )
 }
 
-export default Slider ;
-
-
-
-
-    
+export default Slider

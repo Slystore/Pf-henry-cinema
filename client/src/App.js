@@ -1,16 +1,24 @@
-import * as React from 'react';
-import {useEffect}from 'react';
+import * as React from "react";
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
-import ControlPanel from "./components/Admin/controlPanel";
-import MovieDetail from './components/MovieDetail/MovieDetail';
-import FormGenre from './components/Forms/FormGenre';
-import FormMovie from './components/Forms/FormMovie';
-import HomeView from './views/HomeView';
 
-import { getAll } from './actions';
+import ControlPanel from "./components/Admin/controlPanel.jsx";
+import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
+import FormGenre from './components/Forms/FormGenre.jsx';
+import FormMovie from './components/Forms/FormMovie.jsx';
+import HomeView from './views/HomeView.js';
+
+import { getAll } from './actions/index.js';
+
+// import NavBar from './components/NavBar/NavBar.jsx';
+// import Slider from './components/Slider/Slider.jsx';
+// import Movie from './components/Movie/Movie.jsx';
+// import Footer from './components/Footer/Footer.jsx';
+// import './App.css';
 
 function App() {
+
   const dispatch = useDispatch();
 
   useEffect( () => {
@@ -30,7 +38,25 @@ function App() {
         </Switch> 
       </Router>
     </div>
-  );
-}
+    );
+  }
+  
+  export default App;
+  
+  // <div className="Container">
+  //   <NavBar />
+  //   <div className="RenderContainer">
 
-export default App;
+  //     <Slider />
+
+  //     <div className="Movies">
+  //       <Movie />
+  //     </div>
+
+  //   </div>
+
+  //   <div className="Footer">
+  //     <Footer />
+  //   </div>
+   
+  // </div>
