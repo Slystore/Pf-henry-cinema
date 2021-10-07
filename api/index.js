@@ -11,6 +11,7 @@ const { PORT } = process.env;
 conn.sync({ force: true })
     .then(async() => {
         const usersList = await users.findAll()
+        const rolesList = await role.findAll()
 
         console.log('DB connected!');
         server.listen(PORT, () => console.log(`Server listening`));

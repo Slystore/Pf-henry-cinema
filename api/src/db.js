@@ -4,15 +4,16 @@ const genresModel = require('./models/Genres')
 const cinemasModel = require('./models/Cinemas')
 const moviesModel = require('./models/Movies')
 const usersModel = require('./models/User.js')
+const rolesModel = require('./models/Roles')
 const purchaseModel = require('./models/Purchase')
 const {
     DB_USER,
     DB_PASSWORD,
     DB_HOST,
-    DB_NAME
+    
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/movies_local`, {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });

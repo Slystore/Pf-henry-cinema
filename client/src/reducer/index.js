@@ -8,7 +8,8 @@ import {
     GET_MOVIES_SORTED,
     CLEAN_DETAIL,
     MOVIE_AVAILABILITY,
-    FILTER_BY_GENRE
+    FILTER_BY_GENRE,
+    CREATE_USER
  } from '../actions/index.js';
 
 
@@ -53,6 +54,13 @@ function rootReducer(state = initialState, action) {
                 users: action.payload
             }
         }
+
+        case CREATE_USER:
+            return{
+                ...state
+            }
+
+        
 
         case GET_MOVIE_DETAILS:{
             return{
