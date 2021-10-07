@@ -4,7 +4,7 @@ import { BiMoviePlay } from "react-icons/bi"
 import { MdLocalMovies } from "react-icons/md"
 import { AiOutlineHome } from "react-icons/ai"
 import { AiOutlineMail } from "react-icons/ai"
-import { GrUserAdmin } from "react-icons/gr"
+import { BiLogIn } from "react-icons/bi"
 import { BsBook } from "react-icons/bs"
 import { GiMailbox } from "react-icons/gi"
 
@@ -34,9 +34,9 @@ const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Administrador',
+        title: 'Login',
         path: '/',
-        icon: <GrUserAdmin />,
+        icon: <BiLogIn />,
         cName: 'nav-text'
     },
     {
