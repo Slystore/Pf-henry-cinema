@@ -16,8 +16,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchBar from './SearchBar.jsx';
-import Sidebar from "../sidebar/Sidebar"
+import Sidebar from '../Sidebar/Sidebar';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -155,9 +154,7 @@ function NavBar() {
         <AppBar position="absolute" style={{ background: 'transparent', boxShadow: 'none' }}>
           <Toolbar>
             <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }} >
-              {/* <MenuIcon /> */}
               <Sidebar />
-
             </IconButton>
             <Typography
               variant="h5"
@@ -179,6 +176,7 @@ function NavBar() {
             <Box sx={{ flexGrow: 1 }} />
 
             <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900 }}>
+
               <Search>
                 <SearchIconWrapper>
                   <SearchIcon />
