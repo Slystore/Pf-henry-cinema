@@ -46,6 +46,15 @@ module.exports = (Sequelize) => {
           }
         },
       },
+      shoppingCart:{
+        type: DataTypes.ARRAY(DataTypes.JSON)
+      },
+      type:{
+        type: DataTypes.STRING
+      },
+      purchaseHistory: {
+        type: DataTypes.ARRAY(DataTypes.JSON)
+      }
     },
     {}
   );
