@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import ControlPanel from "./components/Admin/controlPanel.jsx";
 import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
-import FormGenre from './components/Forms/FormGenre.jsx';
+// import FormGenre from './components/Forms/FormGenre.jsx';
 import FormMovie from './components/Forms/FormMovie.jsx';
 import HomeView from './views/HomeView.js';
 
@@ -34,7 +34,7 @@ function App() {
           
           <Route exact path="/admin" component={ControlPanel} />
           <Route path= "/admin/createMovie" component={FormMovie} /> 
-          <Route path= "/admin/createGenre" component={FormGenre} />
+          {/* <Route path= "/admin/createGenre" component={FormGenre} /> */}
         </Switch> 
       
     </div>

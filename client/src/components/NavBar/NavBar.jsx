@@ -9,14 +9,13 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-// import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchBar from './SearchBar.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -154,7 +153,7 @@ function NavBar() {
                 <AppBar position="absolute" style={{ background: 'transparent', boxShadow: 'none'}}>
                     <Toolbar>
                         <IconButton size="large" edge="start" color="inherit" aria-label="open drawer" sx={{ mr: 2 }} >
-                            <MenuIcon />
+                            <Sidebar />
                         </IconButton>
                         <Typography
                             variant="h5"
@@ -178,7 +177,6 @@ function NavBar() {
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900}}>
                         
                             <Search>
-                              <SearchBar/>
                                 <SearchIconWrapper>
                                 <SearchIcon />
                                 </SearchIconWrapper>
