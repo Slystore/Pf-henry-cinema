@@ -1,3 +1,4 @@
+import axios from 'axios';
 const { AWS_PORT } = process.env;
 
 export const GET_GENRES = 'GET_GENRES';

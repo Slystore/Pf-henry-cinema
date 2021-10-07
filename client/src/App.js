@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import ControlPanel from "./components/Admin/controlPanel.jsx";
 import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
@@ -9,7 +9,7 @@ import FormGenre from './components/Forms/FormGenre.jsx';
 import FormMovie from './components/Forms/FormMovie.jsx';
 import HomeView from './views/HomeView.js';
 
-import { getAll } from './actions/index.js';
+import { getAll } from './redux/movies/moviesAction';
 
 // import NavBar from './components/NavBar/NavBar.jsx';
 // import Slider from './components/Slider/Slider.jsx';
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <div >
-      <Router>
+    
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route exact path="/movie/:id" component={MovieDetail} />
@@ -36,7 +36,7 @@ function App() {
           <Route path= "/admin/createMovie" component={FormMovie} /> 
           <Route path= "/admin/createGenre" component={FormGenre} />
         </Switch> 
-      </Router>
+      
     </div>
     );
   }

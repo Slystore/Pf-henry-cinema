@@ -1,5 +1,4 @@
-const { AWS_PORT } = process.env;
-
+import axios from 'axios';
 export const GET_ALL = 'GET_ALL';
 export const GET_MOVIES = 'GET_MOVIES';
 export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS';
@@ -9,14 +8,14 @@ export const MOVIE_AVAILABILITY = 'MOVIE_AVAILABILITY';
 export const GET_MOVIE_NAME = 'GET_MOVIE_NAME';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const FILTER_BY_GENRE = ' FILTER_BY_GENRE';
-
+const { AWS_PORT } = process.env;
 
 
 export function getAll() {
     return async(dispatch) => {
-        const movies = await axios.get(`${AWS_PORT}/movies`);
-        const genres = await axios.get(`${AWS_PORT}/genres`);
-        const users = await axios.get(`${AWS_PORT}/users`);
+        const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
+        const genres = await axios.get(`http://18.216.130.223:3001/api/genres`);
+        const users = await axios.get(`http://18.216.130.223:3001/api/users`);
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,
@@ -68,7 +67,7 @@ export function postMovie(payload) {
 export function getMovieName(payload) {
     return async function(dispatch) {
         try {
-            let response = await axios.get(`${AWS_PORT}/movies?title=` + payload);
+            let response = await axios.get(`http://18.216.130.223:3001/api/movies?title=` + payload);
             return dispatch({
                 type: GET_MOVIE_NAME,
                 payload: response.data
@@ -91,6 +90,12 @@ export function getMoviesSorted(type) {
 export function filterGenre(payload) {
     return {
         type: FILTER_BY_GENRE,
+        payload
+    }
+}
+export function movieAvailability(payload) {
+    return {
+        type: MOVIE_AVAILABILITY,
         payload
     }
 }

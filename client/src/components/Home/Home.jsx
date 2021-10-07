@@ -2,17 +2,20 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Movie from '../Movie/Movie'
-import { filterGenre, movieAvailability } from '../../actions'
-
+import { filterGenre, movieAvailability } from '../../redux/movies/moviesAction'
+import { useEffect } from 'react';
 import './Home.css'
+import { getGenres } from '../../redux/genres/genresAction';
 
 function Home() {
 
     const dispatch = useDispatch();
-    const { movies } = useSelector(state => state)
-    const { genres } = useSelector(state => state)
+    const { movies } = useSelector(state => state.moviesReducer)
+    const { genres } = useSelector(state => state.moviesReducer)
     const defIm = 'https://i.postimg.cc/pr96t201/bac-nord.jpg'
-
+    useEffect( () => {
+        dispatch(getGenres())  
+    }, [dispatch])
     function handleAvailability(e) {
         e.preventDefault()
         dispatch(movieAvailability(e.target.value))

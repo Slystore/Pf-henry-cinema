@@ -7,6 +7,7 @@ import {
     MOVIE_AVAILABILITY,
     GET_MOVIE_NAME,
     ADD_MOVIE,
+    FILTER_BY_GENRE
 } from './moviesAction.js';
 
 const initialState = {
@@ -14,6 +15,8 @@ const initialState = {
     filtradors: [],
     moviesDetails: [],
     moviesSorted: [],
+    genres:[],
+    users:[]
 }
 
 

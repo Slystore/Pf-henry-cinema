@@ -13,14 +13,14 @@ import {
 } from '../actions/index.js';
 
 
-const initialState = {
-    movies: [],
-    filtrados: [],
-    genres: [],
-    users: [],
-    moviesDetails: [],
-    moviesSorted: [],
-};
+// const initialState = {
+//     movies: [],
+//     filtrados: [],
+//     genres: [],
+//     users: [],
+//     moviesDetails: [],
+//     moviesSorted: [],
+// };
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {

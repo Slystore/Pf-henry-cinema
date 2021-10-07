@@ -176,14 +176,14 @@ function NavBar() {
                         <Box sx={{ flexGrow: 1 }} />
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900}}>
-                          <SearchBar/>
-                            {/* <Search>
+                        
+                            <Search>
                               <SearchBar/>
                                 <SearchIconWrapper>
                                 <SearchIcon />
                                 </SearchIconWrapper>
                                 <StyledInputBase placeholder="Buscar…" inputProps={{ 'aria-label': 'search' }} />
-                            </Search> */}
+                            </Search>
                             
                             <IconButton size="large" aria-label="show 17 new notifications" color="inherit" >
                                 <Badge badgeContent={3} color="error">
