@@ -1,7 +1,9 @@
 const mock = [
   {
     row: "A",
-    number: 1
+    number: 1,
+    availability: true,
+    owner: null // id || {id: , name: ...}
   },
   {
     row: "A",

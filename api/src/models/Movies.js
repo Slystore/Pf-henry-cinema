@@ -33,9 +33,9 @@ module.exports = (Sequelize) => {
         image: {
             type: DataTypes.TEXT
         },
-        summary: {
-            type: DataTypes.TEXT
-        },
+        // summary: {
+        //     type: DataTypes.TEXT
+        // },
         runTime: {
             type: DataTypes.STRING
         }

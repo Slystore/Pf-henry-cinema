@@ -16,10 +16,10 @@ const {
     DB_NAME
 } = process.env;
 
-console.log( DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_NAME)
+// console.log( DB_USER,
+//     DB_PASSWORD,
+//     DB_HOST,
+//     DB_NAME)
 
 const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
     logging: false, // set to console.log to see the raw SQL queries
@@ -86,6 +86,12 @@ users.hasOne(seats)
 
 seats.belongsTo(cinemas)
 cinemas.hasMany(seats)
+
+screening.belongsTo(movies)
+movies.hasMany(screening)
+
+cinemaRoom.belongsToMany(movies, {through: 'movieCinemaRoom'})
+movies.belongsToMany(cinemaRoom, {through: 'movieCinemaRoom'})
 
 module.exports = {
     ...sequelize.models,

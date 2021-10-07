@@ -1,4 +1,4 @@
-const { movies, genres } = require("../../db");
+const { movies, genres, cinemas, cinemaRoom, screening } = require("../../db");
 const { Op } = require("sequelize");
 
 
@@ -28,7 +28,7 @@ const getMovies = async(req, res, next) => {
     try {
         const allMovies = await movies.findAll({
             include: {
-                model: genres,
+                model: genres, cinemas, cinemaRoom, screening,
                 where: handleGenresWhere(filters),
                 attributes: ["name"],
                 through: { attributes: [] },
