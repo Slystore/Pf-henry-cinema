@@ -16,7 +16,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import SearchBar from './SearchBar.jsx';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -176,7 +176,9 @@ function NavBar() {
                         <Box sx={{ flexGrow: 1 }} />
 
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900}}>
+                        
                             <Search>
+                              <SearchBar/>
                                 <SearchIconWrapper>
                                 <SearchIcon />
                                 </SearchIconWrapper>
