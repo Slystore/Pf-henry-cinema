@@ -1,0 +1,13 @@
+.PageContainer{
+    width: 100%;
+    height: 100%;
+    
+    
+}
+
+.NotFound{
+    position: relative;
+    left: 0 !important;
+    top: 150px;
+    width: 80vw;
+}
