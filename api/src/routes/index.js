@@ -12,6 +12,6 @@ router.use('/movies', movies)
 router.use('/genres', genres)
 router.use('/users', users)
 router.use('/cinemas', cine)
-// router.use('/',login)
+router.use('/',login)
 
 module.exports = router;

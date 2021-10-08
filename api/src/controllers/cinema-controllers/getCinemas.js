@@ -1,6 +1,4 @@
-const { cinemas, cinemaRoom, seats } = require('../../db')
-
-
+const { cinemas, cinemaRoom } = require('../../db')
 
  async function getCinemas (req, res, next) {
     try {

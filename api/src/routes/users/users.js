@@ -3,13 +3,15 @@ const getUsers = require("../../controllers/users-controller/getUsers");
 const postUsers = require("../../controllers/users-controller/postUser");
 const putUsers = require("../../controllers/users-controller/putUser");
 const deleteUsers = require("../../controllers/users-controller/deleteUser");
+const { singUp, singIn } = require("../../controllers/login-controller/login-controller");
 
 
 const router = Router();
 
 router.get('/', getUsers);
 router.get('/:id', getUsers);
-router.post('/create', postUsers);
+router.post('/singIn', singIn);
+router.post('/singUp', singUp);
 router.put('/update/:id', putUsers)
 router.delete('/delete/:id', deleteUsers);
 
