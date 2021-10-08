@@ -54,9 +54,9 @@ function Home() {
       </div>
       <div className="ContainerHome">
         <div className="MoviesContainer">
-          {movies.map((movie) => {
+          {movies.map((movie, index) => {
             return (
-              <div className="Movie">
+              <div className="Movie" key={index}>
                 <Movie
                   key={movie.id}
                   image={movie.image}

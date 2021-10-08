@@ -44,11 +44,11 @@ function Movie({
 
   return (
     <div>
-      <Card className={classes.root} elevation="5">
+      <Card className={classes.root} elevation={5}>
         <CardActionArea>
           <CardHeader
             className={classes.rate}
-            elevation="5"
+            elevation={5}
             avatar={
               <Avatar
                 sx={{

@@ -10,8 +10,8 @@ const router = Router()
 
 router.get('/', getMovies)
 router.get('/:id', getById)
-router.post('/createMovie',tokenVerify, postMovies)
+router.post('/createMovie', tokenVerify, postMovies)
 router.delete('/deleteMovie/:id', tokenVerify, deleteMovies)
 router.put('/editMovie/:id', tokenVerify, putMovies)
 
-module.exports = router 
+module.exports = router
