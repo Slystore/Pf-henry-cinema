@@ -5,7 +5,7 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import ControlPanel from "./components/Admin/controlPanel.jsx";
 import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
-import FormGenre from "./components/Forms/FormGenre.jsx";
+// import FormGenre from "./components/Forms/FormGenre.jsx";
 import FormMovie from "./components/Forms/FormMovie.jsx";
 import HomeView from "./views/HomeView.js";
 
@@ -38,7 +38,7 @@ function App() {
           <Route exact path= "/login" component = {FormSingIn}/>
           <Route exact path = '/login/singUp' component = {FormSingUp}/>
           <Route path="/admin/createMovie" component={FormMovie} />
-          <Route path="/admin/createGenre" component={FormGenre} />
+          {/* <Route path="/admin/createGenre" component={FormGenre} /> */}
         </Switch>
       </Router>
     </div>  
