@@ -46,6 +46,10 @@ module.exports = (Sequelize) => {
           }
         },
       },
+      userType:{
+        type: DataTypes.ENUM("superadmin", "admin", "user", "banned", "disabled"),
+        defaultValue: "user",
+      }
     },
     {}
   );

@@ -10,8 +10,8 @@ const router = Router();
 
 router.get("/:id", getGenres);
 router.get("/", getGenres);
-router.post("/create", tokenVerify, PostGenres);
-router.put('/update/:id', tokenVerify, putGenres)
-router.delete("/delete/:id", tokenVerify, deleteGenres);
+router.post("/create", PostGenres);
+router.put('/update/:id', putGenres)
+router.delete("/delete/:id", deleteGenres);
 
 module.exports = router;

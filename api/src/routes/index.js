@@ -1,9 +1,9 @@
 const { Router } = require('express')
 
 const router = Router()
-const login = require('./login/login')
 const movies = require('./movies/movies')
 const genres = require('./genres/genres')
+const login = require('./users/login')
 const users = require('./users/users')
 
 router.use('/movies', movies)
