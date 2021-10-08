@@ -10,7 +10,7 @@ module.exports = (Sequelize) => {
         primaryKey: true,
       },
       name: {
-          type: DataTypes.TEXT,
+          type: DataTypes.STRING,
           allowNull: false
       },
       seatCount: {
