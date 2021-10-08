@@ -29,7 +29,7 @@ function Footer() {
 
                 <Box sx={{ width:250, height: 100, marginTop: 7 }}>
 
-                    <div><Link className="Link" to="/" > Login </Link></div>
+                    <div><Link className="Link" to="/login" > Login </Link></div>
                     <div><Link className="Link" to="/" > Contacto </Link></div>
                     <div><Link className="Link" to="/" > Términos y Condiciones </Link></div>
                     <div><Link className="Link" to="/" > Buzón de Quejas y Sugerencias</Link></div>
