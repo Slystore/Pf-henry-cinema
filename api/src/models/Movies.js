@@ -18,10 +18,10 @@ module.exports = (Sequelize) => {
             type: DataTypes.TEXT
         },
         actors: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
         },
         director: {
-            type: DataTypes.ARRAY,
+            type: DataTypes.STRING,
         },
         usersRating: {
             type: DataTypes.FLOAT
@@ -31,15 +31,12 @@ module.exports = (Sequelize) => {
         },
         availability: {
             type: DataTypes.BOOLEAN,
-            defaultValue: 'True'
+            defaultValue: true
         },
         price: {
             type: DataTypes.STRING
         },
         image: {
-            type: DataTypes.TEXT
-        },
-        summary: {
             type: DataTypes.TEXT
         },
         runTime: {

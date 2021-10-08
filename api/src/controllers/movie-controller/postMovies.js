@@ -5,37 +5,70 @@ const moviePost = async(req, res, next) => {
         let {
             title,
             rating,
+            description,
+            actores,
+            director,
             usersRating,
+            votes,
             availability,
             price,
             image,
-            description,
             runTime,
             genre,
+            // cinema,
+            // salas,
+            // funcion
         } = req.body;
 
         let movieCreated = await movies.create({
             title,
             rating,
+            description,
+            actores,
+            director,
             usersRating,
+            votes,
             availability,
             price,
             image,
-            description,
             runTime,
         });
+
         let genresDb = await genres.findAll({
             where: {
                 name: genre,
             },
             attributes: ['id']
-
         });
-        await movieCreated.addGenres(genresDb);
-        res.status(200).send(movieCreated);
+
+        // let cinemaDb = await cinemas.findAll({
+        //     where: {
+        //         name: cinema,
+        //     },
+        //     attributes: ['id']
+        // });
+
+        // let cinemaRoomsDb = await cinemaRoom.findAll({
+        //     where: {
+        //         name: salas,
+        //     },
+        //     attributes: ['id']
+        // });
+
+        // let screeningDb = await screening.findAll({
+        //     where: {
+        //         time: funcion,
+        //     },
+        //     attributes: ['id']
+        // });
+        movieCreated.addGenres(genresDb);
+        // movieCreated.addCinemas(cinemaDb);
+        // movieCreated.addCinemaRooms(cinemaRoomsDb);
+        // movieCreated.addScreenings(screeningDb);
+        console.log(movieCreated);
+        res.status(200).send('Movie Created Successfully');
     } catch (err) {
         next(err)
     }
 };
-
 module.exports = moviePost
