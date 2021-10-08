@@ -7,8 +7,8 @@ const tokenVerify = require("../../middlewars/tokenAuth");
 
 const router = Router();
 
-router.get('/', tokenVerify,getUsers);
-router.get('/:id', tokenVerify,getUsers);
+router.get('/',getUsers);
+router.get('/:id',getUsers);
 
 router.post('/singIn',singIn);
 router.post('/singUp',singUp)

@@ -14,7 +14,7 @@ conn.sync({ force: true })
         const rolesList = await role.findAll()
 
         console.log('DB connected!');
-        server.listen(PORT, () => console.log(`Server listening`));
+        server.listen(3001, () => console.log(`Server listening`));
         await genresMockUp();
         await moviesMocks();
         if (usersList.length === 0) {

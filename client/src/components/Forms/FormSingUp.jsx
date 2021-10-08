@@ -1,10 +1,17 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState} from "react";
 import { createUser } from "../../actions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+
 function FormSingUp() {
   const dispatch = useDispatch();
+  const [succes, setSucces] = useState(false);
+
+  
+  const users = useSelector((state) => state.users);
+  console.log('estos son mis users',users)
 
   return (
     <div>
@@ -12,9 +19,9 @@ function FormSingUp() {
         initialValues={{
           name: "",
           surname: "",
-          email: "",
+          mail: "",
           password: "",
-          confirmPassword: "",
+          // confirmPassword: "",
         }}
         validate={(valores) => {
           let error = {};
@@ -34,14 +41,14 @@ function FormSingUp() {
             error.surname = "Apellido debe tener entre 3 y 30 carecteres";
           }
           //Email
-          if (!valores.email) {
-            error.email = "Por favor completar este campo";
+          if (!valores.mail) {
+            error.mail = "Por favor completar este campo";
           } else if (
             !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
-              valores.email
+              valores.mail
             )
           ) {
-            error.email = "Por favor ingresar un correo electronico valido";
+            error.mail = "Por favor ingresar un correo electronico valido";
           }
           //Contraseña
           if (!valores.password) {
@@ -52,22 +59,23 @@ function FormSingUp() {
             error.password =
               "La contraseña debe tener mínimo seis caracteres, al menos una letra y un número";
           }
-          if (!valores.confirmPassword) {
-            error.confirmPassword = "Por favor repita la contraseña";
-          } else if (valores.password !== valores.confirmPassword) {
-            error.confirmPassword = "Las contraseñas no coinciden ";
-          }
+          // if (!valores.confirmPassword) {
+          //   error.confirmPassword = "Por favor repita la contraseña";
+          // } else if (valores.password !== valores.confirmPassword) {
+          //   error.confirmPassword = "Las contraseñas no coinciden ";
+          // }
 
           return error;
         }}
         onSubmit={(body, { resetForm }) => {
-          dispatch(createUser(body));
           resetForm();
+          dispatch(createUser(body));
+          setSucces(true);
+          setTimeout(() => setSucces(false), 3000);
         }}
       >
         {({ errors }) => (
           <Form>
-            {console.log(errors)}
             <label>Name </label>
             <Field autoComplete="off" type="text" name="name" />
             <ErrorMessage
@@ -83,10 +91,10 @@ function FormSingUp() {
             />
 
             <label>Email </label>
-            <Field autoComplete="off" type="text" name="email" />
+            <Field autoComplete="off" type="text" name="mail" />
             <ErrorMessage
-              name="email"
-              component={() => <div>{errors.email}</div>}
+              name="mail"
+              component={() => <div>{errors.mail}</div>}
             />
 
             <label>Password</label>
@@ -96,14 +104,15 @@ function FormSingUp() {
               component={() => <div>{errors.password}</div>}
             />
 
-            <label>Confirm password</label>
+            {/* <label>Confirm password</label>
             <Field autoComplete="off" type="password" name="confirmPassword" />
             <ErrorMessage
               name="confirmPassword"
               component={() => <div>{errors.confirmPassword}</div>}
-            />
+            /> */}
 
             <button type="submit">Create User</button>
+            {succes && <p>Usuario creado</p>}
           </Form>
         )}
       </Formik>

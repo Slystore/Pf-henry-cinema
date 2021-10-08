@@ -2,7 +2,6 @@ const { users } = require("../../db.js");
 const bcryp = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
-const { response } = require("express");
 //Logeo
 const singIn = async (req, res) => {
   let { mail, password } = req.body;
@@ -14,18 +13,21 @@ const singIn = async (req, res) => {
     })
     .then((user) => {
       if (!user) {
-        res
-          .status(404)
-          .json({
-            msg: "Este usuario no coincide con un existente, intente de nuevo ",
-          });
+        res.json({
+          msg: "Este usuario no coincide con un existente, intente de nuevo ",
+        });
       } else {
-      if(bcryp.compare(password, user.password)){
+        if (bcryp.compare(password, user.password)) {
           // devuelve el token
-          let token = jwt.sign({ user: user }, authConfing.secret, {});
-          res.status(200).json({ user: user, token: token });
+          let token = jwt.sign({ user: user }, authConfing.secret, {
+            expiresIn: "2 days",
+          });
+          res.status(200).json({ auth: true, user: user, token: token });
         } else {
-          res.status(404).json({ msg: "contraseña incorrecta" });
+          res.json({
+            auth: false,
+            msg: "La contraseña no corresponde a un mail existente",
+          });
         }
       }
     })
@@ -37,15 +39,16 @@ const singIn = async (req, res) => {
 //Registro
 const singUp = async (req, res) => {
   let { name, surname, mail } = req.body;
-  const userValidate = users.findOne({
-    where:{
-      mail:mail
-    }
-  })
-  if(userValidate){
+  const userValidate = await users.findOne({
+    where: {
+      mail: mail,
+    },
+  });
+  console.log("este es el user", userValidate);
+  if (userValidate) {
     return res.json({
-      msg:"Este usuario ya existe"
-    })
+      msg: "Este usuario ya existe",
+    });
   }
   if (req.body.password.length > 6) {
     let passwordCrypt = bcryp.hashSync(
@@ -60,11 +63,13 @@ const singUp = async (req, res) => {
         password: passwordCrypt,
       })
       .then((user) => {
-        let token = jwt.sign({ user: user }, authConfing.secret, {});
+        let token = jwt.sign({ user: user }, authConfing.secret, {
+          expiresIn: "2 days",
+        });
         res.status(200).json({ user: user, token: token });
       });
-  }else{
-      return "La contraseña debe tener al menos 6 caracteres"
+  } else {
+    return "La contraseña debe tener al menos 6 caracteres";
   }
 };
 
