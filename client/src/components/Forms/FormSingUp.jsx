@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState} from "react";
-import { createUser } from "../../actions";
+import { createUser } from "../../redux/users/usersAction.js";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 

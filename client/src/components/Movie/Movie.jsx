@@ -55,33 +55,17 @@ function Movie({altImage, image, name, availability, genres, rating, description
         <Card className={ classes.root } elevation="5">
         
           <CardActionArea>
+              <CardHeader className={ classes.rate } 
+              avatar={
+                <Avatar sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+                boxShadow: '0 10px 10px #00000080' }} aria-label="recipe">
+                {rating}</Avatar>}/>
+          
+            <CardMedia className={classes.media} image={image} />
+          
+              <CardMedia className={ classes.media } image={ image } />
 
-            <CardHeader className={ classes.rate } 
-            avatar={
-              <Avatar sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', boxShadow: '0 10px 10px #00000080' }} aria-label="recipe">
-              {rating}
-
-              </Avatar>
-            }
-          />
-          <CardMedia className={classes.media} image={image} />
-          <CardContent>
-            <Typography
-              variant="h6"
-              align="center"
-              className={classes.name}
-              aria-label="name"
-            >
-              {name}
-            </Typography>
-
-
-            />
-              
-            <CardMedia className={ classes.media } image={ image } />
-
-            <CardContent>
-
+              <CardContent>
                 <Typography variant="h6" align="center" className={ classes.name } aria-label="name">
                   {name}
                 </Typography>
@@ -90,8 +74,7 @@ function Movie({altImage, image, name, availability, genres, rating, description
                   {/* {genres} */}
                   Accion | Suspenso | Aventura
                 </Typography>
-
-            </CardContent>
+              </CardContent>
 
             <Button onClick={handleOpen} className={ classes.boton }>Detalles</Button>
 
@@ -104,7 +87,7 @@ function Movie({altImage, image, name, availability, genres, rating, description
         onClose={ handleClose }
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+        >
 
         {/* border: 'thin dotted #ccc' */}
 

@@ -5,15 +5,15 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import ControlPanel from "./components/Admin/controlPanel.jsx";
 import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
-import FormGenre from './components/Forms/FormGenre.jsx';
+// import FormGenre from './components/Forms/FormGenre.jsx';
 import FormMovie from './components/Forms/FormMovie.jsx';
 import PageNotFound from './components/404/PageNotFound.jsx';
 import HomeView from './views/HomeView.js';
 
-import { getAll } from "./actions/index.js";
+import { getAll } from "./redux/movies/moviesAction";
 import FormSingUp from "./components/Forms/FormSingUp.jsx";
 import FormSingIn from "./components/Forms/FormSingIn.jsx";
-import { getAllUsers } from "./actions/Users/users-actions.js";
+import { getAllUsers } from "./redux/users/usersAction.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/movie/:id" component={MovieDetail} />
           <Route exact path="/admin" component={ControlPanel} />
           <Route exact path= "/admin/createMovie" component={FormMovie} /> 
-          <Route exact path= "/admin/createGenre" component={FormGenre} />
+          {/* <Route exact path= "/admin/createGenre" component={FormGenre} /> */}
           <Route exact path= "/404" component={PageNotFound} />
         </Switch> 
       </Router>

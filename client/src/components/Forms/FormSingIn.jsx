@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import { useState } from "react";
-import { getToken, login } from "../../actions";
+import { login } from "../../redux/users/usersAction.js";
 
 function FormSingIn() {
   const usuario = useSelector((state) => state.users);

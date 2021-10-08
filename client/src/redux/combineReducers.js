@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import genresReducer from './genres/genresReducer';
 import moviesReducer from './movies/moviesReducer';
 import usersReducer from './users/usersReducer';
