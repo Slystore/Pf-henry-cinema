@@ -1,6 +1,6 @@
-const { movies, genres } = require("../../db");
+const { movies, genres, cinemas, cinemaRoom, screening } = require("../../db");
 
-const moviePost = async(req, res, next) => {
+const moviePost2 = async(req, res, next) => {
     try {
         let {
             title,
@@ -14,10 +14,10 @@ const moviePost = async(req, res, next) => {
             price,
             image,
             runTime,
-            genre,
-            // cinema,
-            // salas,
-            // funcion
+            genero,
+            cinema,
+            cinemaRoom,
+            screening
         } = req.body;
 
         let movieCreated = await movies.create({
@@ -34,41 +34,43 @@ const moviePost = async(req, res, next) => {
             runTime,
         });
 
+
         let genresDb = await genres.findAll({
             where: {
-                name: genre,
+                name: genero,
             },
             attributes: ['id']
         });
 
-        // let cinemaDb = await cinemas.findAll({
-        //     where: {
-        //         name: cinema,
-        //     },
-        //     attributes: ['id']
-        // });
+        let cinemaDb = await cinemas.findAll({
+            where: {
+                name: cinema,
+            },
+            attributes: ['id']
+        });
 
-        // let cinemaRoomsDb = await cinemaRoom.findAll({
-        //     where: {
-        //         name: salas,
-        //     },
-        //     attributes: ['id']
-        // });
+        let cinemaRoomsDb = await cinemaRoom.findAll({
+            where: {
+                name: cinemaRoom,
+            },
+            attributes: ['id']
+        });
 
-        // let screeningDb = await screening.findAll({
-        //     where: {
-        //         time: funcion,
-        //     },
-        //     attributes: ['id']
-        // });
-        movieCreated.addGenres(genresDb);
-        // movieCreated.addCinemas(cinemaDb);
-        // movieCreated.addCinemaRooms(cinemaRoomsDb);
-        // movieCreated.addScreenings(screeningDb);
-        console.log(movieCreated);
-        res.status(200).send('Movie Created Successfully');
+        let screeningDb = await screening.findAll({
+            where: {
+                time: screening,
+            },
+            attributes: ['id']
+        });
+
+        movieCreated.addGenres(genresDb)
+        movieCreated.addCinemas(cinemaDb)
+        movieCreated.addCinemaRooms(cinemaRoomsDb)
+        movieCreated.addScreenings(screeningDb)
+        res.status(200).send('listo');
     } catch (err) {
         next(err)
     }
 };
-module.exports = moviePost
+
+module.exports = moviePost2

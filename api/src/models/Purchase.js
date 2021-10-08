@@ -7,22 +7,23 @@ module.exports = (Sequelize) => {
             defaultValue: UUIDV4,
             primaryKey: true,
             allowNull: false
-        },
-        moviesPurchased: {
-            type: DataTypes.ARRAY(DataTypes.JSON), // por cada pelicula recibe un json {id(pelicula), asientos}
-            allowNull: false
-        },
-        user: {
-            type: DataTypes.UUID,
-            allowNull: false
-        },
-        value: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        payment: {
-            type: DataTypes.JSON,
-            allowNull: false
         }
+        // ,
+        // moviesPurchased: {
+        //     type: DataTypes.ARRAY(DataTypes.JSON), // por cada pelicula recibe un json {id(pelicula), asientos}
+        //     allowNull: false
+        // },
+        // user: {
+        //     type: DataTypes.UUID,
+        //     allowNull: false
+        // },
+        // value: {
+        //     type: DataTypes.FLOAT,
+        //     allowNull: false
+        // },
+        // payment: {
+        //     type: DataTypes.JSON,
+        //     allowNull: false
+        // }
     },{})
 }
