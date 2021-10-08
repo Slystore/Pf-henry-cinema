@@ -7,15 +7,10 @@ import ControlPanel from "./components/Admin/controlPanel.jsx";
 import MovieDetail from './components/MovieDetail/MovieDetail.jsx';
 import FormGenre from './components/Forms/FormGenre.jsx';
 import FormMovie from './components/Forms/FormMovie.jsx';
+import PageNotFound from './components/404/PageNotFound.jsx';
 import HomeView from './views/HomeView.js';
 
 import { getAll } from './actions/index.js';
-
-// import NavBar from './components/NavBar/NavBar.jsx';
-// import Slider from './components/Slider/Slider.jsx';
-// import Movie from './components/Movie/Movie.jsx';
-// import Footer from './components/Footer/Footer.jsx';
-// import './App.css';
 
 function App() {
 
@@ -33,8 +28,9 @@ function App() {
           <Route exact path="/movie/:id" component={MovieDetail} />
           
           <Route exact path="/admin" component={ControlPanel} />
-          <Route path= "/admin/createMovie" component={FormMovie} /> 
-          <Route path= "/admin/createGenre" component={FormGenre} />
+          <Route exact path= "/admin/createMovie" component={FormMovie} /> 
+          <Route exact path= "/admin/createGenre" component={FormGenre} />
+          <Route exact path= "/404" component={PageNotFound} />
         </Switch> 
       </Router>
     </div>
@@ -42,21 +38,3 @@ function App() {
   }
   
   export default App;
-  
-  // <div className="Container">
-  //   <NavBar />
-  //   <div className="RenderContainer">
-
-  //     <Slider />
-
-  //     <div className="Movies">
-  //       <Movie />
-  //     </div>
-
-  //   </div>
-
-  //   <div className="Footer">
-  //     <Footer />
-  //   </div>
-   
-  // </div>

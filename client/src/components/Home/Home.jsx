@@ -63,7 +63,7 @@ function Home() {
                                         // altImage={defIm} 
                                         name={movie.title}
                                         availability={movie.availability}
-                                        genre={movie.genre}
+                                        genres={movie.genres}
                                         rating={movie.rating}
                                         description={movie.description}
                                     />
