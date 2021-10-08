@@ -22,35 +22,3 @@ function HomeView() {
 }
 
 export default HomeView
-
-
-
-
-
-
-// import NavBar2 from './../components/NavBar2/NavBar2.jsx'
-
-// // import { ThemeProvider } from '@material-ui/core';
-// import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-
-// import '../App.css';
-
-
-// const HomeView = () => {
-    
-//     return(
-//         <div className='Container'>
-//             <ThemeProvider>
-//                 <NavBar />
-//                 {/* <NavBar2 /> */}
-//                 <Slider /> 
-//                 <Home/>
-//                 <div className="Footer"><Footer/></div>
-//             </ThemeProvider>
-//         </div>
-//     )
-
-// }
-
-// export default HomeView
-

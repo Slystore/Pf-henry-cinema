@@ -1,16 +1,19 @@
 import { 
     GET_ALL,
     GET_MOVIES,
-    GET_USERS,
+    // GET_USERS,
     GET_GENRES,
     GET_MOVIE_DETAILS, 
     ADD_MOVIE,
     GET_MOVIES_SORTED,
     CLEAN_DETAIL,
     MOVIE_AVAILABILITY,
-    FILTER_BY_GENRE
+    FILTER_BY_GENRE,
+    CREATE_USER,
+    LOGIN,
+    GET_TOKEN
  } from '../actions/index.js';
-
+import {GET_ALL_USERS} from '../actions/Users/users-actions'
 
 const initialState = {
     movies: [],
@@ -47,12 +50,27 @@ function rootReducer(state = initialState, action) {
             }
         }
 
-        case GET_USERS:{
+        case GET_ALL_USERS:{
+            console.log('estoy entrando al  case ')
             return{
                 ...state,
                 users: action.payload
             }
         }
+
+        case CREATE_USER:
+            return{
+                ...state
+            }
+
+        case LOGIN:
+            return{
+                ...state
+            }
+        case GET_TOKEN:
+            return{
+             ...state
+            }
 
         case GET_MOVIE_DETAILS:{
             return{

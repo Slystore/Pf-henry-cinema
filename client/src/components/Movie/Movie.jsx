@@ -18,8 +18,8 @@ import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import Rating from '@mui/material/Rating';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-
 import { useStyle } from './movieStyles.js'
+
 
 const style = {
   position: 'absolute',
@@ -33,7 +33,6 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
 
 function Movie({altImage, image, name, availability, genres, rating, description}) {
 
@@ -61,8 +60,21 @@ function Movie({altImage, image, name, availability, genres, rating, description
             avatar={
               <Avatar sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', boxShadow: '0 10px 10px #00000080' }} aria-label="recipe">
               {rating}
+
               </Avatar>
             }
+          />
+          <CardMedia className={classes.media} image={image} />
+          <CardContent>
+            <Typography
+              variant="h6"
+              align="center"
+              className={classes.name}
+              aria-label="name"
+            >
+              {name}
+            </Typography>
+
 
             />
               
@@ -110,6 +122,7 @@ function Movie({altImage, image, name, availability, genres, rating, description
 
                 <Typography variant="h5" align="left" sx={{ fontWeight: "bold" }}>
                   { name } 
+
                 </Typography>
 
               </Box>
@@ -161,8 +174,15 @@ function Movie({altImage, image, name, availability, genres, rating, description
                   <Typography  align="left" sx={{ color: "#000000", fontSize: 18 }} variant="paraghrap">
                     {description}
                   </Typography>
-
+                <Typography
+                  align="left"
+                  sx={{ color: "#000000", fontSize: 18 }}
+                  variant="paraghrap"
+                >
+                  {description}
+                </Typography>
               </Box>
+
 
               <Box sx={{ width: 500, height: 100, marginTop: 5 }}>
 
@@ -245,4 +265,4 @@ function Movie({altImage, image, name, availability, genres, rating, description
     );
 }
 
-export default Movie
+export default Movie;

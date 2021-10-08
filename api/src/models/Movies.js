@@ -1,7 +1,7 @@
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 module.exports = (Sequelize) => {
-    return Sequelize.define('movies',{
+    return Sequelize.define('movies', {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
@@ -17,7 +17,13 @@ module.exports = (Sequelize) => {
         description: {
             type: DataTypes.TEXT
         },
-        usersRating:{
+        actors: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
+        },
+        director: {
+            type: DataTypes.STRING,
+        },
+        usersRating: {
             type: DataTypes.FLOAT
         },
         votes: {
@@ -25,7 +31,7 @@ module.exports = (Sequelize) => {
         },
         availability: {
             type: DataTypes.BOOLEAN,
-            defaultValue: 'True'
+            defaultValue: true
         },
         price: {
             type: DataTypes.STRING
@@ -33,11 +39,8 @@ module.exports = (Sequelize) => {
         image: {
             type: DataTypes.TEXT
         },
-        summary: {
-            type: DataTypes.TEXT
-        },
         runTime: {
             type: DataTypes.STRING
         }
-    },{timestamps: false})
+    }, { timestamps: false })
 }
