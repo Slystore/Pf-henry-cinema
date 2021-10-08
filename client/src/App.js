@@ -10,7 +10,7 @@ import FormMovie from './components/Forms/FormMovie.jsx';
 import PageNotFound from './components/404/PageNotFound.jsx';
 import HomeView from './views/HomeView.js';
 
-import { getAll } from "./redux/movies/moviesAction";
+import { getAll, getMovies } from "./redux/movies/moviesAction";
 import FormSingUp from "./components/Forms/FormSingUp.jsx";
 import FormSingIn from "./components/Forms/FormSingIn.jsx";
 import { getAllUsers } from "./redux/users/usersAction.js";
@@ -20,7 +20,8 @@ function App() {
 
   useEffect(() => {
     dispatch(getAll());
-    dispatch(getAllUsers())
+    // dispatch(getMovies())
+    // dispatch(getAllUsers())
   }, [dispatch]);
 
   return (

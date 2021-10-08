@@ -15,7 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Sidebar from '../Sidebar/Sidebar.jsx';
-
+import SearchBar from './SearchBar';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -177,6 +177,7 @@ function NavBar() {
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900}}>
                         
                             <Search>
+                              <SearchBar/>
                                 <SearchIconWrapper>
                                 <SearchIcon />
                                 </SearchIconWrapper>

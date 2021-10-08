@@ -9,9 +9,9 @@ import "./Home.css";
 
 function Home() {
   const dispatch = useDispatch();
-  const { movies } = useSelector((state) => state);
-  const { genres } = useSelector((state) => state);
-  console.log(movies);
+  const { movies } = useSelector((state) => state.moviesReducer);
+  const { genres } = useSelector((state) => state.moviesReducer);
+ 
 
   function handleAvailability(e) {
     e.preventDefault();
@@ -51,7 +51,7 @@ function Home() {
       </div>
       <div className="ContainerHome">
         <div className="MoviesContainer">
-          {movies.map((movie, index) => {
+          {movies && movies.map((movie, index) => {
             return (
               <div className="Movie" key={index}>
                 <Movie
