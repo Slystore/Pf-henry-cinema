@@ -8,6 +8,7 @@ const purchaseModel = require('./models/Purchase')
 const screeningModel = require('./models/Screening')
 const roomModel = require('./models/CinemaRoom')
 const seatsModel = require('./models/Seats');
+const purchase_movieModel = require('./models/Purchase_Movie');
 
 const {
     DB_USER,
@@ -34,9 +35,9 @@ purchaseModel(sequelize)
 screeningModel(sequelize)
 roomModel(sequelize)
 seatsModel(sequelize)
+purchase_movieModel(sequelize)
 
-
-const { genres, cinemas, movies, users, purchase, screening, cinemaRoom, seats } = sequelize.models;
+const { genres, cinemas, movies, users, purchase, screening, cinemaRoom, seats, purchase_movie } = sequelize.models;
 console.log(sequelize.models)
 
 genres.belongsToMany(movies, { through: 'moviesGenre' })
@@ -60,9 +61,14 @@ cinemaRoom.hasMany(screening)
 seats.belongsTo(cinemaRoom)
 cinemaRoom.hasMany(seats)
 
-movies.hasMany(purchase)
-purchase.belongsTo(movies)
-
+movies.hasMany(purchase_movie)
+purchase_movie.belongsTo(movies, {
+    foreignKey: "moviesId",
+})
+purchase.hasMany(purchase_movie)
+purchase_movie.belongsTo(purchase, {
+    foreignKey: "purchaseId",
+});
 users.hasMany(purchase) //***OJOTA */
 purchase.belongsTo(users)
 

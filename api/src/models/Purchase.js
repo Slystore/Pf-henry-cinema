@@ -7,7 +7,13 @@ module.exports = (Sequelize) => {
             defaultValue: UUIDV4,
             primaryKey: true,
             allowNull: false
-        }
+        },
+        status: {
+            type: DataTypes.ENUM({
+              values: ["pending", "processing", "created", "cancelled", "completed"],
+            }),
+            allowNull: false
+          },
         // ,
         // moviesPurchased: {
         //     type: DataTypes.ARRAY(DataTypes.JSON), // por cada pelicula recibe un json {id(pelicula), asientos}
