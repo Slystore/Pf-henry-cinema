@@ -3,13 +3,16 @@ const { conn } = require('./src/db.js');
 const { PORT } = process.env;
 // const seed = require('./seed');
 
-// const { pruebaMockup } = require('./src/utils/mocks/prueba-mockup.js')
+const { pruebaMockup } = require('./src/utils/mocks/prueba-mockup.js')
 const { genresMockUp } = require('./src/utils/mocks/genres-mockUp.js');
 const { moviesMocks } = require('./src/utils/mocks/movies-muckUp.js');
 const { usersMockUp } = require('./src/utils/mocks/users-mock.js');
-const { cinemasMockUp } = require('./src/utils/mocks/cinemas-mock');
-const { cinemaRoomMockUp } = require('./src/utils/mocks/cinemaRooms-mock.js')
-const { rolesMockUp } = require('./src/utils/mocks/roles-mockUp.js')
+const { rolesMockUp } = require('./src/utils/mocks/roles-mockUp.js');
+const { cinemasMockUp } = require('./src/utils/mocks/cinemas-mock.js');
+const { cinemaRoomMockUp } = require('./src/utils/mocks/cinemaRooms-mock.js');
+const { screeningMockUp } = require('./src/utils/mocks/screening-mock.js');
+const { seatsMockUp } = require('./src/utils/mocks/seats-mock.js');
+
 
 conn.sync({ force: true })
     .then(async() => {
@@ -20,8 +23,11 @@ conn.sync({ force: true })
         await moviesMocks();
         await genresMockUp();
         await usersMockUp();
+        await rolesMockUp();
         await cinemasMockUp();
         await cinemaRoomMockUp();
-        await rolesMockUp();
+        await screeningMockUp();
+        await seatsMockUp();
+        await pruebaMockup();
     })
     .catch((e) => console.log('Connection Failed!', e))
