@@ -1,17 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Movie from "../Movie/Movie";
+import { Link } from 'react-router-dom';
+import { useReducer } from 'react'
+// import initialState from '../../reducer/shoping.js'
+// import shopingReducer from '../../reducer/shoping.js'
 import {
   filterGenre,
   movieAvailability,
 } from "../../redux/movies/moviesAction";
 import "./Home.css";
+import { addToCart } from "../../redux/carts/cartsActions";
 
 function Home() {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.moviesReducer);
   const { genres } = useSelector((state) => state.moviesReducer);
- 
+     // const { cart } = useSelector(state => state)
 
   function handleAvailability(e) {
     e.preventDefault();
@@ -22,7 +27,25 @@ function Home() {
     e.preventDefault();
     dispatch(filterGenre(e.target.value));
   }
+  // const [state, dispatch] = useReducer ( shopingReducer, initialState )
+  // const { cart } = state
 
+  // var totalItems = 0
+  const handleAddCart = (id) => {
+    // totalItems++
+    // console.log(totalItems)
+    console.log("console home",id)
+    dispatch (addToCart(id))
+
+}
+
+const deleteCart = () => {
+
+}
+
+const clearCart = () => {
+
+}
   return (
     <div>
       <div className="SelectGroup">
@@ -56,12 +79,14 @@ function Home() {
               <div className="Movie" key={index}>
                 <Movie
                   key={movie.id}
+                  id={movie.id}
                   image={movie.image}
                   name={movie.title}
                   availability={movie.availability}
                   genres={movie.genres}
                   rating={movie.rating}
                   description={movie.description}
+                  addToCart = {handleAddCart}  
                 />
               </div>
             );

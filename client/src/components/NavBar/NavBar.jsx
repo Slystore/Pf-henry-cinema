@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {Link} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -63,7 +65,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function NavBar() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-    
+    const { cart } = useSelector((state) => state.cartReducer);
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
     
@@ -183,13 +185,13 @@ function NavBar() {
                                 </SearchIconWrapper>
                                 <StyledInputBase placeholder="Buscar…" inputProps={{ 'aria-label': 'search' }} />
                             </Search>
-                            
+                            <Link to={`/shoppingCart`} >
                             <IconButton size="large" aria-label="show 17 new notifications" color="inherit" >
-                                <Badge badgeContent={3} color="error">
+                                <Badge badgeContent={cart.length} color="error">
                                 <ShoppingCartIcon />
                                 </Badge>
                             </IconButton>
-
+                            </Link>
                             <IconButton size="large" edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit" >
                                 <AccountCircle />
                             </IconButton>
