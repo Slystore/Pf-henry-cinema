@@ -50,13 +50,16 @@ movies.belongsToMany(genres, { through: "moviesGenre" });
 movies.belongsToMany(cinemas, { through: "moviesCinema" });
 cinemas.belongsToMany(movies, { through: "moviesCinema" });
 
-cinemas.hasMany(cinemaRoom, {
-    onDelete: "CASCADE",
-});
+// cinemas.hasMany(cinemaRoom, {
+//     onDelete: "CASCADE",
+// });
 
-cinemaRoom.belongsTo(cinemas, {
-    onDelete: "CASCADE",
-});
+// cinemaRoom.belongsTo(cinemas, {
+//     onDelete: "CASCADE",
+// });
+
+cinemaRoom.belongsTo(cinemas);
+cinemas.hasMany(cinemaRoom);
 
 screening.belongsTo(movies);
 movies.hasMany(screening);
