@@ -1,6 +1,4 @@
-const { movies, genres } = require('../../db.js');
-
-
+const { movies, genres, cinemas, cinemaRoom, screening } = require('../../db.js');
 
 const moviesMocks = async() => {
     const freeGuy = await movies.create({
@@ -17,11 +15,31 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.59.45",
     });
-    const getFreeGuy = await genres.findAll({
-        where: { id: [4, 1, 2, 15] },
+
+    const getFreeGuyGenre = await genres.findAll({
+        where: { id: [1, 2, 4, 15] },
         attributes: ['id']
-    })
-    freeGuy.addGenres(getFreeGuy);
+    });
+
+    const getFreeGuyCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getFreeGuyCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_uno' },
+        attributes: ['id']
+    });
+
+    const getFreeGuyScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    freeGuy.addGenres(getFreeGuyGenre);
+    freeGuy.addGenres(getFreeGuyCinema);
+    freeGuy.addGenres(getFreeGuyCinemaRoom);
+    freeGuy.addGenres(getFreeGuyScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const snakeEyes = await movies.create({
@@ -38,12 +56,30 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.35.15",
     });
-    const getSnakeEyes = await genres.findAll({
-        where: { id: [1, 2] },
+    const getSnakeEyesGenre = await genres.findAll({
+        where: { id: [4, 1, 2, 15] },
         attributes: ['id']
-    })
-    snakeEyes.addGenres(getSnakeEyes);
+    });
 
+    const getSnakeEyesCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getSnakeEyesCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_uno' },
+        attributes: ['id']
+    });
+
+    const getSnakeEyesScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    snakeEyes.addGenres(getSnakeEyesGenre);
+    snakeEyes.addGenres(getSnakeEyesCinema);
+    snakeEyes.addGenres(getSnakeEyesCinemaRoom);
+    snakeEyes.addGenres(getSnakeEyesScreening);
     /*-----------------------------------------------------------------------------------------------*/
 
     const old = await movies.create({

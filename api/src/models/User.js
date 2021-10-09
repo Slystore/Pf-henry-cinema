@@ -55,6 +55,6 @@ module.exports = (Sequelize) => {
             purchaseHistory: {
                 type: DataTypes.ARRAY(DataTypes.JSON)
             }
-        }, {}
+        }, { timestamps: false }
     );
 };
