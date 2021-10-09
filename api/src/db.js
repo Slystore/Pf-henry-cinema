@@ -72,7 +72,9 @@ purchase_movie.belongsTo(purchase, {
 users.hasMany(purchase) //***OJOTA */
 purchase.belongsTo(users)
 
-purchase.belongsTo(cinemas)
+purchase.belongsTo(cinemas, {
+    foreignKey: "cinemaId",
+})
 cinemas.hasMany(purchase)
 
 purchase.belongsTo(screening)
