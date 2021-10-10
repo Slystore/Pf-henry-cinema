@@ -1,6 +1,6 @@
 const { movies, genres, cinemas, cinemaRoom, screening } = require('../../db.js');
 
-const moviesMocks = async() => {
+const moviesList = async() => {
     const freeGuy = await movies.create({
         title: "Free Guy",
         released: "2021-08-11",
@@ -17,7 +17,7 @@ const moviesMocks = async() => {
     });
 
     const getFreeGuyGenre = await genres.findAll({
-        where: { id: [1, 2, 4, 15] },
+        where: { id: [4, 1, 2, 15] },
         attributes: ['id']
     });
 
@@ -37,9 +37,9 @@ const moviesMocks = async() => {
     });
 
     freeGuy.addGenres(getFreeGuyGenre);
-    freeGuy.addGenres(getFreeGuyCinema);
-    freeGuy.addGenres(getFreeGuyCinemaRoom);
-    freeGuy.addGenres(getFreeGuyScreening);
+    freeGuy.addCinemas(getFreeGuyCinema);
+    freeGuy.addCinemaRooms(getFreeGuyCinemaRoom);
+    freeGuy.addScreenings(getFreeGuyScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const snakeEyes = await movies.create({
@@ -62,12 +62,12 @@ const moviesMocks = async() => {
     });
 
     const getSnakeEyesCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
     const getSnakeEyesCinemaRoom = await cinemaRoom.findOne({
-        where: { name: 'sala_uno' },
+        where: { name: 'sala_dos' },
         attributes: ['id']
     });
 
@@ -77,9 +77,9 @@ const moviesMocks = async() => {
     });
 
     snakeEyes.addGenres(getSnakeEyesGenre);
-    snakeEyes.addGenres(getSnakeEyesCinema);
-    snakeEyes.addGenres(getSnakeEyesCinemaRoom);
-    snakeEyes.addGenres(getSnakeEyesScreening);
+    snakeEyes.addCinemas(getSnakeEyesCinema);
+    snakeEyes.addCinemaRooms(getSnakeEyesCinemaRoom);
+    snakeEyes.addScreenings(getSnakeEyesScreening);
     /*-----------------------------------------------------------------------------------------------*/
 
     const old = await movies.create({
@@ -97,11 +97,29 @@ const moviesMocks = async() => {
         runTime: "2.39.30",
     });
 
-    const getOld = await genres.findAll({
+    const getOldGenre = await genres.findAll({
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    old.addGenres(getOld);
+    const getOldCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getOldCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_tres' },
+        attributes: ['id']
+    });
+
+    const getOldScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    old.addGenres(getOldGenre);
+    old.addCinemas(getOldCinema);
+    old.addCinemaRooms(getOldCinemaRoom);
+    old.addScreenings(getOldScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const shangChi = await movies.create({
@@ -118,11 +136,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.59.30",
     });
-    const getShangChi = await genres.findAll({
+    const getShangChiGenre = await genres.findAll({
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    shangChi.addGenres(getShangChi);
+    const getShangChiCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getShangChiCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_cuatro' },
+        attributes: ['id']
+    });
+
+    const getShangChiScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    shangChi.addGenres(getShangChiGenre);
+    shangChi.addCinemas(getShangChiCinema);
+    shangChi.addCinemaRooms(getShangChiCinemaRoom);
+    shangChi.addScreenings(getShangChiScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const theSuicideSquad = await movies.create({
@@ -139,11 +175,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.43.20",
     });
-    const getSuicideSquad = await genres.findAll({
-        where: { id: [1, 2, 9, 4] },
+    const getTheSuicideSquadGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    theSuicideSquad.addGenres(getSuicideSquad);
+    const getTheSuicideSquadCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getTheSuicideSquadCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_cinco' },
+        attributes: ['id']
+    });
+
+    const getTheSuicideSquadScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    theSuicideSquad.addGenres(getTheSuicideSquadGenre);
+    theSuicideSquad.addCinemas(getTheSuicideSquadCinema);
+    theSuicideSquad.addCinemaRooms(getTheSuicideSquadCinemaRoom);
+    theSuicideSquad.addScreenings(getTheSuicideSquadScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const catchTheBullet = await movies.create({
@@ -160,11 +214,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.43.20",
     });
-    const getCatchTheBullet = await genres.findAll({
-        where: { id: [19, 1] },
+    const getCatchTheBulletGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    catchTheBullet.addGenres(getCatchTheBullet);
+    const getCatchTheBulletCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getCatchTheBulletCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_seis' },
+        attributes: ['id']
+    });
+
+    const getCatchTheBulletScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    catchTheBullet.addGenres(getCatchTheBulletGenre);
+    catchTheBullet.addCinemas(getCatchTheBulletCinema);
+    catchTheBullet.addCinemaRooms(getCatchTheBulletCinemaRoom);
+    catchTheBullet.addScreenings(getCatchTheBulletScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const bacNord = await movies.create({
@@ -181,11 +253,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.0.20",
     });
-    const getBacNord = await genres.findAll({
-        where: { id: [5, 17] },
+    const getBacNordGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
+        attributes: ['id']
+    })
+    const getBacNordCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
         attributes: ['id']
     });
-    bacNord.addGenres(getBacNord);
+
+    const getBacNordCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_siete' },
+        attributes: ['id']
+    });
+
+    const getBacNordScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    bacNord.addGenres(getBacNordGenre);
+    bacNord.addCinemas(getBacNordCinema);
+    bacNord.addCinemaRooms(getBacNordCinemaRoom);
+    bacNord.addScreenings(getBacNordScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const kate = await movies.create({
@@ -202,11 +292,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.45.10",
     });
-    const getKate = await genres.findAll({
-        where: { id: [1, 17] },
+    const getKateGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
+        attributes: ['id']
+    })
+    const getKateCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
         attributes: ['id']
     });
-    kate.addGenres(getKate);
+
+    const getKateCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_ocho' },
+        attributes: ['id']
+    });
+
+    const getKateScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    kate.addGenres(getKateGenre);
+    kate.addCinemas(getKateCinema);
+    kate.addCinemaRooms(getKateCinemaRoom);
+    kate.addScreenings(getKateScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const sasRedNotice = await movies.create({
@@ -223,11 +331,30 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.38.10",
     });
-    const getSasRedNotice = await genres.findAll({
-        where: { id: [1, 17] },
+    const getSasRedNoticeGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
+        attributes: ['id']
+    })
+    const getSasRedNoticeCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
         attributes: ['id']
     });
-    sasRedNotice.addGenres(getSasRedNotice);
+
+    const getSasRedNoticeCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_nueve' },
+        attributes: ['id']
+    });
+
+    const getSasRedNoticeScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    kate.addGenres(getSasRedNoticeGenre);
+    kate.addCinemas(getSasRedNoticeCinema);
+    kate.addCinemaRooms(getSasRedNoticeCinemaRoom);
+    kate.addScreenings(getSasRedNoticeScreening);
+
 
     /*-----------------------------------------------------------------------------------------------*/
     const jungleCruise = await movies.create({
@@ -244,11 +371,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.43.10",
     });
-    const getJungleCruise = await genres.findAll({
-        where: { id: [1, 17] },
+    const getJungleCruiseGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
+        attributes: ['id']
+    })
+    const getJungleCruiseCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
         attributes: ['id']
     });
-    jungleCruise.addGenres(getJungleCruise);
+
+    const getJungleCruiseCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_diez' },
+        attributes: ['id']
+    });
+
+    const getJungleCruiseScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    jungleCruise.addGenres(getJungleCruiseGenre);
+    jungleCruise.addCinemas(getJungleCruiseCinema);
+    jungleCruise.addCinemaRooms(getJungleCruiseCinemaRoom);
+    jungleCruise.addScreenings(getJungleCruiseScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const jurassicHunt = await movies.create({
@@ -265,11 +410,30 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.28.10",
     });
-    const getJurassicHnt = await genres.findAll({
-        where: { id: [1, 15, 17] },
+    const getJurassicHuntGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    jurassicHunt.addGenres(getJurassicHnt);
+    const getJurassicHuntCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getJurassicHuntCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_uno' },
+        attributes: ['id']
+    });
+
+    const getJurassicHuntScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    jurassicHunt.addGenres(getJurassicHuntGenre);
+    jurassicHunt.addCinemas(getJurassicHuntCinema);
+    jurassicHunt.addCinemaRooms(getJurassicHuntCinemaRoom);
+    jurassicHunt.addScreenings(getJurassicHuntScreening);
+
 
     /*-----------------------------------------------------------------------------------------------*/
     const f9 = await movies.create({
@@ -286,11 +450,30 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.40.25",
     });
-    const getF9 = await genres.findAll({
-        where: { id: [1, 5, 17] },
+    const getf9Genre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    f9.addGenres(getF9);
+    const getf9Cinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getf9CinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_dos' },
+        attributes: ['id']
+    });
+
+    const getf9Screening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    f9.addGenres(getf9Genre);
+    f9.addCinemas(getf9Cinema);
+    f9.addCinemaRooms(getf9CinemaRoom);
+    f9.addScreenings(getf9Screening);
+
 
     /*-----------------------------------------------------------------------------------------------*/
     const pawPatrol = await movies.create({
@@ -307,11 +490,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.10.10",
     });
-    const getPawPtrol = await genres.findAll({
-        where: { id: [3, 8, 2, 4] },
+    const getPawPatrolGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    pawPatrol.addGenres(getPawPtrol);
+    const getPawPatrolCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getPawPatrolCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_tres' },
+        attributes: ['id']
+    });
+
+    const getPawPatrolScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    pawPatrol.addGenres(getPawPatrolGenre);
+    pawPatrol.addCinemas(getPawPatrolCinema);
+    pawPatrol.addCinemaRooms(getPawPatrolCinemaRoom);
+    pawPatrol.addScreenings(getPawPatrolScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const escapeRoom = await movies.create({
@@ -328,12 +529,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.0.50",
     });
-    const getEscapeRoom = await genres.findAll({
-        where: { id: [1, 17, 13] },
+    const getEscapeRoomGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    escapeRoom.addGenres(getEscapeRoom);
+    const getEscapeRoomCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
 
+    const getEscapeRoomCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_cuatro' },
+        attributes: ['id']
+    });
+
+    const getEscapeRoomScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    escapeRoom.addGenres(getEscapeRoomGenre);
+    escapeRoom.addCinemas(getEscapeRoomCinema);
+    escapeRoom.addCinemaRooms(getEscapeRoomCinemaRoom);
+    escapeRoom.addScreenings(getEscapeRoomCinemaRoom);
     /*-----------------------------------------------------------------------------------------------*/
     const luca = await movies.create({
         title: "Luca",
@@ -349,11 +567,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.48.20",
     });
-    const getLuca = await genres.findAll({
-        where: { id: [3, 4, 8, 9] },
+    const getLucaGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    luca.addGenres(getLuca);
+    const getLucaCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getLucaCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_cinco' },
+        attributes: ['id']
+    });
+
+    const getLucaScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    luca.addGenres(getLucaGenre);
+    luca.addCinemas(getLucaCinema);
+    luca.addCinemaRooms(getLucaCinemaRoom);
+    luca.addScreenings(getLucaScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const theBossBaby = await movies.create({
@@ -370,11 +606,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.0.33",
     });
-    const getTheBossBaby = await genres.findAll({
-        where: { id: [3, 4, 2, 8] },
+    const getTheBossBabyGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    theBossBaby.addGenres(getTheBossBaby)
+    const getTheBossBabyCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getTheBossBabyCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_seis' },
+        attributes: ['id']
+    });
+
+    const getTheBossBabyScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    theBossBaby.addGenres(getTheBossBabyGenre);
+    theBossBaby.addCinemas(getTheBossBabyCinema);
+    theBossBaby.addCinemaRooms(getTheBossBabyCinemaRoom);
+    theBossBaby.addScreenings(getTheBossBabyScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
 
@@ -392,11 +646,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.15.13",
     });
-    const getSpaceJam = await genres.findAll({
-        where: { id: [3, 4, 8, 15] },
+    const getSpaceJamGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    spaceJam.addGenres(getSpaceJam)
+    const getSpaceJamCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getSpaceJamCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_siete' },
+        attributes: ['id']
+    });
+
+    const getSpaceJamScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    spaceJam.addGenres(getSpaceJamGenre);
+    spaceJam.addCinemas(getSpaceJamCinema);
+    spaceJam.addCinemaRooms(getSpaceJamCinemaRoom);
+    spaceJam.addScreenings(getSpaceJamScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
     const malignant = await movies.create({
@@ -412,11 +684,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.55.13",
     });
-    const getMalignant = await genres.findAll({
-        where: { id: [11, 17, 13, 5] },
+    const getMalignantGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    malignant.addGenres(getMalignant)
+    const getMalignantCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getMalignantCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_ocho' },
+        attributes: ['id']
+    });
+
+    const getMalignantScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    malignant.addGenres(getMalignantGenre);
+    malignant.addCinemas(getMalignantGenre);
+    malignant.addCinemaRooms(getMalignantCinemaRoom);
+    malignant.addScreenings(getMalignantScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
 
@@ -434,11 +724,29 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "1.52.23",
     });
-    const getTomorrowWar = await genres.findAll({
-        where: { id: [1, 15, 2] },
+    const getTheTomorrowWarGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    theTomorrowWar.addGenres(getTomorrowWar)
+    const getTheTomorrowWarCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getTheTomorrowWarCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_nueve' },
+        attributes: ['id']
+    });
+
+    const getTheTomorrowWarScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    theTomorrowWar.addGenres(getTheTomorrowWarGenre);
+    theTomorrowWar.addCinemas(getTheTomorrowWarCinema);
+    theTomorrowWar.addCinemaRooms(getTheTomorrowWarCinemaRoom);
+    theTomorrowWar.addScreenings(getTheTomorrowWarScreening);
 
     /*-----------------------------------------------------------------------------------------------*/
 
@@ -456,14 +764,33 @@ const moviesMocks = async() => {
         price: '99.99',
         runTime: "2.05.02",
     });
-    const getDontBreatheTwo = await genres.findAll({
-        where: { id: [17, 11] },
+
+    const getDontBreatheTwoGenre = await genres.findAll({
+        where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    dontBreatheTwo.addGenres(getDontBreatheTwo)
+    const getDontBreatheTwoCinema = await cinemas.findOne({
+        where: { name: 'Kaia' },
+        attributes: ['id']
+    });
+
+    const getDontBreatheTwoCinemaRoom = await cinemaRoom.findOne({
+        where: { name: 'sala_diez' },
+        attributes: ['id']
+    });
+
+    const getDontBreatheTwoScreening = await screening.findOne({
+        where: { time: 12 },
+        attributes: ['id']
+    });
+
+    dontBreatheTwo.addGenres(getDontBreatheTwoGenre);
+    dontBreatheTwo.addCinemas(getDontBreatheTwoCinema);
+    dontBreatheTwo.addCinemaRooms(getDontBreatheTwoCinemaRoom);
+    dontBreatheTwo.addScreenings(getDontBreatheTwoScreening);
 };
 
 
 module.exports = {
-    moviesMocks,
+    moviesList,
 };
