@@ -1,27 +1,42 @@
-import { GET_ALL_USERS, LOGIN, GET_TOKEN } from './usersAction.js'
+import { GET_USERS, LOGIN, GET_TOKEN, CREATE_USER } from "./usersAction.js";
 
-
-const initialState = {
+const userState = {
     users: [],
+    userData: [],
+    userError: [],
 };
 
-function usersReducer(state = initialState, action) {
+function usersReducer(state = userState, action) {
     switch (action.type) {
-        case GET_ALL_USERS:
+        case GET_USERS:
             {
                 return {
                     ...state,
                     users: action.payload,
                 };
             }
+        case CREATE_USER:
+            console.log("esto llega al reducer de users", action.payload);
+            if (action.payload.msg) {
+                console.log(action.payload.msg);
+                return {
+                    ...state,
+                    userError: action.payload,
+                };
+            } else if (action.payload.user) {
+                return {
+                    ...state,
+                    userData: action.payload,
+                };
+            }
         case LOGIN:
-            return {
-                ...state,
-            };
+            return {};
+
         case GET_TOKEN:
             return {
                 ...state,
             };
+
         default:
             return state;
     }

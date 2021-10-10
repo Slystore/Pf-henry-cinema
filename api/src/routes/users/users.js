@@ -13,5 +13,5 @@ router.post('/singIn', singIn);
 router.post('/singUp', singUp);
 router.put('/update/:id', putUsers)
 router.delete('/delete/:id', deleteUsers);
-
+    
 module.exports = router;

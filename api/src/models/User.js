@@ -36,11 +36,11 @@ module.exports = (Sequelize) => {
                 },
             },
             password: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false,
                 validate: {
                     len: {
-                        args: [6, 60],
+                        args: [6, 65],
                         msg: "Debe tener minimo 6 caracteres"
                     }
                 },
@@ -48,13 +48,7 @@ module.exports = (Sequelize) => {
             userType: {
                 type: DataTypes.ENUM("superadmin", "admin", "user", "banned", "disabled"),
                 defaultValue: "user",
-            },
-            shoppingCart: {
-                type: DataTypes.ARRAY(DataTypes.JSON)
-            },
-            purchaseHistory: {
-                type: DataTypes.ARRAY(DataTypes.JSON)
             }
-        }, { timestamps: false }
+        }, {}
     );
 };
