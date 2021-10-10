@@ -10,7 +10,7 @@ import FormMovie from "./components/Forms/FormMovie.jsx";
 import HomeView from "./views/HomeView.js";
 
 import { getAll } from "./actions/index.js";
-import FormSingUp from "./components/Forms/FormSingUp.jsx";
+import FormSingUp from "./components/Forms/FormsSingUp/FormSingUp.jsx";
 import FormSingIn from "./components/Forms/FormSingIn.jsx";
 import { getAllUsers } from "./actions/Users/users-actions.js";
 

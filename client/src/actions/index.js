@@ -131,36 +131,3 @@ export function filterGenre(payload) {
   };
 }
 
-//User post
-
-export function createUser(payload) {
-  return async function () {
-    // let data = await axios.post("http://18.216.130.223:3001/api/singUp", payload);
-    let data = await axios.post("http://localhost:3001/api/singUp", payload);
-    return data;
-  };
-}
-
-export async function login(payload) {
-  console.log("este es mi paylaod", payload);
-  let data = await axios.post("http://localhost:3001/api/singIn", payload);
- 
-  if (data.data.token) {
-    localStorage.setItem("token", data.data.token);
-  } else if (!data.data.token) {
-    let error = data.data.msg;
-    console.log('entre y este es el error',error)
-    return error;
-  }
-
-  return data;
-}
-
-export function getToken() {
-  let token = localStorage.getItem("token");
-  console.log(token);
-  if(!token){
-    return 'No se ha encontrado ningun token'
-  }
-  return token;
-}

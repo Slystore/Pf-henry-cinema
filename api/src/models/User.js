@@ -37,11 +37,11 @@ module.exports = (Sequelize) => {
         },
       },
       password: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
         validate: {
           len:{
-            args:[6, 60],
+            args:[6, 65],
             msg:"Debe tener minimo 6 caracteres"
           }
         },

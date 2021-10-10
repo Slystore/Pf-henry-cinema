@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { getToken, login } from "../../actions";
+import { getToken, login } from "../../redux/users/usersAction";
 
 function FormSingIn() {
   const usuario = useSelector((state) => state.users);
@@ -21,7 +21,7 @@ function FormSingIn() {
         <Formik
           initialValues={{
             mail: "",
-            contraseña: "",
+            password: "",
           }}
           validate={(valores) => {
             let errors = {};
@@ -33,6 +33,7 @@ function FormSingIn() {
           onSubmit={(body) => {
             async function sendLogin() {
               try {
+                console.log('esto me llega al body',body)
                 const x = await login(body);
                 console.log("respuesta del log", x);
                 if (!x.data) {
@@ -61,13 +62,19 @@ function FormSingIn() {
                 component={() => <div>{errors.mail}</div>}
               />
               <label>Contraseña</label>
-              <Field name="contraseña" type="password" />
+              <Field name="password" type="password" />
               <button type="submit">Login</button>
               {console.log("este es log ", userLog)}
               {userLog.msgErr && <div>{userLog.msgErr}</div>}
             </Form>
           )}
         </Formik>
+          <p>¿Todavia no tienes un usuario?
+            <Link to = "/login/singUp">
+            Create uno! 
+            </Link>
+          </p>
+         
       </div>
     </div>
   );

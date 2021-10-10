@@ -9,6 +9,6 @@ const users = require('./users/users')
 router.use('/movies', movies)
 router.use('/genres', genres)
 router.use('/users', users)
-    // router.use('/',login)
+router.use('/',login)
 
 module.exports = router;
