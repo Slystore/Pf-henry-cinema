@@ -3,12 +3,7 @@ const { DataTypes, UUIDV4 } = require("sequelize");
 module.exports = (Sequelize) => {
     return Sequelize.define(
         "users", {
-            // id: {
-            //     type: DataTypes.UUID,
-            //     defaultValue: UUIDV4,
-            //     primaryKey: true,
-            // },
-            name: {
+                name: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
@@ -36,11 +31,11 @@ module.exports = (Sequelize) => {
                 },
             },
             password: {
-                type: DataTypes.STRING,
+                type: DataTypes.TEXT,
                 allowNull: false,
                 validate: {
                     len: {
-                        args: [6, 60],
+                        args: [6, 65],
                         msg: "Debe tener minimo 6 caracteres"
                     }
                 },
@@ -48,13 +43,12 @@ module.exports = (Sequelize) => {
             userType: {
                 type: DataTypes.ENUM("superadmin", "admin", "user", "banned", "disabled"),
                 defaultValue: "user",
+
             },
             shoppingCart: {
                 type: DataTypes.JSONB
             },
-            purchaseHistory: {
-                type: DataTypes.ARRAY(DataTypes.JSON)
-            }
+            
         }, {}
     );
 };

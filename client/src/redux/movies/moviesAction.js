@@ -13,9 +13,9 @@ const awsPort = process.env.REACT_APP_API_KEY;
 
 export function getAll() {
     return async(dispatch) => {
-        const movies = await axios.get(`${awsPort}/api/movies`);
-        const genres = await axios.get(`${awsPort}/api/genres`);
-        const users = await axios.get(`${awsPort}/api/users`);
+        const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
+        const genres = await axios.get(`http://18.216.130.223:3001/api/genres`);
+        const users = await axios.get(`http://18.216.130.223:3001/api/users`);
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,
@@ -27,7 +27,7 @@ export function getAll() {
 
 export function getMovies() {
     return async(dispatch) => {
-        const { data } = await axios.get(`${awsPort}/api/movies`)
+        const { data } = await axios.get(`http://18.216.130.223:3001/api/movies`)
         return await dispatch({
             type: GET_MOVIES,
             payload: data
@@ -66,7 +66,7 @@ export function postMovie(payload) {
 export function getMovieName(payload) {
     return async function(dispatch) {
         try {
-            let response = await axios.get(`${awsPort}/api/movies?title=` + payload);
+            let response = await axios.get(`http://18.216.130.223:3001/api/movies?title=` + payload);
             return dispatch({
                 type: GET_MOVIE_NAME,
                 payload: response.data

@@ -6,7 +6,7 @@ const moviePost2 = async(req, res, next) => {
             title,
             rating,
             description,
-            actores,
+            actors,
             director,
             usersRating,
             votes,
@@ -14,17 +14,17 @@ const moviePost2 = async(req, res, next) => {
             price,
             image,
             runTime,
-            genero,
+            genre,
             cinema,
-            cinemaRoom,
-            screening
+            sala,
+            funcion
         } = req.body;
 
         let movieCreated = await movies.create({
             title,
             rating,
             description,
-            actores,
+            actors,
             director,
             usersRating,
             votes,
@@ -34,10 +34,9 @@ const moviePost2 = async(req, res, next) => {
             runTime,
         });
 
-
         let genresDb = await genres.findAll({
             where: {
-                name: genero,
+                name: genre,
             },
             attributes: ['id']
         });
@@ -51,14 +50,14 @@ const moviePost2 = async(req, res, next) => {
 
         let cinemaRoomsDb = await cinemaRoom.findAll({
             where: {
-                name: cinemaRoom,
+                name: sala,
             },
             attributes: ['id']
         });
 
         let screeningDb = await screening.findAll({
             where: {
-                time: screening,
+                time: funcion,
             },
             attributes: ['id']
         });
@@ -67,7 +66,7 @@ const moviePost2 = async(req, res, next) => {
         movieCreated.addCinemas(cinemaDb)
         movieCreated.addCinemaRooms(cinemaRoomsDb)
         movieCreated.addScreenings(screeningDb)
-        res.status(200).send('listo');
+        res.status(200).send(movieCreated);
     } catch (err) {
         next(err)
     }

@@ -40,10 +40,6 @@ const {
     role
 } = sequelize.models;
 
-console.log(sequelize.models)
-
-
-
 
 
 users.belongsToMany(role, { through: "rolesDepend" });
@@ -104,7 +100,6 @@ purchase.belongsTo(seats);
 
 // screening.belongsTo(movies);
 // movies.hasMany(screening);
-
 
 
 module.exports = {

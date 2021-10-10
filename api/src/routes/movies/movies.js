@@ -8,9 +8,15 @@ const tokenVerify = require('../../middlewars/tokenAuth')
 
 const router = Router()
 
+// router.get('/', getMovies)
+// router.get('/:id', getById)
+// router.post('/createMovie', tokenVerify, postMovies)
+// router.delete('/deleteMovie/:id', deleteMovies)
+// router.put('/editMovie/:id', putMovies)
+
 router.get('/', getMovies)
 router.get('/:id', getById)
-router.post('/createMovie', tokenVerify, postMovies)
+router.post('/createMovie', postMovies)
 router.delete('/deleteMovie/:id', deleteMovies)
 router.put('/editMovie/:id', putMovies)
 
