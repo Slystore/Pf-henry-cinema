@@ -4,11 +4,11 @@ module.exports = (Sequelize) => {
   return Sequelize.define(
     "screening",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: UUIDV4,
-        primaryKey: true,
-      },
+      // id: {
+      //   type: DataTypes.UUID,
+      //   defaultValue: UUIDV4,
+      //   primaryKey: true,
+      // },
       time: {
           type: DataTypes.INTEGER
       }

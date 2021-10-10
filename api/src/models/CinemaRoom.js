@@ -4,11 +4,11 @@ module.exports = (Sequelize) => {
   return Sequelize.define(
     "cinemaRoom",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: UUIDV4,
-        primaryKey: true,
-      },
+      // id: {
+      //   type: DataTypes.UUID,
+      //   defaultValue: UUIDV4,
+      //   primaryKey: true,
+      // },
       name: {
           type: DataTypes.STRING,
           allowNull: false

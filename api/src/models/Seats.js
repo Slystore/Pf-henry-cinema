@@ -4,16 +4,20 @@ module.exports = (Sequelize) => {
   return Sequelize.define(
     "seats",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: UUIDV4,
-        primaryKey: true,
-      },
+      // id: {
+      //   type: DataTypes.UUID,
+      //   defaultValue: UUIDV4,
+      //   primaryKey: true,
+      // },
       row: {
           type: DataTypes.STRING
       },
       number: {
           type: DataTypes.INTEGER
+      },
+      isAvailable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       }
     },
     {}

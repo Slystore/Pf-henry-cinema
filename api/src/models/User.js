@@ -3,11 +3,11 @@ const { DataTypes, UUIDV4 } = require("sequelize");
 module.exports = (Sequelize) => {
     return Sequelize.define(
         "users", {
-            id: {
-                type: DataTypes.UUID,
-                defaultValue: UUIDV4,
-                primaryKey: true,
-            },
+            // id: {
+            //     type: DataTypes.UUID,
+            //     defaultValue: UUIDV4,
+            //     primaryKey: true,
+            // },
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -50,7 +50,7 @@ module.exports = (Sequelize) => {
                 defaultValue: "user",
             },
             shoppingCart: {
-                type: DataTypes.ARRAY(DataTypes.JSON)
+                type: DataTypes.JSONB
             },
             purchaseHistory: {
                 type: DataTypes.ARRAY(DataTypes.JSON)
