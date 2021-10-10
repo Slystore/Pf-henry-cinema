@@ -1,25 +1,28 @@
-const mock = [
-  {
-    time: 12
-  },
-  {
-    time: 14
-  },
-  {
-    time: 16
-  },
-  {
-    time: 18
-  },
-  {
-    time: 20
-  },
-  {
-    time: 22
-  },
-  {
-    time: 24
-  }
-]
+const { screening } = require('../../db.js');
 
-module.exports = mock
+const screeningMockUp = async() => {
+    await screening.create({
+        time: 12
+    });
+    await screening.create({
+        time: 14
+    });
+    await screening.create({
+        time: 16
+    });
+    await screening.create({
+        time: 18
+    });
+    await screening.create({
+        time: 20
+    });
+    await screening.create({
+        time: 22
+    });
+    await screening.create({
+        time: 24
+    });
+}
+
+
+module.exports = { screeningMockUp }
