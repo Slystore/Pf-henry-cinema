@@ -40,6 +40,7 @@ function Slider() {
                         <img 
                         src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`} 
                         alt=""
+                        className="App-logo"
                         />
                     </div>
                 )
