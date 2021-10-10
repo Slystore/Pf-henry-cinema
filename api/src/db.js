@@ -41,6 +41,7 @@ const {
 } = sequelize.models;
 
 
+
 users.belongsToMany(role, { through: "rolesDepend" });
 role.belongsToMany(users, { through: "rolesDepend" });
 
@@ -50,33 +51,30 @@ movies.belongsToMany(genres, { through: "moviesGenre" });
 movies.belongsToMany(cinemas, { through: "moviesCinema" });
 cinemas.belongsToMany(movies, { through: "moviesCinema" });
 
-// cinemas.hasMany(cinemaRoom, {
-//     onDelete: "CASCADE",
-// });
+cinemaRoom.belongsToMany(movies, { through: "movieCinemaRoom" });
+movies.belongsToMany(cinemaRoom, { through: "movieCinemaRoom" });
 
-// cinemaRoom.belongsTo(cinemas, {
-//     onDelete: "CASCADE",
-// });
+cinemas.hasMany(cinemaRoom, {
+    onDelete: "CASCADE",
+});
 
-cinemaRoom.belongsTo(cinemas);
-cinemas.hasMany(cinemaRoom);
+cinemaRoom.belongsTo(cinemas, {
+    onDelete: "CASCADE",
+});
 
-screening.belongsTo(movies);
-movies.hasMany(screening);
+// screening.belongsTo(movies);
+// movies.hasMany(screening);
 
-screening.belongsTo(movies);
-movies.hasMany(screening);
+// screening.belongsTo(cinemaRoom);
+// cinemaRoom.hasMany(screening);
 
-screening.belongsTo(cinemaRoom);
-cinemaRoom.hasMany(screening);
-
-seats.belongsTo(cinemaRoom);
-cinemaRoom.hasMany(seats);
+// seats.belongsTo(cinemaRoom);
+// cinemaRoom.hasMany(seats);
 
 movies.hasMany(purchase);
 purchase.belongsTo(movies);
 
-users.hasMany(purchase); //***OJOTA */
+users.hasMany(purchase); 
 purchase.belongsTo(users);
 
 purchase.belongsTo(cinemas);
@@ -89,21 +87,20 @@ purchase.belongsTo(cinemaRoom);
 cinemaRoom.hasMany(purchase);
 
 seats.hasOne(purchase);
+purchase.belongsTo(seats);
 
-seats.belongsTo(screening);
-screening.hasMany(seats);
+// seats.belongsTo(screening);
+// screening.hasMany(seats);
 
-seats.belongsTo(users);
-users.hasOne(seats);
+// seats.belongsTo(users);
+// users.hasOne(seats);
 
-seats.belongsTo(cinemas);
-cinemas.hasMany(seats);
+// seats.belongsTo(cinemas);
+// cinemas.hasMany(seats);
 
-screening.belongsTo(movies);
-movies.hasMany(screening);
+// screening.belongsTo(movies);
+// movies.hasMany(screening);
 
-cinemaRoom.belongsToMany(movies, { through: "movieCinemaRoom" });
-movies.belongsToMany(cinemaRoom, { through: "movieCinemaRoom" });
 
 module.exports = {
     ...sequelize.models,

@@ -3,12 +3,7 @@ const { DataTypes, UUIDV4 } = require("sequelize");
 module.exports = (Sequelize) => {
     return Sequelize.define(
         "users", {
-            id: {
-                type: DataTypes.UUID,
-                defaultValue: UUIDV4,
-                primaryKey: true,
-            },
-            name: {
+                name: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
@@ -48,7 +43,12 @@ module.exports = (Sequelize) => {
             userType: {
                 type: DataTypes.ENUM("superadmin", "admin", "user", "banned", "disabled"),
                 defaultValue: "user",
-            }
+
+            },
+            shoppingCart: {
+                type: DataTypes.JSONB
+            },
+            
         }, {}
     );
 };
