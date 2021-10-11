@@ -11,8 +11,9 @@ import PageNotFound from './components/404/PageNotFound.jsx';
 import HomeView from "./views/HomeView.js";
 import FormSingIn from "./components/Forms/FormSingIn.jsx";
 import { getAll } from "./redux/movies/moviesAction";
-import FormSingUp from "./components/Forms/FormsSingUp/FormSingUp.jsx";
+import FormSingUp from "./components/Forms/FormsSingUp/FormSingUp";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
+
 
 
 
@@ -37,7 +38,7 @@ function App() {
           <Route path="/admin/createMovie" component={FormMovie} />
           <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
           {/* <Route path="/admin/createGenre" component={FormGenre} /> */}
-          <Route exact path= "/404" component={PageNotFound} />
+          <Route  path= "*" component={PageNotFound} />
         </Switch>
       </Router>
     </div>

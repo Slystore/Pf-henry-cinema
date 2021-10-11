@@ -5,7 +5,14 @@ import { IconContext } from "react-icons";
 import { IoMdClose } from "react-icons/io";
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
-import SidebarData from "./SidebarData";
+import { BiCameraMovie } from "react-icons/bi";
+import { BiMoviePlay } from "react-icons/bi";
+import { MdLocalMovies } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { AiOutlineMail } from "react-icons/ai";
+import { BiLogIn, BiLogOut } from "react-icons/bi";
+import { BsBook } from "react-icons/bs";
+import { GiMailbox } from "react-icons/gi";
 import "./sidebar.css";
 import { getToken } from "../../redux/users/usersAction";
 
@@ -15,6 +22,10 @@ function Sidebar() {
     userState: false,
     userData: undefined,
   });
+  const logOut = () => {
+    localStorage.removeItem("token");
+    window.location.reload(false);
+  };
 
   useEffect(() => {
     const x = getToken();
@@ -22,8 +33,7 @@ function Sidebar() {
       return setUserLog(false);
     } else {
       const decoded = jwt_decode(x);
-      console.log('este es el token',x)
-      console.log('este es  el token decoded',decoded)
+      console.log('este es el decode',decoded)
       setUserLog({
         userState: true,
         userData: decoded,
@@ -31,7 +41,7 @@ function Sidebar() {
     }
   }, []);
 
-  console.log('esta es la data del user ',userLog.userData);
+  console.log("esta es la data del user ", userLog);
 
   const showSidebar = () => setSidebar(!sidebar);
   return (
@@ -49,7 +59,71 @@ function Sidebar() {
                 <IoMdClose />
               </Link>
             </li>
-            {SidebarData.map((item, index) => {
+            <li className="nav-text">
+              <Link to="/">
+                <BiCameraMovie />
+                <span>Cines</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="/">
+                <BiMoviePlay />
+                <span>Estrenos</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="/">
+                <MdLocalMovies />
+                <span>Todas las peliculas</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="/">
+                <AiOutlineHome />
+                <span>Cine en casa</span>
+              </Link>
+            </li>
+            {userLog ? (
+              <li className="nav-text">
+                <Link to="/">
+                  <BiLogOut />
+                  <span
+                    onClick={() => {
+                      logOut();
+                    }}
+                  >
+                    Log out
+                  </span>
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-text">
+                <Link to="/login">
+                  <BiLogIn />
+                  <span>Login</span>
+                </Link>
+              </li>
+            )}
+            <li className="nav-text">
+              <Link to="/">
+                <AiOutlineMail />
+                <span>Contacto</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="/">
+                <BsBook />
+                <span>Terminos y condiciones</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="/">
+                <GiMailbox />
+                <span>Buzon de quejas y sugerencias</span>
+              </Link>
+            </li>
+
+            {/* {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   {userLog ? (
@@ -67,7 +141,7 @@ function Sidebar() {
                  
                 </li>
               );
-            })}
+            })} */}
           </ul>
         </nav>
       </IconContext.Provider>
