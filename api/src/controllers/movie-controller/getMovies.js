@@ -32,7 +32,9 @@ const getMovies = async(req, res, next) => {
                     attributes: {
                         includes: ["name"]
                     },
-                    through: { attributes: [] },
+                    through: {
+                        attributes: []
+                    },
                 }, {
                     model: cinemas,
                     attributes: {

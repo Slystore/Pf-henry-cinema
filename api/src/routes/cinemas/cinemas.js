@@ -1,5 +1,5 @@
-const { Router} = require('express')
-const getCinemas = require('../../controllers/cinema-controllers/getCinemas')
+const { Router } = require('express')
+const { getCinemas } = require('../../controllers/cinema-controllers/getCinemas.js')
 const getCinemasById = require('../../controllers/cinema-controllers/getCinemaById')
 const postCinema = require('../../controllers/cinema-controllers/postCinema')
 const updateCinema = require('../../controllers/cinema-controllers/putCinema')
