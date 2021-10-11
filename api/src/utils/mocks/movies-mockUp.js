@@ -1,6 +1,6 @@
 const { movies, genres, cinemas, cinemaRoom, screening } = require('../../db.js');
 
-const moviesList = async() => {
+const moviesMock = async() => {
     const freeGuy = await movies.create({
         title: "Free Guy",
         released: "2021-08-11",
@@ -80,7 +80,6 @@ const moviesList = async() => {
     snakeEyes.addCinemas(getSnakeEyesCinema);
     snakeEyes.addCinemaRooms(getSnakeEyesCinemaRoom);
     snakeEyes.addScreenings(getSnakeEyesScreening);
-    /*-----------------------------------------------------------------------------------------------*/
 
     const old = await movies.create({
         title: "Old",
@@ -102,7 +101,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getOldCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -121,7 +120,7 @@ const moviesList = async() => {
     old.addCinemaRooms(getOldCinemaRoom);
     old.addScreenings(getOldScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const shangChi = await movies.create({
         title: "Shang-Chi and the Legend of the Ten Rings",
         released: "2021-09-01",
@@ -151,7 +150,7 @@ const moviesList = async() => {
     });
 
     const getShangChiScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 14 },
         attributes: ['id']
     });
 
@@ -160,7 +159,7 @@ const moviesList = async() => {
     shangChi.addCinemaRooms(getShangChiCinemaRoom);
     shangChi.addScreenings(getShangChiScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const theSuicideSquad = await movies.create({
         title: "The Suicide Squad",
         released: "2021-07-28",
@@ -175,12 +174,14 @@ const moviesList = async() => {
         price: '99.99',
         runTime: "2.43.20",
     });
+
+
     const getTheSuicideSquadGenre = await genres.findAll({
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
     const getTheSuicideSquadCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
@@ -190,7 +191,7 @@ const moviesList = async() => {
     });
 
     const getTheSuicideSquadScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 14 },
         attributes: ['id']
     });
 
@@ -199,7 +200,7 @@ const moviesList = async() => {
     theSuicideSquad.addCinemaRooms(getTheSuicideSquadCinemaRoom);
     theSuicideSquad.addScreenings(getTheSuicideSquadScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const catchTheBullet = await movies.create({
         title: "Catch the Bullet",
         released: "2021-09-10",
@@ -219,7 +220,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getCatchTheBulletCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -229,7 +230,7 @@ const moviesList = async() => {
     });
 
     const getCatchTheBulletScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 14 },
         attributes: ['id']
     });
 
@@ -238,7 +239,8 @@ const moviesList = async() => {
     catchTheBullet.addCinemaRooms(getCatchTheBulletCinemaRoom);
     catchTheBullet.addScreenings(getCatchTheBulletScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
+
     const bacNord = await movies.create({
         title: "BAC Nord",
         released: "2021-08-18",
@@ -268,7 +270,7 @@ const moviesList = async() => {
     });
 
     const getBacNordScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 16 },
         attributes: ['id']
     });
 
@@ -277,7 +279,7 @@ const moviesList = async() => {
     bacNord.addCinemaRooms(getBacNordCinemaRoom);
     bacNord.addScreenings(getBacNordScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const kate = await movies.create({
         title: "Kate",
         released: "2021-09-10",
@@ -297,7 +299,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getKateCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
@@ -307,7 +309,7 @@ const moviesList = async() => {
     });
 
     const getKateScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 16 },
         attributes: ['id']
     });
 
@@ -316,7 +318,7 @@ const moviesList = async() => {
     kate.addCinemaRooms(getKateCinemaRoom);
     kate.addScreenings(getKateScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const sasRedNotice = await movies.create({
         title: "SAS: Red Notice",
         released: "2021-08-11",
@@ -336,7 +338,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getSasRedNoticeCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -346,17 +348,16 @@ const moviesList = async() => {
     });
 
     const getSasRedNoticeScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 16 },
         attributes: ['id']
     });
 
-    kate.addGenres(getSasRedNoticeGenre);
-    kate.addCinemas(getSasRedNoticeCinema);
-    kate.addCinemaRooms(getSasRedNoticeCinemaRoom);
-    kate.addScreenings(getSasRedNoticeScreening);
+    sasRedNotice.addGenres(getSasRedNoticeGenre);
+    sasRedNotice.addCinemas(getSasRedNoticeCinema);
+    sasRedNotice.addCinemaRooms(getSasRedNoticeCinemaRoom);
+    sasRedNotice.addScreenings(getSasRedNoticeScreening);
 
 
-    /*-----------------------------------------------------------------------------------------------*/
     const jungleCruise = await movies.create({
         title: "Jungle Cruise",
         released: "2021-07-28",
@@ -386,7 +387,7 @@ const moviesList = async() => {
     });
 
     const getJungleCruiseScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 18 },
         attributes: ['id']
     });
 
@@ -395,7 +396,6 @@ const moviesList = async() => {
     jungleCruise.addCinemaRooms(getJungleCruiseCinemaRoom);
     jungleCruise.addScreenings(getJungleCruiseScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
     const jurassicHunt = await movies.create({
         title: "Jurassic Hunt",
         released: "2021-09-01",
@@ -415,7 +415,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getJurassicHuntCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
@@ -425,7 +425,7 @@ const moviesList = async() => {
     });
 
     const getJurassicHuntScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 18 },
         attributes: ['id']
     });
 
@@ -435,7 +435,6 @@ const moviesList = async() => {
     jurassicHunt.addScreenings(getJurassicHuntScreening);
 
 
-    /*-----------------------------------------------------------------------------------------------*/
     const f9 = await movies.create({
         title: "Fast & Forious 9",
         released: "2021-05-19",
@@ -455,7 +454,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getf9Cinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -465,7 +464,7 @@ const moviesList = async() => {
     });
 
     const getf9Screening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 18 },
         attributes: ['id']
     });
 
@@ -474,8 +473,6 @@ const moviesList = async() => {
     f9.addCinemaRooms(getf9CinemaRoom);
     f9.addScreenings(getf9Screening);
 
-
-    /*-----------------------------------------------------------------------------------------------*/
     const pawPatrol = await movies.create({
         title: "PAW Patrol: The Movie",
         released: "2021-08-09",
@@ -505,7 +502,7 @@ const moviesList = async() => {
     });
 
     const getPawPatrolScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 20 },
         attributes: ['id']
     });
 
@@ -514,7 +511,7 @@ const moviesList = async() => {
     pawPatrol.addCinemaRooms(getPawPatrolCinemaRoom);
     pawPatrol.addScreenings(getPawPatrolScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const escapeRoom = await movies.create({
         title: "Escape Room: Tournament of Champions",
         released: "2021-07-01",
@@ -534,7 +531,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getEscapeRoomCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
@@ -544,15 +541,16 @@ const moviesList = async() => {
     });
 
     const getEscapeRoomScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 20 },
         attributes: ['id']
     });
 
     escapeRoom.addGenres(getEscapeRoomGenre);
     escapeRoom.addCinemas(getEscapeRoomCinema);
     escapeRoom.addCinemaRooms(getEscapeRoomCinemaRoom);
-    escapeRoom.addScreenings(getEscapeRoomCinemaRoom);
-    /*-----------------------------------------------------------------------------------------------*/
+    escapeRoom.addScreenings(getEscapeRoomScreening);
+
+
     const luca = await movies.create({
         title: "Luca",
         released: "2021-06-17",
@@ -572,7 +570,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getLucaCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -582,7 +580,7 @@ const moviesList = async() => {
     });
 
     const getLucaScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 20 },
         attributes: ['id']
     });
 
@@ -591,7 +589,6 @@ const moviesList = async() => {
     luca.addCinemaRooms(getLucaCinemaRoom);
     luca.addScreenings(getLucaScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
     const theBossBaby = await movies.create({
         title: "The Boss Baby: Family Business",
         released: "2021-07-01",
@@ -621,7 +618,7 @@ const moviesList = async() => {
     });
 
     const getTheBossBabyScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 22 },
         attributes: ['id']
     });
 
@@ -629,8 +626,6 @@ const moviesList = async() => {
     theBossBaby.addCinemas(getTheBossBabyCinema);
     theBossBaby.addCinemaRooms(getTheBossBabyCinemaRoom);
     theBossBaby.addScreenings(getTheBossBabyScreening);
-
-    /*-----------------------------------------------------------------------------------------------*/
 
     const spaceJam = await movies.create({
         title: "Space Jam: A New Legacy",
@@ -651,7 +646,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getSpaceJamCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Leta' },
         attributes: ['id']
     });
 
@@ -661,7 +656,7 @@ const moviesList = async() => {
     });
 
     const getSpaceJamScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 22 },
         attributes: ['id']
     });
 
@@ -670,7 +665,7 @@ const moviesList = async() => {
     spaceJam.addCinemaRooms(getSpaceJamCinemaRoom);
     spaceJam.addScreenings(getSpaceJamScreening);
 
-    /*-----------------------------------------------------------------------------------------------*/
+
     const malignant = await movies.create({
         title: "Malignant",
         released: "2021-09-01",
@@ -689,7 +684,7 @@ const moviesList = async() => {
         attributes: ['id']
     })
     const getMalignantCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+        where: { name: 'Clark' },
         attributes: ['id']
     });
 
@@ -699,16 +694,14 @@ const moviesList = async() => {
     });
 
     const getMalignantScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 22 },
         attributes: ['id']
     });
 
     malignant.addGenres(getMalignantGenre);
-    malignant.addCinemas(getMalignantGenre);
+    malignant.addCinemas(getMalignantCinema);
     malignant.addCinemaRooms(getMalignantCinemaRoom);
     malignant.addScreenings(getMalignantScreening);
-
-    /*-----------------------------------------------------------------------------------------------*/
 
     const theTomorrowWar = await movies.create({
         title: "The Tomorrow War",
@@ -739,7 +732,7 @@ const moviesList = async() => {
     });
 
     const getTheTomorrowWarScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 24 },
         attributes: ['id']
     });
 
@@ -747,8 +740,6 @@ const moviesList = async() => {
     theTomorrowWar.addCinemas(getTheTomorrowWarCinema);
     theTomorrowWar.addCinemaRooms(getTheTomorrowWarCinemaRoom);
     theTomorrowWar.addScreenings(getTheTomorrowWarScreening);
-
-    /*-----------------------------------------------------------------------------------------------*/
 
     const dontBreatheTwo = await movies.create({
         title: "Don't Breathe 2",
@@ -788,9 +779,10 @@ const moviesList = async() => {
     dontBreatheTwo.addCinemas(getDontBreatheTwoCinema);
     dontBreatheTwo.addCinemaRooms(getDontBreatheTwoCinemaRoom);
     dontBreatheTwo.addScreenings(getDontBreatheTwoScreening);
-};
+
+}
 
 
 module.exports = {
-    moviesList,
+    moviesMock,
 };
