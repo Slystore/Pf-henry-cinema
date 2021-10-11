@@ -1,8 +1,8 @@
-const {DataTypes, UUIDV4 } = require('sequelize')
+const { DataTypes, UUIDV4 } = require('sequelize')
 
 module.exports = (Sequelize) => {
-    return Sequelize.define('cinemas',{
-        
+    return Sequelize.define('cinemas', {
+
         name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,5 +10,5 @@ module.exports = (Sequelize) => {
         location: {
             type: DataTypes.TEXT
         }
-    },{})
+    }, { timestamps: false })
 }
