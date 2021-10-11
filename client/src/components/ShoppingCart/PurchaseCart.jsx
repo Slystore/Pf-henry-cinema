@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { cinemaSelect, screeningSelect, seatSelect } from '../../redux/carts/cartsActions';
+import { useSelector,  } from 'react-redux';
+// import { cinemaSelect, screeningSelect, seatSelect } from '../../redux/carts/cartsActions';
 
  export default function PurchaseCart  () {
     const {cinemaSelect} = useSelector(state => state.cartReducer) 

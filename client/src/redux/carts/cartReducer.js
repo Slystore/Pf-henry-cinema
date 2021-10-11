@@ -78,19 +78,18 @@ function cartReducer(state = initialState, action) {
 
         case ADD_TO_CART:
 
-            let newItem = state.movies.find((movie) => movie.id == action.payload);
-            let iteminCart = state.cart.find((item) => item.id == newItem.id)
+            let newItem = state.movies.find((movie) => movie.id === action.payload);
+            let iteminCart = state.cart.find((item) => item.id === newItem.id)
             let movieId = newItem.id
             return iteminCart ? {
-                    ...state,
-                    cart: state.cart.map((item) => item.id == newItem.id ? {...item, quantity: item.quantity + 1 } : item),
-                    postCart: [...state.postCart, { movieId }]
-                } :
-                {
-                    ...state,
-                    cart: [{...newItem, quantity: 1 }],
-                    postCart: [{ movieId }]
-                }
+                ...state,
+                cart: state.cart.map((item) => item.id === newItem.id ? {...item, quantity: item.quantity + 1 } : item),
+                postCart: [...state.postCart, { movieId }]
+            } : {
+                ...state,
+                cart: [{...newItem, quantity: 1 }],
+                postCart: [{ movieId }]
+            }
         case POST_FILL_CART:
             return {
                 ...state
@@ -114,7 +113,7 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
-                let screeningPrueba = state.postCart.length === 1 ? {...state.postCart[0], screeningId: action.payload } : state.postCart.map(item => item.screeningId ? { ...item } : {...item, screeningId: action.payload })
+                let screeningPrueba = state.postCart.length === 1 ? {...state.postCart[0], screeningId: action.payload } : state.postCart.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
                 return {
                     ...state,
                     screeningSelect: action.payload,
@@ -122,13 +121,15 @@ function cartReducer(state = initialState, action) {
                 }
             }
         case SEATS:
-            {     var flag=true;
+            {
+                var flag = true;
                 let seatSelect = state.postCart.map(item => {
-                  
-                    while(flag && !item.seat){
-                        item.seat= action.payload;
-                        flag= false
-                    }return item
+
+                    while (flag && !item.seat) {
+                        item.seat = action.payload;
+                        flag = false
+                    }
+                    return item
                 })
                 return {
                     ...state,
