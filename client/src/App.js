@@ -9,8 +9,8 @@ import MovieDetail from "./components/MovieDetail/MovieDetail.jsx";
 import FormMovie from "./components/Forms/FormMovie.jsx";
 import PageNotFound from './components/404/PageNotFound.jsx';
 import HomeView from "./views/HomeView.js";
-
-import { getAll } from "./actions/index.js";
+import FormSingIn from "./components/Forms/FormSingIn.jsx";
+import { getAll } from "./redux/movies/moviesAction";
 import FormSingUp from "./components/Forms/FormsSingUp/FormSingUp.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 
