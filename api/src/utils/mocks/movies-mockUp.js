@@ -21,8 +21,8 @@ const moviesMock = async() => {
         attributes: ['id']
     });
 
-    const getFreeGuyCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getFreeGuyCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -32,7 +32,7 @@ const moviesMock = async() => {
     });
 
     const getFreeGuyScreening = await screening.findOne({
-        where: { time: 12 },
+        where: { time: 24 },
         attributes: ['id']
     });
 
@@ -61,8 +61,8 @@ const moviesMock = async() => {
         attributes: ['id']
     });
 
-    const getSnakeEyesCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getSnakeEyesCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -100,8 +100,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getOldCinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    const getOldCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -139,8 +139,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getShangChiCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getShangChiCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -180,8 +180,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getTheSuicideSquadCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getTheSuicideSquadCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -219,8 +219,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getCatchTheBulletCinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    const getCatchTheBulletCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -259,8 +259,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getBacNordCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getBacNordCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -298,8 +298,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getKateCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getKateCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -336,9 +336,9 @@ const moviesMock = async() => {
     const getSasRedNoticeGenre = await genres.findAll({
         where: { id: [13, 17, 11] },
         attributes: ['id']
-    })
-    const getSasRedNoticeCinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    });
+    const getSasRedNoticeCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -376,8 +376,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getJungleCruiseCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getJungleCruiseCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -414,8 +414,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getJurassicHuntCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getJurassicHuntCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -453,8 +453,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getf9Cinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    const getf9Cinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -491,8 +491,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getPawPatrolCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getPawPatrolCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -530,8 +530,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getEscapeRoomCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getEscapeRoomCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -569,8 +569,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getLucaCinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    const getLucaCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -607,8 +607,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getTheBossBabyCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getTheBossBabyCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -645,8 +645,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getSpaceJamCinema = await cinemas.findOne({
-        where: { name: 'Leta' },
+    const getSpaceJamCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -683,8 +683,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getMalignantCinema = await cinemas.findOne({
-        where: { name: 'Clark' },
+    const getMalignantCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -721,8 +721,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getTheTomorrowWarCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getTheTomorrowWarCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
@@ -760,8 +760,8 @@ const moviesMock = async() => {
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
-    const getDontBreatheTwoCinema = await cinemas.findOne({
-        where: { name: 'Kaia' },
+    const getDontBreatheTwoCinema = await cinemas.findAll({
+        where: { id: [1, 2, 3] },
         attributes: ['id']
     });
 
