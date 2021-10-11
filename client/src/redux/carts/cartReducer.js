@@ -20,6 +20,7 @@ export const initialState = {
         },
         {
             name: "Leta",
+            id: 4,
             location: "05061 Greenholt Underpass"
         },
         {
@@ -34,10 +35,12 @@ export const initialState = {
             id: 1
         },
         {
-            time: 22
+            time: 22,
+            id: 2
         },
         {
-            time: 24
+            time: 24,
+            id: 3
         }
     ],
     screeningSelect: [],
