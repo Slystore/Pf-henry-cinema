@@ -20,6 +20,7 @@ export const initialState = {
         },
         {
             name: "Leta",
+            id: 4,
             location: "05061 Greenholt Underpass"
         },
         {
@@ -34,10 +35,12 @@ export const initialState = {
             id: 1
         },
         {
-            time: 22
+            time: 22,
+            id: 2
         },
         {
-            time: 24
+            time: 24,
+            id: 3
         }
     ],
     screeningSelect: [],
@@ -111,14 +114,22 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
+                let screeningPrueba = state.postCart.length === 1 ? {...state.postCart[0], screeningId: action.payload } : state.postCart.map(item => item.screeningId ? { ...item } : {...item, screeningId: action.payload })
                 return {
                     ...state,
-                    screeningSelect: action.payload
+                    screeningSelect: action.payload,
+                    postCart: screeningPrueba
                 }
             }
         case SEATS:
-            {
-                let seatSelect = state.postCart.map(item => item.seat ? {...item } : {...item, seat: action.payload })
+            {     var flag=true;
+                let seatSelect = state.postCart.map(item => {
+                  
+                    while(flag && !item.seat){
+                        item.seat= action.payload;
+                        flag= false
+                    }return item
+                })
                 return {
                     ...state,
                     seatsSelect: [...state.seatsSelect, action.payload],
