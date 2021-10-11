@@ -7,7 +7,7 @@ export const GET_TOKEN = "GET_TOKEN";
 
 export function getUsers() {
     return async(dispatch) => {
-        const { data } = await axios.get(`http://localhost:3001/api/movies`);
+        const { data } = await axios.get(`http://localhost:3001/api/movies/`);
         return await dispatch({
             type: GET_USERS,
             payload: data,
@@ -17,7 +17,7 @@ export function getUsers() {
 export async function createUser(payload) {
     // let data = await axios.post("http://18.216.130.223:3001/api/singUp", payload);
     try {
-        let data = await axios.post("http://localhost:3001/api/singUp", payload);
+        let data = await axios.post("http://localhost:3001/api/singUp/", payload);
         console.log("payload de la action", payload);
         console.log("esta es la data que me llega ", data);
         if (data.data.user) {
@@ -34,7 +34,7 @@ export async function createUser(payload) {
 }
 
 export async function login(payload) {
-    let data = await axios.post("http://localhost:3001/api/singIn", payload);
+    let data = await axios.post("http://localhost:3001/api/singIn/", payload);
 
     if (data.data.token) {
         localStorage.setItem("token", data.data.token);
