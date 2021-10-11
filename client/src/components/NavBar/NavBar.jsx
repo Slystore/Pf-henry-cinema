@@ -156,13 +156,13 @@ function NavBar() {
                         <Box sx={{ display: { xs: 'none', md: 'flex' }, fontWeight: 900}}>
                         
                           <SearchBar/>
-                          
-                          <IconButton size="large" aria-label="notifications" color="inherit" href={`/shoppingCart`} >
+                          <Link to={`/shoppingCart`} >
+                          <IconButton size="large" aria-label="notifications" color="inherit"  >
                               <Badge badgeContent={cart.length} color="error">
                                   <ShoppingCartIcon className={ classes.botonHover } />
                               </Badge>
                           </IconButton>
-                           
+                          </Link>
                             <IconButton size="large" edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit" >
                                 <AccountCircle className={ classes.botonHover } />
                             </IconButton>

@@ -96,3 +96,5 @@ const clearCart = () => {
 }
 
 export default Home;
+
+
