@@ -67,7 +67,6 @@ function Home() {
             return (
               <div className="Movie" key={index}>
                 <Movie
-                  key={movie.id}
                   id={movie.id}
                   image={movie.image}
                   name={movie.title}
