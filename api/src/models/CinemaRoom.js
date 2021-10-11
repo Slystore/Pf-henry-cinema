@@ -1,7 +1,6 @@
 const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (Sequelize) => {
-
     return Sequelize.define(
         "cinemaRoom", {
 
@@ -15,4 +14,3 @@ module.exports = (Sequelize) => {
         }, { timestamps: false }
     );
 };
-
