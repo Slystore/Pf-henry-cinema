@@ -9,6 +9,8 @@ const purchaseModel = require("./models/Purchase");
 const screeningModel = require("./models/Screening");
 const roomModel = require("./models/CinemaRoom");
 const seatsModel = require("./models/Seats");
+const purchaseOrderModel = require("./models/purchaseOrder");
+const Purchase = require("./models/Purchase");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
@@ -27,6 +29,7 @@ purchaseModel(sequelize);
 screeningModel(sequelize);
 roomModel(sequelize);
 seatsModel(sequelize);
+purchaseOrderModel(sequelize);
 
 const {
     genres,
@@ -37,10 +40,11 @@ const {
     screening,
     cinemaRoom,
     seats,
-    role
+    role,
+    purchaseOrder
 } = sequelize.models;
 
-
+console.log(sequelize.models)
 
 users.belongsToMany(role, { through: "rolesDepend" });
 role.belongsToMany(users, { through: "rolesDepend" });
@@ -101,6 +105,13 @@ cinemas.hasMany(seats);
 screening.belongsTo(movies);
 movies.hasMany(screening);
 
+users.hasMany(purchaseOrder)
+purchaseOrder.belongsTo(users)
+purchaseOrder.hasMany(purchase)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.hasOne(purchaseOrder)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.belongsTo(purchaseOrder)
 
 module.exports = {
     ...sequelize.models,

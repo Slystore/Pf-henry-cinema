@@ -8,30 +8,7 @@ const getPurchaseById = async (req, res, next) => {
             where: {
                 id
             },
-            attributes: ["id", "nombre"],
-            include: 
-            [
-            {
-                model: cinemas,
-                attributes: ["id"],
-            },
-            {
-                model: cinemaRoom,
-                attributes: ["id"],
-            },
-            {
-                model: screening,
-                attributes: ["id"],
-            },
-            {
-                model: seats,
-                attributes: ["id"],
-            },
-            {
-                model: users,
-                attributes: ["id"],
-            }
-            ]
+            
         })
         purchaseQuery ?
         res.json(purchaseQuery) :

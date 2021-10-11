@@ -18,7 +18,7 @@ conn.sync({ force: true })
     .then(async() => {
         console.log('DB connected!');
 
-        server.listen(PORT, () => console.log(`Server listening on port 3001`));
+        server.listen(3001, () => console.log(`Server listening on port 3001`));
         // seed();
 
         await genresMockUp();
