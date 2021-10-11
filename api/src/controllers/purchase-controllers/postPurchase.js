@@ -1,21 +1,28 @@
 const { Op } = require('sequelize')
 const sequelize = require('sequelize')
-const { purchase, cinemas, cinemaRoom, screening, seats, users, movies } = require('../../db')
+const { purchase, cinemas, cinemaRoom, screening, seats, users, movies, purchaseOrder } = require('../../db')
 
-let whatever = 1
+let aux = 1
+
 const postPurchase = async (req, res, next) => {
     try {
-      
-        const [{ userId }] = req.body
+        const { user } = req.params
+        // Busco el carrito de compra del usuario: es un array de objetos
+        let cart = await users.findOne({
+            where: {
+                id: user
+            },
+        })
+        
+        let shoppingCart = cart.dataValues.shoppingCart
+       
         let cinemasQuery, cinemaRoomQuery, screeningQuery, seatsQuery, userQuery, movieQuery, purchaseCreation, purchaseQuery;
         let  purchaseArray = [];
-        
-        const user = await users.findByPk(userId)
        
-         for (let i = 0; i < req.body.length; i++, whatever++) {
-            
-                let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = req.body[i]
-             
+         for (let i = 0; i < shoppingCart.length; i++, aux++) { // iteramos el array de objetos
+            console.log('adentro del for')
+                let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = shoppingCart[i] //desestructuramos el objeto para sacar cada key y su value
+             //Nos aseguramos que el asiento elegido este disponible en 'seats'
                 seatsQuery = await seats.findOne({
                     where:{
                         [Op.and] : [
@@ -25,145 +32,66 @@ const postPurchase = async (req, res, next) => {
                     }   
                 })
                 
+                //si el asiento estaba disponible, se crea una compra
                 if(seatsQuery) {
                     purchaseCreation = await purchase.create({
-                        number: whatever
+                        number: aux
                     })
                 }
-                
+                //se identifica la compra recien realizada
                   purchaseQuery = await purchase.findOne({
-                     where: { number: whatever },
+                     where: { number: aux },
                      attributes: ['id']
                  })
                  
-                 purchaseArray.push(purchaseQuery.dataValues.id)
-
+                 purchaseArray.push(purchaseQuery)
+                 //se buscan los ids de los otros elementos recibidos por el objeto del carrito para hacer relaciones
                  cinemasQuery = await cinemas.findByPk(cinemaId)
                  cinemaRoomQuery = await cinemaRoom.findByPk(cinemaRoomId)
                  screeningQuery = await screening.findByPk(screeningId)
                  userQuery = await users.findByPk(userId)
                  movieQuery = await movies.findByPk(movieId)
-                 
+                 //se realizan las relaciones
                  if(seatsQuery){
-                     await movieQuery.addPurchase(purchaseQuery)
+                    //  console.log(movieQuery)
+                    //  await movieQuery.addPurchase(purchaseQuery)
                      await cinemasQuery.addPurchase(purchaseQuery)
                      await screeningQuery.addPurchase(purchaseQuery)
                      await cinemaRoomQuery.addPurchase(purchaseQuery)
                      await seatsQuery.setPurchase(purchaseQuery)
-                    //  console.log('flag',seatsQuery.isAvailable)
-                     await seats.update({isAvailable: false},{ where: {id: seatId}}) 
-                    //  console.log('flag en FALSE')
+                     await seats.update({isAvailable: false},{ where: {id: seatId}}) // si el asiento estaba disponible, se switchea el flag
                      await userQuery.addPurchase(purchaseQuery)
                  }
-
-                   purchasesQuery = await purchase.findOne({
-                        where: { number: whatever },
-                        attributes: ["id", "number"],
-                            include: 
-                            [
-                                {
-                                    model: cinemas,
-                                    attributes: ["id"],
-                                },
-                                {
-                                    model: cinemaRoom,
-                                    attributes: ["id"],
-                                },
-                                {
-                                    model: screening,
-                                    attributes: ["id"],
-                                },
-                                {
-                                    model: seats,
-                                    attributes: ["id"],
-                                },
-                                {
-                                    model: users,
-                                    attributes: ["id"],
-                                },
-                                {
-                                    model: movies,
-                                    attributes: ["id"],
-                                }
-                            ]
-                    })
-                //  console.log('hecha la compra y las asociaciones...',purchaseQuery.toJSON())
-                //  console.log('butaca...',seatsQuery.toJSON())
-                 
-             
          }
 
-        // req.body.forEach( async el => {
-        //     whatever++
-        //     let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = el
-        //     console.log(movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId)
-        //     const purchaseCreation = await purchase.create({
-        //         number: ++whatever
-        //     })
-            
-        //     console.log(whatever)
-        //     console.log(purchaseCreation)
-        //      const purchaseQuery = await purchase.findOne({
-        //          where: { number: whatever },
-        //          attributes: ['id']
-        //      })
+         let orderCreate
+         if(purchaseArray) {//si se realizaron compras, se realiza una orden de compra
+              orderCreate = await purchaseOrder.create({
+              })
 
-        //      cinemasQuery = await cinemas.findByPk(cinemaId)
-        //      cinemaRoomQuery = await cinemaRoom.findByPk(cinemaRoomId)
-        //      screeningQuery = await screening.findByPk(screeningId)
-        //      seatsQuery = await seats.findByPk(seatId)
-        //      userQuery = await users.findByPk(userId)
-        //      movieQuery = await movies.findByPk(movieId)
-     
-        //      await movieQuery.addPurchase(purchaseQuery)
-        //      await cinemasQuery.addPurchase(purchaseQuery)
-        //      await screeningQuery.addPurchase(purchaseQuery)
-        //      await cinemaRoomQuery.addPurchase(purchaseQuery)
-        //      await seatsQuery.setPurchase(purchaseQuery)
-        //      await userQuery.addPurchase(purchaseQuery)
-
-        //      console.log(purchaseQuery.toJSON())
-        //      })
-             
-            //  await users.update({ shoppingCart: sequelize.literal(`${req.body}`)}, {where: {id: userId}})
-            // await users.upsert()
-            //  console.log(user.toJSON())
-         
-        
-
-        // console.log(Array.isArray(userQuery.purchaseHistory))
-        // userQuery.purchaseHistory = purchaseQuery
-        // if(!userQuery.purchaseHistory) userQuery.purchaseHistory = [ purchasesQuery ]
-        // else userQuery.purchaseHistory = userQuery.purchaseHistory.concat(purchasesQuery)
-    //     let prueba1
-    //     const prueba = purchaseArray.forEach(async e => {
-    //         prueba1 = await purchase.findAll({
-    //         where: {
-    //             id: e
-    //         }
-    //     })
-    //     console.log(prueba1)
-    // })
-    let prueba3 = await purchase.findAll({
-        where: {
-            id: purchaseArray
-        }
-    })
-        //  console.log(prueba3)
-
-        const userUpdate = await users.update( { shoppingCart: prueba3 },{
-            where: {
-                id: userId
+        await orderCreate.addPurchase(purchaseArray[0].id)
+        await orderCreate.addPurchase(purchaseArray[1].id)
+        // await purchaseArray[1].addPurchaseOrders(orderCreate.id)
+            //   purchaseArray.forEach(async purchase => {
+            //     console.log(purchase)
+            //       await purchase.setPurchaseOrder(orderCreate.id) 
+            //     }  )
+            //   orderCreate.addPurchases(purchaseArray)
             }
-        })
-        // await YourModel.update( { history: Sequelize.literal(`'${JSON.stringify({ hello: new Date(), random: Math.floor(Math.random() * Math.floor(2)) })}'::jsonb || history`) }, { where: { id: yourModelInstance.id } });
+
+             await users.update({shoppingCart: null},{
+                where: {
+                    id: user
+                },
+            })
+          
 
 
-        purchaseArray ?
-        res.json( 'The order has been created!') :
-        res.status(404).json({message: `An error has occured! The order hasn't been created`})
+        // purchaseArray ?
+        // res.json( 'The order has been created!') :
+        // res.status(404).json({message: `An error has occured! The order hasn't been created`})
         // console.log(userQuery)
-        // res.json('hola')
+        res.json(cart)
     } catch (error) {
         console.log(error)
         next(error)
@@ -172,29 +100,4 @@ const postPurchase = async (req, res, next) => {
 
 module.exports = postPurchase
 
-   //  const purchasesQuery = await purchase.findOne({
-            //      where: { number: whatever },
-            //      attributes: ["id", "number"],
-            //      include: 
-            //      [
-            //      {
-            //          model: cinemas,
-            //          attributes: ["id"],
-            //      },
-            //      {
-            //          model: cinemaRoom,
-            //          attributes: ["id"],
-            //      },
-            //      {
-            //          model: screening,
-            //          attributes: ["id"],
-            //      },
-            //      {
-            //          model: seats,
-            //          attributes: ["id"],
-            //      },
-            //      {
-            //          model: users,
-            //          attributes: ["id"],
-            //      }
-            //      ]
+   

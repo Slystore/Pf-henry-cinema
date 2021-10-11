@@ -2,6 +2,7 @@ const { purchase, cinemas, cinemaRoom, screening, seats, users } = require('../.
 
 const getPurchases = async (req, res, next) => {
     try {
+        
         const purchasesQuery = await purchase.findAll({
             attributes: ["id", "number"],
             include: 

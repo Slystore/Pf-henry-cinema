@@ -12,7 +12,7 @@ const seed = async() => {
     const cinemaList = await cinemas.findAll()
     const screeningList = await screening.findAll()
     const seatsList = await seats.findAll()
-    const moviesList = await moviesMocks();
+    // const moviesList = await moviesMocks();
     const genresList = await genresMockUp();
     // if (usersList.length === 0) await users.bulkCreate(mockUps);
     // if (cinemaRoomList.length === 0) await cinemaRoom.bulkCreate(cinemaRoomMock);
@@ -20,7 +20,7 @@ const seed = async() => {
     // if (screeningList.length === 0) await screening.bulkCreate(screeningMock);
     // if (seatsList.length === 0) await seats.bulkCreate(seatsMock);
 
-    if (usersList.length === 0) await moviesMocks();
+    // if (usersList.length === 0) await moviesMocks(); // ACA descomentar
     await genresMockUp();
     await usersMockUp();
     await rolesMockUp();

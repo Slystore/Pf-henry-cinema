@@ -10,7 +10,7 @@ const router = Router()
 router.get('/', getPurchases)
 
 // router.get('/:id', getPurchaseById)
-router.post('/create', postPurchase)
+router.post('/:user/create', postPurchase)
 
 // router.put('/update/:id', updatePurchase)
 // router.delete('/delete/:id', delPurchase)
