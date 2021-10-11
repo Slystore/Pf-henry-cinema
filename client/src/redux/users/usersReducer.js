@@ -9,12 +9,11 @@ const userState = {
 function usersReducer(state = userState, action) {
     switch (action.type) {
         case GET_USERS:
-            {
-                return {
-                    ...state,
-                    users: action.payload,
-                };
-            }
+            return {
+                ...state,
+                users: action.payload,
+            };
+            /* falls through */
         case CREATE_USER:
             console.log("esto llega al reducer de users", action.payload);
             if (action.payload.msg) {
@@ -29,14 +28,15 @@ function usersReducer(state = userState, action) {
                     userData: action.payload,
                 };
             }
+            /* falls through */
         case LOGIN:
             return {};
-
+            /* falls through */
         case GET_TOKEN:
             return {
                 ...state,
             };
-
+            /* falls through */
         default:
             return state;
     }

@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import { CardActionArea } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
 import Modal from '@mui/material/Modal';
@@ -25,16 +22,14 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
 
     const classes = useStyle();
     
-    const [value, setValue] = React.useState(2);
-    const [expanded, setExpanded] = React.useState(false);
-
+    const [, setValue] = React.useState(2);
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleExpandClick = () => {
-      setExpanded(!expanded);
-    };
+    // const handleExpandClick = () => {
+    //   setExpanded(!expanded);
+    // };
 
     var userRate = parseInt(rating,10) / 2
   

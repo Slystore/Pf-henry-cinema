@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IconContext } from "react-icons";
 import { IoMdClose } from "react-icons/io";
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import SidebarData from "./SidebarData";

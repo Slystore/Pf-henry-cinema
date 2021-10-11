@@ -53,15 +53,3 @@ export default function SearchBar() {
       </Search>
   )
 }
-
-
-
-    
-    {/* <input   
-      type= 'text'
-      placeholder= 'Buscar...'
-      onChange= {handleInputChange}
-      className= ""
-    />
-   
-   */}

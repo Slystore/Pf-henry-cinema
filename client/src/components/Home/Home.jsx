@@ -1,8 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Movie from "../Movie/Movie";
-import { Link } from 'react-router-dom';
-import { useReducer } from 'react'
 // import initialState from '../../reducer/shoping.js'
 // import shopingReducer from '../../reducer/shoping.js'
 import {
@@ -37,13 +35,6 @@ function Home() {
 
 }
 
-const deleteCart = () => {
-
-}
-
-const clearCart = () => {
-
-}
   return (
     <div>
       <div className="SelectGroup">
