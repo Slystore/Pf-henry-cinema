@@ -9,14 +9,15 @@ import {
   filterGenre,
   movieAvailability,
 } from "../../redux/movies/moviesAction";
-import "./Home.css";
 import { addToCart } from "../../redux/carts/cartsActions";
+import "./Home.css";
 
 function Home() {
+  
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.moviesReducer);
   const { genres } = useSelector((state) => state.moviesReducer);
-     // const { cart } = useSelector(state => state)
+  
 
   function handleAvailability(e) {
     e.preventDefault();
@@ -27,10 +28,7 @@ function Home() {
     e.preventDefault();
     dispatch(filterGenre(e.target.value));
   }
-  // const [state, dispatch] = useReducer ( shopingReducer, initialState )
-  // const { cart } = state
-
-  // var totalItems = 0
+  
   const handleAddCart = (id) => {
     // totalItems++
     // console.log(totalItems)

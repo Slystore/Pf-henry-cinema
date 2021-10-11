@@ -18,25 +18,13 @@ import MovieFilterIcon from '@mui/icons-material/MovieFilter';
 import Rating from '@mui/material/Rating';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
-import { useStyle } from './movieStyles.js'
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 770,
-  height: 550,
-  bgcolor: 'background.paper',
-  borderRadius: 3,
-  boxShadow: 24,
-  p: 4,
-};
+import { useStyle, style } from './movieStyles.js'
 
 
 function Movie({altImage, key, id, image, name, availability, genres, rating, description, addToCart}) {
 
     const classes = useStyle();
+    
     const [value, setValue] = React.useState(2);
     const [expanded, setExpanded] = React.useState(false);
 
@@ -57,11 +45,11 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
           <CardActionArea>
 
             <CardHeader className={ classes.rate } 
-            avatar={
-              <Avatar sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', boxShadow: '0 10px 10px #00000080' }} aria-label="recipe">
-              {rating}
-              </Avatar>
-            }
+              avatar={
+                <Avatar sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', boxShadow: '0 10px 10px #00000080' }} aria-label="recipe">
+                {rating}
+                </Avatar>
+              }
 
             />
               
@@ -87,11 +75,11 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
         </Card>
 
         <Modal
-        open={ open }
-        onClose={ handleClose }
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+            open={ open }
+            onClose={ handleClose }
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+        >
 
         {/* border: 'thin dotted #ccc' */}
 
@@ -107,7 +95,7 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
 
               <Box sx={{ width: 500, height: 40 }}>
 
-                <Typography variant="h5" align="left" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h5" align="left" className={ classes.name } aria-label="name">
                   { name } 
                 </Typography>
 

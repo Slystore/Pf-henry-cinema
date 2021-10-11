@@ -1,82 +1,77 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { makeStyles } from '@mui/styles';
 
-function controlPanel() {
+const useStyle = makeStyles({
+    container:{
+        width: '500px',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+     title: {
+ 		display: 'flex',
+ 		justifyContent: 'center'
+ 	},
+     button: {
+        background: 'linear-gradient(180deg, #424242 30%, #000000 90%)',
+ 	}
+})
+
+function ControlPanel() {
+
+    const classes = useStyle();
+
     return (
-        <div>
-            
+        <div className={ classes.container }>
+
+            <h1 className="">Admin Panel</h1>
+                <Grid sx={{border: '1px solid', height: '200px'}}
+                    container
+                    direction="column"
+                    justifyContent="space-around"
+                    alignItems="center"
+                    spacing={3}
+                >
+
+                    <Grid >
+                        <Grid 
+                            container
+                            direction="column"
+                            justifyContent="center"
+                            alignItems="center"
+                            
+                        >
+                        <Box sx={{ margin: 1 }}>
+                            <Button className={ classes.button } variant="contained" href={`/`}>
+                                    Home
+                            </Button>
+                        </Box>
+
+                        <Box sx={{ margin: 1 }}>
+                            <Button className={ classes.button } variant="contained"  href={`/admin/createMovie`}>
+                                Agregar Película
+                            </Button>
+                        </Box>
+
+                        <Box sx={{ margin: 1}}>
+                            <Button className={ classes.button } variant="contained" href={`/admin/createGenre`}>
+                                Agregar Género
+                            </Button>
+                        </Box>
+
+                    
+                    </Grid>
+                </Grid>
+            </Grid>
+
         </div>
     )
 }
 
-export default controlPanel
+export default ControlPanel
 
-
-
-
-// import { Grid, Button } from "@material-ui/core";
-// import { ThemeProvider } from '@material-ui/core';
-// import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-
-// import Button from '@mui/material/Button';
-// import Grid from '@mui/material/Grid';
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import theme from "../../utils/theme.js";
-
-// // const useStyles = makeStyles((theme)=>({
-// //     title: {
-// // 		display: 'flex',
-// // 		justifyContent: 'center'
-// // 	},
-// //     button: {
-// // 		display: 'block',
-// // 		marginTop: theme.spacing(2),
-// // 	}
-// // }))
-
-// function ControlPanel() {
-//     // const style = useStyles();
-//   return (
-//     <ThemeProvider theme={theme}>
-//       <h1 className="">Admin Panel</h1>
-//       <Grid sx={{border: '1px solid'}}
-//         container
-//         direction="row"
-//         justifyContent="space-around"
-//         alignItems="center"
-        
-//         spacing={1}
-//       >
-//         <Grid sx={{border: '2px solid #f00'}}>
-//           <Grid sx={{border: '1px solid'}}
-//             container
-//             direction="column"
-//             justifyContent="center"
-//             alignItems="center"
-//           >
-//             <Link to="/admin/createMovie">
-//               <Button className="" variant="body2" color="secondary">
-//               Agregar Película
-//               </Button>
-//             </Link>
-//             <Link to="/admin/createGenre">
-//               <Button className="" variant="body2" color="secondary">
-//               Agregar Género
-//               </Button>
-//             </Link>
-//             <Link to="/">
-//               <Button className="" variant="body2" color="secondary">
-//               Home
-//               </Button>
-//             </Link>
-//           </Grid>
-//         </Grid>
-//       </Grid>
-//     </ThemeProvider>
-//   );
-// }
-
-// /* onClick={preventDefault} */
-
-// export default ControlPanel;
