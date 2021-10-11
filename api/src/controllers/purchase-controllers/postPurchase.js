@@ -20,7 +20,6 @@ const postPurchase = async (req, res, next) => {
         let  purchaseArray = [];
        
          for (let i = 0; i < shoppingCart.length; i++, aux++) { // iteramos el array de objetos
-            console.log('adentro del for')
                 let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = shoppingCart[i] //desestructuramos el objeto para sacar cada key y su value
              //Nos aseguramos que el asiento elegido este disponible en 'seats'
                 seatsQuery = await seats.findOne({
@@ -53,7 +52,6 @@ const postPurchase = async (req, res, next) => {
                  movieQuery = await movies.findByPk(movieId)
                  //se realizan las relaciones
                  if(seatsQuery){
-                    //  console.log(movieQuery)
                     //  await movieQuery.addPurchase(purchaseQuery)
                      await cinemasQuery.addPurchase(purchaseQuery)
                      await screeningQuery.addPurchase(purchaseQuery)
@@ -68,30 +66,21 @@ const postPurchase = async (req, res, next) => {
          if(purchaseArray) {//si se realizaron compras, se realiza una orden de compra
               orderCreate = await purchaseOrder.create({
               })
-
-        await orderCreate.addPurchase(purchaseArray[0].id)
-        await orderCreate.addPurchase(purchaseArray[1].id)
-        // await purchaseArray[1].addPurchaseOrders(orderCreate.id)
-            //   purchaseArray.forEach(async purchase => {
-            //     console.log(purchase)
-            //       await purchase.setPurchaseOrder(orderCreate.id) 
-            //     }  )
-            //   orderCreate.addPurchases(purchaseArray)
+              //se relaciona la orden con las compras realizadas previamente
+            await orderCreate.addPurchase(purchaseArray[0].id)
+            await orderCreate.addPurchase(purchaseArray[1].id)
+            await orderCreate.setUser(user)
+            //se relaciona la orden con el usuario
+            await users.update({shoppingCart: null},{
+               where: {
+                   id: user
+               },
+           })
             }
 
-             await users.update({shoppingCart: null},{
-                where: {
-                    id: user
-                },
-            })
-          
-
-
-        // purchaseArray ?
-        // res.json( 'The order has been created!') :
-        // res.status(404).json({message: `An error has occured! The order hasn't been created`})
-        // console.log(userQuery)
-        res.json(cart)
+        purchaseArray ?
+        res.json( 'The order has been created!') :
+        res.status(404).json({message: `An error has occured! The order hasn't been created`})
     } catch (error) {
         console.log(error)
         next(error)

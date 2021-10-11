@@ -28,6 +28,6 @@ conn.sync({ force: true })
         await screeningMockUp();
         await seatsMockUp();
         await cinemasMockUp();
-        // await moviesList();
+        await moviesList();
     })
     .catch((e) => console.log('Connection Failed!', e))
