@@ -44,7 +44,7 @@ const cinemaRoomMockUp = async() => {
         })
     } catch (err) {
         console.log({
-            error: "Can't Fetch Genres",
+            error: "Can't Fetch CinemaRooms",
             originalError: err,
         });
     }

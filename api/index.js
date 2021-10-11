@@ -14,7 +14,7 @@ const { screeningMockUpKaia, screeningMockUpLeta, screeningMockUpClark } = requi
 const { seatsMockUp } = require('./src/utils/mocks/seats-mock.js');
 
 
-conn.sync({ force: false })
+conn.sync({ force: true })
     .then(async() => {
         console.log('DB connected!');
 

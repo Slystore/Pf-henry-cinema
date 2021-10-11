@@ -13,7 +13,7 @@ const rolesMockUp = async() => {
         })
     } catch (err) {
         console.log({
-            error: "Can't Fetch Genres",
+            error: "Fetch Roles",
             originalError: err,
         });
     };
