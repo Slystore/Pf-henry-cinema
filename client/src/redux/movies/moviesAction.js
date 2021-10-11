@@ -9,7 +9,6 @@ export const GET_MOVIE_NAME = 'GET_MOVIE_NAME';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const FILTER_BY_GENRE = ' FILTER_BY_GENRE';
 
-const awsPort = process.env.REACT_APP_API_KEY;
 
 export function getAll() {
     return async(dispatch) => {
@@ -38,7 +37,7 @@ export function getMovies() {
 export function getMovieDetails(id) {
     return async(dispatch) => {
         try {
-            const json = await axios.get(`${awsPort}/api/movies/${id}`)
+            const json = await axios.get(`http://18.216.130.223:3001/api/movies${id}`)
             return dispatch({
                 type: GET_MOVIE_DETAILS,
                 payload: json.data
@@ -58,7 +57,7 @@ export function cleanDetail(payload) {
 
 export function postMovie(payload) {
     return async function(dispatch) {
-        const response = await axios.post(`${awsPort}/`, payload)
+        const response = await axios.post(`http://18.216.130.223:3001/movies/createMovie`, payload)
         return response
     }
 }
@@ -77,7 +76,7 @@ export function getMovieName(payload) {
 
 export function getMoviesSorted(type) {
     return function(dispatch) {
-        return axios.get(`${awsPort}` + type)
+        return axios.get(`http://18.216.130.223:3001/api/movies` + type)
             .then(moviesSorted => {
                 dispatch({
                     type: GET_MOVIES_SORTED,
