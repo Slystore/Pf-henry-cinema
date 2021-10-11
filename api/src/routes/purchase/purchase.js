@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const getPurchases = require('../../controllers/purchase-controllers/getPurchases')
-// const getPurchaseById = require('../../controllers/purchase-controllers/getPurchaseById')
+    // const getPurchaseById = require('../../controllers/purchase-controllers/getPurchaseById')
 const postPurchase = require('../../controllers/purchase-controllers/postPurchase')
-// const updatePurchase = require('../../controllers/purchase-controllers/putPurchase')
-// const delPurchase = require('../../controllers/purchase-controllers/deletePurchase')
+    // const updatePurchase = require('../../controllers/purchase-controllers/putPurchase')
+    // const delPurchase = require('../../controllers/purchase-controllers/deletePurchase')
 
 const router = Router()
 

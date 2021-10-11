@@ -11,11 +11,11 @@ module.exports = (Sequelize) => {
         number: {
             type: DataTypes.INTEGER,
         },
-        pagado:{
+        pagado: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
         }
 
-    },{})
+    }, {})
 
 }
