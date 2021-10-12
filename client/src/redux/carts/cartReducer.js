@@ -106,7 +106,7 @@ function cartReducer(state = initialState, action) {
             }
         case CINEMAS:
             {
-                let cinePrueba = state.postCart.length === 1 ? {...state.postCart[0], cinemaId: action.payload } : state.postCart.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
+                let cinePrueba = state.postCart.length === 1 ? [{...state.postCart[0], cinemaId: action.payload }] : state.postCart.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
                 return {
                     ...state,
                     cinemaSelect: action.payload,
@@ -115,7 +115,7 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
-                let screeningPrueba = state.postCart.length === 1 ? {...state.postCart[0], screeningId: action.payload } : state.postCart.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
+                let screeningPrueba = state.postCart.length === 1 ? [{...state.postCart[0], screeningId: action.payload }] : state.postCart.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
                 return {
                     ...state,
                     screeningSelect: action.payload,
