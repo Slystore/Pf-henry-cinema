@@ -22,6 +22,7 @@ import { getToken } from "../../redux/users/usersAction.js";
 
 const useStyle = makeStyles({
   botonHover: {
+    color: "white",
     "&:hover": {
       color: "#FF8E53",
       cursor: "pointer",
@@ -177,7 +178,8 @@ function NavBar() {
 
             <Box sx={{ display: { xs: "none", md: "flex" }, fontWeight: 900 }}>
               <SearchBar />
-              <Link to={`/shoppingCart`}>
+              
+              <Link to={ cart.length? `/shoppingCart`: ''}>
                 <IconButton
                   size="large"
                   aria-label="notifications"
