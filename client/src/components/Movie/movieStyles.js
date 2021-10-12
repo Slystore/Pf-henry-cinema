@@ -22,7 +22,7 @@ export const useStyle = makeStyles({
   },
   title:{
       fontWeight: 'bold',
-      fontSize: 20
+      fontSize: 20,
   },
   media:{
     height: 330,
@@ -42,12 +42,10 @@ export const useStyle = makeStyles({
   },
   name:{
     height: 60, 
-    fontWeight: "bold", 
-    lineHeight: 1, 
+    fontWeight: "bold",
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    fontSize: 16,
   }
 });
 

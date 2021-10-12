@@ -52,7 +52,7 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
 
             <CardContent>
 
-                <Typography variant="h6" align="center" className={ classes.name } aria-label="name">
+                <Typography variant="h6" align="center" className={ classes.name } aria-label="name" sx={{lineHeight: 1}}>
                   {name}
                 </Typography>
 
@@ -63,7 +63,7 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
 
             </CardContent>
 
-            <Button onClick={handleOpen} className={ classes.boton }>Detalles</Button>
+            <Button onClick={handleOpen} className={ classes.boton } sx={{color: 'white'}}>Detalles</Button>
 
           </CardActionArea>
 
@@ -75,8 +75,6 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-
-        {/* border: 'thin dotted #ccc' */}
 
         <Box sx={ style }>
 

@@ -15,12 +15,12 @@ export const initialState = {
     movies: [],
     cinemas: [{
             name: "Kaia",
-            id: 2,
+            id: 1,
             location: "32105 Lulu Ways"
         },
         {
             name: "Leta",
-            id: 4,
+            id: 2,
             location: "05061 Greenholt Underpass"
         },
         {
@@ -46,16 +46,18 @@ export const initialState = {
     screeningSelect: [],
     seats: [{
             row: "A",
+            number: 1,
+            id: 1,
+        },
+        {
+            row: "A",
             number: 2,
-            id: 2
+            id: 2,
         },
         {
             row: "A",
-            number: 3
-        },
-        {
-            row: "A",
-            number: 4
+            number: 3,
+            id: 3,
         },
     ],
     seatsSelect: [],
