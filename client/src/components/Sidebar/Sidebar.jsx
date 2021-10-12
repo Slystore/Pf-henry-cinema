@@ -117,9 +117,9 @@ function Sidebar() {
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/">
+              <Link to="/admin">
                 <GiMailbox />
-                <span>Buzon de quejas y sugerencias</span>
+                <span>Administrador</span>
               </Link>
             </li>
 

@@ -58,8 +58,8 @@ function ControlPanel() {
                         </Box>
 
                         <Box sx={{ margin: 1}}>
-                            <Button className={ classes.button } variant="contained" href={`/admin/createGenre`}>
-                                Agregar Género
+                            <Button className={ classes.button } variant="contained" href={`/admin/orders`}>
+                                Ordenes de Usuarios
                             </Button>
                         </Box>
 

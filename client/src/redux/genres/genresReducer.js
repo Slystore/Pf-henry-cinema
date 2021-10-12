@@ -1,5 +1,6 @@
 import {
     GET_GENRES,
+    POST_GENRES
 } from './genresAction.js';
 
 const initialState = {
@@ -15,6 +16,8 @@ function genresReducer(state = initialState, action) {
                     genres: action.payload
                 }
             }
+        case POST_GENRES:
+            return{...state}
         default:
             return state
 

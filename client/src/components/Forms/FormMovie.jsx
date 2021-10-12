@@ -7,11 +7,12 @@ import bg from "../Forms/img/bgForm.jpeg";
 import paper from "../Forms/img/paperForm.jpg";
 import swal from "sweetalert";
 import { useStyles } from "./stylesForms";
+import FormGenre from "./FormGenre";
 
 const FormMovie = () => {
   const clasess = useStyles();
   const history = useHistory();
-  const { genres } = useSelector((state) => state);
+  const { genres } = useSelector((state) => state.moviesReducer);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
     Nombre: "",
@@ -246,7 +247,7 @@ const FormMovie = () => {
                   <div>{el}<button className={clasess.btnX}onClick={() => deleteGenero(el)}>X</button></div>
                 </div>
               ))}
-            </ul>
+            </ul><FormGenre />
           </div>
         </div>
       </div>

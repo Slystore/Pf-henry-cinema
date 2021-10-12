@@ -32,7 +32,7 @@ function Footer() {
                     <div><Link className="Link" to="/login" > Login </Link></div>
                     <div><Link className="Link" to="/" > Contacto </Link></div>
                     <div><Link className="Link" to="/" > Términos y Condiciones </Link></div>
-                    <div><Link className="Link" to="/" > Buzón de Quejas y Sugerencias</Link></div>
+                    <div><Link className="Link" to="/admin" > Administrador</Link></div>
 
                 </Box>
 
