@@ -17,6 +17,7 @@ const moviesMock = async() => {
     });
 
     const getFreeGuyGenre = await genres.findAll({
+        // 35, 28, 12, 878
         where: { id: [4, 1, 2, 15] },
         attributes: ['id']
     });
@@ -57,7 +58,8 @@ const moviesMock = async() => {
         runTime: "2.35.15",
     });
     const getSnakeEyesGenre = await genres.findAll({
-        where: { id: [4, 1, 2, 15] },
+        //28, 12
+        where: { id: [1, 2] },
         attributes: ['id']
     });
 
@@ -82,6 +84,7 @@ const moviesMock = async() => {
     snakeEyes.addScreenings(getSnakeEyesScreening);
 
     const old = await movies.create({
+
         title: "Old",
         released: "2021-07-21",
         image: "https://i.postimg.cc/9FDhW2R2/old.jpg",
@@ -97,6 +100,7 @@ const moviesMock = async() => {
     });
 
     const getOldGenre = await genres.findAll({
+        // 27, 9648, 53
         where: { id: [13, 17, 11] },
         attributes: ['id']
     })
@@ -136,7 +140,8 @@ const moviesMock = async() => {
         runTime: "2.59.30",
     });
     const getShangChiGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 12, 14
+        where: { id: [1, 2, 9] },
         attributes: ['id']
     })
     const getShangChiCinema = await cinemas.findAll({
@@ -177,7 +182,8 @@ const moviesMock = async() => {
 
 
     const getTheSuicideSquadGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 12, 14
+        where: { id: [1, 2, 9] },
         attributes: ['id']
     })
     const getTheSuicideSquadCinema = await cinemas.findAll({
@@ -216,7 +222,8 @@ const moviesMock = async() => {
         runTime: "2.43.20",
     });
     const getCatchTheBulletGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //37, 28
+        where: { id: [19, 1] },
         attributes: ['id']
     })
     const getCatchTheBulletCinema = await cinemas.findAll({
@@ -256,7 +263,8 @@ const moviesMock = async() => {
         runTime: "2.0.20",
     });
     const getBacNordGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        // 80 53
+        where: { id: [5, 17] },
         attributes: ['id']
     })
     const getBacNordCinema = await cinemas.findAll({
@@ -295,7 +303,8 @@ const moviesMock = async() => {
         runTime: "1.45.10",
     });
     const getKateGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 53
+        where: { id: [1, 17] },
         attributes: ['id']
     })
     const getKateCinema = await cinemas.findAll({
@@ -334,7 +343,8 @@ const moviesMock = async() => {
         runTime: "1.38.10",
     });
     const getSasRedNoticeGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //18, 28, 53
+        where: { id: [1, 7, 17] },
         attributes: ['id']
     });
     const getSasRedNoticeCinema = await cinemas.findAll({
@@ -373,7 +383,8 @@ const moviesMock = async() => {
         runTime: "1.43.10",
     });
     const getJungleCruiseGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //12, 14, 35, 28
+        where: { id: [1, 2, 9, 4] },
         attributes: ['id']
     })
     const getJungleCruiseCinema = await cinemas.findAll({
@@ -411,7 +422,8 @@ const moviesMock = async() => {
         runTime: "2.28.10",
     });
     const getJurassicHuntGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 878, 53
+        where: { id: [1, 15, 17] },
         attributes: ['id']
     })
     const getJurassicHuntCinema = await cinemas.findAll({
@@ -450,7 +462,8 @@ const moviesMock = async() => {
         runTime: "2.40.25",
     });
     const getf9Genre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 80, 53
+        where: { id: [1, 17, 5] },
         attributes: ['id']
     })
     const getf9Cinema = await cinemas.findAll({
@@ -488,7 +501,8 @@ const moviesMock = async() => {
         runTime: "2.10.10",
     });
     const getPawPatrolGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //16, 10751, 12, 35
+        where: { id: [2, 3, 8, 4] },
         attributes: ['id']
     })
     const getPawPatrolCinema = await cinemas.findAll({
@@ -527,7 +541,8 @@ const moviesMock = async() => {
         runTime: "2.0.50",
     });
     const getEscapeRoomGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //27, 53, 9648
+        where: { id: [11, 13, 17, ] },
         attributes: ['id']
     })
     const getEscapeRoomCinema = await cinemas.findAll({
@@ -566,7 +581,8 @@ const moviesMock = async() => {
         runTime: "2.48.20",
     });
     const getLucaGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        // 16 , 35, 10751, 14
+        where: { id: [3, 4, 8, 9] },
         attributes: ['id']
     })
     const getLucaCinema = await cinemas.findAll({
@@ -604,7 +620,8 @@ const moviesMock = async() => {
         runTime: "2.0.33",
     });
     const getTheBossBabyGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //16, 35, 12, 10751
+        where: { id: [3, 4, 2, 8] },
         attributes: ['id']
     })
     const getTheBossBabyCinema = await cinemas.findAll({
@@ -643,7 +660,8 @@ const moviesMock = async() => {
         runTime: "2.15.13",
     });
     const getSpaceJamGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //16, 35, 10751, 878
+        where: { id: [3, 4, 8, 15] },
         attributes: ['id']
     })
     const getSpaceJamCinema = await cinemas.findAll({
@@ -682,7 +700,8 @@ const moviesMock = async() => {
         runTime: "1.55.13",
     });
     const getMalignantGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //27, 53, 9648
+        where: { id: [11, 17, 13] },
         attributes: ['id']
     })
     const getMalignantCinema = await cinemas.findAll({
@@ -720,7 +739,8 @@ const moviesMock = async() => {
         runTime: "1.52.23",
     });
     const getTheTomorrowWarGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //28, 878, 12
+        where: { id: [1, 2, 15] },
         attributes: ['id']
     })
     const getTheTomorrowWarCinema = await cinemas.findAll({
@@ -759,7 +779,8 @@ const moviesMock = async() => {
     });
 
     const getDontBreatheTwoGenre = await genres.findAll({
-        where: { id: [13, 17, 11] },
+        //53, 27
+        where: { id: [17, 11] },
         attributes: ['id']
     })
     const getDontBreatheTwoCinema = await cinemas.findAll({

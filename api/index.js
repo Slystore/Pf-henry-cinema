@@ -21,15 +21,15 @@ conn.sync({ force: true })
         server.listen(3001, () => console.log(`Server listening on port 3001`));
         // seed();
 
-        await genresMockUp();
         await usersMockUp();
         await rolesMockUp();
+        await cinemasMockUp();
+        await cinemaRoomMockUp();
         await screeningMockUpKaia();
         await screeningMockUpLeta();
         await screeningMockUpClark();
         await seatsMockUp();
-        await cinemaRoomMockUp();
-        await cinemasMockUp();
+        await genresMockUp();
         await moviesMock();
     })
     .catch((e) => console.log('Connection Failed!', e))
