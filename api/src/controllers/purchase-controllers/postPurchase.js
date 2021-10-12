@@ -22,6 +22,7 @@ const postPurchase = async (req, res, next) => {
          for (let i = 0; i < shoppingCart.length; i++, aux++) { // iteramos el array de objetos
                 let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = shoppingCart[i] //desestructuramos el objeto para sacar cada key y su value
              //Nos aseguramos que el asiento elegido este disponible en 'seats'
+             console.log(movieId)
                 seatsQuery = await seats.findOne({
                     where:{
                         [Op.and] : [
@@ -50,9 +51,10 @@ const postPurchase = async (req, res, next) => {
                  screeningQuery = await screening.findByPk(screeningId)
                  userQuery = await users.findByPk(userId)
                  movieQuery = await movies.findByPk(movieId)
+                 console.log(movieQuery)
                  //se realizan las relaciones
                  if(seatsQuery){
-                    //  await movieQuery.addPurchase(purchaseQuery)
+                     await movieQuery.addPurchase(purchaseQuery)
                      await cinemasQuery.addPurchase(purchaseQuery)
                      await screeningQuery.addPurchase(purchaseQuery)
                      await cinemaRoomQuery.addPurchase(purchaseQuery)

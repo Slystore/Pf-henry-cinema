@@ -11,4 +11,4 @@ async function getCinemas(req, res, next) {
     }
 }
 
-module.exports = { getCinemas }
+module.exports =  getCinemas 
