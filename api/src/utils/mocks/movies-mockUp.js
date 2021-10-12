@@ -400,7 +400,7 @@ const moviesMock = async() => {
         title: "Jurassic Hunt",
         released: "2021-09-01",
         image: "https://i.postimg.cc/Fsd2Mx8s/jurassic-hunt.jpg",
-        description: "La aventurera Parker se une a un grupo de cazadores de trofeos masculinos en un parque remoto y salvaje. Su objetivo: masacrar dinosaurios genéticamente recreados por deporte usando rifles, flechas y granadas. Después de que las aves rapaces matan a su guía, el equipo intenta escapar del parque, pero los cazadores rápidamente se convierten en los cazados. Peor aún, el gerente del parque sospecha que Parker es un espía y envía un escuadrón de asalto tras ella. ¡Esta batalla está a punto de volverse primitiva!",
+        description: "...Después de que las aves rapaces matan a su guía, el equipo intenta escapar del parque, pero los cazadores rápidamente se convierten en los cazados. Peor aún, el gerente del parque sospecha que Parker es un espía y envía un escuadrón de asalto tras ella. ¡Esta batalla está a punto de volverse primitiva!",
         actors: ["Courtney Loggins", "Tarkan Dospil", "Ruben Pia", "Joston Theney"],
         director: "Hank Braxtan",
         rating: 5,
