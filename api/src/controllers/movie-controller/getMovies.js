@@ -6,7 +6,7 @@ const handleWhere = (queryParams) => {
     let data = {};
     if (queryParams.hasOwnProperty('title')) {
         data.title = {
-            [Op.substring]: queryParams.title,
+            [Op.iLike]: `%${queryParams.title}%`,
         }
     }
     return data;
@@ -24,6 +24,7 @@ const handleGenresWhere = (queryParams) => {
 
 const getMovies = async(req, res, next) => {
     const filters = req.query; // { title: 'free'} => es un objeto que contiene todo los query.params.
+
     try {
         const allMovies = await movies.findAll({
             include: [{
