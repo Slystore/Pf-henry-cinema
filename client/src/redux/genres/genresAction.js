@@ -1,21 +1,26 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
-const { AWS_PORT } = process.env;
 
 export const GET_GENRES = 'GET_GENRES';
 export const POST_GENRES = 'POST_GENRES';
 
+dotenv.config();
+const { REACT_APP_AWS_PORT } = process.env;
+const awsPort = REACT_APP_AWS_PORT;
+
 export function getGenres() {
     return async(dispatch) => {
-        const { data } = await axios.get(`http://18.216.130.223:3001/api/genres`)
+        const { data } = await axios.get(`/api/genres`)
         return await dispatch({
             type: GET_GENRES,
             payload: data
         })
     }
 }
+
 export function createGenres(payload) {
     return async(dispatch) => {
-        const response = await axios.post(`http://18.216.130.223:3001/api/genres/create`, payload)
+        const response = await axios.post(`/api/genres/create`, payload)
         return response
     }
 }

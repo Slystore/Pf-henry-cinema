@@ -1,4 +1,6 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
+
 export const GET_ALL = 'GET_ALL';
 export const GET_MOVIES = 'GET_MOVIES';
 export const GET_MOVIE_DETAILS = 'GET_MOVIE_DETAILS';
@@ -9,13 +11,15 @@ export const GET_MOVIE_NAME = 'GET_MOVIE_NAME';
 export const ADD_MOVIE = 'ADD_MOVIE';
 export const FILTER_BY_GENRE = ' FILTER_BY_GENRE';
 
-const awsPort = process.env.REACT_APP_API_KEY;
+dotenv.config();
+const { REACT_APP_AWS_PORT } = process.env;
+const awsPort = REACT_APP_AWS_PORT;
 
 export function getAll() {
     return async(dispatch) => {
-        const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
-        const genres = await axios.get(`http://18.216.130.223:3001/api/genres`);
-        const users = await axios.get(`http://18.216.130.223:3001/api/users`);
+        const movies = await axios.get(`/api/movies`);
+        const genres = await axios.get(`/api/genres`);
+        const users = await axios.get(`/api/users`);
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,
@@ -27,7 +31,7 @@ export function getAll() {
 
 export function getMovies() {
     return async(dispatch) => {
-        const { data } = await axios.get(`http://18.216.130.223:3001/api/movies`)
+        const { data } = await axios.get(`/api/movies`)
         return await dispatch({
             type: GET_MOVIES,
             payload: data
@@ -38,7 +42,7 @@ export function getMovies() {
 export function getMovieDetails(id) {
     return async(dispatch) => {
         try {
-            const json = await axios.get(`${awsPort}/api/movies/${id}`)
+            const json = await axios.get(`/api/movies/${id}`)
             return dispatch({
                 type: GET_MOVIE_DETAILS,
                 payload: json.data
@@ -58,7 +62,7 @@ export function cleanDetail(payload) {
 
 export function postMovie(payload) {
     return async function(dispatch) {
-        const response = await axios.post(`http://18.216.130.223:3001/api/createMovie`, payload)
+        const response = await axios.post(`/api/createMovie`, payload)
         return response
     }
 }
@@ -66,7 +70,7 @@ export function postMovie(payload) {
 export function getMovieName(payload) {
     return async function(dispatch) {
         try {
-            let response = await axios.get(`http://18.216.130.223:3001/api/movies?title=` + payload);
+            let response = await axios.get(`/api/movies?title=` + payload);
             return dispatch({
                 type: GET_MOVIE_NAME,
                 payload: response.data
@@ -77,7 +81,7 @@ export function getMovieName(payload) {
 
 export function getMoviesSorted(type) {
     return function(dispatch) {
-        return axios.get(`${awsPort}` + type)
+        return axios.get(`/api/movies` + type)
             .then(moviesSorted => {
                 dispatch({
                     type: GET_MOVIES_SORTED,
