@@ -13,6 +13,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
 import { GiMailbox } from "react-icons/gi";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import "./sidebar.css";
 import { getToken } from "../../redux/users/usersAction";
 
@@ -20,7 +21,8 @@ function Sidebar() {
   const [sidebar, setSidebar] = useState(false);
   const [userLog, setUserLog] = useState({
     userState: false,
-    userData: undefined,
+    userAdmin: {},
+    userData: {},
   });
   const logOut = () => {
     localStorage.removeItem("token");
@@ -33,15 +35,13 @@ function Sidebar() {
       return setUserLog(false);
     } else {
       const decoded = jwt_decode(x);
-      console.log('este es el decode',decoded)
       setUserLog({
         userState: true,
         userData: decoded,
+        userAdmin: decoded.user ? decoded.user.userType : "",
       });
     }
   }, []);
-
-  console.log("esta es la data del user ");
 
   const showSidebar = () => setSidebar(!sidebar);
   return (
@@ -116,32 +116,22 @@ function Sidebar() {
                 <span>Terminos y condiciones</span>
               </Link>
             </li>
-            <li className="nav-text">
+            {/* <li className="nav-text">
               <Link to="/">
                 <GiMailbox />
                 <span>Buzon de quejas y sugerencias</span>
               </Link>
-            </li>
-
-            {/* {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  {userLog ? (
-                    <Link to={item.path2}>
-                      {item.icon2}
-                      <span>{item.title2}</span>
-                    </Link>
-                  ) : (
-                    <Link to={item.path}>
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </Link>
-                  )}
-
-                 
-                </li>
-              );
-            })} */}
+            </li> */}
+            {userLog.userAdmin === "admin" ? (
+              <li className="nav-text">
+                <Link to="/admin">
+                  <MdOutlineAdminPanelSettings />
+                  <span>Admin</span>
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </nav>
       </IconContext.Provider>

@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { createUser } from "../../../redux/users/usersAction";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+
 import "./formsingUp.css";
 import { useHistory } from "react-router";
-function FormSingUp() {
 
+export function FormSingUp() {
   const [succes, setSucces] = useState(false);
   const [userCreated, setUserCreated] = useState({
     noValidate: "",
@@ -15,7 +16,7 @@ function FormSingUp() {
 
   const userError = useSelector((state) => state.usersReducer.userError);
   console.log("este es el error", userError);
-  const history = useHistory()
+  const history = useHistory();
 
   return (
     <div>
@@ -73,32 +74,28 @@ function FormSingUp() {
         }}
         onSubmit={(body, { resetForm }) => {
           async function validateUser() {
-            try{
-              const x = await createUser(body)
-              console.log('este es mi x',x)
-              if(x.msg){
+            try {
+              const x = await createUser(body);
+              console.log("este es mi x", x);
+              if (x.msg) {
                 setUserCreated({
-                  noValidate:x.msg
-                })
+                  noValidate: x.msg,
+                });
                 setTimeout(() => {
                   setUserCreated({
-                    noValidate:"",
-                  })
+                    noValidate: "",
+                  });
                 }, 3000);
               }
-              if(x.data.user){
-                setSucces(true)
+              if (x.data.user) {
+                setSucces(true);
                 setTimeout(() => {
-                  setSucces(false)
-                  history.push('/login')
+                  setSucces(false);
+                  history.push("/login");
                 }, 3500);
-                resetForm()
+                resetForm();
               }
-              
-             
-          }catch(err){
-            
-          }
+            } catch (err) {}
           }
           validateUser();
         }}
@@ -170,8 +167,19 @@ function FormSingUp() {
                 <button type="submit">Create User</button>
               </div>
               <div>
-                {userCreated && <p>{userCreated.noValidate}</p>}
-                {succes && <p>Usuario creado</p>}
+                ,{userCreated && <p>{userCreated.noValidate}</p>}
+                {/* {succes && (
+                    <Snackbar
+                      open={open}
+                      autoHideDuration={3000}
+                      onClose={onClose}
+                    >
+                      <Alert onClose={handleClose} severity="success">
+                        <AlertTitle>Exitoso!</AlertTitle>
+                        Usuario creado
+                      </Alert>
+                    </Snackbar>
+                  )} */}
               </div>
             </Form>
           </div>
@@ -180,5 +188,3 @@ function FormSingUp() {
     </div>
   );
 }
-
-export default FormSingUp;

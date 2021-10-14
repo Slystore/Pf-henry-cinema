@@ -14,20 +14,30 @@ export function getUsers() {
     });
   };
 }
+
+export async function googleLog(payload) {
+  let { data } = await axios.post(
+    "http://localhost:3001/api/googleLogin",
+    payload
+  );
+  console.log("data de google", payload);
+  if (data) {
+    return data;
+  }
+}
+
 export async function createUser(payload) {
   try {
-    let data = await axios.post(
-      "http://18.216.130.223:3001/api/singUp",
-      payload
-    );
-    // let data = await axios.post("http://localhost:3001/api/singUp", payload);
-    console.log("payload de la action", payload);
-    console.log("esta es la data que me llega ", data);
+    // let data = await axios.post(
+    //   "http://18.216.130.223:3001/api/singUp",
+    //   payload
+    // );
+
+    let data = await axios.post("http://localhost:3001/api/singUp", payload);
+
     if (data.data.user) {
-      console.log("estoy entranxdo aca ");
       return data.data;
     } else if (data.data.msg) {
-      console.log("estoy entranxdo aca ");
       let errores = data.data;
       return errores;
     }
@@ -37,8 +47,8 @@ export async function createUser(payload) {
 }
 
 export async function login(payload) {
-  // let data = await axios.post("http://localhost:3001/api/singIn", payload);
-  let data = await axios.post("http://18.216.130.223:3001/api/singIn", payload);
+  let data = await axios.post("http://localhost:3001/api/singIn", payload);
+  // let data = await axios.post("http://18.216.130.223:3001/api/singIn", payload);
 
   if (data.data.token) {
     localStorage.setItem("token", data.data.token);
