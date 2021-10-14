@@ -1,9 +1,11 @@
 const server = require('./src/app')
+const dotenv = require('dotenv')
+dotenv.config();
+
 const { conn } = require('./src/db.js');
 const { PORT } = process.env;
 
 // const seed = require('./seed');
-
 const { moviesMock } = require('./src/utils/mocks/movies-mockUp.js')
 const { genresMockUp } = require('./src/utils/mocks/genres-mockUp.js');
 const { usersMockUp } = require('./src/utils/mocks/users-mock.js');
@@ -18,7 +20,7 @@ conn.sync({ force: true })
     .then(async() => {
         console.log('DB connected!');
 
-        server.listen(3001, () => console.log(`Server listening on port 3001`));
+        server.listen(PORT, () => console.log(`Server listening on port 3001`));
         // seed();
 
         await usersMockUp();
