@@ -1,0 +1,20 @@
+.NavBarCart{
+    height: 60px;
+    background-color: black;
+}
+
+.Cart{
+    width: 1000px;
+    height: 600px;
+    top: 45px;
+    position: relative;
+    margin: 0 auto;
+    /* border: thin dotted #f00; */
+}
+
+.FooterCart{
+    width: 100%;
+    position: absolute;
+    bottom: 0 !important;
+    left: 0;
+}
