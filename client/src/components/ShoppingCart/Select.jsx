@@ -40,11 +40,11 @@ import RowSeats from './RowSeats'
         <div className="Intructions">
           <div><h1>Escoge tus asientos</h1></div>
           <div>
-            <div className="Seat"><span class="material-icons X" >chair</span></div>
+            <div className="Seat"><span className="material-icons X" >chair</span></div>
             <div className="TypeSeat">Libre</div>
-            <div className="Seat"><span class="material-icons X2" >chair</span></div>
+            <div className="Seat"><span className="material-icons X2" >chair</span></div>
             <div className="TypeSeat">Ocupada</div>
-            <div className="Seat"><span class="material-icons X3" >chair</span></div>
+            <div className="Seat"><span className="material-icons X3" >chair</span></div>
             <div className="TypeSeat">No Disponible</div>
           </div>
         </div>

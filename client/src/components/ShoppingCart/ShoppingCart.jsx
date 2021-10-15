@@ -90,7 +90,7 @@ function ShopingCart() {
       </div>
 
       <div className="Cart">
-        <Card elevation="10" sx={{ height: 550, padding: "20px" }}>
+        <Card elevation={10} sx={{ height: 550, padding: "20px" }}>
           <Box sx={{ width: "100%" }}>
             <Stepper activeStep={activeStep}>
               {steps.map((label, index) => {
