@@ -26,7 +26,7 @@
         "react-icons": "^4.3.1",
         "react-redux": "^7.2.5",
         "react-router-dom": "^5.3.0",
-        "react-scripts": "^1.1.5",
+        "react-scripts": "4.0.3",
         "redux-thunk": "^2.3.0",
         "styled-components": "^5.3.1",
         "sweetalert": "^2.1.2",
@@ -35,7 +35,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "CI=false && react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
@@ -48,7 +48,6 @@
     "browserslist": {
         "production": [
             ">0.2%",
-            "not dead",
             "not op_mini all"
         ],
         "development": [
