@@ -170,8 +170,16 @@
     color: rgb(214, 0, 0);
 }
 
-.X:hover, .X2:hover, .X3:hover{
+/* .X:hover, .X2:hover, .X3:hover{
     cursor: pointer;
+} */
+
+.X:hover, .X2:hover{
+    cursor: pointer;
+}
+
+.X3:hover{
+    cursor: no-drop;
 }
 
 .RowLetter{

@@ -48,7 +48,7 @@ import RowSeats from './RowSeats'
             <div className="TypeSeat">No Disponible</div>
           </div>
         </div>
-
+        
       </div>
 
 
