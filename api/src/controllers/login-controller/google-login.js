@@ -5,11 +5,11 @@ const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
 
 async function googleLogin(req, res) {
-    const client = new OAuth2Client(keys.web.client_id);
+    const client = new OAuth2Client("241468930497-5c8oip7045oflla8q4g9ovujnb104gge.apps.googleusercontent.com");
     const { $b, userType } = req.body;
     const ticket = await client.verifyIdToken({
         idToken: $b.id_token,
-        audience: keys.web.client_id,
+        audience: "241468930497-5c8oip7045oflla8q4g9ovujnb104gge.apps.googleusercontent.com",
     });
 
     const userValidate = await users.findOne({
