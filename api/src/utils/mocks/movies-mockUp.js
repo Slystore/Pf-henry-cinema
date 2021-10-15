@@ -94,7 +94,7 @@ const moviesMock = async() => {
         rating: 6.7,
         votes: 964,
         usersRating: 4.5,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "2.39.30",
     });
@@ -217,7 +217,7 @@ const moviesMock = async() => {
         rating: 5.9,
         votes: 21,
         usersRating: 3.2,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "2.43.20",
     });
@@ -258,7 +258,7 @@ const moviesMock = async() => {
         rating: 7.9,
         votes: 317,
         usersRating: 2.2,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "2.0.20",
     });
@@ -298,7 +298,7 @@ const moviesMock = async() => {
         rating: 6.8,
         votes: 518,
         usersRating: 3.3,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "1.45.10",
     });
@@ -417,7 +417,7 @@ const moviesMock = async() => {
         rating: 5,
         votes: 134,
         usersRating: 4.1,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "2.28.10",
     });
@@ -576,7 +576,7 @@ const moviesMock = async() => {
         rating: 8,
         votes: 4637,
         usersRating: 5,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "2.48.20",
     });
@@ -695,7 +695,7 @@ const moviesMock = async() => {
         rating: 7.1,
         votes: 626,
         usersRating: 1.4,
-        availability: true,
+        availability: false,
         price: '99.99',
         runTime: "1.55.13",
     });
