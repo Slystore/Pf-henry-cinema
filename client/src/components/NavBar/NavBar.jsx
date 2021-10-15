@@ -1,4 +1,4 @@
-
+import './Navbarstyles.css'
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -86,7 +86,9 @@ function NavBar() {
         open={isMenuOpen}
         onClose={handleMenuClose}
       >
+        <Link to= "/perfil" className="Link-perfil">
         <MenuItem onClick={handleMenuClose}>Mi Perfil</MenuItem>
+        </Link>
         <MenuItem onClick={handleMenuClose}>Mi Cuenta</MenuItem>
       </Menu>
     </div>

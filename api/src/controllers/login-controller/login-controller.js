@@ -2,9 +2,12 @@ const { users } = require("../../db.js");
 const bcryp = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
+const { GoogleAuth, OAuth2Client } = require("google-auth-library");
+const keys = require("./google-keys.json");
+
 //Logeo
 const singIn = async(req, res) => {
-    let { mail, password } = req.body;
+    let { mail, password, $b } = req.body;
 
     try {
         const userData = await users.findOne({
@@ -17,8 +20,6 @@ const singIn = async(req, res) => {
                 msg: "Este usuario no coincide con uno existente, intete de nuevo",
             });
         } else {
-            console.log("este es el body del front ", password);
-            console.log("la encryptada", userData.password);
             const match = await bcryp.compare(password, userData.password);
             console.log("este es match", match);
             if (match) {
@@ -36,15 +37,16 @@ const singIn = async(req, res) => {
     } catch (err) {
         res.status(500).json({ msg: "yo rompo", error: err });
     }
-
 };
 
 //Registro
 const singUp = async(req, res) => {
-    let { name, surname, mail, userType } = req.body;
+    let { name, surname, mail, userType, } = req.body;
+
+
     const userValidate = await users.findOne({
         where: {
-            mail: mail,
+            mail: mail
         },
     });
     if (userValidate) {
@@ -52,17 +54,17 @@ const singUp = async(req, res) => {
             msg: "Este usuario ya existe",
         });
     }
-    console.log('esta es la pass del registro', req.body.password)
+
     if (req.body.password.length > 6) {
         let passwordCrypt = await bcryp.hash(
             req.body.password, +authConfing.rounds
         );
         await users
             .create({
-                name,
-                surname,
-                mail,
-                userType,
+                name: name,
+                surname: surname,
+                mail: mail,
+                userType: userType,
                 password: passwordCrypt,
             })
             .then((user) => {
