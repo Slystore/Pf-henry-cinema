@@ -170,8 +170,16 @@
     color: rgb(214, 0, 0);
 }
 
-.X:hover, .X2:hover, .X3:hover{
+/* .X:hover, .X2:hover, .X3:hover{
     cursor: pointer;
+} */
+
+.X:hover, .X2:hover{
+    cursor: pointer;
+}
+
+.X3:hover{
+    cursor: no-drop;
 }
 
 .RowLetter{
@@ -188,4 +196,13 @@
     margin-right: 12px;
     float: left;
     line-height: 30px;
+}
+
+span::before {
+    content: attr(data-parent);
+}
+span::after[data-color='blue']{
+    font-size: 35px;
+    margin-right: 15px;
+    color: rgb(49, 102, 202);
 }
