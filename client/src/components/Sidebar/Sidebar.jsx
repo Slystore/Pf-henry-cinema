@@ -12,7 +12,7 @@ import { AiOutlineHome } from "react-icons/ai";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiLogIn, BiLogOut } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
-import { GiMailbox } from "react-icons/gi";
+// import { GiMailbox } from "react-icons/gi";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import "./sidebar.css";
 import { getToken } from "../../redux/users/usersAction";

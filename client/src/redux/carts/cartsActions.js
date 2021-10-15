@@ -11,8 +11,8 @@ export const DECREMENT_CART = 'DECREMENT_CART';
 export const POST_FILL_CART = 'POST_FILL_CART';
 
 dotenv.config();
-const { REACT_APP_AWS_PORT } = process.env;
-const awsPort = REACT_APP_AWS_PORT;
+// const { REACT_APP_AWS_PORT } = process.env;
+// const awsPort = REACT_APP_AWS_PORT;
 
 export function addToCart(id) {
     return {

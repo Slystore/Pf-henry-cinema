@@ -7,7 +7,7 @@ import bg from "../Forms/img/bgForm.jpeg";
 import paper from "../Forms/img/paperForm.jpg";
 import swal from "sweetalert";
 import { useStyles } from "./stylesForms";
-import { postMovie } from "../../redux/movies/moviesAction";
+// import { postMovie } from "../../redux/movies/moviesAction";
 
 const FormMovie = () => {
   const clasess = useStyles();
@@ -77,15 +77,15 @@ const FormMovie = () => {
     });
   };
 
-  const deleteGenero = (e) => {
-    console.log(e);
-    setForm((form) => {
-      return {
-        ...form,
-        Genero: form.Genero.filter((genres) => genres !== e),
-      };
-    });
-  };
+  // const deleteGenero = (e) => {
+  //   console.log(e);
+  //   setForm((form) => {
+  //     return {
+  //       ...form,
+  //       Genero: form.Genero.filter((genres) => genres !== e),
+  //     };
+  //   });
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -94,18 +94,18 @@ const FormMovie = () => {
     //   swal("", "faltan campos por completar", "warning");
 
     // } else {
-      const x = await postMovie(form)
-      setForm({
-        title: "",
-        rating: 0,
-        usersRating: 0,
-        availability: true,
-        price: 0,
-        image: "",
-        description: "",
-        runTime: 0,
-        genre: "",
-      });
+      // const x = await postMovie(form)
+      // setForm({
+      //   title: "",
+      //   rating: 0,
+      //   usersRating: 0,
+      //   availability: true,
+      //   price: 0,
+      //   image: "",
+      //   description: "",
+      //   runTime: 0,
+      //   genre: "",
+      // });
 
       swal("Pelicula Creada!", "", "success");
       history.push("/"); //hay que poner la ruta de router a donde reenvia

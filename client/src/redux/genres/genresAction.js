@@ -5,8 +5,8 @@ export const GET_GENRES = 'GET_GENRES';
 export const POST_GENRES = 'POST_GENRES';
 
 dotenv.config();
-const { REACT_APP_AWS_PORT } = process.env;
-const awsPort = REACT_APP_AWS_PORT;
+// const { REACT_APP_AWS_PORT } = process.env;
+// const awsPort = REACT_APP_AWS_PORT;
 
 export function getGenres() {
     return async(dispatch) => {

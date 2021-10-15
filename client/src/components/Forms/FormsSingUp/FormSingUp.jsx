@@ -8,7 +8,7 @@ import "./formsingUp.css";
 import { useHistory } from "react-router";
 
 export function FormSingUp() {
-  const [succes, setSucces] = useState(false);
+  const [, setSucces] = useState(false);
   const [userCreated, setUserCreated] = useState({
     noValidate: "",
     validate: "",

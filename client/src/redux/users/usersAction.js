@@ -7,7 +7,7 @@ export const GET_TOKEN = "GET_TOKEN";
 
 export function getUsers() {
     return async(dispatch) => {
-        const { data } = await axios.get(`http://localhost:3001/api/movies`);
+        const { data } = await axios.get(`/api/movies`);
         return await dispatch({
             type: GET_USERS,
             payload: data,
@@ -17,7 +17,7 @@ export function getUsers() {
 
 export async function googleLog(payload) {
     let { data } = await axios.post(
-        "http://localhost:3001/api/googleLogin",
+        `/api/googleLogin`,
         payload
     );
     console.log("data de google", payload);
@@ -28,12 +28,7 @@ export async function googleLog(payload) {
 
 export async function createUser(payload) {
     try {
-        // let data = await axios.post(
-        //   "http://18.216.130.223:3001/api/singUp",
-        //   payload
-        // );
-
-        let data = await axios.post("http://localhost:3001/api/singUp", payload);
+        let data = await axios.post(`/api/singUp`, payload);
 
         if (data.data.user) {
             return data.data;
@@ -47,14 +42,11 @@ export async function createUser(payload) {
 }
 
 export async function login(payload) {
-    let data = await axios.post("http://localhost:3001/api/singIn", payload);
-    // let data = await axios.post("http://18.216.130.223:3001/api/singIn", payload);
-
+    let data = await axios.post(`/api/singIn`, payload);
     if (data.data.token) {
         localStorage.setItem("token", data.data.token);
     } else if (!data.data.token) {
         let error = data.data.msg;
-        console.log("entre y este es el error", error);
         return error;
     }
 
@@ -63,7 +55,6 @@ export async function login(payload) {
 
 export function getToken() {
     let token = localStorage.getItem("token");
-    console.log(token);
     if (!token) {
         let error = {};
         error.msg = "No se ha encontrado ningun token";

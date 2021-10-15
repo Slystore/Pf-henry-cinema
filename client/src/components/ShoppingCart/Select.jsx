@@ -1,22 +1,21 @@
 import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { seatSelect } from '../../redux/carts/cartsActions';
+import { useSelector } from 'react-redux';
+// import { seatSelect } from '../../redux/carts/cartsActions';
 import RowSeats from './RowSeats'
 
  export default function Select  () {
  
-  const {seats} = useSelector(state => state.cartReducer) 
+  // const {seats} = useSelector(state => state.cartReducer) 
   const {cart} = useSelector(state => state.cartReducer) 
-  const dispatch = useDispatch()
 
-  function handleCheck(e) {
+  // function handleCheck(e) {
 
-    if (e.target.checked) {
-      dispatch(seatSelect(e.target.value));
-    }else{e.target.checked = false
+  //   if (e.target.checked) {
+  //     dispatch(seatSelect(e.target.value));
+  //   }else{e.target.checked = false
 
-    e.target.value = null}
-  }
+  //   e.target.value = null}
+  // }
 
   return (
     <div className="CartSeatContainer">

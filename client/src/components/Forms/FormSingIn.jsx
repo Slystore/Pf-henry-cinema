@@ -1,12 +1,12 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useHistory, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useState } from "react";
 import { googleLog, login } from "../../redux/users/usersAction";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 function FormSingIn() {
-  const usuario = useSelector((state) => state.users);
+  // const usuario = useSelector((state) => state.users);
   const history = useHistory();
   const [userLog, setUserLog] = useState({
     msgErr: "",
