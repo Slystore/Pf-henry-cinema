@@ -17,6 +17,39 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { useStyle, style } from './movieStyles.js'
 
+import ReactPlayer from 'react-player'
+
+function ChildModal({name}) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Button variant="contained" startIcon={<LiveTvIcon />}  sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' }} onClick={handleOpen}>Ver Trailer</Button>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box sx={{ ...style, width: 600, height:450 }}>
+          <h2 id="child-modal-title">Trailer de {name}</h2>
+          <p id="child-modal-description">
+            <ReactPlayer url='https://www.youtube.com/watch?v=z7PSyWuArVQ' width='590px' height='370px' />
+          </p>
+          <Button onClick={handleClose} sx={{ position: 'absolute', right: 0, top: 5, fontSize: 20, fontWeight: 'bold', color: 'red'}}>x</Button>
+        </Box>
+      </Modal>
+    </React.Fragment>
+  );
+}
+
 
 function Movie({altImage, key, id, image, name, availability, genres, rating, description, addToCart}) {
 
@@ -195,9 +228,10 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
               <Box sx={{ width: 500, height: 40, marginTop: 3 }}>
 
                   <Box sx={{ width: 165, height: 40, float: 'left', }}>
-                      <Button variant="contained" startIcon={<LiveTvIcon />}  sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' }}>
+                    <ChildModal name={name}/>
+                      {/* <Button variant="contained" startIcon={<LiveTvIcon />}  sx={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)' }}>
                         Ver Trailer
-                      </Button>
+                      </Button> */}
                   </Box>
 
                   <Box sx={{ width: 165, height: 40, float: 'left', }}>
@@ -212,10 +246,12 @@ function Movie({altImage, key, id, image, name, availability, genres, rating, de
                       </Button> 
                   </Box>
 
-              </Box>
+          </Box>
 
             </CardContent>
 
+         
+              
           </Box>
          
         </Box>
