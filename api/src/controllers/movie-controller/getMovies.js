@@ -47,9 +47,6 @@ const getMovies = async(req, res, next) => {
                 },
                 {
                     model: cinemaRoom,
-                    attributes: {
-                        include: ["name", "seatCount"],
-                    },
                     through: {
                         attributes: [],
                     },
