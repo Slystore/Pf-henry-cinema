@@ -4,7 +4,8 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const CLEAR_CART = ' CLEAR_CART'
 export const CINEMAS = 'CINEMAS'
 export const SCREENING = 'SCREENING'
-export const SEATS = 'SEATS'
+export const SEATS = 'SEATS';
+export const CLEAR_SEAT= 'CLEAR_SEAT';
 export const GET_ALL = 'GET_ALL';
 export const INCREMENT_CART='INCREMENT_CART';
 export const INCREMENT_CART_STORAGE='INCREMENT_CART_STORAGE';
@@ -64,6 +65,12 @@ export function screeningSelect(payload) {
 export function seatSelect(payload) {
     return {
         type: SEATS,
+        payload
+    }
+}
+export function clearSeat(payload) {
+    return {
+        type: CLEAR_SEAT,
         payload
     }
 }
