@@ -7,7 +7,7 @@ import {
   filterGenre,
   movieAvailability,
 } from "../../redux/movies/moviesAction";
-import { addToCart } from "../../redux/carts/cartsActions";
+import { addToCart, storage } from "../../redux/carts/cartsActions";
 import "./Home.css";
 
 function Home() {
@@ -32,7 +32,7 @@ function Home() {
     // console.log(totalItems)
     console.log("console home",id)
     dispatch (addToCart(id))
-
+    dispatch(storage(id));
 }
 
   return (

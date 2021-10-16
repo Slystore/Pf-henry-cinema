@@ -32,7 +32,7 @@ const useStyle = makeStyles({
 
 function NavBar() {
   const [user, setUser] = useState(false);
-
+  const[text, setText]= useState(JSON.parse(window.localStorage.getItem("id")))
   useEffect(() => {
     const x = getToken();
     if (x.msg) {
@@ -43,7 +43,7 @@ function NavBar() {
   }, []);
 
   const classes = useStyle();
-
+  const {storage} = useSelector(state => state.cartReducer)
   const { cart } = useSelector((state) => state.cartReducer);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -181,13 +181,13 @@ function NavBar() {
             <Box sx={{ display: { xs: "none", md: "flex" }, fontWeight: 900 }}>
               <SearchBar />
               
-              <Link to={ cart.length? `/shoppingCart`: ''}>
+              <Link to={  storage ? `/shoppingCart`: ''}>
                 <IconButton
                   size="large"
                   aria-label="notifications"
                   color="inherit"
                 >
-                  <Badge badgeContent={cart.length} color="error">
+                  <Badge badgeContent={text? text.length: cart.length} color="error">
                     <ShoppingCartIcon className={classes.botonHover} />
                   </Badge>
                 </IconButton>
