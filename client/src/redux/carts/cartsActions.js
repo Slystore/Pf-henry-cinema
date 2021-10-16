@@ -6,9 +6,13 @@ export const CINEMAS = 'CINEMAS'
 export const SCREENING = 'SCREENING'
 export const SEATS = 'SEATS'
 export const GET_ALL = 'GET_ALL';
-export const INCREMENT_CART = 'INCREMENT_CART';
-export const DECREMENT_CART = 'DECREMENT_CART';
-export const POST_FILL_CART = 'POST_FILL_CART';
+export const INCREMENT_CART='INCREMENT_CART';
+export const INCREMENT_CART_STORAGE='INCREMENT_CART_STORAGE';
+export const DECREMENT_CART_STORAGE='DECREMENT_CART_STORAGE';
+export const DECREMENT_CART='DECREMENT_CART';
+export const POST_FILL_CART= 'POST_FILL_CART';
+export const FILL_TEXT= 'FILL_TEXT';
+export const STORAGE= 'STORAGE'
 
 dotenv.config();
 // const { REACT_APP_AWS_PORT } = process.env;
@@ -20,7 +24,18 @@ export function addToCart(id) {
         payload: id
     }
 }
-
+export function storage(payload) {
+    return {
+        type: STORAGE,
+        payload
+    }
+}
+export function fillText(payload) {
+    return {
+        type: FILL_TEXT,
+        payload
+    }
+}
 export function getAll() {
     return async(dispatch) => {
         const movies = await axios.get(`/movies`);
@@ -58,9 +73,21 @@ export function incrementCart(id) {
         payload: id
     }
 }
+export function incrementCartStorage(id) {
+    return {
+        type: INCREMENT_CART_STORAGE,
+        payload: id
+    }
+}
 export function decrementCart(id) {
     return {
         type: DECREMENT_CART,
+        payload: id
+    }
+}
+export function decrementCartStorage(id) {
+    return {
+        type: DECREMENT_CART_STORAGE,
         payload: id
     }
 }

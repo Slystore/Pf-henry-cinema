@@ -29,11 +29,11 @@ import RowSeats from './RowSeats'
           <RowSeats Letter ='B' />
           <RowSeats Letter ='C' />
           <RowSeats Letter ='D' />
+          <RowSeats Letter ='E' />
           <RowSeats Letter ='F' />
           <RowSeats Letter ='G' />
           <RowSeats Letter ='H' />
           <RowSeats Letter ='I' />
-          <RowSeats Letter ='J' />
         </div>
 
         <div className="Intructions">

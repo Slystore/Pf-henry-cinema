@@ -74,7 +74,6 @@ const {
     purchaseOrder
 } = sequelize.models;
 
-console.log(sequelize.models)
 
 users.belongsToMany(role, { through: "rolesDepend" });
 role.belongsToMany(users, { through: "rolesDepend" });
@@ -136,12 +135,19 @@ screening.belongsTo(movies);
 movies.hasMany(screening);
 
 users.hasMany(purchaseOrder)
+
 purchaseOrder.belongsTo(users)
 purchaseOrder.hasMany(purchase)
-    // purchaseOrder.hasMany(purchase)
-    // purchase.hasOne(purchaseOrder)
-    // purchaseOrder.hasMany(purchase)
-    // purchase.belongsTo(purchaseOrder)
+
+// POST users/cart/:id => por body, se debe meter un array de objetos para el carrito de compras. 
+// Me tiene que llegar 
+
+// ==============================
+// purchaseOrder.hasMany(purchase) 
+// purchase.hasOne(purchaseOrder)
+
+// purchaseOrder.hasMany(purchase)
+// purchase.belongsTo(purchaseOrder)
 
 module.exports = {
     ...sequelize.models,
