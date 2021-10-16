@@ -6,7 +6,7 @@ import { useSelector,  } from 'react-redux';
      
     const {cinemaSelect} = useSelector(state => state.cartReducer) 
     const {screeningSelect} = useSelector(state => state.cartReducer) 
-    const {seatsSelect} = useSelector(state => state.cartReducer) 
+    const {postCartStorage} = useSelector(state => state.cartReducer) 
     const {cart} = useSelector(state => state.cartReducer) 
 
     return (
@@ -16,7 +16,8 @@ import { useSelector,  } from 'react-redux';
             <h5>Total: {(cart[0].price)*(cart[0].quantity)}$</h5>
             <p>Sucursal: {cinemaSelect}</p>
             <p>Horario: {screeningSelect}</p>
-            <p>Asientos: {seatsSelect && seatsSelect.map(seat => seat)}</p> </div>)
+             <p>Asientos: {postCartStorage && postCartStorage.map(seat => seat.seat)}</p>  
+            </div>)
             :alert("Debe completar el paso anterior")}
         </div>
     )

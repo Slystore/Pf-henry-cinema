@@ -11,7 +11,8 @@ import {
     DECREMENT_CART,
     POST_FILL_CART,
     STORAGE,
-    FILL_TEXT
+    FILL_TEXT,
+    CLEAR_SEAT
 } from './cartsActions';
 
 export const initialState = {
@@ -65,7 +66,8 @@ export const initialState = {
             id: 3,
         },
     ],
-    seatsSelect: [],
+    seatsSelect: {},
+    clearSeat: {},
     textFill:[],
     postCart: [],
     postCartStorage:[]
@@ -93,11 +95,11 @@ function cartReducer(state = initialState, action) {
             return iteminCart ? {
                 ...state,
                 cart: state.cart.map((item) => item.id === newItem.id ? {...item, quantity: item.quantity + 1 } : item),
-                postCart: [...state.postCart, { movieId }]
+                postCartStorage: [...state.postCart, { movieId }]
             } : {
                 ...state,
                 cart: [{...newItem, quantity: 1 }],
-                postCart: [{ movieId }]
+                postCartStorage: [{ movieId }]
             }
             case STORAGE:
                 let estado= state.cart
@@ -130,7 +132,7 @@ function cartReducer(state = initialState, action) {
             }
         case CINEMAS:
             {
-                let cinePrueba = state.postCart.length === 1 ? [{...state.postCart[0], cinemaId: action.payload }] : state.postCart.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
+                let cinePrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], cinemaId: action.payload }] : state.postCartStorage.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
                 return {
                     ...state,
                     cinemaSelect: action.payload,
@@ -140,7 +142,7 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
-                let screeningPrueba = state.postCart.length === 1 ? [{...state.postCart[0], screeningId: action.payload }] : state.postCart.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
+                let screeningPrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], screeningId: action.payload }] : state.postCartStorage.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
                 return {
                     ...state,
                     screeningSelect: action.payload,
@@ -150,21 +152,35 @@ function cartReducer(state = initialState, action) {
             }
         case SEATS:
             {
+                let rowSeat= action.payload.slice(0,1)
+                let numberSeat= Number(action.payload.slice(1))
                 var flag = true;
-                let seatSelect = state.postCart.map(item => {
+                let seatSelect = state.postCartStorage.map(item => {
 
                     while (flag && !item.seat) {
                         item.seat = action.payload;
                         flag = false
                     }
-                    return item
+                    return  item
                 })
                 return {
                     ...state,
-                    seatsSelect: [...state.seatsSelect, action.payload],
-                    postCart: seatSelect
+                    seatsSelect: {...state.seatsSelect, row:rowSeat, number: numberSeat, isAvailable: false},
+                    postCartStorage: seatSelect
                 }
             }
+            case CLEAR_SEAT:
+                let rowSeat= action.payload.slice(0,1)
+                let numberSeat= Number(action.payload.slice(1))
+                let seatCleared = state.postCartStorage.map(item =>{
+                    return item.seat == action.payload? {...item, seat: undefined} : item
+                })
+                return {
+                   
+                    ...state,
+                    clearSeat: {...state.clearSeat, row:rowSeat, number: numberSeat, isAvailable: true},
+                    postCartStorage: seatCleared
+                }
         case INCREMENT_CART:
             {
                 let result = state.cart.map(item => item ? {...item, quantity: item.quantity + 1 } :
