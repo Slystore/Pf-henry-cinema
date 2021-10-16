@@ -104,11 +104,19 @@ export default function CartItem  ({image, price, title, id, quantity}) {
                <div style={{width: 250, margin: '0 auto', textAlign: 'center'}}>
                   <h3>Cantidad de boletos:</h3> 
                   <button onClick={handleIncrement} className="CartItemButton" >+</button>
-                  <button onClick={handleDecrement} className="CartItemButton">-</button>
-                  <div className="Quantity">{quantity}</div>
+                  <button onClick={quantity >=1? handleDecrement:''} className="CartItemButton">-</button>
+                  <div className="Quantity">
+                     {
+                        quantity >= 1? quantity:'0'
+                     }
+                  </div>
                </div>
                <div className="Total">
-                  <h2>TOTAL: ${ round(price * quantity) }</h2>
+                  <h2>TOTAL: ${
+                                 quantity >= 1? round(price * quantity):'0'
+                               
+                              }
+                  </h2>
                </div>
             </div>
 
