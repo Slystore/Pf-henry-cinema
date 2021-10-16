@@ -7,7 +7,7 @@ import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CartItem from "./CartItem";
-
+import CartItemStorage from './CartItemStorage'
 import NavBar from "../NavBar/NavBar";
 
 import Select from "./Select";
@@ -15,7 +15,7 @@ import Select from "./Select";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
-import { postCartFill } from "../../redux/carts/cartsActions";
+import {  addToCart, getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
 import "./ShoppingCart.css";
 import { Card } from "@mui/material";
 import { getMovies } from "../../redux/movies/moviesAction";
@@ -24,14 +24,19 @@ import PurchaseCart from "./PurchaseCart";
 const steps = ["Carrito de compra", "Selecciona tu asiento", "Compra"];
 
 function ShopingCart() {
-  const { postCart } = useSelector((state) => state.cartReducer);
+  const { postCartStorage } = useSelector((state) => state.cartReducer);
   const { cart } = useSelector((state) => state.cartReducer);
+  const { textFill } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
-
+  const[text, setText]= useState(JSON.parse(window.localStorage.getItem("id")))
+  
   useEffect(() => {
-    dispatch(getMovies());
+    dispatch(getAll());
   }, [dispatch]);
-
+  useEffect(() => {
+    // console.log("tb text", text)
+    dispatch(fillText(text));
+  }, []);
   const [fillShop, setFillShop] = useState([]);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -53,8 +58,8 @@ function ShopingCart() {
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
-    setFillShop(postCart);
-    console.log("entro aca 1");
+    setFillShop(postCartStorage);
+    // console.log("entro aca 1");
   };
 
   const handleBack = () => {
@@ -131,8 +136,23 @@ function ShopingCart() {
                 {/* **** SE MUESTRA EL CONTENIDO DEL CARRITO ******* */}
                 <Box sx={{ height: 440, marginTop: 2 }}>
                   {activeStep === 0 ? (
-                    cart &&
-                    cart.map((movie) => {
+                    text?
+              
+                    textFill.map((movie) => {
+                      console.log("tomi",textFill)
+                      return (
+                        <CartItemStorage
+                          key={movie.id}
+                          image={movie.image}
+                          title={movie.title}
+                          id={movie.id}
+                          price={movie.price}
+                          quantity={movie.quantity}
+                       
+                        />
+                      );
+                    }): 
+                    (cart && cart.map((movie) => {
                       return (
                         <CartItem
                           key={movie.id}
@@ -141,10 +161,9 @@ function ShopingCart() {
                           id={movie.id}
                           price={movie.price}
                           quantity={movie.quantity}
-                        />
-                      );
-                    })
-                  ) : activeStep === 1 ? (
+                          />
+                    )})
+                  )) : activeStep === 1 ? (
                     <Select />
                   ) : (
                     <PurchaseCart />

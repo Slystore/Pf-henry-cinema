@@ -15,7 +15,6 @@ const { cinemaRoomMockUp } = require('./src/utils/mocks/cinemaRooms-mock.js');
 const { screeningMockUpKaia, screeningMockUpLeta, screeningMockUpClark } = require('./src/utils/mocks/screening-mock.js');
 const { seatsMockUp } = require('./src/utils/mocks/seats-mock.js');
 
-
 conn.sync({ force: true })
     .then(async() => {
         console.log('DB connected!');
@@ -23,15 +22,15 @@ conn.sync({ force: true })
         server.listen(PORT, () => console.log(`Server listening on port 3001`));
         // seed();
 
-        await usersMockUp();
-        await rolesMockUp();
+        await genresMockUp();
         await cinemasMockUp();
         await cinemaRoomMockUp();
         await screeningMockUpKaia();
         await screeningMockUpLeta();
         await screeningMockUpClark();
         await seatsMockUp();
-        await genresMockUp();
         await moviesMock();
+        await usersMockUp();
+        await rolesMockUp();
     })
     .catch((e) => console.log('Connection Failed!', e))

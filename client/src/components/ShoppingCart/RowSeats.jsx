@@ -9,7 +9,7 @@ function seat( idMap, index ){
     // console.log(idMap + " x:" + x )
     if( index === 2 || index === 5) return
     
-    let but = document.querySelector('#'+`${idMap}`) 
+    let but = document.querySelector('#' + idMap); 
 
     if(x === 0 && but.style.color === 'rgb(49, 102, 202)' ){
         but.style.color = 'black'
