@@ -11,7 +11,7 @@ import { useHistory } from "react-router";
 
 
 export function FormSingUp() {
-  const [, setSucces] = useState(false);
+  const [succes, setSucces] = useState(false);
   const [userCreated, setUserCreated] = useState({
     noValidate: "",
     validate: "",
@@ -192,35 +192,6 @@ export function FormSingUp() {
                   {succes && <p>Usuario creado</p>}
                 </div>
 
-                <Field
-                  className="inputs"
-                  autoComplete="off"
-                  type="password"
-                  name="password"
-                />
-                <ErrorMessage
-                  name="password"
-                  component={() => <div>{errors.password}</div>}
-                />
-              </div>
-              <div className="celda-1">
-                <button type="submit">Create User</button>
-              </div>
-              <div>
-                ,{userCreated && <p>{userCreated.noValidate}</p>}
-                {/* {succes && (
-                    <Snackbar
-                      open={open}
-                      autoHideDuration={3000}
-                      onClose={onClose}
-                    >
-                      <Alert onClose={handleClose} severity="success">
-                        <AlertTitle>Exitoso!</AlertTitle>
-                        Usuario creado
-                      </Alert>
-                    </Snackbar>
-                  )} */}
-              </div>
             </Form>
  
           </div>
