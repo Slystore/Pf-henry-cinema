@@ -191,25 +191,6 @@ export function FormSingUp() {
                   {userCreated && <p>{userCreated.noValidate}</p>}
                   {succes && <p>Usuario creado</p>}
                 </div>
-
-                <Field
-                  className="inputs"
-                  autoComplete="off"
-                  type="password"
-                  name="password"
-                />
-                <ErrorMessage
-                  name="password"
-                  component={() => <div>{errors.password}</div>}
-                />
-             
-              <div className="celda-1">
-                <button type="submit">Create User</button>
-              </div>
-              <div>
-                ,{userCreated && <p>{userCreated.noValidate}</p>}
-                
-              </div>
             </Form>
  
           </div>
