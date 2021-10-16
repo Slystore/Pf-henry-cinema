@@ -7,7 +7,8 @@ import {
     MOVIE_AVAILABILITY,
     GET_MOVIE_NAME,
     ADD_MOVIE,
-    FILTER_BY_GENRE
+    FILTER_BY_GENRE,
+    PUT_MOVIE
 } from './moviesAction.js';
 
 const initialState = {
@@ -56,6 +57,10 @@ function moviesReducer(state = initialState, action) {
                     movies: action.payload
                 }
             }
+        case PUT_MOVIE:
+            console.log('estas es la data que llega al reducer',action.payload)
+            return
+            
         case GET_MOVIE_NAME:
             return {
                 ...state,

@@ -18,7 +18,7 @@ const moviePost2 = async(req, res, next) => {
             cinema,
             sala,
             funcion
-        } = req.body.prueba;
+        } = req.body;
         console.log('este es el body back',req.body)
 
         let movieCreated = await movies.create({

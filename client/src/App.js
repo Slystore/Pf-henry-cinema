@@ -14,6 +14,7 @@ import { getAll } from "./redux/movies/moviesAction";
 import {FormSingUp} from "./components/Forms/FormsSingUp/FormSingUp.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 import UserProfile from "./components/User-proflile/User-profile.jsx";
+import FormEditMovie from "./components/Forms/FormEditMovie.jsx";
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/admin/createMovie" component={FormMovie} />
           <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
           <Route exact path = '/perfil' component={UserProfile}/>
+          <Route exact path = '/admin/editMovie' component = {FormEditMovie}/>
           {/* <Route path="/admin/createGenre" component={FormGenre} /> */}
           <Route exact path= "*" component={PageNotFound} />
         </Switch>

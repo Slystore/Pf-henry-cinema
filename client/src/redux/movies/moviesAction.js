@@ -7,6 +7,7 @@ export const GET_MOVIES_SORTED = "GET_MOVIES_SORTED";
 export const MOVIE_AVAILABILITY = "MOVIE_AVAILABILITY";
 export const GET_MOVIE_NAME = "GET_MOVIE_NAME";
 export const ADD_MOVIE = "ADD_MOVIE";
+export const PUT_MOVIE = "PUT_MOVIE"
 export const FILTER_BY_GENRE = " FILTER_BY_GENRE";
 
 const awsPort = process.env.REACT_APP_API_KEY;
@@ -23,6 +24,22 @@ export function getAll() {
       users: users.data,
     });
   };
+}
+
+export function putMovie(dataMovie){
+  console.log('este es el payload de la action ', dataMovie)
+  return async function(dispatch){
+    try{
+      const data = await axios.put(`http://localhost:3001/api/movies/editMovie/${dataMovie.id}`,dataMovie)
+      console.log('accion despachada')
+      return await dispatch({
+        type: PUT_MOVIE,
+        payload:data.data
+      })
+    }catch(err){
+      console.log('yo rompo en la action',err)
+    }
+  }
 }
 
 export function getMovies() {

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { googleLog, login } from "../../redux/users/usersAction";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 function FormSingIn() {
-  const usuario = useSelector((state) => state.users);
+ 
   const history = useHistory();
   const [userLog, setUserLog] = useState({
     msgErr: "",
