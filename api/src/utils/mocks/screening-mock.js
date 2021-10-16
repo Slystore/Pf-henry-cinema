@@ -2,18 +2,6 @@ const { screening } = require('../../db.js');
 
 const screeningMockUpKaia = async() => {
     await screening.create({
-        time: 12
-    });
-    await screening.create({
-        time: 14
-    });
-    await screening.create({
-        time: 16
-    });
-    await screening.create({
-        time: 18
-    });
-    await screening.create({
         time: 20
     });
     await screening.create({
@@ -27,18 +15,6 @@ const screeningMockUpKaia = async() => {
 
 const screeningMockUpLeta = async() => {
     await screening.create({
-        time: 12
-    });
-    await screening.create({
-        time: 14
-    });
-    await screening.create({
-        time: 16
-    });
-    await screening.create({
-        time: 18
-    });
-    await screening.create({
         time: 20
     });
     await screening.create({
@@ -50,18 +26,6 @@ const screeningMockUpLeta = async() => {
 }
 
 const screeningMockUpClark = async() => {
-    await screening.create({
-        time: 12
-    });
-    await screening.create({
-        time: 14
-    });
-    await screening.create({
-        time: 16
-    });
-    await screening.create({
-        time: 18
-    });
     await screening.create({
         time: 20
     });
