@@ -6,8 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { VscTriangleLeft } from 'react-icons/vsc'
-import "./formsingUp.css";
 import { useHistory } from "react-router";
+import "./formsingUp.css";
 
 
 export function FormSingUp() {
@@ -192,24 +192,6 @@ export function FormSingUp() {
                   {succes && <p>Usuario creado</p>}
                 </div>
 
-                <Field
-                  className="inputs"
-                  autoComplete="off"
-                  type="password"
-                  name="password"
-                />
-                <ErrorMessage
-                  name="password"
-                  component={() => <div>{errors.password}</div>}
-                />
-             
-              <div className="celda-1">
-                <button type="submit">Create User</button>
-              </div>
-              <div>
-                ,{userCreated && <p>{userCreated.noValidate}</p>}
-                
-              </div>
             </Form>
  
           </div>
