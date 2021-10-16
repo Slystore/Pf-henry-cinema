@@ -43,7 +43,7 @@ dispatch(incrementCartStorage(id))
 
    function handleClearCart(){
       dispatch(clearCart())
-      localStorage.clear()
+      localStorage.removeItem('id');
       history.push('/')
       window.location.replace('')
    }
