@@ -15,10 +15,10 @@ import jwt_decode from "jwt-decode";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../redux/users/usersAction"
-import {  addToCart, getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
+import { getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
 import "./ShoppingCart.css";
 import { Card } from "@mui/material";
-import { getMovies } from "../../redux/movies/moviesAction";
+// import { getMovies } from "../../redux/movies/moviesAction";
 import PurchaseCart from "./PurchaseCart";
 import { useHistory } from "react-router";
 
@@ -29,15 +29,17 @@ function ShopingCart() {
   const { cart } = useSelector((state) => state.cartReducer);
   const { textFill } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
-  const[text, setText]= useState(JSON.parse(window.localStorage.getItem("id")))
+  const[text, ]= useState(JSON.parse(window.localStorage.getItem("id")))
   const history= useHistory()
   
   useEffect(() => {
     dispatch(getAll());
   }, [dispatch]);
+  
   useEffect(() => {
     // console.log("tb text", text)
     dispatch(fillText(text));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [fillShop, setFillShop] = useState([]);
   const [activeStep, setActiveStep] = React.useState(0);

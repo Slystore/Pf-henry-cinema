@@ -32,7 +32,7 @@ const useStyle = makeStyles({
 
 function NavBar() {
   const [user, setUser] = useState(false);
-  const[text, setText]= useState(JSON.parse(window.localStorage.getItem("id")))
+  const[text, ]= useState(JSON.parse(window.localStorage.getItem("id")))
   useEffect(() => {
     const x = getToken();
     if (x.msg) {

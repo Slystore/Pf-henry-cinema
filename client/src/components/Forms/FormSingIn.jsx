@@ -107,7 +107,6 @@ function FormSingIn() {
                   <div className="BtnLoginFacebook">
                     <GoogleLogin 
                       className="BtnFace"
-                      buttonText="Loginnnnn"
                       clientId="241468930497-uhl9h4jpajj8jk2o4k49e3ef0tfuq5pa.apps.googleusercontent.com"
                       buttonText="Login"
                       onSuccess={responseGoogle}
