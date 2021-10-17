@@ -6,8 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { VscTriangleLeft } from 'react-icons/vsc'
-import { useHistory } from "react-router";
 import "./formsingUp.css";
+import { useHistory } from "react-router";
 
 
 export function FormSingUp() {
@@ -191,7 +191,6 @@ export function FormSingUp() {
                   {userCreated && <p>{userCreated.noValidate}</p>}
                   {succes && <p>Usuario creado</p>}
                 </div>
-
             </Form>
  
           </div>

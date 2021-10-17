@@ -29,11 +29,11 @@
 }
 
 .Logo{
-    width: 110px;
+    width: 90px;
     height: 30px;
     margin: 0 auto;
     padding: 30px 0;
-    /* border: thin dotted #00f; */
+    /* border: thin dotted #f00; */
 }
 
 .DataField{
@@ -66,7 +66,7 @@
     border-radius: 5px;
     font-size: 14px;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: 15px;
     text-transform: uppercase;
     color: #fff;
     background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
@@ -86,20 +86,28 @@
 .DividerContainer{
     width: 315px;
     margin: 0 auto;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     font-size: 14px;
     color: rgb(122, 122, 122);
     /* border: thin dotted #f00; */
 }
 
-.BtnFace{
+.BtnLoginFacebook{
     width: 315px;
     height: 45px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 17px;
+    /* border: thin dotted #f00; */
+}
+
+.BtnFace{
+    width: 315px;
+    height: 42px;
     border: none;
     color: white;
     border-radius: 5px;
     font-size: 14px;
-    background-color: #4285F4;
     /* background: linear-gradient(45deg, #1775cc 30%, #1448d8 90%); */
     transition: 0.5s all;
 }

@@ -11,15 +11,16 @@ import CartItemStorage from './CartItemStorage'
 import NavBar from "../NavBar/NavBar";
 
 import Select from "./Select";
-
+import jwt_decode from "jwt-decode";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-
-import {  addToCart, getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
+import { getToken } from "../../redux/users/usersAction"
+import { getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
 import "./ShoppingCart.css";
 import { Card } from "@mui/material";
-import { getMovies } from "../../redux/movies/moviesAction";
+// import { getMovies } from "../../redux/movies/moviesAction";
 import PurchaseCart from "./PurchaseCart";
+import { useHistory } from "react-router";
 
 const steps = ["Carrito de compra", "Selecciona tu asiento", "Compra"];
 
@@ -28,14 +29,17 @@ function ShopingCart() {
   const { cart } = useSelector((state) => state.cartReducer);
   const { textFill } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
-  const[text, setText]= useState(JSON.parse(window.localStorage.getItem("id")))
+  const[text, ]= useState(JSON.parse(window.localStorage.getItem("id")))
+  const history= useHistory()
   
   useEffect(() => {
     dispatch(getAll());
   }, [dispatch]);
+  
   useEffect(() => {
     // console.log("tb text", text)
     dispatch(fillText(text));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [fillShop, setFillShop] = useState([]);
   const [activeStep, setActiveStep] = React.useState(0);
@@ -80,12 +84,24 @@ function ShopingCart() {
 //       return newSkipped;
 //     });
 //   };
-
+const x = getToken();
   const handleReset = () => {
     setActiveStep(0);
   };
   function handlePostCart() {
-    dispatch(postCartFill(fillShop));
+    if(!x.msg){
+       
+    const decoded = jwt_decode(x);
+    let postFillFinal = fillShop.length === 1 ? [{...fillShop[0], userId: decoded.user.id }] 
+    : fillShop.map(item => item.userId ? { item } : {...item, userId: decoded.user.id })
+
+   let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
+   let userLog = userLogParse?(userLogParse.length === 1 ? [{...userLogParse[0], userId: decoded.user.id }] 
+   : userLogParse.map(item => item.userId ? { item } : {...item, userId: decoded.user.id })):undefined
+   userLog? dispatch(postCartFill(userLog)): dispatch(postCartFill(postFillFinal))}
+    else{
+      window.localStorage.setItem("cartPost",JSON.stringify( fillShop))
+  history.push("/login")}
   }
 
   return (

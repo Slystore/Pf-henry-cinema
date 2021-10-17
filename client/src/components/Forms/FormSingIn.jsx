@@ -104,10 +104,9 @@ function FormSingIn() {
                     <Divider orientation="horizontal" flexItem>o logea con </Divider>
                   </div>
 
-                  <div className="DataField">
+                  <div className="BtnLoginFacebook">
                     <GoogleLogin 
                       className="BtnFace"
-                      buttonText="Loginnnnn"
                       clientId="241468930497-uhl9h4jpajj8jk2o4k49e3ef0tfuq5pa.apps.googleusercontent.com"
                       buttonText="Login"
                       onSuccess={responseGoogle}
@@ -137,3 +136,4 @@ function FormSingIn() {
 }
 
 export default FormSingIn;
+

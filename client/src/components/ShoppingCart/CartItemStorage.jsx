@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { decrementCartStorage, clearCart, addToCart, incrementCartStorage } from '../../redux/carts/cartsActions';
+import { decrementCartStorage, clearCart, incrementCartStorage } from '../../redux/carts/cartsActions';
 
 import { cinemaSelect, screeningSelect } from '../../redux/carts/cartsActions';
 
@@ -11,9 +11,9 @@ import './CartItem.css'
 
 
 export default function CartItem  ({image, price, title, id, quantity, fillState}) {
- const {cart} = useSelector(state => state.cartReducer)
+//  const {cart} = useSelector(state => state.cartReducer)
    const history = useHistory()
-   const [stateCart, setStateCart] = React.useState([])
+   // const [stateCart, setStateCart] = React.useState([])
    const {cinemas} = useSelector(state => state.cartReducer) 
    const {screening} = useSelector(state => state.cartReducer) 
 
@@ -43,7 +43,7 @@ dispatch(incrementCartStorage(id))
 
    function handleClearCart(){
       dispatch(clearCart())
-      localStorage.clear()
+      localStorage.removeItem('id');
       history.push('/')
       window.location.replace('')
    }

@@ -11,13 +11,14 @@ import {
     DECREMENT_CART,
     POST_FILL_CART,
     STORAGE,
-    FILL_TEXT
+    FILL_TEXT,
+    CLEAR_SEAT
 } from './cartsActions';
 
 export const initialState = {
     cart: [],
     movies: [],
-    storage:[],
+    storage: [],
     cinemas: [{
             name: "Kaia",
             id: 1,
@@ -65,10 +66,11 @@ export const initialState = {
             id: 3,
         },
     ],
-    seatsSelect: [],
-    textFill:[],
+    seatsSelect: {},
+    clearSeat: {},
+    textFill: [],
     postCart: [],
-    postCartStorage:[]
+    postCartStorage: []
 };
 
 function cartReducer(state = initialState, action) {
@@ -93,27 +95,27 @@ function cartReducer(state = initialState, action) {
             return iteminCart ? {
                 ...state,
                 cart: state.cart.map((item) => item.id === newItem.id ? {...item, quantity: item.quantity + 1 } : item),
-                postCart: [...state.postCart, { movieId }]
+                postCartStorage: [...state.postCart, { movieId }]
             } : {
                 ...state,
                 cart: [{...newItem, quantity: 1 }],
-                postCart: [{ movieId }]
+                postCartStorage: [{ movieId }]
             }
-            case STORAGE:
-                let estado= state.cart
-                    window.localStorage.setItem("id",JSON.stringify( estado))
-                    let store2=JSON.parse(window.localStorage.getItem("id"))
-                return{
-                    ...state,
-                    storage: store2
-                }
-
-       case FILL_TEXT:
-           let movieId2= action.payload? action.payload[0].id: null
+        case STORAGE:
+            let estado = state.cart
+            window.localStorage.setItem("id", JSON.stringify(estado))
+            let store2 = JSON.parse(window.localStorage.getItem("id"))
             return {
                 ...state,
-                textFill: action.payload!== null? action.payload: [],
-                postCartStorage: movieId2?[...state.postCartStorage, {movieId2}]: [{movieId2}]
+                storage: store2
+            }
+
+        case FILL_TEXT:
+            let movieId2 = action.payload ? action.payload[0].id : null
+            return {
+                ...state,
+                textFill: action.payload !== null ? action.payload : [],
+                postCartStorage: movieId2 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
             }
         case POST_FILL_CART:
             return {
@@ -125,12 +127,12 @@ function cartReducer(state = initialState, action) {
                 return {
                     ...state,
                     cart: [],
-                    textFill:[]
+                    textFill: []
                 }
             }
         case CINEMAS:
             {
-                let cinePrueba = state.postCart.length === 1 ? [{...state.postCart[0], cinemaId: action.payload }] : state.postCart.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
+                let cinePrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], cinemaId: action.payload }] : state.postCartStorage.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
                 return {
                     ...state,
                     cinemaSelect: action.payload,
@@ -140,7 +142,7 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
-                let screeningPrueba = state.postCart.length === 1 ? [{...state.postCart[0], screeningId: action.payload }] : state.postCart.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
+                let screeningPrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], screeningId: action.payload }] : state.postCartStorage.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
                 return {
                     ...state,
                     screeningSelect: action.payload,
@@ -150,8 +152,10 @@ function cartReducer(state = initialState, action) {
             }
         case SEATS:
             {
+                let rowSeat = action.payload.slice(0, 1)
+                let numberSeat = Number(action.payload.slice(1))
                 var flag = true;
-                let seatSelect = state.postCart.map(item => {
+                let seatSelect = state.postCartStorage.map(item => {
 
                     while (flag && !item.seat) {
                         item.seat = action.payload;
@@ -161,9 +165,21 @@ function cartReducer(state = initialState, action) {
                 })
                 return {
                     ...state,
-                    seatsSelect: [...state.seatsSelect, action.payload],
-                    postCart: seatSelect
+                    seatsSelect: {...state.seatsSelect, row: rowSeat, number: numberSeat, isAvailable: false },
+                    postCartStorage: seatSelect
                 }
+            }
+        case CLEAR_SEAT:
+            let rowSeat = action.payload.slice(0, 1)
+            let numberSeat = Number(action.payload.slice(1))
+            let seatCleared = state.postCartStorage.map(item => {
+                return item.seat === action.payload ? {...item, seat: undefined } : item
+            })
+            return {
+
+                ...state,
+                clearSeat: {...state.clearSeat, row: rowSeat, number: numberSeat, isAvailable: true },
+                postCartStorage: seatCleared
             }
         case INCREMENT_CART:
             {
@@ -174,30 +190,31 @@ function cartReducer(state = initialState, action) {
                     cart: result
                 }
             }
-            case INCREMENT_CART_STORAGE:
-                {
-                    let result2 = state.textFill.map(item => item.quantity
-                         ? {...item, quantity: item.quantity + 1 } :
-                        item)
-                      let array= state.postCartStorage
-                    return {
-                        ...state,
+        case INCREMENT_CART_STORAGE:
+            {
+                let result2 = state.textFill.map(item => item.quantity ?
+                    {...item, quantity: item.quantity + 1 } :
+                    item)
+                let array = state.postCartStorage
+                return {
+                    ...state,
                     textFill: result2,
-                        postCartStorage: array?array.concat(array[0]):[]
-                    }
+                    postCartStorage: array ? array.concat(array[0]) : []
                 }
-                case DECREMENT_CART_STORAGE:
-                    {
-                        let result2 = state.textFill.map(item => item.quantity
-                             ? {...item, quantity: item.quantity - 1 } :
-                            item)
-                            let array= state.postCartStorage.pop()
-                        return {
-                            ...state,
-                        textFill: result2,
-                        postCartStorage:(state.textFill)[0].quantity!==0?state.postCartStorage: []
-                        }
-                    }
+            }
+        case DECREMENT_CART_STORAGE:
+            {
+                let result2 = state.textFill.map(item => item.quantity ?
+                        {...item, quantity: item.quantity - 1 } :
+                        item)
+                    // eslint-disable-next-line no-unused-vars
+                let array = state.postCartStorage.pop()
+                return {
+                    ...state,
+                    textFill: result2,
+                    postCartStorage: (state.textFill)[0].quantity !== 0 ? state.postCartStorage : []
+                }
+            }
         case DECREMENT_CART:
             {
                 let result = state.cart.map(item => item ? {...item, quantity: item.quantity - 1 } :
