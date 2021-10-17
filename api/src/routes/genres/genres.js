@@ -8,8 +8,8 @@ const tokenVerify = require("../../middlewars/tokenAuth");
 
 const router = Router();
 
-router.get("/:id", getGenres);
 router.get("/", getGenres);
+router.get("/:id", getGenres);
 router.post("/create", PostGenres);
 router.put('/update/:id', putGenres)
 router.delete("/delete/:id", deleteGenres);
