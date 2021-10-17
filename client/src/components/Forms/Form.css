@@ -94,28 +94,29 @@
 
 .BtnLoginFacebook{
     width: 315px;
-    height: 40px;
+    height: 45px;
     margin: 0 auto;
     margin-top: 10px;
+    margin-bottom: 17px;
     /* border: thin dotted #f00; */
 }
 
 .BtnFace{
     width: 315px;
-    height: 35px;
+    height: 42px;
     border: none;
     color: white;
     border-radius: 5px;
     font-size: 14px;
-    background: linear-gradient(45deg, #1775cc 30%, #1448d8 90%);
+    /* background: linear-gradient(45deg, #1775cc 30%, #1448d8 90%); */
     transition: 0.5s all;
 }
 
-.BtnFace:hover{
+/* .BtnFace:hover{
     cursor: pointer;
     background: linear-gradient(45deg,#1448d8 30%, #1775cc 90% );
     box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
-}
+} */
 
 .NewUser{
     width: 250px;
