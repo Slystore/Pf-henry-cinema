@@ -7,6 +7,8 @@ const users = require('./users/users')
 const cine = require('./cinemas/cinemas')
 const compras = require('./purchase/purchase')
 const orders = require('./purchaseOrder/orders')
+const shows = require('./shows/shows')
+const seats = require('./seats/seats')
 
 const router = Router()
 
@@ -16,6 +18,8 @@ router.use('/users', users)
 router.use('/cinemas', cine)
 router.use('/purchases', compras)
 router.use('/purchaseOrder', orders)
-router.use('/', login)
+router.use('/shows', shows)
+router.use('/seats', seats)
+// router.use('/', login)
 
 module.exports = router;

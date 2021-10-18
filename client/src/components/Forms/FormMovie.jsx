@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import image from "../Forms/img/posterForm.jpeg";
 import bg from "../Forms/img/bgForm.jpeg";
@@ -8,55 +8,76 @@ import paper from "../Forms/img/paperForm.jpg";
 import swal from "sweetalert";
 import { useStyles } from "./stylesForms";
 import FormGenre from "./FormGenre";
+import { postMovie } from '../../redux/movies/moviesAction'
+
+const validate = (form) => {
+  let errors = {};
+  if (!form.Nombre) {
+    errors.nombre = "Campo Obligatorio";
+  } else if (!form.Puntaje || form.Puntaje <= 0) {
+    errors.puntaje = "Campo Obligatorio";
+  } else if (!form.Precio || form.Puntaje <= 0) {
+    errors.precio = "Campo Obligatorio";
+  } else if (!form.Imagen) {
+    errors.imagen = "Campo Obligatorio";
+  } else if (!form.Resumen) {
+    errors.resumen = "Campo Obligatorio";
+  } else if (!form.Duracion || form.Duracion <= 1) {
+    errors.Duracion = "Campo Obligatorio";
+  }
+  return errors;
+};
+
 
 const FormMovie = () => {
+  const dispatch = useDispatch()
+  // dispatch(postMovie())
   const clasess = useStyles();
   const history = useHistory();
   const { genres } = useSelector((state) => state.moviesReducer);
   const [errors, setErrors] = useState({});
   const [form, setForm] = useState({
-    Nombre: "",
-    Puntaje: 0,
-    PuntajeUsuario: 0,
-    Disponibilidad: true,
-    Precio: 0,
-    Imagen: "",
-    Resumen: "",
-    Duracion: 0,
-    Genero: [],
+    // Nombre: "",
+    // Puntaje: 0,
+    // PuntajeUsuario: 0,
+    // Disponibilidad: true,
+    // Precio: 0,
+    // Imagen: "",
+    // Resumen: "",
+    // Duracion: 0,
+    // Genero: [],
+
+    title : "Hola2",
+    rating : 7.5,
+    description : "una prueba del post, si me sale bien, me voy a dormir",
+    actors : ["Hola2", "Chau2"],
+    director : "Gabriel Villarroel",
+    usersRating : 5.0,
+    votes : 1392,
+    availability : true,
+    price : "99.99",
+    image : "no tengo imagen pero puedo ver si mando un texto mas largo, uy, ya lo hice, que genio. :')",
+    runTime : "1.45.56",
+    genre : "Action",
+    cinema: "Kaia",
+    sala: "sala_uno",
+    funcion: 12
   });
 
-  const validate = (form) => {
-    let errors = {};
-    if (!form.Nombre) {
-      errors.nombre = "Campo Obligatorio";
-    } else if (!form.Puntaje || form.Puntaje <= 0) {
-      errors.puntaje = "Campo Obligatorio";
-    } else if (!form.Precio || form.Puntaje <= 0) {
-      errors.precio = "Campo Obligatorio";
-    } else if (!form.Imagen) {
-      errors.imagen = "Campo Obligatorio";
-    } else if (!form.Resumen) {
-      errors.resumen = "Campo Obligatorio";
-    } else if (!form.Duracion || form.Duracion <= 1) {
-      errors.Duracion = "Campo Obligatorio";
-    }
-    return errors;
-  };
-
+  
   const handleChange = (e) => {
     var objErrors = validate({
       ...form,
       [e.target.name]: e.target.value,
     });
-    setErrors(objErrors);
+    // setErrors(objErrors);
     console.log(errors);
-    setForm((form) => {
-      return {
-        ...form,
-        [e.target.name]: e.target.value,
-      };
-    });
+    // setForm((form) => {
+    //   return {
+    //     ...form,
+    //     [e.target.name]: e.target.value,
+    //   };
+    // });
   };
 
   const handleSelect = (e) => {
@@ -90,9 +111,11 @@ const FormMovie = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //se ejecuta action que mande ese form al back
-    if (Object.values(errors).length > 0) {
-      swal("", "faltan campos por completar", "warning");
-    } else {
+    // if (Object.values(errors).length > 0) {
+      // swal("", "faltan campos por completar", "warning");
+    // } else {
+      dispatch(postMovie())
+      console.log('peli creada', form)
       setForm({
         nombre: "",
         Puntaje: 0,
@@ -108,7 +131,7 @@ const FormMovie = () => {
       swal("Pelicula Creada!", "", "success");
       history.push("/"); //hay que poner la ruta de router a donde reenvia
       // window.location.replace('')
-    }
+    // }
   };
 
   return (
@@ -241,13 +264,7 @@ const FormMovie = () => {
 
             <img src={paper} className={clasess.imgPaper} alt=""/>
 
-            <ul className={clasess.render}>
-              {form.Genero.map((el, i) => (
-                <div key={i}>
-                  <div>{el}<button className={clasess.btnX}onClick={() => deleteGenero(el)}>X</button></div>
-                </div>
-              ))}
-            </ul><FormGenre />
+           
           </div>
         </div>
       </div>

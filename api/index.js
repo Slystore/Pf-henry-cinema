@@ -23,13 +23,13 @@ conn.sync({ force: true })
 
         await usersMockUp();
         await rolesMockUp();
-        await cinemasMockUp();
-        await cinemaRoomMockUp();
+        // await cinemasMockUp();
+        // await cinemaRoomMockUp();
         await screeningMockUpKaia();
-        await screeningMockUpLeta();
-        await screeningMockUpClark();
-        await seatsMockUp();
+        // await screeningMockUpLeta();
+        // await screeningMockUpClark();
+        // await seatsMockUp();
         await genresMockUp();
-        await moviesMock();
+        // await moviesMock();
     })
     .catch((e) => console.log('Connection Failed!', e))

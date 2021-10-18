@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const getGenres = require("../../controllers/genres-controller/getGenres");
-const PostGenres = require("../../controllers/genres-controller/postGenres");
-const putGenres = require("../../controllers/genres-controller/putGenres");
-const deleteGenres = require("../../controllers/genres-controller/deleteGenres");
+const getGenres = require("../../controllers/genres-controllers/getGenres");
+const PostGenres = require("../../controllers/genres-controllers/postGenres");
+const putGenres = require("../../controllers/genres-controllers/putGenres");
+const deleteGenres = require("../../controllers/genres-controllers/deleteGenres");
 const tokenVerify = require("../../middlewars/tokenAuth");
 
 
