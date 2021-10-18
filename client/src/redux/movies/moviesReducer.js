@@ -53,7 +53,7 @@ function moviesReducer(state = initialState, action) {
             {
                 return {
                     ...state,
-                    movies: action.payload
+                    
                 }
             }
         case GET_MOVIE_NAME:

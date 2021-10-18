@@ -11,6 +11,7 @@ const roomModel = require("./models/CinemaRoom");
 const seatsModel = require("./models/Seats");
 const purchaseOrderModel = require("./models/purchaseOrder");
 const Purchase = require("./models/Purchase");
+const showsModel = require("./models/shows");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
@@ -60,6 +61,7 @@ screeningModel(sequelize);
 roomModel(sequelize);
 seatsModel(sequelize);
 purchaseOrderModel(sequelize);
+showsModel(sequelize);
 
 const {
     genres,
@@ -71,7 +73,8 @@ const {
     cinemaRoom,
     seats,
     role,
-    purchaseOrder
+    purchaseOrder,
+    shows
 } = sequelize.models;
 
 
@@ -101,8 +104,8 @@ movies.hasMany(screening);
 screening.belongsTo(cinemaRoom);
 cinemaRoom.hasMany(screening);
 
-seats.belongsTo(cinemaRoom);
-cinemaRoom.hasMany(seats);
+// seats.belongsTo(cinemaRoom);
+// cinemaRoom.hasMany(seats);
 
 movies.hasMany(purchase);
 purchase.belongsTo(movies);
@@ -122,14 +125,17 @@ cinemaRoom.hasMany(purchase);
 seats.hasOne(purchase);
 purchase.belongsTo(seats);
 
-seats.belongsTo(screening);
-screening.hasMany(seats);
+// seats.belongsTo(screening);
+// screening.hasMany(seats);
 
 seats.belongsTo(users);
-users.hasOne(seats);
+users.hasMany(seats);
 
-seats.belongsTo(cinemas);
-cinemas.hasMany(seats);
+// seats.belongsTo(cinemas);
+// cinemas.hasMany(seats);
+
+seats.belongsTo(shows)
+shows.hasMany(seats)
 
 screening.belongsTo(movies);
 movies.hasMany(screening);
@@ -139,15 +145,21 @@ users.hasMany(purchaseOrder)
 purchaseOrder.belongsTo(users)
 purchaseOrder.hasMany(purchase)
 
-// POST users/cart/:id => por body, se debe meter un array de objetos para el carrito de compras. 
-// Me tiene que llegar 
+cinemas.hasMany(shows)
+shows.belongsTo(cinemas)
 
-// ==============================
-// purchaseOrder.hasMany(purchase) 
-// purchase.hasOne(purchaseOrder)
+movies.hasMany(shows)
+shows.belongsTo(movies)
 
-// purchaseOrder.hasMany(purchase)
-// purchase.belongsTo(purchaseOrder)
+cinemaRoom.hasMany(shows)
+shows.belongsTo(cinemaRoom)
+
+screening.hasMany(shows)
+shows.belongsTo(screening)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.hasOne(purchaseOrder)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.belongsTo(purchaseOrder)
 
 module.exports = {
     ...sequelize.models,

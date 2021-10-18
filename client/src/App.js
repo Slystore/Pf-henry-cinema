@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 import ControlPanel from "./components/Admin/controlPanel.jsx";
@@ -18,13 +18,15 @@ import UserProfile from "./components/User-proflile/User-profile.jsx";
 
 
 function App() {
+  const estado = useSelector( state => state.moviesReducer)
+
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAll());
-    // dispatch(getMovies())
-    // dispatch(getAllUsers())
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAll());
+  //   // dispatch(getMovies())
+  //   // dispatch(getAllUsers())
+  // }, [dispatch]);
 
   return (
     <div>

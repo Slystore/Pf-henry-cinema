@@ -8,16 +8,16 @@ const tokenVerify = require("../../middlewars/tokenAuth");
 
 const router = Router()
 
-// router.get('/', getCinemas)
-// router.get('/:id', getCinemasById)
-// router.post('/create', postCinema)
-// router.put('/update/:id', updateCinema)
-// router.delete('/delete/:id', deleteCinema)
-
 router.get('/', getCinemas)
-router.get('/:id', tokenVerify, getCinemasById)
-router.post('/create', tokenVerify, postCinema)
-router.put('/update/:id', tokenVerify, updateCinema)
-router.delete('/delete/:id', tokenVerify, deleteCinema)
+router.get('/:id', getCinemasById)
+router.post('/create', postCinema)
+router.put('/update/:id', updateCinema)
+router.delete('/delete/:id', deleteCinema)
+
+// router.get('/', getCinemas)
+// router.get('/:id', tokenVerify, getCinemasById)
+// router.post('/create', tokenVerify, postCinema)
+// router.put('/update/:id', tokenVerify, updateCinema)
+// router.delete('/delete/:id', tokenVerify, deleteCinema)
 
 module.exports = router

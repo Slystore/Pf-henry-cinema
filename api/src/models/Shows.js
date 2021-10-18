@@ -1,9 +1,8 @@
 const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (Sequelize) => {
-
     return Sequelize.define(
-        'seats', {
+        "shows", {
             id: {
                 type: DataTypes.UUID,
                 primaryKey: true,
@@ -12,12 +11,9 @@ module.exports = (Sequelize) => {
             },
             number: {
                 type: DataTypes.INTEGER,
+                allowNull: false,
                 autoIncrement: true
-            },
-            isAvailable: {
-                type: DataTypes.BOOLEAN,
-                defaultValue: true
             }
-        }, {}
-    )
+        }, { timestamps: false }
+    );
 };

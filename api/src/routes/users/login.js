@@ -1,7 +1,7 @@
 const express = require('express')
 const googleLogin = require('../../controllers/login-controller/google-login')
 const router = express.Router()
-const {singIn,singUp} = require('../../controllers/login-controller/login-controller')
+const {singIn,singUp} = require('../../controllers/login-controllers/login-controller')
 
 
 
