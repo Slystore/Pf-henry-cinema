@@ -1,0 +1,11 @@
+{
+  "web": {
+    "client_id": "241468930497-uhl9h4jpajj8jk2o4k49e3ef0tfuq5pa.apps.googleusercontent.com",
+    "project_id": "cinemaapp-328816",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "javascript_origins": ["http://localhost:3000"]
+  }
+}

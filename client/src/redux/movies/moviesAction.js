@@ -94,6 +94,26 @@ export const postMovie = async(payload) => {
     }
 };
 
+
+
+// export function postMovie() {
+//     // const token = localStorage.getItem("token")
+//     // console.log(token)
+//     const authAxios = axios.create({
+//         // baseURL:"http://localhost:3001/api",
+//         headers:{
+//             Authorization: `Bearer ${token1}`
+//         }
+//     })
+//     console.log('post movie action despachada!')
+//     return async function(dispatch) {
+//         const response = await authAxios.post('http://localhost:3001/api/movies/createMovie', prueba)
+//         return response
+//     }
+// }
+
+
+//-------------------------------------------------------------------------------------------
 export function getMovieName(payload) {
     return async function(dispatch) {
         try {
