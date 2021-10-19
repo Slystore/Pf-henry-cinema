@@ -11,9 +11,7 @@ const roomModel = require("./models/CinemaRoom");
 const seatsModel = require("./models/Seats");
 const purchaseOrderModel = require("./models/purchaseOrder");
 const Purchase = require("./models/Purchase");
-
-const orderMpago = require('./models/OrderMpago')//prueba m pago
-const showsModel = require("./models/shows");
+const showsModel = require("./models/Shows");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
@@ -63,8 +61,6 @@ screeningModel(sequelize);
 roomModel(sequelize);
 seatsModel(sequelize);
 purchaseOrderModel(sequelize);
-
-orderMpago(sequelize);//m pago
 showsModel(sequelize);
 
 
@@ -79,7 +75,6 @@ const {
     seats,
     role,
     purchaseOrder,
-    order, //m pago
     shows
 } = sequelize.models;
 

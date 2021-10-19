@@ -1,4 +1,4 @@
-const { Order_detail , Order} = require('../db.js');
+const { purchase} = require('../../db.js');
 
 const {
     PROD_ACCESS_TOKEN,
@@ -7,7 +7,7 @@ const {
 const server = require('express').Router();
   // SDK de Mercado Pago
 const mercadopago = require ('mercadopago');
-const { route } = require('./order');
+// const { route } = require('./order');
 
 server.get("/", (req, res, next)=>{
   //const id_orden = req.query.id 
@@ -86,7 +86,7 @@ server.get("/pagos", (req, res)=>{
 
   //Aquí edito el status de mi orden
 
-  Order.findByPk(external_reference)
+  purchase.findByPk(external_reference)
   .then((order) => {
     order.payment_id= payment_id
     order.payment_status= payment_status
