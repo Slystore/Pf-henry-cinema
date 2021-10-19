@@ -16,11 +16,11 @@ const initialState = {
     filtradors: [],
     moviesDetails: [],
     moviesSorted: [],
-    genres:[],
-    users:[],
-    cinemas:[],
-    cinemaRooms:[],
-    screenings:[]
+    genres: [],
+    users: [],
+    cinemas: [],
+    cinemaRooms: [],
+    screenings: []
 }
 
 
@@ -35,9 +35,9 @@ function moviesReducer(state = initialState, action) {
                     filtrados: action.movies,
                     genres: action.genres,
                     users: action.users,
-                    cinemas:action.cinemas,
-                    cinemaRooms:action.cinemaRooms,
-                    screenings:action.screenings
+                    cinemas: action.cinemas,
+                    cinemaRooms: action.cinemaRooms,
+                    screenings: action.screenings
                 }
             }
         case GET_MOVIES:
@@ -60,13 +60,13 @@ function moviesReducer(state = initialState, action) {
             {
                 return {
                     ...state,
-                    
+
                 }
             }
         case PUT_MOVIE:
-            console.log('estas es la data que llega al reducer',action.payload)
+            console.log('estas es la data que llega al reducer', action.payload)
             return
-            
+
         case GET_MOVIE_NAME:
             return {
                 ...state,
