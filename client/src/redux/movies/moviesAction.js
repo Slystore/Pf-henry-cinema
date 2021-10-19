@@ -7,38 +7,59 @@ export const GET_MOVIES_SORTED = "GET_MOVIES_SORTED";
 export const MOVIE_AVAILABILITY = "MOVIE_AVAILABILITY";
 export const GET_MOVIE_NAME = "GET_MOVIE_NAME";
 export const ADD_MOVIE = "ADD_MOVIE";
-export const PUT_MOVIE = "PUT_MOVIE"
+export const PUT_MOVIE = "PUT_MOVIE";
 export const FILTER_BY_GENRE = " FILTER_BY_GENRE";
+export const DELTE_MOVIE = "DELETE_MOVIE";
 
 const awsPort = process.env.REACT_APP_API_KEY;
 
 export function getAll() {
   return async (dispatch) => {
-    const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
+    // const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
+    const movies = await axios.get('http://localhost:3001/api/movies')
     const genres = await axios.get(`http://18.216.130.223:3001/api/genres`);
     const users = await axios.get(`http://18.216.130.223:3001/api/users`);
+    const cinemas = await axios.get(`https://cinemapp-store.herokuapp.com/api/cinemas`);
+    const cinemaRooms = await axios.get(`https://cinemapp-store.herokuapp.com/api/cinemaRooms`);
+    const screenings = await axios.get(`https://cinemapp-store.herokuapp.com/api/screenings`);
     return await dispatch({
       type: GET_ALL,
       movies: movies.data,
       genres: genres.data,
       users: users.data,
+      cinemas: cinemas.data,
+      cinemaRooms : cinemaRooms.data,
+      screenings: screenings.data
     });
   };
 }
 
-export function putMovie(dataMovie){
-  console.log('este es el payload de la action ', dataMovie)
-  return async function(dispatch){
-    try{
-      const data = await axios.put(`http://localhost:3001/api/movies/editMovie/${dataMovie.id}`,dataMovie)
-      console.log('accion despachada')
+export function putMovie(dataMovie) {
+  console.log("este es el payload de la action ", dataMovie);
+  return async function (dispatch) {
+    try {
+      const data = await axios.put(
+        `http://localhost:3001/api/movies/editMovie/${dataMovie.id}`,
+        dataMovie
+      );
+      console.log("accion despachada");
       return await dispatch({
         type: PUT_MOVIE,
-        payload:data.data
-      })
-    }catch(err){
-      console.log('yo rompo en la action',err)
+        payload: data.data,
+      });
+    } catch (err) {
+      console.log("yo rompo en la action", err);
     }
+  };
+}
+export async function deleteMovie(id) {
+  try {
+    const x = await axios.delete(
+      `http://localhost:3001/api/movies/deleteMovie/${id}`
+    );
+    return x;
+  } catch (err) {
+    console.log("rompo en la action movie", err);
   }
 }
 
@@ -100,10 +121,11 @@ export const postMovie = async (payload) => {
   try {
     const res = await axios.post(
       `http://localhost:3001/api/movies/createMovie`,
-      { prueba },{
-        headers:{
+      { prueba },
+      {
+        headers: {
           authorization: token,
-        }
+        },
       }
     );
     console.log("post movie action despachada!");

@@ -2,19 +2,24 @@ const { users } = require("../../db.js");
 const bcryp = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
-const { GoogleAuth, OAuth2Client } = require("google-auth-library");
-const keys = require("./google-keys.json");
+
 
 //Logeo
 const singIn = async (req, res) => {
   let { mail, password,$b } = req.body;
 
   try {
+  
     const userData = await users.findOne({
       where: {
         mail: mail,
       },
     });
+    if(userData.userType === 'banned' || 'disabled'){
+      return res.json({
+        msg:"Este usuario se encuentra desabilitado o banneado, por favor contactar con el administrador"
+      })
+    }
     if (!userData) {
       res.json({
         msg: "Este usuario no coincide con uno existente, intete de nuevo",

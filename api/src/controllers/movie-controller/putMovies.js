@@ -30,7 +30,7 @@ const moviePut = async (req, res, next) => {
       {
           model: cinemaRoom,
           attributes: {
-              include: ["name", "seatCount"],
+              include: ["id","name", "seatCount"],
           },
           through: {
               attributes: [],
@@ -39,7 +39,7 @@ const moviePut = async (req, res, next) => {
       {
           model: screening,
           attributes: {
-              include: ['time'],
+              include: ['time',"cinemaRoomId"],
           },
       },
       ],
@@ -57,8 +57,8 @@ const moviePut = async (req, res, next) => {
     });
     await movieSinUpdate.setGenres(req.body.genre);
     await movieSinUpdate.setCinemas(req.body.cinema)
-    await movieSinUpdate.setCinemaRooms(req.body.sala)
-    await movieSinUpdate.setScreenings(req.body.funcion)
+    // await movieSinUpdate.setCinemaRooms(req.body.sala)
+    // await movieSinUpdate.setScreenings(req.body.funcion)
     if (updateMovie.length !== 0) return res.status(200).send(updateMovie);
     else res.status(404).json("Movie Not found");
   } catch (err) {
