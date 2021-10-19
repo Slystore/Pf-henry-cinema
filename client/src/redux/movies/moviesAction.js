@@ -9,7 +9,9 @@ export const GET_MOVIES_SORTED = "GET_MOVIES_SORTED";
 export const MOVIE_AVAILABILITY = "MOVIE_AVAILABILITY";
 export const GET_MOVIE_NAME = "GET_MOVIE_NAME";
 export const ADD_MOVIE = "ADD_MOVIE";
+export const PUT_MOVIE = "PUT_MOVIE";
 export const FILTER_BY_GENRE = " FILTER_BY_GENRE";
+export const DELTE_MOVIE = "DELETE_MOVIE";
 
 dotenv.config();
 // const { REACT_APP_AWS_PORT } = process.env;
@@ -17,16 +19,52 @@ dotenv.config();
 
 export function getAll() {
     return async(dispatch) => {
-        const movies = await axios.get(`/api/movies`);
+        // const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
+        const movies = await axios.get('/api/movies')
         const genres = await axios.get(`/api/genres`);
         const users = await axios.get(`/api/users`);
+        const cinemas = await axios.get(`/api/cinemas`);
+        const cinemaRooms = await axios.get(`/api/cinemaRooms`);
+        const screenings = await axios.get(`/api/screenings`);
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,
             genres: genres.data,
             users: users.data,
+            cinemas: cinemas.data,
+            cinemaRooms: cinemaRooms.data,
+            screenings: screenings.data
         });
     };
+}
+
+export function putMovie(dataMovie) {
+    console.log("este es el payload de la action ", dataMovie);
+    return async function(dispatch) {
+        try {
+            const data = await axios.put(
+                `http://localhost:3001/api/movies/editMovie/${dataMovie.id}`,
+                dataMovie
+            );
+            console.log("accion despachada");
+            return await dispatch({
+                type: PUT_MOVIE,
+                payload: data.data,
+            });
+        } catch (err) {
+            console.log("yo rompo en la action", err);
+        }
+    };
+}
+export async function deleteMovie(id) {
+    try {
+        const x = await axios.delete(
+            `http://localhost:3001/api/movies/deleteMovie/${id}`
+        );
+        return x;
+    } catch (err) {
+        console.log("rompo en la action movie", err);
+    }
 }
 
 export function getMovies() {
@@ -79,12 +117,16 @@ let prueba = {
 
 export const postMovie = async(payload) => {
     const token = localStorage.getItem("token");
+    console.log("this", payload);
+    // const config = { headers: { Authorization: `Bearer ${token1}` }   };
+
+    // const bodyParameters = { key: prueba };
     try {
         const res = await axios.post(
             `/api/movies/createMovie`, { prueba }, {
                 headers: {
                     authorization: token,
-                }
+                },
             }
         );
         console.log("post movie action despachada!");
@@ -92,6 +134,7 @@ export const postMovie = async(payload) => {
     } catch (err) {
         console.log("yo rompo action", err);
     }
+    // const back = axios.post( 'http://localhost:3001/api/movies/createMovie', prueba)
 };
 
 

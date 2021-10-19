@@ -50,6 +50,11 @@ function ControlPanel() {
                                     Home
                             </Button>
                         </Box>
+                        <Box sx={{ margin: 1 }}>
+                            <Button className={ classes.button } variant="contained" href={`/admin/editMovie`}>
+                                    Editar una pelicula
+                            </Button>
+                        </Box>
 
                         <Box sx={{ margin: 1 }}>
                             <Button className={ classes.button } variant="contained"  href={`/admin/createMovie`}>
