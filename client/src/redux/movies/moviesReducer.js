@@ -16,7 +16,10 @@ const initialState = {
     moviesDetails: [],
     moviesSorted: [],
     genres:[],
-    users:[]
+    users:[],
+    cinemas: [],
+    cinemaRooms: [],
+    screenings: []
 }
 
 
@@ -30,7 +33,10 @@ function moviesReducer(state = initialState, action) {
                     movies: action.movies,
                     filtrados: action.movies,
                     genres: action.genres,
-                    users: action.users
+                    users: action.users,
+                    cinemas: action.cinemas,
+                    cinemaRooms: action.cinemaRooms,
+                    screenings: action.screenings,
                 }
             }
         case GET_MOVIES:
