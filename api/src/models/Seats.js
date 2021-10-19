@@ -10,6 +10,9 @@ module.exports = (Sequelize) => {
                 allowNull: false,
                 defaultValue: UUIDV4
             },
+            row: {
+                type: DataTypes.STRING
+            },
             number: {
                 type: DataTypes.INTEGER,
                 autoIncrement: true
@@ -18,6 +21,6 @@ module.exports = (Sequelize) => {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true
             }
-        }, {}
+        }, { timestamps: false }
     )
 };
