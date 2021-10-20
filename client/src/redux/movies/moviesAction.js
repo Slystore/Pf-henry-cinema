@@ -176,6 +176,8 @@ const awsPort = process.env.REACT_APP_API_KEY;
 
 export function getAll() {
     return async(dispatch) => {
+
+ 
         // const movies = await axios.get(`http://18.216.130.223:3001/api/movies`);
         const movies = await axios.get('/api/movies')
         const genres = await axios.get(`/api/genres`);
@@ -183,6 +185,7 @@ export function getAll() {
         const cinemas = await axios.get(`/api/cinemas`);
         const cinemaRooms = await axios.get(`/api/cinemaRooms`);
         const screenings = await axios.get(`/api/screenings`);
+
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,

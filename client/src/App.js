@@ -13,7 +13,8 @@ import {FormSingUp} from "./components/Forms/FormsSingUp/FormSingUp.jsx";
 import FormEditMovie from "./components/Forms/FormEditMovie.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 import UserProfile from "./components/User-proflile/User-profile.jsx";
-
+import CheckoutPage from './components/Order/CheckoutPage'
+import PrevCheckoutPage from './components/Order/PrevCheckoutPage'
 
 // import admin from "./components/Admin/admin.js";
 import Users from "./components/Admin/pages/Users.js";
@@ -46,6 +47,8 @@ function App() {
           <Route path="/admin/createMovie" component={FormMovie} />
           <Route exact path = '/admin/editMovie' component = {FormEditMovie}/>
           <Route exact path= "/shoppingCart" component={ShoppingCart} /> 
+          <Route exact path= "/prevCheckoutPage" component={PrevCheckoutPage} /> 
+          <Route exact path= "/checkoutPage" component={CheckoutPage} /> 
           <Route exact path = '/perfil' component={UserProfile}/>
           <Route exact path = '/admin/editMovie' component = {FormEditMovie}/>
           {/* <Route path="/admin/createGenre" component={FormGenre} /> */}

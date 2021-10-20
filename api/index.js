@@ -24,6 +24,12 @@ conn.sync({ force: true })
         await genresMockUp();
         await cinemasMockUp();
         await cinemaRoomMockUp();
+
+        await screeningMockUpKaia();
+        await screeningMockUpLeta();
+        await screeningMockUpClark();
+        await seatsMockUp();
+  
         await seatsMockUpSala1Kaia();
         await seatsMockUpSala2Kaia();
         await seatsMockUpSala3Kaia();
@@ -33,6 +39,7 @@ conn.sync({ force: true })
         await seatsMockUpSala1Clark();
         await seatsMockUpSala2Clark();
         await seatsMockUpSala3Clark();
+
         await moviesMock();
         await usersMockUp();
         await rolesMockUp();
