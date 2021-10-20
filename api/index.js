@@ -23,13 +23,13 @@ conn.sync({ force: true })
         // seed();
 
         await genresMockUp();
-        // await cinemasMockUp();
-        // await cinemaRoomMockUp();
+        await cinemasMockUp();
+        await cinemaRoomMockUp();
         await screeningMockUpKaia();
-        // await screeningMockUpLeta();
-        // await screeningMockUpClark();
-        // await seatsMockUp();
-        // await moviesMock();
+        await screeningMockUpLeta();
+        await screeningMockUpClark();
+        await seatsMockUp();
+        await moviesMock();
         await usersMockUp();
         await rolesMockUp();
     })
