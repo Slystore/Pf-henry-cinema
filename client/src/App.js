@@ -15,7 +15,7 @@ import {FormSingUp} from "./components/Forms/FormsSingUp/FormSingUp.jsx";
 import FormEditMovie from "./components/Forms/FormEditMovie.jsx";
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 import UserProfile from "./components/User-proflile/User-profile.jsx";
-import FormEditMovie from "./components/Forms/FormEditMovie.jsx";
+
 
 
 
