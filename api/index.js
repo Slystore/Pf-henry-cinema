@@ -25,10 +25,10 @@ conn.sync({ force: true })
         await cinemasMockUp();
         await cinemaRoomMockUp();
 
-        await screeningMockUpKaia();
-        await screeningMockUpLeta();
-        await screeningMockUpClark();
-        await seatsMockUp();
+        // await screeningMockUpKaia();
+        // await screeningMockUpLeta();
+        // await screeningMockUpClark();
+        // await seatsMockUp();
   
         await seatsMockUpSala1Kaia();
         await seatsMockUpSala2Kaia();

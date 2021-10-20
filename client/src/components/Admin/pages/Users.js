@@ -65,7 +65,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 
-const users = () => {
+const Users = () => {
     const classes = useStyles()
     const history = useHistory()
     const dispatch = useDispatch()
@@ -265,6 +265,6 @@ const users = () => {
 }
 
 
-export default users;
+export default Users;
 
 

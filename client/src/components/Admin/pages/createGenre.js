@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     }
 })
 
-const createGenre = () => {
+const CreateGenre = () => {
     const classes = useStyles()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -113,4 +113,4 @@ const createGenre = () => {
     );
 };
 
-export default createGenre;
+export default CreateGenre;
