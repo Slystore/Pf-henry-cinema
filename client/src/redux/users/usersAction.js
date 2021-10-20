@@ -7,7 +7,7 @@ export const GET_TOKEN = "GET_TOKEN";
 
 export function getUsers() {
   return async (dispatch) => {
-    const { data } = await axios.get(`http://localhost:3001/api/movies`);
+    const { data } = await axios.get(`http://localhost:3001/api/users`);
     return await dispatch({
       type: GET_USERS,
       payload: data,
@@ -61,3 +61,19 @@ export function getToken() {
   }
   return token;
 }
+
+// -------------------------aqui-------------------------//
+
+
+export function putUser(payload) {
+  return async () => {
+    let data = await axios.put(`http://localhost:3001/api/users/update/${payload.id}`, payload);
+    return data.data
+  }
+};
+
+
+
+
+
+// -------------------------aqui-------------------------//
