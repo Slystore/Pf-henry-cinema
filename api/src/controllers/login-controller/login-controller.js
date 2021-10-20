@@ -15,15 +15,16 @@ const singIn = async (req, res) => {
         mail: mail,
       },
     });
+    if (!userData) {
+      res.json({
+        msg: "Este usuario no coincide con uno existente, intete de nuevo",
+      });
+    console.log('esta es la userData',userData.userType)
     if(userData.userType === 'banned' || 'disabled'){
       return res.json({
         msg:"Este usuario se encuentra desabilitado o banneado, por favor contactar con el administrador"
       })
     }
-    if (!userData) {
-      res.json({
-        msg: "Este usuario no coincide con uno existente, intete de nuevo",
-      });
     } else {
       const match = await bcryp.compare(password, userData.password);
       console.log("este es match", match);

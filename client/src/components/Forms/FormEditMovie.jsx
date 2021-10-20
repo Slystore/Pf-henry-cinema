@@ -126,7 +126,7 @@ function FormEditMovie() {
     console.log("esta es mi data nueva ", dataNueva);
     setModalEditar(false);
   };
-
+  
   const eliminar = async () => {
     setData(data.filter((movie) => movie.id !== movieSeleccionado.id));
     console.log("este es mi estado de movieSeleccionado ", movieSeleccionado);

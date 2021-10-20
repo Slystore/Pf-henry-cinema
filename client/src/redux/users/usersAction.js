@@ -16,6 +16,7 @@ export function getUsers() {
 }
 
 export async function googleLog(payload) {
+  console.log("payload de la action", payload);
   let { data } = await axios.post(
     "http://localhost:3001/api/googleLogin",
     payload

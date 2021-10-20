@@ -1,33 +1,28 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useHistory, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import { googleLog, login } from "../../redux/users/usersAction";
-import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 function FormSingIn() {
- 
   const history = useHistory();
   const [userLog, setUserLog] = useState({
     msgErr: "",
     userData: undefined,
   });
   const responseGoogle = async (response) => {
+    console.log('estoy entrando')
+    console.log('esta es las response',response)
     if (response) {
       const x = await googleLog(response);
-      console.log('esta es la respuesta de mi post',x)
-      if(x.user){
-        localStorage.setItem('token',response.tokenId)
-        history.push('/')
+      console.log("esta es la respuesta de mi post", x);
+      if (x.user) {
+        localStorage.setItem("token", response.tokenId);
+        history.push("/");
       }
-      // if (x.data.user) {
-      //   localStorage.setItem("token", response.tokenId);
-      //   history.push("/");
-      // }
     }
     console.log("esta es la respuesta", response);
   };
-  
 
   return (
     <div>

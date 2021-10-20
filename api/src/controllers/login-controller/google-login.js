@@ -5,10 +5,11 @@ const jwt = require("jsonwebtoken");
 const authConfing = require("../../config/auth");
 
 async function googleLogin(req, res) {
+  console.log('body en el back',req.body)
   const client = new OAuth2Client(keys.web.client_id);
-  const { $b, userType } = req.body;
+  const {  Zb, userType } = req.body;
   const ticket = await client.verifyIdToken({
-    idToken: $b.id_token,
+    idToken: Zb.id_token,
     audience: keys.web.client_id,
   });
 
