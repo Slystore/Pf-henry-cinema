@@ -146,21 +146,21 @@ users.hasMany(purchaseOrder)
 purchaseOrder.belongsTo(users)
 purchaseOrder.hasMany(purchase)
 
-cinemas.hasMany(shows)
-shows.belongsTo(cinemas)
+// cinemas.hasMany(shows)
+// shows.belongsTo(cinemas)
 
-movies.hasMany(shows)
-shows.belongsTo(movies)
+// movies.hasMany(shows)
+// shows.belongsTo(movies)
 
-cinemaRoom.hasMany(shows)
-shows.belongsTo(cinemaRoom)
+// cinemaRoom.hasMany(shows)
+// shows.belongsTo(cinemaRoom)
 
-screening.hasMany(shows)
-shows.belongsTo(screening)
-    // purchaseOrder.hasMany(purchase)
-    // purchase.hasOne(purchaseOrder)
-    // purchaseOrder.hasMany(purchase)
-    // purchase.belongsTo(purchaseOrder)
+// screening.hasMany(shows)
+// shows.belongsTo(screening)
+// purchaseOrder.hasMany(purchase)
+// purchase.hasOne(purchaseOrder)
+// purchaseOrder.hasMany(purchase)
+// purchase.belongsTo(purchaseOrder)
 
 module.exports = {
     ...sequelize.models,

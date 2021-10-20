@@ -7,10 +7,10 @@ const users = require('./users/users')
 const cine = require('./cinemas/cinemas')
 const compras = require('./purchase/purchase')
 const orders = require('./purchaseOrder/orders')
+const screenings = require('./screenings/screenings.js')
 const shows = require('./shows/shows')
 const seats = require('./seats/seats')
-const mercadoPago= require('./mercadoPago/mercadoPago')
-
+const mercadoPago = require('./mercadoPago/mercadoPago')
 const router = Router();
 
 router.use('/movies', movies)
@@ -21,7 +21,8 @@ router.use('/purchases', compras)
 router.use('/purchaseOrder', orders)
 router.use('/shows', shows)
 router.use('/seats', seats)
-router.use('/mercadoPagos',mercadoPago )
-    // router.use('/', login)
+router.use('/mercadoPagos', mercadoPago)
+router.use('/screenings', screenings);
+// router.use('/', login)
 
 module.exports = router;

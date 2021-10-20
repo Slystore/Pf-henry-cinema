@@ -12,7 +12,6 @@ const { usersMockUp } = require('./src/utils/mocks/users-mock.js');
 const { rolesMockUp } = require('./src/utils/mocks/roles-mockUp.js');
 const { cinemasMockUp } = require('./src/utils/mocks/cinemas-mock.js');
 const { cinemaRoomMockUp } = require('./src/utils/mocks/cinemaRooms-mock.js');
-const { screeningMockUpKaia, screeningMockUpLeta, screeningMockUpClark } = require('./src/utils/mocks/screening-mock.js');
 const { seatsMockUpSala1Kaia, seatsMockUpSala2Kaia, seatsMockUpSala3Kaia, seatsMockUpSala1Leta, seatsMockUpSala2Leta, seatsMockUpSala3Leta, seatsMockUpSala1Clark, seatsMockUpSala2Clark, seatsMockUpSala3Clark } = require('./src/utils/mocks/seats-mock.js');
 
 conn.sync({ force: true })
@@ -25,9 +24,6 @@ conn.sync({ force: true })
         await genresMockUp();
         await cinemasMockUp();
         await cinemaRoomMockUp();
-        await screeningMockUpKaia();
-        await screeningMockUpLeta();
-        await screeningMockUpClark();
         await seatsMockUpSala1Kaia();
         await seatsMockUpSala2Kaia();
         await seatsMockUpSala3Kaia();
