@@ -62,3 +62,19 @@ export function getToken() {
     }
     return token;
 }
+
+// -------------------------aqui-------------------------//
+
+
+export function putUser(payload) {
+    return async() => {
+        let data = await axios.put(`/api/users/update/${payload.id}`, payload);
+        return data.data
+    }
+};
+
+
+
+
+
+// -------------------------aqui-------------------------//

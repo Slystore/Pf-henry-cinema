@@ -23,7 +23,7 @@ const moviesMock = async() => {
     });
 
     const getFreeGuyCinema = await cinemas.findAll({
-        where: { id: [1, 2, 3] },
+        where: { id: 1 },
         attributes: ['id']
     });
 
@@ -718,7 +718,7 @@ const moviesMock = async() => {
         attributes: ['id']
     });
 
-    const getMalignantScreening = await screening.findOne({
+    const createMalignantScreening = await screening.create({
         time: 22,
         cinemaRoomId: 9
     });
@@ -726,7 +726,7 @@ const moviesMock = async() => {
     malignant.addGenres(getMalignantGenre);
     malignant.addCinemas(getMalignantCinema);
     malignant.addCinemaRooms(getMalignantCinemaRoom);
-    malignant.addScreenings(getMalignantScreening);
+    malignant.addScreenings(createMalignantScreening);
 
 
     const theTomorrowWar = await movies.create({

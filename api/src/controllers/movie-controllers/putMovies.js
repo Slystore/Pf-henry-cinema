@@ -1,22 +1,69 @@
-const { movies, genres } = require("../../db");
+const { movies, genres, cinemaRoom,cinemas,screening } = require("../../db");
 
 const moviePut = async (req, res, next) => {
   const infoMovie = req.body;
-  const { genre } = req.body;
 
   try {
     const { id } = req.params;
-    
+    const movieSinUpdate = await movies.findOne({
+      where: {
+        id: id,
+      },
+      include: [
+        {
+          model: genres,
+          attributes: {
+              includes: ["name"]
+          },
+          through: {
+              attributes: []
+          },
+      }, {
+          model: cinemas,
+          attributes: {
+              include: ["id","name", "location"],
+          },
+          through: {
+              attributes: [],
+          },
+      },
+      {
+          model: cinemaRoom,
+          attributes: {
+              include: ["id","name", "seatCount"],
+          },
+          through: {
+              attributes: [],
+          },
+      },
+      {
+          model: screening,
+          attributes: {
+              include: ['time',"cinemaRoomId"],
+          },
+      },
+      ],
+    });
+    console.log(
+      "esta es mi pelicual que encontre en el findOne",
+      movieSinUpdate
+    );
+    console.log("este es mi body de put", infoMovie);
+
     const updateMovie = await movies.update(infoMovie, {
       where: {
-        id:id,
+        id: id,
       },
     });
-    if(updateMovie.length !== 0) return res.status(200).send(updateMovie)
-    else res.status(404).json('Movie Not found')
+    await movieSinUpdate.setGenres(req.body.genre);
+    await movieSinUpdate.setCinemas(req.body.cinema)
+    // await movieSinUpdate.setCinemaRooms(req.body.sala)
+    // await movieSinUpdate.setScreenings(req.body.funcion)
+    if (updateMovie.length !== 0) return res.status(200).send(updateMovie);
+    else res.status(404).json("Movie Not found");
   } catch (err) {
-    next(error)
+    next(err);
   }
 };
 
-module.exports = moviePut
+module.exports = moviePut;
