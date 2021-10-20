@@ -103,7 +103,9 @@ const x = getToken();
       window.localStorage.setItem("cartPost",JSON.stringify( fillShop))
   history.push("/login")}
   }
-
+  function handleComprar(){
+    history.push('/prevCheckoutPage')
+  }
   return (
     <div className="ContainerCart">
       <div className="NavBarCart">
@@ -142,7 +144,7 @@ const x = getToken();
                   <Box sx={{ flex: "1 1 auto" }} />
                   <Button onClick={handleReset}>Reset</Button>
                   <Button onClick={handlePostCart}>Guardar Carrito</Button>
-                  <Button onClick={handleReset}>Comprar</Button>
+                  <Button onClick={handleComprar}>Comprar</Button>
                 </Box>
               </React.Fragment>
             ) : (
