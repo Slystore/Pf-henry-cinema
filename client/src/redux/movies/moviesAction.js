@@ -17,9 +17,9 @@ dotenv.config();
 
 export function getAll() {
     return async(dispatch) => {
-        const movies = await axios.get(`/api/movies`);
-        const genres = await axios.get(`/api/genres`);
-        const users = await axios.get(`/api/users`);
+        const movies = await axios.get(`http://localhost:3001/api/movies`);
+        const genres = await axios.get(`http://localhost:3001/api/genres`);
+        const users = await axios.get(`http://localhost:3001/api/users`);
         return await dispatch({
             type: GET_ALL,
             movies: movies.data,

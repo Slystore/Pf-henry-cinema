@@ -22,6 +22,6 @@ router.use('/purchaseOrder', orders)
 router.use('/shows', shows)
 router.use('/seats', seats)
 router.use('/mercadoPagos',mercadoPago )
-    // router.use('/', login)
+    router.use('/', login)
 
 module.exports = router;
