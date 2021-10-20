@@ -18,9 +18,21 @@ export function getGenres() {
     }
 }
 
-export function createGenres(payload) {
-    return async(dispatch) => {
-        const response = await axios.post(`/api/genres/create`, payload)
-        return response
+// -- --------agregue esto ----------------------//
+
+export function postGenres(payload) {
+    return async() => {
+        const json = await axios.post(`/api/genres/create`, payload)
+        return json
     }
 }
+
+// export function deletGenres(id) {
+//     return async () => {
+//         const json = await axios.post(`/api/genres/delete/${id}`)
+//         return json
+//     }
+// }
+
+
+// -- --------agregue esto ----------------------//

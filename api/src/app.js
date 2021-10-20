@@ -7,7 +7,7 @@ const corsc = require('cors')
 const cors = require('./controllers/cors-controller')
 const errors = require('./controllers/errorHandling')
 
-
+const corsc = require('cors')
 //middlewars 
 server.use(cookieParser())
 server.use(morgan('dev'))
@@ -15,7 +15,7 @@ server.use(corsc())
 server.use(cors);
 server.use(express.json())
 server.use(errors)
-
+server.use(corsc())
 
 //routes 
 server.use('/api', routes)
