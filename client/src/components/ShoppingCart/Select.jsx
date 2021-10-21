@@ -6,7 +6,7 @@ import RowSeats from './RowSeats'
  export default function Select  () {
  
   // const {seats} = useSelector(state => state.cartReducer) 
-  const {cart} = useSelector(state => state.cartReducer) 
+  const {textFill} = useSelector(state => state.cartReducer) 
 
   // function handleCheck(e) {
 
@@ -20,7 +20,7 @@ import RowSeats from './RowSeats'
   return (
     <div className="CartSeatContainer">
       
-      <div>{ cart[0]? '':alert("Carrito vacio")}</div>
+      <div>{ textFill[0]? '':alert("Carrito vacio")}</div>
 
       <div className="SeatMap">
 

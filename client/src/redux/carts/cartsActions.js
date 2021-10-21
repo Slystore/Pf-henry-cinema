@@ -13,7 +13,8 @@ export const DECREMENT_CART_STORAGE='DECREMENT_CART_STORAGE';
 export const DECREMENT_CART='DECREMENT_CART';
 export const POST_FILL_CART= 'POST_FILL_CART';
 export const FILL_TEXT= 'FILL_TEXT';
-export const STORAGE= 'STORAGE'
+export const STORAGE= 'STORAGE';
+export const RECOVERY_CART= 'RECOVERY_CART'
 
 dotenv.config();
 // const { REACT_APP_AWS_PORT } = process.env;
@@ -50,7 +51,7 @@ export function getAll() {
         })
     }
 }
-export function cinemaSelect(payload) {
+export function cinemaSelectAction(payload) {
     return {
         type: CINEMAS,
         payload
@@ -108,5 +109,11 @@ export function postCartFill(id) {
     return {
         type: POST_FILL_CART,
         payload: id
+    }
+}
+export function recoveryCart(payload) {
+    return {
+        type: RECOVERY_CART,
+        payload
     }
 }
