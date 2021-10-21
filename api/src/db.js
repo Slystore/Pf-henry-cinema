@@ -11,7 +11,7 @@ const roomModel = require("./models/CinemaRoom");
 const seatsModel = require("./models/Seats");
 const purchaseOrderModel = require("./models/purchaseOrder");
 const Purchase = require("./models/Purchase");
-const showsModel = require("./models/shows");
+const showsModel = require("./models/Shows");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
@@ -43,7 +43,7 @@ const {
     cinemaRoom,
     seats,
     role,
-    purchaseOrder, 
+    purchaseOrder,
     shows
 } = sequelize.models;
 
