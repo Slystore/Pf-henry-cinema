@@ -11,46 +11,16 @@ const roomModel = require("./models/CinemaRoom");
 const seatsModel = require("./models/Seats");
 const purchaseOrderModel = require("./models/purchaseOrder");
 const Purchase = require("./models/Purchase");
-const showsModel = require("./models/Shows");
+const showsModel = require("./models/shows");
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
-let sequelize =
-    process.env.NODE_ENV === "production" ?
-    new Sequelize({
-        database: DB_NAME,
-        dialect: "postgres",
-        host: DB_HOST,
-        port: 5432,
-        username: DB_USER,
-        password: DB_PASSWORD,
-        pool: {
-            max: 3,
-            min: 1,
-            idle: 10000,
-        },
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            },
-            keepAlive: true,
-        },
-        ssl: true,
-    }) :
-    new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-            logging: false,
-            native: false
-        }
-    );
-// const sequelize = new Sequelize(
-//     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
-//         logging: false, // set to console.log to see the raw SQL queries
-//         native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//     }
-// );
-
+const sequelize = new Sequelize(
+    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, {
+        logging: false, // set to console.log to see the raw SQL queries
+        native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    }
+);
 rolesModel(sequelize);
 genresModel(sequelize);
 cinemasModel(sequelize);
@@ -63,7 +33,6 @@ seatsModel(sequelize);
 purchaseOrderModel(sequelize);
 showsModel(sequelize);
 
-
 const {
     genres,
     cinemas,
@@ -74,10 +43,11 @@ const {
     cinemaRoom,
     seats,
     role,
-    purchaseOrder,
+    purchaseOrder, 
     shows
 } = sequelize.models;
 
+console.log(sequelize.models)
 
 users.belongsToMany(role, { through: "rolesDepend" });
 role.belongsToMany(users, { through: "rolesDepend" });
@@ -99,11 +69,11 @@ cinemaRoom.belongsTo(cinemas, {
     onDelete: "CASCADE",
 });
 
-screening.belongsTo(movies);
-movies.hasMany(screening);
+// screening.belongsTo(movies);
+// movies.hasMany(screening);
 
-screening.belongsTo(cinemaRoom);
-cinemaRoom.hasMany(screening);
+// screening.belongsTo(cinemaRoom);
+// cinemaRoom.hasMany(screening);
 
 // seats.belongsTo(cinemaRoom);
 // cinemaRoom.hasMany(seats);
@@ -138,29 +108,28 @@ users.hasMany(seats);
 seats.belongsTo(shows)
 shows.hasMany(seats)
 
-screening.belongsTo(movies);
-movies.hasMany(screening);
+// screening.belongsTo(movies);
+// movies.hasMany(screening);
 
 users.hasMany(purchaseOrder)
-
 purchaseOrder.belongsTo(users)
 purchaseOrder.hasMany(purchase)
 
-// cinemas.hasMany(shows)
-// shows.belongsTo(cinemas)
+cinemas.hasMany(shows)
+shows.belongsTo(cinemas)
 
-// movies.hasMany(shows)
-// shows.belongsTo(movies)
+movies.hasMany(shows)
+shows.belongsTo(movies)
 
-// cinemaRoom.hasMany(shows)
-// shows.belongsTo(cinemaRoom)
+cinemaRoom.hasMany(shows)
+shows.belongsTo(cinemaRoom)
 
-// screening.hasMany(shows)
-// shows.belongsTo(screening)
-// purchaseOrder.hasMany(purchase)
-// purchase.hasOne(purchaseOrder)
-// purchaseOrder.hasMany(purchase)
-// purchase.belongsTo(purchaseOrder)
+screening.hasMany(shows)
+shows.belongsTo(screening)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.hasOne(purchaseOrder)
+    // purchaseOrder.hasMany(purchase)
+    // purchase.belongsTo(purchaseOrder)
 
 module.exports = {
     ...sequelize.models,

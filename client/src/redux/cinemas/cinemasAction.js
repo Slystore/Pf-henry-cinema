@@ -6,7 +6,7 @@ export const ADD_CINEMA = "ADD_CINEMA";
 
 export function getCinemas() {
   return async (dispatch) => {
-    const { data } = await axios.get(`https://cinemapp-store.herokuapp.com/api/cinemas`);
+    const { data } = await axios.get(`/api/cinemas`);
     console.log("data cinemas",data)
     return await dispatch({
       type: GET_CINEMAS,
@@ -14,4 +14,14 @@ export function getCinemas() {
     });
   };
 }
+// export function getCinemaRooms() {
+//   return async (dispatch) => {
+//     const { data } = await axios.get(`/api/cinemas`);
+//     console.log("data cinemas",data)
+//     return await dispatch({
+//       type: GET_CINEMAS,
+//       payload: data,
+//     });
+//   };
+// }
 

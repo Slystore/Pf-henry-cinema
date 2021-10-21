@@ -1,4 +1,4 @@
-const { movies, genres, cinemas, cinemaRoom, screening } = require("../../db");
+const { movies, genres, cinemas, cinemaRoom, screening, shows } = require("../../db");
 const { Op } = require("sequelize");
 
 
@@ -36,26 +36,30 @@ const getMovies = async(req, res, next) => {
                     through: {
                         attributes: []
                     },
-                }, {
-                    model: cinemas,
-                    attributes: {
-                        include: ["name", "location"],
-                    },
-                    through: {
-                        attributes: [],
-                    },
                 },
+                // }, {
+                //     model: cinemas,
+                //     attributes: {
+                //         include: ["name", "location"],
+                //     },
+                //     through: {
+                //         attributes: [],
+                //     },
+                // },
+                // {
+                //     model: cinemaRoom,
+                //     through: {
+                //         attributes: [],
+                //     },
+                // },
                 {
-                    model: cinemaRoom,
-                    through: {
-                        attributes: [],
-                    },
-                },
-                {
-                    model: screening,
-                    attributes: {
-                        include: ['time'],
-                    },
+                    model: shows,
+                    // through: {
+                    //     attributes: ['name']
+                    // }
+                    // attributes: {
+                    //     include: ['time'],
+                    // },
                 },
             ],
             where: handleWhere(filters),

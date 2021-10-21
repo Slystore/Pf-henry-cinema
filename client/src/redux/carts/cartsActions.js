@@ -104,9 +104,13 @@ export function clearCart(id) {
         payload: id
     }
 }
-export function postCartFill(id) {
-    return {
-        type: POST_FILL_CART,
-        payload: id
+export function postCartFill(cart) {
+    return async (dispatch) => {
+        console.log('accion despachada de carrito', cart)
+        const creacion = await axios.post(`/api/cart/${cart.id}`, cart)
+        return await dispatch({
+            type: 'POST_FILL_CART',
+            creacion
+        })
     }
 }

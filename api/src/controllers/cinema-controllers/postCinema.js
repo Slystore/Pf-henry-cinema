@@ -1,6 +1,8 @@
 const { cinemas, cinemaRoom } = require('../../db')
 
 
+
+
 const postCinema = async(req, res, next) => {
     try {
         let { name, location, salas } = req.body

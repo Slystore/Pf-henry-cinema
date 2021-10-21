@@ -152,7 +152,7 @@ const x = getToken();
                 {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
 
                 {/* **** SE MUESTRA EL CONTENIDO DEL CARRITO ******* */}
-                <Box sx={{ height: 440, marginTop: 2 }}>
+                <Box sx={{ height: 240, width: 500, marginTop: 2 }}>
                   {activeStep === 0 ? (
                     text?
               
