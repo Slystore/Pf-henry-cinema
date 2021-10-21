@@ -95,7 +95,7 @@ function cartReducer(state = initialState, action) {
             return iteminCart ? {
                 ...state,
                 cart: state.cart.map((item) => item.id === newItem.id ? {...item, quantity: item.quantity + 1 } : item),
-                postCartStorage: [...state.postCart, { movieId }]
+                postCartStorage: [...state.postCartStorage, { movieId }]
             } : {
                 ...state,
                 cart: [{...newItem, quantity: 1 }],
@@ -115,7 +115,7 @@ function cartReducer(state = initialState, action) {
             return {
                 ...state,
                 textFill: action.payload !== null ? action.payload : [],
-                postCartStorage: movieId2 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
+                // postCartStorage: movieId2 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
             }
         case POST_FILL_CART:
             return {
