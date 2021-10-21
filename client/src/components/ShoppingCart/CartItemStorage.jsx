@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { decrementCartStorage, clearCart, incrementCartStorage } from '../../redux/carts/cartsActions';
+import { decrementCartStorage, clearCart, incrementCartStorage, cinemaSelectAction } from '../../redux/carts/cartsActions';
 
-import { cinemaSelect, screeningSelect } from '../../redux/carts/cartsActions';
+import {  screeningSelect, recoveryCart } from '../../redux/carts/cartsActions';
 
 import './CartItem.css'
 
@@ -16,12 +16,12 @@ export default function CartItem  ({image, price, title, id, quantity, fillState
    // const [stateCart, setStateCart] = React.useState([])
    const {cinemas} = useSelector(state => state.cartReducer) 
    const {screening} = useSelector(state => state.cartReducer) 
-
+const {cinemaSelect}= useSelector(state => state.cartReducer)
    const dispatch = useDispatch()
 
    function handleCinema(e) {
       e.preventDefault();
-      dispatch(cinemaSelect(e.target.value));
+      dispatch(cinemaSelectAction(e.target.value));
    }
 
    function handleScreening(e) {
@@ -30,15 +30,15 @@ export default function CartItem  ({image, price, title, id, quantity, fillState
    }
  
    function handleIncrement(){
-dispatch(incrementCartStorage(id))
-// const {cart} = (state => state.cartReducer)
-// console.log("entro tomi",cart)
-
-   } 
+cinemaSelect.length>0?
+dispatch(incrementCartStorage(id)):
+alert("Debe Seleccionar el cine primero")
+ } 
 
    function handleDecrement(){
-
-      dispatch(decrementCartStorage(id))
+      cinemaSelect.length>0?
+      dispatch(decrementCartStorage(id)):
+      alert("Debe Seleccionar el cine primero")
    } 
 
    function handleClearCart(){
@@ -52,7 +52,14 @@ dispatch(incrementCartStorage(id))
       var m = Number((Math.abs(num) * 100).toPrecision(15));
       return Math.round(m) / 100 * Math.sign(num);
   }
-    
+    function handleUpdateCart(){
+      let userLogParse= JSON.parse(window.localStorage.getItem("cartPost"))
+      if(userLogParse){
+      dispatch(recoveryCart(userLogParse))
+       alert("Carrito recuperado, puede avanzar sin completar datos")
+       localStorage.removeItem('cartPost')}
+     else{ alert("No hay carrito a recuperar")}
+    }
    return (
    <div>
       <div className="CartItemContainer">
@@ -126,6 +133,7 @@ dispatch(incrementCartStorage(id))
       </div>
       <div className="CartItemDeleteContainer">
          <button onClick={handleClearCart} className="CartItemDelete">Vaciar Carrito</button> 
+         <button onClick={handleUpdateCart} className="CartItemDelete">Recuperar Carrito</button>
       </div>
    </div>
    )

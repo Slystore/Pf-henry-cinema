@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { incrementCart, decrementCart, clearCart } from '../../redux/carts/cartsActions';
 
-import { cinemaSelect, screeningSelect } from '../../redux/carts/cartsActions';
+import { cinemaSelectAction, screeningSelect } from '../../redux/carts/cartsActions';
 
 import './CartItem.css'
 
@@ -19,7 +19,7 @@ export default function CartItem  ({image, price, title, id, quantity}) {
 
    function handleCinema(e) {
       e.preventDefault();
-      dispatch(cinemaSelect(e.target.value));
+      dispatch(cinemaSelectAction(e.target.value));
    }
 
    function handleScreening(e) {

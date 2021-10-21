@@ -7,13 +7,13 @@ import { useSelector,  } from 'react-redux';
     const {cinemaSelect} = useSelector(state => state.cartReducer) 
     const {screeningSelect} = useSelector(state => state.cartReducer) 
     const {postCartStorage} = useSelector(state => state.cartReducer) 
-    const {cart} = useSelector(state => state.cartReducer) 
+    const {textFill} = useSelector(state => state.cartReducer) 
 
     return (
         <div className="CartItemContainer">
-            {cart[0]? (<div>
-            <h4>Película: {cart[0].title}</h4>
-            <h5>Total: {(cart[0].price)*(cart[0].quantity)}$</h5>
+            {textFill[0]? (<div>
+            <h4>Película: {textFill[0].title}</h4>
+            <h5>Total: {(textFill[0].price)*(textFill[0].quantity)}$</h5>
             <p>Sucursal: {cinemaSelect}</p>
             <p>Horario: {screeningSelect}</p>
              <p>Asientos: {postCartStorage && postCartStorage.map(seat => seat.seat)}</p>  
