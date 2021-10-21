@@ -12,6 +12,7 @@ export const INCREMENT_CART_STORAGE='INCREMENT_CART_STORAGE';
 export const DECREMENT_CART_STORAGE='DECREMENT_CART_STORAGE';
 export const DECREMENT_CART='DECREMENT_CART';
 export const POST_FILL_CART= 'POST_FILL_CART';
+export const POST_PURCHASE_CART = 'POST_PURCHASE_CART';
 export const FILL_TEXT= 'FILL_TEXT';
 export const STORAGE= 'STORAGE';
 export const RECOVERY_CART= 'RECOVERY_CART'
@@ -108,10 +109,22 @@ export function clearCart(id) {
 export function postCartFill(cart) {
     return async (dispatch) => {
         console.log('accion despachada de carrito', cart)
-        const creacion = await axios.post(`/api/cart/${cart.id}`, cart)
+        // const id = cart[0].userId
+        console.log(typeof id)
+        const creacion = await axios.post('http://localhost:3001/api/users/cart/'+20, cart)
         return await dispatch({
             type: 'POST_FILL_CART',
             creacion
+        })
+    }
+}
+
+export function postPurchaseCart() {
+    return async (dispatch) => {
+        
+        const creacion = await axios.post(`http://localhost:3001/api/purchases/`+20+`/create`)
+        return await dispatch({
+            type: POST_PURCHASE_CART
         })
     }
 }

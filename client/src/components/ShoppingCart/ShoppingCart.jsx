@@ -15,7 +15,7 @@ import jwt_decode from "jwt-decode";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../redux/users/usersAction"
-import { getAll, postCartFill, fillText, clearCart } from "../../redux/carts/cartsActions";
+import { getAll, postCartFill, fillText, clearCart, postPurchaseCart } from "../../redux/carts/cartsActions";
 import "./ShoppingCart.css";
 import { Card } from "@mui/material";
 // import { getMovies } from "../../redux/movies/moviesAction";
@@ -107,6 +107,7 @@ const x = getToken();
   history.push("/login")}
   }
   function handleComprar(){
+    dispatch((postPurchaseCart()))
     x.msg?alert("Guarde el Carrito para continuar con su compra"):
     history.push('/prevCheckoutPage')
   }

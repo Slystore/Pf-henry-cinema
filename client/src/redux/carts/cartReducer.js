@@ -10,6 +10,7 @@ import {
     DECREMENT_CART_STORAGE,
     DECREMENT_CART,
     POST_FILL_CART,
+    POST_PURCHASE_CART,
     STORAGE,
     FILL_TEXT,
     CLEAR_SEAT,
@@ -125,6 +126,10 @@ function cartReducer(state = initialState, action) {
             //   state.postCartStorage.length!==0 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
             }
         case POST_FILL_CART:
+            return {
+                ...state
+            }
+        case POST_PURCHASE_CART:
             return {
                 ...state
             }

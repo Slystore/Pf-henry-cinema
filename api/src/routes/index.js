@@ -22,7 +22,7 @@ router.use('/purchases', compras)
 router.use('/purchaseOrder', orders)
 router.use('/shows', shows)
 router.use('/seats', seats)
-router.use('/mercadoPagos',mercadoPago )
+// router.use('/mercadoPagos',mercadoPago )
     router.use('/', login)
 router.use('/screenings', screenings);
 router.use('/cinemaRooms', cinemaRooms);

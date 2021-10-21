@@ -7,14 +7,12 @@ let aux = 1
 const postPurchase = async (req, res, next) => {
     try {
         const { user } = req.params
+        const prueba = parseInt(user)
         // Busco el carrito de compra del usuario: es un array de objetos
-        let cart = await users.findOne({
-            where: {
-                id: user
-            },
-        })
+        let cart = await users.findByPk(2)
+        console.log(cart)
         
-        let shoppingCart = cart.dataValues.shoppingCart
+        let shoppingCart = cart.shoppingCart
        
         let cinemasQuery, cinemaRoomQuery, screeningQuery, seatsQuery, userQuery, movieQuery, purchaseCreation, purchaseQuery;
         let  purchaseArray = [];
