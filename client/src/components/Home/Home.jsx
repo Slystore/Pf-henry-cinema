@@ -28,8 +28,6 @@ function Home() {
   }
   
   const handleAddCart = (id) => {
-    // totalItems++
-    // console.log(totalItems)
     console.log("console home",id)
     dispatch (addToCart(id))
     dispatch(storage(id));
@@ -70,10 +68,16 @@ function Home() {
                   id={movie.id}
                   image={movie.image}
                   name={movie.title}
+                  actors={movie.actors.map((act) =>act)}
                   availability={movie.availability}
-                  genres={movie.genres}
+                  genres={movie.genres.map((gen) =>gen)}
                   rating={movie.rating}
                   description={movie.description}
+                  trailer={movie.trailer}
+                  runTime={movie.runTime.split('.')}
+                  director={movie.director}
+                  classification= {movie.classification}
+                  usersRating={movie.usersRating}
                   addToCart = {handleAddCart}  
                 />
               </div>

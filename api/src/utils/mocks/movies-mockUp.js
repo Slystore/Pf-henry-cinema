@@ -12,13 +12,14 @@ const moviesMock = async() => {
         votes: 1312,
         usersRating: 1.5,
         availability: true,
-        price: '99.99',
-        runTime: "1.59.45",
+        price: 99.99,
+        runTime: 1.59,
+        classification: "B-13",
+        trailer: "https://www.youtube.com/watch?v=X2m-08cOAbc",
     });
 
     const getFreeGuyGenre = await genres.findAll({
-        // 35, 28, 12, 878
-        where: { id: [4, 1, 2, 15] },
+        where: { id: [4, 15] },
         attributes: ['id']
     });
 
@@ -55,8 +56,10 @@ const moviesMock = async() => {
         votes: 1312,
         usersRating: 2.2,
         availability: true,
-        price: '99.99',
-        runTime: "2.35.15",
+        price: 99.99,
+        runTime: 2.35,
+        classification: "B-13",
+        trailer: "https://www.youtube.com/watch?v=MpNhqk0SXys"
     });
     const getSnakeEyesGenre = await genres.findAll({
         //28, 12
@@ -98,13 +101,15 @@ const moviesMock = async() => {
         votes: 964,
         usersRating: 4.5,
         availability: false,
-        price: '99.99',
-        runTime: "2.39.30",
+        price: 99.99,
+        runTime: 2.39,
+        classification: "B-13",
+        trailer: "https://www.youtube.com/watch?v=A4U2pMRV9_k"
     });
 
     const getOldGenre = await genres.findAll({
         // 27, 9648, 53
-        where: { id: [13, 17, 11] },
+        where: { id: [17] },
         attributes: ['id']
     })
     const getOldCinema = await cinemas.findAll({
@@ -140,12 +145,14 @@ const moviesMock = async() => {
         votes: 1092,
         usersRating: 5.5,
         availability: true,
-        price: '99.99',
-        runTime: "2.59.30",
+        price: 99.99,
+        runTime: 2.59,
+        classification: "B-13",
+        trailer: "https://www.youtube.com/watch?v=8YjFbMbfXaQ"
     });
     const getShangChiGenre = await genres.findAll({
         //28, 12, 14
-        where: { id: [1, 2, 9] },
+        where: { id: [1, 2, 15] },
         attributes: ['id']
     })
     const getShangChiCinema = await cinemas.findAll({
@@ -179,14 +186,16 @@ const moviesMock = async() => {
         votes: 4138,
         usersRating: 5.5,
         availability: true,
-        price: '99.99',
-        runTime: "2.43.20",
+        price: 99.99,
+        runTime: 2.43,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=eg5ciqQzmK0"
     });
 
 
     const getTheSuicideSquadGenre = await genres.findAll({
         //28, 12, 14
-        where: { id: [1, 2, 9] },
+        where: { id: [1, 2] },
         attributes: ['id']
     })
     const getTheSuicideSquadCinema = await cinemas.findAll({
@@ -221,8 +230,10 @@ const moviesMock = async() => {
         votes: 21,
         usersRating: 3.2,
         availability: false,
-        price: '99.99',
-        runTime: "2.43.20",
+        price: 99.99,
+        runTime: 2.43,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=pXjGBiRhQI4"
     });
     const getCatchTheBulletGenre = await genres.findAll({
         //37, 28
@@ -261,8 +272,10 @@ const moviesMock = async() => {
         votes: 317,
         usersRating: 2.2,
         availability: false,
-        price: '99.99',
-        runTime: "2.0.20",
+        price: 99.99,
+        runTime: 2.0,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=eB8KbeZaGx4"
     });
     const getBacNordGenre = await genres.findAll({
         // 80 53
@@ -301,8 +314,10 @@ const moviesMock = async() => {
         votes: 518,
         usersRating: 3.3,
         availability: false,
-        price: '99.99',
-        runTime: "1.45.10",
+        price: 99.99,
+        runTime: 1.45,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=lobHKNuf8zc"
     });
     const getKateGenre = await genres.findAll({
         //28, 53
@@ -341,8 +356,10 @@ const moviesMock = async() => {
         votes: 194,
         usersRating: 3.1,
         availability: true,
-        price: '99.99',
-        runTime: "1.38.10",
+        price: 99.99,
+        runTime: 1.38,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=hRuUB6RKExQ"
     });
     const getSasRedNoticeGenre = await genres.findAll({
         //18, 28, 53
@@ -381,12 +398,14 @@ const moviesMock = async() => {
         votes: 2749,
         usersRating: 3.1,
         availability: true,
-        price: '99.99',
-        runTime: "1.43.10",
+        price: 99.99,
+        runTime: 1.43,
+        classification: "B-13",
+        trailer: "https://www.youtube.com/watch?v=f_HvoipFcA8"
     });
     const getJungleCruiseGenre = await genres.findAll({
         //12, 14, 35, 28
-        where: { id: [1, 2, 9, 4] },
+        where: { id: [2, 9, 4] },
         attributes: ['id']
     })
     const getJungleCruiseCinema = await cinemas.findAll({
@@ -415,19 +434,21 @@ const moviesMock = async() => {
         title: "Jurassic Hunt",
         released: "2021-09-01",
         image: "https://i.postimg.cc/Fsd2Mx8s/jurassic-hunt.jpg",
-        description: "...Después de que las aves rapaces matan a su guía, el equipo intenta escapar del parque, pero los cazadores rápidamente se convierten en los cazados. Peor aún, el gerente del parque sospecha que Parker es un espía y envía un escuadrón de asalto tras ella. ¡Esta batalla está a punto de volverse primitiva!",
+        description: "Después de que las aves rapaces matan a su guía, el equipo intenta escapar del parque, pero los cazadores rápidamente se convierten en los cazados. Peor aún, el gerente del parque sospecha que Parker es un espía y envía un escuadrón de asalto tras ella. ¡Esta batalla está a punto de volverse primitiva!",
         actors: ["Courtney Loggins", "Tarkan Dospil", "Ruben Pia", "Joston Theney"],
         director: "Hank Braxtan",
         rating: 5,
         votes: 134,
         usersRating: 4.1,
         availability: false,
-        price: '99.99',
-        runTime: "2.28.10",
+        price: 99.99,
+        runTime: 2.28,
+        classification: "C",
+        trailer: "https://www.youtube.com/watch?v=H9gpZqn-TtU"
     });
     const getJurassicHuntGenre = await genres.findAll({
         //28, 878, 53
-        where: { id: [1, 15, 17] },
+        where: { id: [1, 2, 15] },
         attributes: ['id']
     })
     const getJurassicHuntCinema = await cinemas.findAll({
@@ -462,12 +483,14 @@ const moviesMock = async() => {
         votes: 3828,
         usersRating: 5,
         availability: true,
-        price: '99.99',
-        runTime: "2.40.25",
+        price: 99.99,
+        runTime: 2.40,
+        classification: "B-13",
+        trailer:"https://www.youtube.com/watch?v=FUK2kdPsBws"
     });
     const getf9Genre = await genres.findAll({
         //28, 80, 53
-        where: { id: [1, 17, 5] },
+        where: { id: [1, 2, 17] },
         attributes: ['id']
     })
     const getf9Cinema = await cinemas.findAll({
@@ -501,12 +524,14 @@ const moviesMock = async() => {
         votes: 494,
         usersRating: 5,
         availability: true,
-        price: '99.99',
-        runTime: "2.10.10",
+        price: 99.99,
+        runTime: 2.10,
+        classification: "AA",
+        trailer:"https://www.youtube.com/watch?v=LRMTr2VZcr8"
     });
     const getPawPatrolGenre = await genres.findAll({
         //16, 10751, 12, 35
-        where: { id: [2, 3, 8, 4] },
+        where: { id: [2, 3, 4] },
         attributes: ['id']
     })
     const getPawPatrolCinema = await cinemas.findAll({
@@ -541,12 +566,14 @@ const moviesMock = async() => {
         votes: 452,
         usersRating: 5,
         availability: true,
-        price: '99.99',
-        runTime: "2.0.50",
+        price: 99.99,
+        runTime: 2.0,
+        classification: "C",
+        trailer:"https://www.youtube.com/watch?v=KlfUbZJVInA"
     });
     const getEscapeRoomGenre = await genres.findAll({
         //27, 53, 9648
-        where: { id: [11, 13, 17, ] },
+        where: { id: [11, 17] },
         attributes: ['id']
     })
     const getEscapeRoomCinema = await cinemas.findAll({
@@ -580,12 +607,14 @@ const moviesMock = async() => {
         votes: 4637,
         usersRating: 5,
         availability: false,
-        price: '99.99',
-        runTime: "2.48.20",
+        price: 99.99,
+        runTime: 2.48,
+        classification: "AA",
+        trailer:"https://www.youtube.com/watch?v=mYfJxlgR2jw"
     });
     const getLucaGenre = await genres.findAll({
         // 16 , 35, 10751, 14
-        where: { id: [3, 4, 8, 9] },
+        where: { id: [3, 4, 8] },
         attributes: ['id']
     })
     const getLucaCinema = await cinemas.findAll({
@@ -619,12 +648,14 @@ const moviesMock = async() => {
         votes: 1431,
         usersRating: 3,
         availability: true,
-        price: '99.99',
-        runTime: "2.0.33",
+        price: 99.99,
+        runTime: 2.0,
+        classification: "AA",
+        trailer:"https://www.youtube.com/watch?v=h45V1RXrKqE"
     });
     const getTheBossBabyGenre = await genres.findAll({
         //16, 35, 12, 10751
-        where: { id: [3, 4, 2, 8] },
+        where: { id: [3, 4, 8] },
         attributes: ['id']
     })
     const getTheBossBabyCinema = await cinemas.findAll({
@@ -660,12 +691,14 @@ const moviesMock = async() => {
         votes: 2281,
         usersRating: 3.6,
         availability: true,
-        price: '99.99',
-        runTime: "2.15.13",
+        price: 99.99,
+        runTime: 2.15,
+        classification: "A",
+        trailer:"https://www.youtube.com/watch?v=olXYZOsXw_o"
     });
     const getSpaceJamGenre = await genres.findAll({
         //16, 35, 10751, 878
-        where: { id: [3, 4, 8, 15] },
+        where: { id: [3, 4, 8] },
         attributes: ['id']
     })
     const getSpaceJamCinema = await cinemas.findAll({
@@ -700,12 +733,14 @@ const moviesMock = async() => {
         votes: 626,
         usersRating: 1.4,
         availability: false,
-        price: '99.99',
-        runTime: "1.55.13",
+        price: 99.99,
+        runTime: 1.55,
+        classification: "C",
+        trailer:"https://www.youtube.com/watch?v=Gczt0fhawDs"
     });
     const getMalignantGenre = await genres.findAll({
         //27, 53, 9648
-        where: { id: [11, 17, 13] },
+        where: { id: [11, 5, 17] },
         attributes: ['id']
     })
     const getMalignantCinema = await cinemas.findAll({
@@ -740,12 +775,14 @@ const moviesMock = async() => {
         votes: 4217,
         usersRating: 4.6,
         availability: true,
-        price: '99.99',
-        runTime: "1.52.23",
+        price: 99.99,
+        runTime: 1.52,
+        classification: "B-13",
+        trailer:"https://www.youtube.com/watch?v=QPistcpGB8o"
     });
     const getTheTomorrowWarGenre = await genres.findAll({
         //28, 878, 12
-        where: { id: [1, 2, 15] },
+        where: { id: [1, 15] },
         attributes: ['id']
     })
     const getTheTomorrowWarCinema = await cinemas.findAll({
@@ -780,8 +817,10 @@ const moviesMock = async() => {
         votes: 784,
         usersRating: 2.7,
         availability: true,
-        price: '99.99',
-        runTime: "2.05.02",
+        price: 99.99,
+        runTime: 2.05,
+        classification: "C",
+        trailer:"https://www.youtube.com/watch?v=dCDLPlZAoeY"
     });
 
     const getDontBreatheTwoGenre = await genres.findAll({

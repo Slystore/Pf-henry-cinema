@@ -39,7 +39,13 @@ module.exports = (Sequelize) => {
         image: {
             type: DataTypes.TEXT
         },
+        trailer: {
+            type: DataTypes.TEXT
+        },
         runTime: {
+            type: DataTypes.STRING
+        },
+        classification: {
             type: DataTypes.STRING
         }
     }, { timestamps: false })

@@ -1,93 +1,187 @@
 import { makeStyles } from '@material-ui/styles';
+import bg from "../Forms/img/bgForm.jpeg";
 
 export const useStyles = makeStyles({
     container: {
         margin: 0,
-        padding: 0
+        padding: 0,
+        width: '100vw',
+        height: '100vh',
     },
     bg: {
-        position: 'relative',
+        position: 'fixed',
+        left: 0,
         width: '100vw',
-        height: '98vh',
+        height: '100vh',
         filter: 'blur(5px)'
     },
-    title: {
-        fontSize: 30,
-        fontWeight: '600',
-        textTransform: 'uppercase',
-        textAlign: 'right',
-        marginBottom: 10
+    imgLeft:{ 
+        width: 400,
+        overflow: 'hidden',
+        float: 'left',
+        
+    },
+    boxImg: {
+        width: 520,
+        height: '100%',
+        marginLeft: -60,
+        backgroundPosition: 'center',
     },
     caja: {
         display: 'flex',
-        width: 920,
-        margin: 'auto',
+        width: 1100,
+        height: 600,
+        backgroundColor: 'white',
+        margin: '0 auto',
         borderRadius: 7,
         overflow: 'hidden',
-        position: 'absolute',
-        top: '10%',
-        left: '15%',
+        position: 'relative',
+        top: '150px',
         boxShadow: '0 10px 10px rgb(0, 0, 0, .40)'
     },
     caja2: {
-        display: 'flex',
-        backgroundColor: '#fff'
-
+        width: 670,
+        height: 570,
+        marginLeft: 15,
+        marginTop: 15,
     },
-    boxImg: {
-        width: 350,
-        height: '100%',
-        backgroundPosition: 'center',
+    titleContainer:{ 
+        width: 670,
+        height: 50,
+        float: 'left',
+    },
+    title: {
+        width: 200,
+        margin: '0 auto',
+        fontSize: 30,
+        fontWeight: '600',
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        marginBottom: 10
     },
     boxForm: {
         textAlign: 'center',
-        width: '100%',
+        width: 670,
+        height: 40,
+        marginTop: 10,
+        marginBottom: 5,
+        float: 'left',
     },
-
+    boxForm2: {
+        textAlign: 'center',
+        width: 670,
+        height: 110,
+        marginTop: 10,
+        marginBottom: 5,
+        float: 'left',
+    },
+    boxForm3: {
+        width: 446,
+        height: 45,
+        marginTop: 10,
+        marginBottom: 5,
+        float: 'left',
+    },
     miniBox: {
-        height: 55
+        width: 335,
+        height: 40,
+        float: 'left',
+    },
+    miniBox2: {
+        width: 167,
+        height: 40,
+        float: 'left',
+    },
+    miniBox3: {
+        width: 223,
+        height: 40,
+        float: 'left',
+    },
+    miniBox4: {
+        width: 223,
+        height: 100,
+        float: 'left',
     },
     input: {
-        width: 250,
+        width: 300,
         outline: 'none',
         height: 30,
         paddingLeft: 5,
         marginBottom: 13,
-
+    },
+    input2: {
+        width: 135,
+        outline: 'none',
+        height: 30,
+        paddingLeft: 5,
+        marginBottom: 13,
+    },
+    input3: {
+        width: 635,
+        outline: 'none',
+        height: 30,
+        paddingLeft: 5,
+        marginBottom: 13,
     },
     boxtextarea: {
         height: 82
     },
     textarea: {
-        width: 256,
-        height: 55,
-        marginBottom: 13,
+        width: 635,
+        height: 100,
+        marginBottom: 7,
         outline: 'none',
         resize: 'none'
     },
     select: {
-        width: 250,
+        width: 185,
         height: 33,
         outline: 'none',
-        marginRight: 20
     },
-    disponible: {
-        marginTop: 75,
-        width: 250,
+    file: {
+        width: 410,
         height: 33,
-        outline: 'none',
-        marginBottom: 22
-
-
+        display: 'none', 
     },
+    subir:{
+        marginLeft: 18,
+        padding: '5px 10px',
+        background: '#ea5103',
+        color: '#fff',
+        borderRadius: 5,
+        float: 'left',
+        border: '0px solid #fff',
+        '&:hover': {
+            background: "#ea2203",
+            cursor: 'pointer',
+        },
+    },
+    info:{
+        width: 250,
+        float: 'left',
+        fontSize: 15,
+        position: 'relative',
+        marginLeft: 10,
+        marginTop: 8,
+        // border: 'thin dotted #0f0',
+    },
+    // disponible: {
+    //     marginTop: 75,
+    //     width: 250,
+    //     height: 33,
+    //     outline: 'none',
+    //     marginBottom: 22
+
+
+    // },
+    // list: {
+
+    // },
     render: {
         position: 'absolute',
         top: 153,
         right: 105,
         listStyle: 'none'
-    },
-    list: {
-
     },
     imgPaper: {
         height: 290,
@@ -98,16 +192,14 @@ export const useStyles = makeStyles({
 
     },
     boxBtn: {
-        width: 300,
-        display: 'flex',
-        justifyContent: 'center',
-        paddingBottom: 20,
-        textAlign: 'center'
+        width: 223,
+        height: 45,
+        marginBottom: 12,
+        // border: 'thin dotted #0f0'
     },
     btn: {
-        width: 100,
-        height: 30,
-        marginLeft: 10,
+        width: 185,
+        height: 40,
         cursor: 'pointer',
         border: 'none',
         outline: 'none',
