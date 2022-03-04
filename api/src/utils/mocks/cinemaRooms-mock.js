@@ -1,11 +1,15 @@
-const { cinemaRoom } = require("../../db.js");
+const { cinemas, cinemaRoom } = require("../../db.js");
+
 
 const cinemaRoomMockUp = async() => {
+
+
     const salas = [
         "uno",
         "dos",
         "tres",
     ];
+
 
     try {
         for (const s of salas) {
@@ -25,4 +29,4 @@ const cinemaRoomMockUp = async() => {
     }
 };
 
-module.exports = { cinemaRoomMockUp };
+module.exports =  salasCine ;

@@ -21,6 +21,7 @@
         "express-validator": "^6.12.2",
         "google-auth-library": "^7.10.0",
         "jsonwebtoken": "^8.5.1",
+        "mercadopago": "^1.5.8",
         "morgan": "^1.10.0",
         "nodemon": "^2.0.13",
         "pg": "^8.7.1",

@@ -15,7 +15,7 @@ import jwt_decode from "jwt-decode";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getToken } from "../../redux/users/usersAction"
-import { getAll, postCartFill, fillText } from "../../redux/carts/cartsActions";
+import { getAll, postCartFill, fillText, clearCart, postPurchaseCart } from "../../redux/carts/cartsActions";
 import "./ShoppingCart.css";
 import { Card } from "@mui/material";
 // import { getMovies } from "../../redux/movies/moviesAction";
@@ -29,7 +29,7 @@ function ShopingCart() {
   const { cart } = useSelector((state) => state.cartReducer);
   const { textFill } = useSelector((state) => state.cartReducer);
   const dispatch = useDispatch();
-  const[text, ]= useState(JSON.parse(window.localStorage.getItem("id")))
+  const[text]= useState(JSON.parse(window.localStorage.getItem("id")))
   const history= useHistory()
   
   useEffect(() => {
@@ -40,7 +40,7 @@ function ShopingCart() {
     // console.log("tb text", text)
     dispatch(fillText(text));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [text]);
   const [fillShop, setFillShop] = useState([]);
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
@@ -86,12 +86,16 @@ function ShopingCart() {
 //   };
 const x = getToken();
   const handleReset = () => {
-    setActiveStep(0);
+    dispatch(clearCart())
+      // localStorage.removeItem('id');
+      history.push('/')
+      window.location.replace('')
   };
   function handlePostCart() {
     if(!x.msg){
        
     const decoded = jwt_decode(x);
+    console.log(decoded)
     let postFillFinal = fillShop.length === 1 ? [{...fillShop[0], userId: decoded.user.id }] 
     : fillShop.map(item => item.userId ? { item } : {...item, userId: decoded.user.id })
 
@@ -103,7 +107,11 @@ const x = getToken();
       window.localStorage.setItem("cartPost",JSON.stringify( fillShop))
   history.push("/login")}
   }
-
+  function handleComprar(){
+    dispatch((postPurchaseCart()))
+    x.msg?alert("Guarde el Carrito para continuar con su compra"):
+    history.push('/prevCheckoutPage')
+  }
   return (
     <div className="ContainerCart">
       <div className="NavBarCart">
@@ -142,7 +150,7 @@ const x = getToken();
                   <Box sx={{ flex: "1 1 auto" }} />
                   <Button onClick={handleReset}>Reset</Button>
                   <Button onClick={handlePostCart}>Guardar Carrito</Button>
-                  <Button onClick={handleReset}>Comprar</Button>
+                  <Button onClick={handleComprar}>Comprar</Button>
                 </Box>
               </React.Fragment>
             ) : (
@@ -150,12 +158,12 @@ const x = getToken();
                 {/* <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography> */}
 
                 {/* **** SE MUESTRA EL CONTENIDO DEL CARRITO ******* */}
-                <Box sx={{ height: 440, marginTop: 2 }}>
+                <Box sx={{ height: 240, width: 500, marginTop: 2 }}>
                   {activeStep === 0 ? (
                     text?
               
                     textFill.map((movie) => {
-                      console.log("tomi",textFill)
+                      // console.log("tomi",textFill)
                       return (
                         <CartItemStorage
                           key={movie.id}

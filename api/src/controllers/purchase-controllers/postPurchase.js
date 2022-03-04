@@ -7,14 +7,12 @@ let aux = 1
 const postPurchase = async (req, res, next) => {
     try {
         const { user } = req.params
+        const prueba = parseInt(user)
         // Busco el carrito de compra del usuario: es un array de objetos
-        let cart = await users.findOne({
-            where: {
-                id: user
-            },
-        })
+        let cart = await users.findByPk(2)
+        console.log(cart)
         
-        let shoppingCart = cart.dataValues.shoppingCart
+        let shoppingCart = cart.shoppingCart
        
         let cinemasQuery, cinemaRoomQuery, screeningQuery, seatsQuery, userQuery, movieQuery, purchaseCreation, purchaseQuery;
         let  purchaseArray = [];
@@ -22,7 +20,7 @@ const postPurchase = async (req, res, next) => {
          for (let i = 0; i < shoppingCart.length; i++, aux++) { // iteramos el array de objetos
                 let { movieId, userId, cinemaId, cinemaRoomId, screeningId, seatId } = shoppingCart[i] //desestructuramos el objeto para sacar cada key y su value
              //Nos aseguramos que el asiento elegido este disponible en 'seats'
-             console.log(movieId)
+            //  console.log(movieId)
                 seatsQuery = await seats.findOne({
                     where:{
                         [Op.and] : [
@@ -51,7 +49,6 @@ const postPurchase = async (req, res, next) => {
                  screeningQuery = await screening.findByPk(screeningId)
                  userQuery = await users.findByPk(userId)
                  movieQuery = await movies.findByPk(movieId)
-                 console.log(movieQuery)
                  //se realizan las relaciones
                  if(seatsQuery){
                      await movieQuery.addPurchase(purchaseQuery)
@@ -60,25 +57,28 @@ const postPurchase = async (req, res, next) => {
                      await cinemaRoomQuery.addPurchase(purchaseQuery)
                      await seatsQuery.setPurchase(purchaseQuery)
                      await seats.update({isAvailable: false},{ where: {id: seatId}}) // si el asiento estaba disponible, se switchea el flag
+                     await userQuery.addSeat(seatsQuery)
                      await userQuery.addPurchase(purchaseQuery)
                  }
          }
 
          let orderCreate
-         if(purchaseArray) {//si se realizaron compras, se realiza una orden de compra
-              orderCreate = await purchaseOrder.create({
-              })
+        if(purchaseArray) {//si se realizaron compras, se realiza una orden de compra
+              orderCreate = await purchaseOrder.create({})
               //se relaciona la orden con las compras realizadas previamente
-            await orderCreate.addPurchase(purchaseArray[0].id)
-            await orderCreate.addPurchase(purchaseArray[1].id)
-            await orderCreate.setUser(user)
-            //se relaciona la orden con el usuario
-            await users.update({shoppingCart: null},{
-               where: {
-                   id: user
-               },
-           })
-            }
+              purchaseArray.forEach(async purchase => { await orderCreate.addPurchase(purchase.id) })
+            //   await orderCreate.setUser(user)
+                console.log(cart)
+                console.log(orderCreate)
+                await cart.addPurchaseOrder(orderCreate)
+
+              //se relaciona la orden con el usuario
+              await users.update({shoppingCart: null},{
+                    where: {
+                        id: user
+                    }
+                })
+        }
 
         purchaseArray ?
         res.json( 'The order has been created!') :

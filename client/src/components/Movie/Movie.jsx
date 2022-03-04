@@ -41,7 +41,7 @@ function ChildModal({name, trailer}) {
         <Box sx={{ ...style, width: 600, height:450 }}>
           <h2 id="child-modal-title">Trailer de {name}</h2>
           <p id="child-modal-description">
-            <ReactPlayer url={trailer} width='590px' height='370px' />
+            <ReactPlayer url='https://www.youtube.com/watch?v=z7PSyWuArVQ' width='540px' height='340px' />
           </p>
           <Button onClick={handleClose} sx={{ position: 'absolute', right: 0, top: 5, fontSize: 20, fontWeight: 'bold', color: 'red'}}>x</Button>
         </Box>

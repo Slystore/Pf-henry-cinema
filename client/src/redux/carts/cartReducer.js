@@ -10,9 +10,11 @@ import {
     DECREMENT_CART_STORAGE,
     DECREMENT_CART,
     POST_FILL_CART,
+    POST_PURCHASE_CART,
     STORAGE,
     FILL_TEXT,
-    CLEAR_SEAT
+    CLEAR_SEAT,
+    RECOVERY_CART,
 } from './cartsActions';
 
 export const initialState = {
@@ -95,11 +97,11 @@ function cartReducer(state = initialState, action) {
             return iteminCart ? {
                 ...state,
                 cart: state.cart.map((item) => item.id === newItem.id ? {...item, quantity: item.quantity + 1 } : item),
-                postCartStorage: [...state.postCart, { movieId }]
+                postCart: [...state.postCart, { movieId }]
             } : {
                 ...state,
                 cart: [{...newItem, quantity: 1 }],
-                postCartStorage: [{ movieId }]
+                postCart: [{ movieId }]
             }
         case STORAGE:
             let estado = state.cart
@@ -112,12 +114,22 @@ function cartReducer(state = initialState, action) {
 
         case FILL_TEXT:
             let movieId2 = action.payload ? action.payload[0].id : null
+            let cantidad= action.payload ? action.payload[0].quantity:null
+            let array=[]
+            for(let i=0; i<cantidad ; i++ ){
+                array.push({movieId: action.payload[0].id})
+            }
             return {
                 ...state,
                 textFill: action.payload !== null ? action.payload : [],
-                postCartStorage: movieId2 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
+            postCartStorage:array
+            //   state.postCartStorage.length!==0 ? [...state.postCartStorage, { movieId2 }] : [{ movieId2 }]
             }
         case POST_FILL_CART:
+            return {
+                ...state
+            }
+        case POST_PURCHASE_CART:
             return {
                 ...state
             }
@@ -132,7 +144,8 @@ function cartReducer(state = initialState, action) {
             }
         case CINEMAS:
             {
-                let cinePrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], cinemaId: action.payload }] : state.postCartStorage.map(item => item.cinemaId ? { item } : {...item, cinemaId: action.payload })
+                let cinePrueba = state.postCartStorage.length === 1 && !state.postCartStorage.cinemaId ? [{...state.postCartStorage[0], cinemaId: action.payload }] 
+                : state.postCartStorage.map(item => item.cinemaId ?(item.cinemaId===action.payload? { item }:{...item, cinemaId:action.payload} ): {...item, cinemaId: action.payload })
                 return {
                     ...state,
                     cinemaSelect: action.payload,
@@ -142,7 +155,8 @@ function cartReducer(state = initialState, action) {
             }
         case SCREENING:
             {
-                let screeningPrueba = state.postCartStorage.length === 1 ? [{...state.postCartStorage[0], screeningId: action.payload }] : state.postCartStorage.map(item => item.screeningId ? {...item } : {...item, screeningId: action.payload })
+                let screeningPrueba = state.postCartStorage.length === 1  && !state.postCartStorage.cinemaId ? [{...state.postCartStorage[0], screeningId: action.payload }]
+                : state.postCartStorage.map(item => item.screeningId ? (item.screeningId===action.payload? { item }:{...item, screeningId:action.payload} ) : {...item, screeningId: action.payload })
                 return {
                     ...state,
                     screeningSelect: action.payload,
@@ -224,6 +238,11 @@ function cartReducer(state = initialState, action) {
                     cart: result
                 }
             }
+            case RECOVERY_CART:
+                return{
+                    ...state,
+                    postCartStorage: action.payload
+                }
         default:
             return state
 

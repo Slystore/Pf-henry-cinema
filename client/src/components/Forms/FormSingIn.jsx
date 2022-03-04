@@ -112,8 +112,7 @@ import Box from '@mui/material/Box';
 import './Form.css'
 
 function FormSingIn() {
-
-  const usuario = useSelector((state) => state.users);
+ 
   const history = useHistory();
   const [userLog, setUserLog] = useState({
     msgErr: "",

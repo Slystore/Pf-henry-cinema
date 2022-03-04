@@ -15,7 +15,7 @@ server.use(corsc())
 server.use(cors);
 server.use(express.json())
 server.use(errors)
-
+server.use(corsc())
 
 //routes 
 server.use('/api', routes)

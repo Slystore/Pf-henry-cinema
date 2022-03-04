@@ -4,16 +4,14 @@ module.exports = (Sequelize) => {
 
     return Sequelize.define(
         'seats', {
-            row: {
-                type: DataTypes.STRING
-            },
+            
             number: {
-                type: DataTypes.INTEGER
+                type: DataTypes.INTEGER,
             },
             isAvailable: {
                 type: DataTypes.BOOLEAN,
                 defaultValue: true
             }
-        }, {}
+        }, { timestamps: false }
     )
 };

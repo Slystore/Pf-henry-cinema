@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import Movie from "../Movie/Movie";
 // import initialState from '../../reducer/shoping.js'
 // import shopingReducer from '../../reducer/shoping.js'
 import {
   filterGenre,
+  getAll,
   movieAvailability,
 } from "../../redux/movies/moviesAction";
 import { addToCart, storage } from "../../redux/carts/cartsActions";
@@ -15,6 +17,13 @@ function Home() {
   const dispatch = useDispatch();
   const { movies } = useSelector((state) => state.moviesReducer);
   const { genres } = useSelector((state) => state.moviesReducer);
+  const [ peliculas, setPeliculas] = useState(movies)
+
+  useEffect(() => {
+    dispatch(getAll());
+    // dispatch(getMovies())
+    // dispatch(getAllUsers())
+  }, [dispatch]);
   
 
   function handleAvailability(e) {
