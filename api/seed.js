@@ -88,65 +88,65 @@ const moviePostSeed = async() => {
                movieCreated.addGenres(genresDb) 
             }
 
-            for (let i = 0; i < showList.length; i++) {
-                // Paso 1: de cada objetito averiguamos en modelos de cinema, cinemaRoom y screening
+            // for (let i = 0; i < showList.length; i++) {
+            //     // Paso 1: de cada objetito averiguamos en modelos de cinema, cinemaRoom y screening
                 
-                 cinemaDb = await cinemas.findOne({
-                    where: {
-                        id: showList[i].cinemaId,
-                    },
-                });
+            //      cinemaDb = await cinemas.findOne({
+            //         where: {
+            //             id: showList[i].cinemaId,
+            //         },
+            //     });
         
-                 cinemaRoomsDb = await cinemaRoom.findOne({
-                    where: {
-                        id: showList[i].cinemaRoomId,
-                    },
-                });
+            //      cinemaRoomsDb = await cinemaRoom.findOne({
+            //         where: {
+            //             id: showList[i].cinemaRoomId,
+            //         },
+            //     });
         
-                 screeningDb = await screening.findOne({
-                    where: {
-                        id: showList[i].screeningId,
-                    },
-                });
+            //      screeningDb = await screening.findOne({
+            //         where: {
+            //             id: showList[i].screeningId,
+            //         },
+            //     });
     
-                // //Paso 2: creo un show
+            //     // //Paso 2: creo un show
     
-                 showCreation = await shows.create();
+            //      showCreation = await shows.create();
     
-                 await cinemaDb.addShow(showCreation)
-                await cinemaRoomsDb.addShow(showCreation)
-                await screeningDb.addShow(showCreation)
-                await movieCreated.addShow(showCreation)
+            //      await cinemaDb.addShow(showCreation)
+            //     await cinemaRoomsDb.addShow(showCreation)
+            //     await screeningDb.addShow(showCreation)
+                // await movieCreated.addShow(showCreation)
     
                 //Paso 3: Busco el cinemaRoom que hace referencia el objeto 
                 //que estoy iterando y me fijo el valor del atributo SeatCount. (va a ser 50)
     
-                const seatCountQuery = await cinemaRoom.findOne({
-                    where: {
-                        id: showList[i].cinemaRoomId
-                    },
-                    attributes: ['seatCount'],
-                })
+            //     const seatCountQuery = await cinemaRoom.findOne({
+            //         where: {
+            //             id: showList[i].cinemaRoomId
+            //         },
+            //         attributes: ['seatCount'],
+            //     })
     
-                let array = []
+            //     let array = []
     
-                // creo tantas instancias de seat como capacidad de asientos tenga esa sala
+            //     // creo tantas instancias de seat como capacidad de asientos tenga esa sala
            
-                for (let i = 0; i < 55; i++) array.push(i)
+            //     for (let i = 0; i < 55; i++) array.push(i)
     
-                let newSeat;
-                let aux = 0
+            //     let newSeat;
+            //     let aux = 0
     
-                array.forEach( async el => {
-                    try {
-                        newSeat = await seats.create({number: ++aux})
-                        await newSeat.setShow(showCreation)   
-                    } catch (error) {
-                        console.log(error)
-                    }
-                })
+            //     array.forEach( async el => {
+            //         try {
+            //             newSeat = await seats.create({number: ++aux})
+            //             await newSeat.setShow(showCreation)   
+            //         } catch (error) {
+            //             console.log(error)
+            //         }
+            //     })
                 
-            }
+            // }
         })
 
 

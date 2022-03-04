@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const getMovies = require('../../controllers/movie-controllers/getMovies');
+const {getMoviesok}= require('../../controllers/getMoviesControllers/getMovieok');
 const getById = require('../../controllers/movie-controllers/getMoviesById');
 const postMovies = require('../../controllers/movie-controllers/postMovies');
 const putMovies = require('../../controllers/movie-controllers/putMovies');
@@ -14,7 +15,7 @@ const router = Router()
 // router.delete('/deleteMovie/:id', deleteMovies)
 // router.put('/editMovie/:id', putMovies)
 
-router.get('/', getMovies)
+router.get('/', getMoviesok)
 router.get('/:id', getById)
 router.post('/createMovie', postMovies)
 router.delete('/deleteMovie/:id', deleteMovies)

@@ -95,6 +95,7 @@ const x = getToken();
     if(!x.msg){
        
     const decoded = jwt_decode(x);
+    console.log(decoded)
     let postFillFinal = fillShop.length === 1 ? [{...fillShop[0], userId: decoded.user.id }] 
     : fillShop.map(item => item.userId ? { item } : {...item, userId: decoded.user.id })
 
